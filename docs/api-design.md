@@ -139,7 +139,7 @@
 
 ### Get a detailed view of news item (info)
 
-* Endpoint path: /explore/news_items/<int:id>/
+* Endpoint path: /explore/news_items/`<int:id>`/
 * Endpoint method: GET
 
 * Headers:
@@ -362,55 +362,3 @@
     }
     ```
     <!-- maybe updated list after deletion instead? -->
-
-
-
-
-
-
-### Create a new Tweet
-
-* Endpoint path: /tweets
-* Endpoint method: POST
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "text": string
-    }
-    ```
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-      "success": boolean,
-      "message": string
-    }
-    ```
-
-
-### Get a list of news items
-
-* Endpoint path: /news
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A list of news items
-* Response shape:
-    ```json
-    {
-      "news": [
-        {
-          "title": string,
-          "text": string,
-          "image_url": string
-        }
-      ]
-    }
-    ```
