@@ -72,7 +72,7 @@
     ```
 
 
-## Form to signup
+## Form to sign up
 
 * Endpoint path: /signup
 * Endpoint method: GET
