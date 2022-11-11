@@ -242,7 +242,7 @@
 
 ## Add or update stock to or in portfolio
 
-* Endpoint path: /explore/portfolio
+* Endpoint path: /portfolio
 * Endpoint method: PUT
 
 * Headers:
