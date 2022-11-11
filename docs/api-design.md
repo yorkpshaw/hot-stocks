@@ -158,7 +158,7 @@
 
 ### Get a detailed view of stock (info)
 
-* Endpoint path: /explore/stocks/<int:id>/
+* Endpoint path: /explore/stocks/`<int:id>`/
 * Endpoint method: GET
 
 * Headers:
@@ -177,7 +177,7 @@
 
 ## Share stock
 
-* Endpoint path: /explore/stocks/<int:id>/share
+* Endpoint path: /explore/stocks/`<int:id>`/share
 * Endpoint method: POST
 
 * Headers:
@@ -201,7 +201,7 @@
 
 ## Share news item
 
-* Endpoint path: /explore/news_items/<int:id>/share
+* Endpoint path: /explore/news_items/`<int:id>`/share
 * Endpoint method: POST
 
 * Headers:
@@ -225,7 +225,7 @@
 
 ## Form to add or update stock to or in portfolio
 
-* Endpoint path: /explore/stocks/<int:id>/update
+* Endpoint path: /explore/stocks/`<int:id>`/update
 * Endpoint method: GET
 
 * Headers:
