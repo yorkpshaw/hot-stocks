@@ -138,6 +138,7 @@
 
 
 ### Get a detailed view of news item (info)
+<!-- redundant? -->
 
 * Endpoint path: /explore/news_items/`<int:id>`/
 * Endpoint method: GET
@@ -157,6 +158,7 @@
 
 
 ### Get a detailed view of stock (info)
+<!-- redundant? -->
 
 * Endpoint path: /explore/stocks/`<int:id>`/
 * Endpoint method: GET
@@ -223,6 +225,43 @@
     ```
 
 
+
+## Show share stock form
+
+* Endpoint path: /explore/stocks/`<int:id>`/share
+* Endpoint method: GET
+
+* Headers:
+  * Authorization: Bearer token
+
+
+* Response: An indication of success or failure
+* Response shape:
+    ```json
+    {
+        "success": boolean,
+    }
+    ```
+
+
+## Show share news item form
+
+* Endpoint path: /explore/news_items/`<int:id>`/share
+* Endpoint method: GET
+
+* Headers:
+  * Authorization: Bearer token
+
+
+* Response: An indication of success or failure
+* Response shape:
+    ```json
+    {
+        "success": boolean,
+    }
+    ```
+
+
 ## Form to add or update stock to or in portfolio
 
 * Endpoint path: /explore/stocks/`<int:id>`/update
@@ -251,7 +290,8 @@
 * Request body:
     ```json
     {
-      "text": string,
+      "symbol": string,
+      "shares": number,
     }
     ```
 
@@ -335,7 +375,7 @@
             "title": string,
             "posted_date": datetime,
             }
-        ]
+        ],
         "stocks": [
             {
             "symbol": string,
