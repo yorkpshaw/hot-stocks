@@ -86,10 +86,10 @@
     ```
 
 
-### Get information about application use
+<!-- ### Get information about application use -->
 <!-- maybe just do on front end? -->
 
-* Endpoint path: /about
+<!-- * Endpoint path: /about
 * Endpoint method: GET
 
 * Response: List of each item in nav
@@ -103,7 +103,7 @@
             }
         ]
     }
-    ```
+    ``` -->
 
 
 ### Get a combined list of news items, stocks
@@ -176,7 +176,7 @@
     }
     ```
 
-
+<!--
 ## Share stock
 
 * Endpoint path: /explore/stocks/`<int:id>`/share
@@ -259,7 +259,7 @@
     {
         "success": boolean,
     }
-    ```
+    ``` -->
 
 
 ## Form to add or update stock to or in portfolio
@@ -356,6 +356,39 @@
         ]
     }
     ```
+
+### Add news items, stocks to SAVED
+
+* Endpoint path: /saved
+* Endpoint method: POST
+
+* Headers:
+  * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+        "news_items": [
+            {
+            "title": string,
+            "posted_date": datetime,
+            }
+        ],
+        "stocks": [
+            {
+            "symbol": string,
+            "price": number,
+            }
+        ]
+    }
+    ```
+
+* Response: An indication of success or failure
+* Response shape:
+    ```json
+    {
+        "success": boolean,
+    }
 
 
 ### Get a list of SAVED news items, stocks
