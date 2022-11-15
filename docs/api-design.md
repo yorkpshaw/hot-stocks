@@ -86,26 +86,6 @@
     ```
 
 
-<!-- ### Get information about application use -->
-<!-- maybe just do on front end? -->
-
-<!-- * Endpoint path: /about
-* Endpoint method: GET
-
-* Response: List of each item in nav
-* Response shape:
-    ```json
-    {
-        "nav_items": [
-            {
-            "name": string,
-            "description": datetime,
-            }
-        ]
-    }
-    ``` -->
-
-
 ### Get a combined list of news items, stocks
 
 * Endpoint path: /explore
@@ -175,91 +155,6 @@
         "description": string,
     }
     ```
-
-<!--
-## Share stock
-
-* Endpoint path: /explore/stocks/`<int:id>`/share
-* Endpoint method: POST
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "text": string,
-    }
-    ```
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
-
-## Share news item
-
-* Endpoint path: /explore/news_items/`<int:id>`/share
-* Endpoint method: POST
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "text": string,
-    }
-    ```
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
-
-
-## Show share stock form
-
-* Endpoint path: /explore/stocks/`<int:id>`/share
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
-
-## Show share news item form
-
-* Endpoint path: /explore/news_items/`<int:id>`/share
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ``` -->
 
 
 ## Form to add or update stock to or in portfolio
