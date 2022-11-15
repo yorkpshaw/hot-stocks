@@ -58,6 +58,7 @@
     ```
 
 
+
 ### Get a combined list of news items, stocks
 
 * Endpoint path: /items
