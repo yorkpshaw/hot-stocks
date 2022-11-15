@@ -1,22 +1,19 @@
 from fastapi import APIRouter, Depends #
 from pydantic import BaseModel
-from queries.users import UserQueries
+from typing import List
+from queries.queries import UserQueries
 
 router = APIRouter()
 
 class UserOut(BaseModel):
     id: int
-    first: str
-    last: str
-    avatar: str
-    email: str
     username: str
 
 class UsersOut(BaseModel):
-    users: list[UserOut]
+    users: List[UserOut]
 
 
-@router.get("api/users", response_model = UsersOut)
+@router.get("/api/users", response_model = UsersOut)
 def users_list(queries: UserQueries = Depends()):
     return {
         "users": queries,

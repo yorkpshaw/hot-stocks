@@ -58,58 +58,12 @@
     ```
 
 
-## Form to login
-
-* Endpoint path: /login
-* Endpoint method: GET
-
-* Response: A form to login
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
-
-## Form to sign up
-
-* Endpoint path: /signup
-* Endpoint method: GET
-
-* Response: A form to sign up
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
-
-<!-- ### Get information about application use -->
-<!-- maybe just do on front end? -->
-
-<!-- * Endpoint path: /about
-* Endpoint method: GET
-
-* Response: List of each item in nav
-* Response shape:
-    ```json
-    {
-        "nav_items": [
-            {
-            "name": string,
-            "description": datetime,
-            }
-        ]
-    }
-    ``` -->
-
-
 ### Get a combined list of news items, stocks
 
-* Endpoint path: /explore
+* Endpoint path: /items
 * Endpoint method: GET
+* Query parameters:
+  * q: the word(s) to search for
 
 * Headers:
   * Authorization: Bearer token
@@ -138,9 +92,8 @@
 
 
 ### Get a detailed view of news item (info)
-<!-- redundant? -->
 
-* Endpoint path: /explore/news_items/`<int:id>`/
+* Endpoint path: /items/news/`<int:id>`/
 * Endpoint method: GET
 
 * Headers:
@@ -158,9 +111,8 @@
 
 
 ### Get a detailed view of stock (info)
-<!-- redundant? -->
 
-* Endpoint path: /explore/stocks/`<int:id>`/
+* Endpoint path: /items/stocks/`<int:id>`/
 * Endpoint method: GET
 
 * Headers:
@@ -176,108 +128,6 @@
     }
     ```
 
-<!--
-## Share stock
-
-* Endpoint path: /explore/stocks/`<int:id>`/share
-* Endpoint method: POST
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "text": string,
-    }
-    ```
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
-
-## Share news item
-
-* Endpoint path: /explore/news_items/`<int:id>`/share
-* Endpoint method: POST
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "text": string,
-    }
-    ```
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
-
-
-## Show share stock form
-
-* Endpoint path: /explore/stocks/`<int:id>`/share
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
-
-## Show share news item form
-
-* Endpoint path: /explore/news_items/`<int:id>`/share
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ``` -->
-
-
-## Form to add or update stock to or in portfolio
-
-* Endpoint path: /explore/stocks/`<int:id>`/update
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A form to add or update stock to or in portfolio
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
 
 ## Add or update stock to or in portfolio
 
@@ -290,7 +140,9 @@
 * Request body:
     ```json
     {
-      "symbol": string,
+      "user_id": number,
+      "symbol": str,
+      "cost_basis": number,
       "shares": number,
     }
     ```
@@ -304,37 +156,6 @@
     ```
 
 
-
-### Get a list of news items, stocks
-
-* Endpoint path: /search
-* Endpoint method: GET
-* Query parameters:
-  * q: the word(s) to search for
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A list of news items, stocks
-* Response shape:
-    ```json
-    {
-        "news_items": [
-            {
-            "title": string,
-            "posted_date": datetime,
-            }
-        ],
-        "stocks": [
-            {
-            "symbol": string,
-            "price": number,
-            }
-        ]
-    }
-    ```
-
-
 ### Get a list of PORTFOLIO stocks
 
 * Endpoint path: /portfolio
@@ -343,23 +164,32 @@
 * Headers:
   * Authorization: Bearer token
 
+* Request body:
+    ```json
+    {
+      "user_id": number
+    }
+    ```
+
 * Response: A list of portfolio stocks
 * Response shape:
     ```json
     {
         "stocks": [
             {
-            "symbol": string,
-            "price": number,
+            "symbol": str,
+            "cost_basis": number,
+            "cost_current": number,
             "chart": string, // unknown at this time; stretch?
             }
         ]
     }
     ```
 
+
 ### Add news items, stocks to SAVED
 
-* Endpoint path: /saved
+* Endpoint path: /lists
 * Endpoint method: POST
 
 * Headers:
@@ -368,18 +198,9 @@
 * Request body:
     ```json
     {
-        "news_items": [
-            {
-            "title": string,
-            "posted_date": datetime,
-            }
-        ],
-        "stocks": [
-            {
-            "symbol": string,
-            "price": number,
-            }
-        ]
+        "user_id": number,
+        "item_id": number,
+        "item_type": str,
     }
     ```
 
@@ -393,11 +214,18 @@
 
 ### Get a list of SAVED news items, stocks
 
-* Endpoint path: /saved
+* Endpoint path: /lists
 * Endpoint method: GET
 
 * Headers:
   * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+        "user_id": number,
+    }
+    ```
 
 * Response: A list of saved news items, stocks
 * Response shape:
@@ -412,7 +240,7 @@
         "stocks": [
             {
             "symbol": string,
-            "price": number,
+            "cost_current": number,
             }
         ]
     }
@@ -421,11 +249,20 @@
 
 ### Delete SAVED news item, stock
 
-* Endpoint path: /saved/delete
+* Endpoint path: /lists/`<int:id>`
 * Endpoint method: DELETE
 
 * Headers:
   * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+        "user_id": number,
+        "item_id": number,
+        "item_type": str,
+    }
+    ```
 
 * Response: An indication of success or failure
 * Response shape:
@@ -434,4 +271,3 @@
         "success": boolean,
     }
     ```
-    <!-- maybe updated list after deletion instead? -->
