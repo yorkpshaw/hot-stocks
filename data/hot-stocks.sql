@@ -38,7 +38,7 @@ CREATE TABLE lists (
     id SERIAL NOT NULL PRIMARY KEY,
     user_id SMALLINT REFERENCES users("id") ON DELETE CASCADE,
     item_id REFERENCES stocks("id") ON DELETE CASCADE // REFERENCES news_items("id") ON DELETE CASCADE,
-    item_type SMALLINT(10,3),
+    item_type VARCHAR(50) check(item_type='news_items' or item_type='stocks'),
     preference VARCHAR(50) check(preference='hate' or preference='heart')
 )
 
@@ -61,6 +61,11 @@ INSERT INTO stocks VALUES
 ;
 
 INSERT INTO portfolio VALUES
-    (1, 1, 1, 10, ),
-    (2, 'NFLX')
+    (1, 1, 1, '10', '100.00'),
+    (2, 2, 2, '12', '100.00'),
+;
+
+INSERT INTO lists VALUES
+    (1, 2, 1, 'stocks', 'hate'),
+    (1, 2, 3, 'stocks', 'heart'),
 ;
