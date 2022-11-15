@@ -94,7 +94,7 @@
 
 ### Get a detailed view of news item (info)
 
-* Endpoint path: /items/news/`<int:id>`/
+* Endpoint path: /items/news_items/`<int:id>`/
 * Endpoint method: GET
 
 * Headers:
