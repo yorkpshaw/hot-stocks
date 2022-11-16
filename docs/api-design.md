@@ -61,7 +61,7 @@
 
 ### Get a combined list of news items, stocks
 
-* Endpoint path: /items
+* Endpoint path: /explore_items
 * Endpoint method: GET
 * Query parameters:
   * q: the word(s) to search for
@@ -94,7 +94,7 @@
 
 ### Get a detailed view of news item (info)
 
-* Endpoint path: /items/news_items/`<int:id>`/
+* Endpoint path: /explore_items/news_items/`<int:id>`/
 * Endpoint method: GET
 
 * Headers:
@@ -113,7 +113,7 @@
 
 ### Get a detailed view of stock (info)
 
-* Endpoint path: /items/stocks/`<int:id>`/
+* Endpoint path: /explore_items/stocks/`<int:id>`/
 * Endpoint method: GET
 
 * Headers:
