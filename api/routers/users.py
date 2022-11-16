@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends #
 from pydantic import BaseModel
 from typing import List
-from queries.queries import UserQueries
+from queries.users import UserQueries
 
 router = APIRouter()
 
