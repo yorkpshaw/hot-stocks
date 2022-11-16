@@ -38,15 +38,15 @@ CREATE TABLE portfolio_stocks (
 CREATE TABLE saved_news_items (
     id SERIAL NOT NULL PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users("id") ON DELETE CASCADE,
-    item_id INT NOT NULL REFERENCES news_items("id") ON DELETE CASCADE,
-    preference VARCHAR(5) check(preference='hate' or preference='heart')
+    news_item_id INT NOT NULL REFERENCES news_items("id") ON DELETE CASCADE,
+    preference BOOLEAN -- 0 = hate, 1 = heart
 );
 
 CREATE TABLE saved_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users("id") ON DELETE CASCADE,
-    item_id INT NOT NULL REFERENCES stocks("id") ON DELETE CASCADE,
-    preference VARCHAR(5) check(preference='hate' or preference='heart')
+    stock_id INT NOT NULL REFERENCES stocks("id") ON DELETE CASCADE,
+    preference BOOLEAN -- 0 = hate, 1 = heart
 );
 
 
