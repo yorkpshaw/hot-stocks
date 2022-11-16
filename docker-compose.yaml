@@ -1,26 +1,57 @@
 volumes:
-  hot-stocks-data:
+  postgres-data:
     external: true
+  mongo-data:
+    external: true
+
 services:
-  api:
+  ghi:
+    image: node:lts-bullseye
+    command: /bin/bash run.sh
+    working_dir: /app
+    volumes:
+        - ./ghi:/app
+    ports:
+        - "3000:3000"
+    environment:
+        HOST_OS: ${OS}
+        NODE_ENV: development
+        HOST: "0.0.0.0"
+  hot-stocks-api:
     build:
       context: ./api
       dockerfile: Dockerfile.dev
     environment:
-      DATABASE_URL: postgresql://example_user:secret@db/hot-stocks
-      WAIT_HOSTS: db:5432
+      REACT_APP_FASTAPI_SERVICE: http://localhost:8000
+      REACT_APP_THIRD_PARTY_SERVICE: https://www.alphavantage.co
+      DATABASE_URL: postgresql://postgres:password@postgres/postgres
+        # change back to hot_stocks (instead of postgres) once alex can help
+      WAIT_HOSTS: postgres:5432
       PORT: 8000
+      # DATABASE_URL: mongodb://root:password@mongo
+      # DATABASE_NAME: db-name
+      # WAIT_HOSTS: mongo:27017
+
     ports:
       - "8000:8000"
     volumes:
       - ./api:/app
-  db:
-    image: postgres:14.5-bullseye
-    environment:
-      POSTGRES_PASSWORD: secret
-      POSTGRES_USER: example_user
-      POSTGRES_DB: hot-stocks
-    ports:
-      - "15432:5432"
-    volumes:
-      - hot-stocks-data:/var/lib/postgresql/data
+  postgres:
+      build:
+          context: ./relational-data
+          dockerfile: ./Dockerfile.dev
+      volumes:
+          - postgres-data:/var/lib/postgresql/data
+          - ./relational-data/hot-stocks.sql:/docker-entrypoint-initdb.d/hot-stocks.sql
+      environment:
+          - POSTGRES_MULTIPLE_DATABASES=hot_stocks
+          - POSTGRES_PASSWORD=test-databases
+      ports:
+          - 15432:5432
+  # mongo:
+  #   image: mongo:5
+  #   volumes:
+  #       - mongo-data:/data/db
+  #   environment:
+  #       MONGO_INITDB_ROOT_USERNAME: root
+  #       MONGO_INITDB_ROOT_PASSWORD: password
