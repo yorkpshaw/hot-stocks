@@ -23,7 +23,9 @@ CREATE TABLE news_items (
 
 CREATE TABLE stocks (
     id SERIAL NOT NULL PRIMARY KEY,
-    symbol VARCHAR(10)
+    symbol VARCHAR(10),
+    company_name VARCHAR(100),
+    company_description TEXT
 );
 
 
