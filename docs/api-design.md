@@ -190,7 +190,7 @@
 
 ### Add news items, stocks to SAVED
 
-* Endpoint path: /lists
+* Endpoint path: /saved_items
 * Endpoint method: POST
 
 * Headers:
@@ -215,7 +215,7 @@
 
 ### Get a list of SAVED news items, stocks
 
-* Endpoint path: /lists
+* Endpoint path: /saved_items
 * Endpoint method: GET
 
 * Headers:
@@ -250,7 +250,7 @@
 
 ### Delete SAVED news item, stock
 
-* Endpoint path: /lists/`<int:id>`
+* Endpoint path: /saved_items/`<int:id>`
 * Endpoint method: DELETE
 
 * Headers:
