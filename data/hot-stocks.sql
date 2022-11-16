@@ -1,8 +1,9 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS news_items;
 DROP TABLE IF EXISTS stocks;
-DROP TABLE IF EXISTS portfolio;
-DROP TABLE IF EXISTS lists;
+DROP TABLE IF EXISTS portfolio_stocks;
+DROP TABLE IF EXISTS saved_news_items;
+DROP TABLE IF EXISTS saved_stocks;
 
 
 CREATE TABLE users (
@@ -26,7 +27,7 @@ CREATE TABLE stocks (
 );
 
 
-CREATE TABLE portfolio (
+CREATE TABLE portfolio_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users("id") ON DELETE CASCADE,
     stock_id INT NOT NULL REFERENCES stocks("id") ON DELETE CASCADE,

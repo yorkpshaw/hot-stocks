@@ -132,7 +132,7 @@
 
 ## Add or update stock to or in portfolio
 
-* Endpoint path: /portfolio
+* Endpoint path: /portfolio_stocks
 * Endpoint method: PUT
 
 * Headers:
@@ -159,7 +159,7 @@
 
 ### Get a list of PORTFOLIO stocks
 
-* Endpoint path: /portfolio
+* Endpoint path: /portfolio_stocks
 * Endpoint method: GET
 
 * Headers:
