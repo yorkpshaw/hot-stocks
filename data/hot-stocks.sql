@@ -28,24 +28,24 @@ CREATE TABLE stocks (
 
 CREATE TABLE portfolio (
     id SERIAL NOT NULL PRIMARY KEY,
-    user_id SMALLINT REFERENCES users("id") ON DELETE CASCADE,
-    stock_id VARCHAR(5) REFERENCES stocks("id") ON DELETE CASCADE,
+    user_id INT NOT NULL REFERENCES users("id") ON DELETE CASCADE,
+    stock_id INT NOT NULL REFERENCES stocks("id") ON DELETE CASCADE,
     num_shares SMALLINT,
     cost_basis FLOAT
 );
 
 CREATE TABLE saved_news_items (
     id SERIAL NOT NULL PRIMARY KEY,
-    user_id SMALLINT REFERENCES users("id") ON DELETE CASCADE,
-    item_id REFERENCES news_items("id") ON DELETE CASCADE,
-    preference VARCHAR(50) check(preference='hate' or preference='heart')
+    user_id INT NOT NULL REFERENCES users("id") ON DELETE CASCADE,
+    item_id INT NOT NULL REFERENCES news_items("id") ON DELETE CASCADE,
+    preference VARCHAR(5) check(preference='hate' or preference='heart')
 );
 
 CREATE TABLE saved_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
-    user_id SMALLINT REFERENCES users("id") ON DELETE CASCADE,
-    item_id REFERENCES stocks("id") ON DELETE CASCADE,
-    preference VARCHAR(50) check(preference='hate' or preference='heart')
+    user_id INT NOT NULL REFERENCES users("id") ON DELETE CASCADE,
+    item_id INT NOT NULL REFERENCES stocks("id") ON DELETE CASCADE,
+    preference VARCHAR(5) check(preference='hate' or preference='heart')
 );
 
 
