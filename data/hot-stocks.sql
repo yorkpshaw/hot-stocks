@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS lists;
 
 CREATE TABLE users (
     id SERIAL NOT NULL PRIMARY KEY,
-    username TEXT NOT NULL
+    username VARCHAR(50) NOT NULL
 );
 
 
