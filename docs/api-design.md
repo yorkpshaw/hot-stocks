@@ -76,15 +76,15 @@
         "news_items": [
             {
             "title": string,
-            "posted_date": datetime,
-            "image_url": string,
+            "time_published": string,
+            "banner_image": string,
             }
         ],
         "stocks": [
             {
             "symbol": string,
-            "name": string,
-            "price": number,
+            "company_name": string,
+            "close": number, // pull from intraday API
             "chart": string, // unknown at this time
             }
         ]
@@ -105,8 +105,8 @@
     ```json
     {
         "title": string,
-        "posted_date": datetime,
-        "description": string,
+        "time_published": string,
+        "summary": string,
     }
     ```
 
@@ -124,8 +124,8 @@
     ```json
     {
         "symbol": string,
-        "name": string,
-        "description": string,
+        "company_name": string,
+        "company_description": string,
     }
     ```
 
@@ -142,9 +142,9 @@
     ```json
     {
       "user_id": number,
-      "symbol": str,
+      "stock_id": number,
+      "num_shares": number,
       "cost_basis": number,
-      "shares": number,
     }
     ```
 
@@ -176,11 +176,11 @@
 * Response shape:
     ```json
     {
-        "stocks": [
+        "portfolio_stocks": [
             {
-            "symbol": str,
+            "stock_id": number,
             "cost_basis": number,
-            "cost_current": number,
+            "close": number, // get from intraday API
             "chart": string, // unknown at this time; stretch?
             }
         ]
@@ -200,8 +200,8 @@
     ```json
     {
         "user_id": number,
-        "item_id": number,
-        "item_type": str,
+        "news_item_id": number,
+        "preference": bool,
     }
     ```
 
@@ -235,13 +235,13 @@
         "news_items": [
             {
             "title": string,
-            "posted_date": datetime,
+            "time_published": datetime,
             }
         ],
         "stocks": [
             {
             "symbol": string,
-            "cost_current": number,
+            "close": number, // get from intraday API
             }
         ]
     }

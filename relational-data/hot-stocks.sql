@@ -67,10 +67,10 @@ INSERT INTO news_items VALUES
 INSERT INTO stocks VALUES
     (1, 'AAPL'),
     (2, 'NFLX'),
-    (2, 'NFLX')
+    (3, 'AMZN')
 ;
 
-INSERT INTO portfolio VALUES
+INSERT INTO portfolio_stocks VALUES
     (1, 1, 1, '10', '100.00'),
     (2, 2, 2, '12', '100.00')
 ;
