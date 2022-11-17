@@ -1,4 +1,5 @@
 from queries.pool import pool
+from typing import Optional
 
 class ExploreItemsQueries:
     def get_all_explore_items(self):
