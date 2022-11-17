@@ -60,303 +60,6 @@
     ```
 
 
-## Explore items
-
-### Get a combined list of news items, stocks
-
-* Endpoint path: /explore_items
-* Endpoint method: GET
-* Query parameters:
-  * q: the word(s) to search for
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A list of news items, stocks
-* Response shape:
-    ```json
-    {
-        "news_items": [
-            {
-              "id": number,
-              "title": string,
-              "url": string,
-              "time_published": string,
-              "banner_image": string
-            }
-        ],
-        "stocks": [
-            {
-              "id": number,
-              "symbol": string,
-              "company_name": string
-            }
-        ]
-    }
-    ```
-
-
-## News items
-
-### Get list of news items
-
-* Endpoint path: /news_items
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A list of news items
-* Response shape:
-    ```json
-    {
-      "news_items": [
-          {
-            "id": number,
-            "title": string,
-            "url": string,
-            "time_published": string,
-            "banner_image": string
-          }
-      ],
-    }
-    ```
-
-
-### Create news item
-
-* Endpoint path: /news_items
-* Endpoint method: POST
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "title": string,
-      "url": string,
-      "time_published": string,
-      "summary": string
-    }
-    ```
-
-* Response: A detail of news item
-* Response shape:
-    ```json
-    {
-      "id": number,
-      "title": string,
-      "url": string,
-      "time_published": string,
-      "summary": string
-    }
-    ```
-
-
-### Get detail of news item
-
-* Endpoint path: /news_items/`<int:id>`/
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A detail of news item
-* Response shape:
-    ```json
-    {
-      "id": number,
-      "title": string,
-      "url": string,
-      "time_published": string,
-      "summary": string
-    }
-    ```
-
-
-### Update news item
-
-* Endpoint path: /news_items/`<int:id>`/
-* Endpoint method: PUT
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "title": string,
-      "url": string,
-      "time_published": string,
-      "summary": string
-    }
-    ```
-
-* Response: A detail of news item
-* Response shape:
-    ```json
-    {
-      "id": number,
-      "title": string,
-      "url": string,
-      "time_published": string,
-      "summary": string
-    }
-    ```
-
-### Delete news item
-
-* Endpoint path: /news_items/`<int:id>`/
-* Endpoint method: DELETE
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "id": number
-    }
-    ```
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-      "success": boolean
-    }
-    ```
-
-
-## Stocks
-
-
-### Get list of stocks
-
-* Endpoint path: /stocks
-* Endpoint method: GET
-
-* Headers:/
-  * Authorization: Bearer token
-
-* Response: A list of stocks
-* Response shape:
-    ```json
-    {
-      "stocks": [
-        {
-          "id": number,
-          "symbol": string,
-          "company_name": string
-        }
-      ],
-    }
-    ```
-
-
-### Create stock
-
-* Endpoint path: /stocks/`<int:id>`/
-* Endpoint method: POST
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "symbol": string,
-      "company_name": string,
-      "company_description": string
-    }
-    ```
-
-* Response: A detail of stock
-* Response shape:
-    ```json
-    {
-      "id": number,
-      "symbol": string,
-      "company_name": string,
-      "company_description": string
-    }
-    ```
-
-
-### Get detail of stock
-
-* Endpoint path: /stocks/`<int:id>`/
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A detail of stock
-* Response shape:
-    ```json
-    {
-      "id": number,
-      "symbol": string,
-      "company_name": string,
-      "company_description": string
-    }
-    ```
-
-### Update stock
-
-* Endpoint path: /stocks/`<int:id>`/
-* Endpoint method: PUT
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "id": number,
-      "symbol": string,
-      "company_name": string,
-      "company_description": string
-    }
-    ```
-
-* Response: A detail of stock
-* Response shape:
-    ```json
-    {
-      "id": number,
-      "symbol": string,
-      "company_name": string,
-      "company_description": string
-    }
-    ```
-
-### Delete stock
-
-* Endpoint path: /stocks/`<int:id>`/
-* Endpoint method: DELETE
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "id": number
-    }
-    ```
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-      "success": boolean
-    }
-    ```
-
-
-
 ## Portfolio stocks
 
 
@@ -476,14 +179,22 @@
     {
       "news_items": [
         {
-          "title": string,
-          "url": string,
-          "time_published": datetime,
+          "id": number,
+          "user_id": number,
+          "title": str,
+          "news_url": str,
+          "time_published": str,
+          "banner_image": str,
+          "summary": str,
+          "preference": boolean
         }
       ],
       "stocks": [
         {
-          "symbol": string
+          "id": number,
+          "user_id": number,
+          "symbol": number,
+          "preference": boolean
         }
       ]
     }
@@ -515,7 +226,11 @@
         {
           "id": number,
           "user_id": number,
-          "news_item_id": number,
+          "title": str,
+          "news_url": str,
+          "time_published": str,
+          "banner_image": str,
+          "summary": str,
           "preference": boolean
         }
       ]
@@ -534,7 +249,11 @@
     ```json
     {
       "user_id": number,
-      "news_item_id": number,
+      "title": str,
+      "news_url": str,
+      "time_published": str,
+      "banner_image": str,
+      "summary": str,
       "preference": boolean
     }
     ```
@@ -545,7 +264,11 @@
     {
       "id": number,
       "user_id": number,
-      "news_item_id": number,
+      "title": str,
+      "news_url": str,
+      "time_published": str,
+      "banner_image": str,
+      "summary": str,
       "preference": boolean
     }
 
@@ -599,7 +322,7 @@
         {
           "id": number,
           "user_id": number,
-          "stock_id": number,
+          "symbol": number,
           "preference": boolean
         }
       ]
@@ -618,7 +341,7 @@
     ```json
     {
       "user_id": number,
-      "stock_id": number,
+      "symbol": number,
       "preference": boolean
     }
     ```
@@ -629,7 +352,7 @@
     {
       "id": number,
       "user_id": number,
-      "stock_id": number,
+      "symbol": number,
       "preference": boolean
     }
 
