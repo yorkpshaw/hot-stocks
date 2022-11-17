@@ -14,3 +14,14 @@ class ExploreItemsQueries:
         }
 
         return explore_items
+
+
+def add_explore_item(self):
+    with pool.connection() as conn:
+        with conn.cursor() as db:
+            result = db.execute(
+                """
+        ADD
+
+        """
+            )
