@@ -142,7 +142,7 @@
     }
     ```
 
-* Response: An detail of portfolio stock
+* Response: A detail of portfolio stock
 * Response shape:
     ```json
     {
@@ -154,6 +154,29 @@
     }
     ```
 
+
+### Delete portfolio stock
+
+* Endpoint path: /portfolio_stocks/`<int:id>`/
+* Endpoint method: DELETE
+
+* Headers:
+  * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+      "id": number
+    }
+    ```
+
+* Response: A detail of portfolio stock
+* Response shape:
+    ```json
+    {
+      "success": boolean
+    }
+    ```
 
 
 ## Saved items
@@ -205,7 +228,7 @@
 
 ### List saved news items
 
-* Endpoint path: /saved_items/news_items
+* Endpoint path: /saved_news_items
 * Endpoint method: GET
 
 * Headers:
@@ -239,7 +262,7 @@
 
 ### Create saved news item
 
-* Endpoint path: /saved_items/news_items
+* Endpoint path: /saved_news_items
 * Endpoint method: POST
 
 * Headers:
@@ -258,7 +281,7 @@
     }
     ```
 
-* Response: An detail of saved news item
+* Response: A detail of saved news item
 * Response shape:
     ```json
     {
@@ -275,7 +298,7 @@
 
 ### Delete saved news item
 
-* Endpoint path: /saved_items/news_items/`<int:id>`/
+* Endpoint path: /saved_news_items/`<int:id>`/
 * Endpoint method: DELETE
 
 * Headers:
@@ -301,7 +324,7 @@
 
 ### List saved stocks
 
-* Endpoint path: /saved_items/stocks
+* Endpoint path: /saved_stocks
 * Endpoint method: GET
 
 * Headers:
@@ -329,9 +352,9 @@
     }
 
 
-### Create saved stocks
+### Create saved stock
 
-* Endpoint path: /saved_items/stocks
+* Endpoint path: /saved_stocks
 * Endpoint method: POST
 
 * Headers:
@@ -346,7 +369,7 @@
     }
     ```
 
-* Response: An detail of saved stock
+* Response: A detail of saved stock
 * Response shape:
     ```json
     {
@@ -357,9 +380,39 @@
     }
 
 
+### Update saved stock
+
+* Endpoint path: /saved_stocks/`<int:id>`/
+* Endpoint method: PUT
+
+* Headers:
+  * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+      "id": number,
+      "user_id": number,
+      "symbol": number,
+      "preference": boolean
+    }
+    ```
+
+* Response: A detail of saved stock
+* Response shape:
+    ```json
+    {
+      "id": number,
+      "user_id": number,
+      "symbol": number,
+      "preference": boolean
+    }
+
+
+
 ### Delete saved stock
 
-* Endpoint path: /saved_items/news_items/`<int:id>`/
+* Endpoint path: /saved_stocks/`<int:id>`/
 * Endpoint method: DELETE
 
 * Headers:
