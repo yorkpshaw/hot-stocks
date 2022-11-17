@@ -43,14 +43,9 @@ INSERT INTO users VALUES
     (3, 'twinky')
 ;
 
-INSERT INTO stocks VALUES
-    (1, 'AAPL', 'Apple', 'Red delicious'),
-    (2, 'NFLX', 'Netflix', 'And chill')
-;
-
 INSERT INTO portfolio_stocks VALUES
-    (1, 1, 1, '2', '100.00'),
-    (2, 2, 2, '3', '100.00')
+    (1, 1, 'AAPL', '2', '100.00'),
+    (2, 2, 'NFLX', '3', '100.00')
 ;
 
 INSERT INTO saved_news_items VALUES
@@ -59,6 +54,6 @@ INSERT INTO saved_news_items VALUES
 ;
 
 INSERT INTO saved_stocks VALUES
-    (1, 2, 1, '0'),
-    (2, 2, 2, '1')
+    (1, 2, 'AAPL', '0'),
+    (2, 2, 'NFLX', '1')
 ;
