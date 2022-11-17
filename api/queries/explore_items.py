@@ -20,7 +20,26 @@ class ExploreItemsQueries:
                     results.append(record)
                 return results
 
-    def get_explore_item(self, id):
+    def get_explore_stock(self, id):
+        with pool.connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT id, username
+                    FROM users
+                    WHERE id = %s
+                    """,
+                    [id],
+                )
+                record = None
+                row = cur.fetchone()
+                if row is not None:
+                    record = {}
+                    for i, column in enumerate(cur.description):
+                        record[column.name] = row[i]
+                return record
+
+    def get_explore_news_item(self, id):
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
