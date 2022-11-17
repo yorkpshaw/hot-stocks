@@ -1,9 +1,10 @@
 from queries.pool import pool
 from typing import Optional
 
+
 class ExploreItemsQueries:
     def get_all_explore_items(self):
-        with pool.connection () as conn:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
@@ -20,8 +21,27 @@ class ExploreItemsQueries:
                     results.append(record)
                 return results
 
-    def get_explore_item(self, id):
-        with pool.connection () as conn:
+    def get_explore_stock(self, id):
+        with pool.connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT id, username
+                    FROM users
+                    WHERE id = %s
+                    """,
+                    [id],
+                )
+                record = None
+                row = cur.fetchone()
+                if row is not None:
+                    record = {}
+                    for i, column in enumerate(cur.description):
+                        record[column.name] = row[i]
+                return record
+
+    def get_explore_news_item(self, id):
+        with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
@@ -40,11 +60,9 @@ class ExploreItemsQueries:
                 return record
 
     def create_explore_item(self, data):
-        with pool.connection () as conn:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
-                params = [
-                    data.username
-                ]
+                params = [data.username]
                 cur.execute(
                     """
                     INSERT INTO users (username)
@@ -62,12 +80,9 @@ class ExploreItemsQueries:
                 return record
 
     def update_explore_item(self, user_id, data):
-        with pool.connection () as conn:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
-                params = [
-                    data.username,
-                    user_id
-                ]
+                params = [data.username, user_id]
                 cur.execute(
                     """
                     UPDATE users
@@ -86,7 +101,7 @@ class ExploreItemsQueries:
                 return record
 
     def delete_explore_item(self, user_id):
-        with pool.connection () as conn:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
@@ -95,3 +110,14 @@ class ExploreItemsQueries:
                     """,
                     user_id,
                 )
+
+
+def add_explore_item(self):
+    with pool.connection() as conn:
+        with conn.cursor() as db:
+            result = db.execute(
+                """
+        ADD
+
+        """
+            )
