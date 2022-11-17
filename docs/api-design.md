@@ -132,7 +132,7 @@
 
 ## Add or update stock to or in portfolio
 
-* Endpoint path: /portfolio_stocks
+* Endpoint path: /portfolio_stocks/`<int:id>`/
 * Endpoint method: PUT
 
 * Headers:
