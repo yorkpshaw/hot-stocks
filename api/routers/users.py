@@ -20,7 +20,7 @@ class UsersOut(BaseModel):
 
 
 @router.get("/api/users", response_model=UsersOut)
-def users_list(queries: UserQueries = Depends()):
+def get_all_users(queries: UserQueries = Depends()):
     return {
         "users": queries.get_all_users(),
     }
