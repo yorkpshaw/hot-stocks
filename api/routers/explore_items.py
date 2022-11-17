@@ -4,15 +4,15 @@ from typing import Dict
 
 from queries.explore_items import ExploreItemsQueries
 from routers.news_items import NewsItemsExplore
-from routers.explore_stocks import ExploreStocksExplore
+from routers.stocks import StocksExplore
 
 router = APIRouter()
 
 
 class ExploreItemsOut(BaseModel):
     explore_items: Dict[
-        'news_items': NewsItemsExplore,
-        'stocks': ExploreStocksExplore
+        NewsItemsExplore,
+        StocksExplore
     ]
 
 

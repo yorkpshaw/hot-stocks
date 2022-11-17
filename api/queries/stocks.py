@@ -1,13 +1,13 @@
 from queries.pool import pool
 
-class ExploreStockQueries:
-    def get_all_explore_stocks(self):
+class StockQueries:
+    def get_all_stocks(self):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
                     SELECT id, symbol, company_name
-                    FROM explore_stocks
+                    FROM stocks
                     """
                 )
                 results = []
@@ -18,13 +18,13 @@ class ExploreStockQueries:
                     results.append(record)
                 return results
 
-    def get_explore_stock(self, id):
+    def get_stock(self, id):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
                     SELECT id, symbol, company_name, company_description
-                    FROM explore_stocks
+                    FROM stocks
                     WHERE id = %s
                     """,
                     [id],
@@ -37,7 +37,7 @@ class ExploreStockQueries:
                         record[column.name] = row[i]
                 return record
 
-    def create_explore_stock(self, data):
+    def create_stock(self, data):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -47,7 +47,7 @@ class ExploreStockQueries:
                 ]
                 cur.execute(
                     """
-                    INSERT INTO explore_stocks (symbol, company_name, company_description)
+                    INSERT INTO stocks (symbol, company_name, company_description)
                     VALUES (%s, %s, %s)
                     RETURNING id, symbol, company_name, company_description
                     """,
@@ -61,7 +61,7 @@ class ExploreStockQueries:
                         record[column.name] = row[i]
                 return record
 
-    def update_explore_stock(self, stock_id, data):
+    def update_stock(self, stock_id, data):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -72,7 +72,7 @@ class ExploreStockQueries:
                 ]
                 cur.execute(
                     """
-                    UPDATE explore_stocks
+                    UPDATE stocks
                     SET symbol = %s
                       , company_name = %s
                       , company_description = %s
@@ -89,12 +89,12 @@ class ExploreStockQueries:
                         record[column.name] = row[i]
                 return record
 
-    def delete_explore_stock(self, stock_id):
+    def delete_stock(self, stock_id):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    DELETE FROM explore_stocks
+                    DELETE FROM stocks
                     WHERE ID = (%s)
                     """,
                     stock_id,

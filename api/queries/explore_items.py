@@ -1,12 +1,12 @@
 from queries.pool import pool
-from queries.explore_news_items import get_all_explore_news_items
-from queries.explore_stocks import get_all_explore_stocks
+from queries.news_items import NewsItemQueries
+from queries.stocks import StockQueries
 
 class ExploreItemsQueries:
     def get_all_explore_items(self):
 
-        news_items = get_all_explore_news_items()
-        stocks = get_all_explore_stocks()
+        news_items = NewsItemQueries.get_all_news_items()
+        stocks = StockQueries.get_all_stocks()
 
         explore_items = {
             'news_items': news_items,

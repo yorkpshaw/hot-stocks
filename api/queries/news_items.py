@@ -1,13 +1,13 @@
 from queries.pool import pool
 
-class ExploreNewsItemQueries:
-    def get_all_explore_news_items(self):
+class NewsItemQueries:
+    def get_all_news_items(self):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
                     SELECT id, title, url, time_published, banner_image
-                    FROM explore_news_items
+                    FROM news_items
                     """
                 )
                 results = []
@@ -18,13 +18,13 @@ class ExploreNewsItemQueries:
                     results.append(record)
                 return results
 
-    def get_explore_news_item(self, id):
+    def get_news_item(self, id):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
                     SELECT id, title, url, time_published, summary
-                    FROM explore_news_items
+                    FROM news_items
                     WHERE id = %s
                     """,
                     [id],
@@ -37,7 +37,7 @@ class ExploreNewsItemQueries:
                         record[column.name] = row[i]
                 return record
 
-    def create_explore_news_item(self, data):
+    def create_news_item(self, data):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -49,7 +49,7 @@ class ExploreNewsItemQueries:
                 ]
                 cur.execute(
                     """
-                    INSERT INTO explore_news_items (title, url, time_published, banner_image, summary)
+                    INSERT INTO news_items (title, url, time_published, banner_image, summary)
                     VALUES (%s, %s, %s, %s, %s)
                     RETURNING id, title, url, time_published, banner_image, summary
                     """,
@@ -63,7 +63,7 @@ class ExploreNewsItemQueries:
                         record[column.name] = row[i]
                 return record
 
-    def update_explore_news_item(self, explore_news_item_id, data):
+    def update_news_item(self, news_item_id, data):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -72,11 +72,11 @@ class ExploreNewsItemQueries:
                     data.time_published,
                     data.banner_image,
                     data.summary,
-                    explore_news_item_id
+                    news_item_id
                 ]
                 cur.execute(
                     """
-                    UPDATE explore_news_items
+                    UPDATE news_items
                     SET title = %s
                       , url = %s
                       , time_published = %s
@@ -95,7 +95,7 @@ class ExploreNewsItemQueries:
                         record[column.name] = row[i]
                 return record
 
-    def delete_explore_news_item(self, explore_news_item_id):
+    def delete_news_item(self, news_item_id):
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
@@ -103,5 +103,5 @@ class ExploreNewsItemQueries:
                     DELETE FROM users
                     WHERE ID = (%s)
                     """,
-                    explore_news_item_id,
+                    news_item_id,
                 )
