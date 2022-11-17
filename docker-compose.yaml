@@ -24,7 +24,8 @@ services:
     environment:
       REACT_APP_FASTAPI_SERVICE: http://localhost:8000
       REACT_APP_THIRD_PARTY_SERVICE: https://www.alphavantage.co
-      DATABASE_URL: postgresql://postgres:password@postgres/postgres
+      # DATABASE_URL: postgresql://postgres:password@postgres/hot_stocks
+      DATABASE_URL: postgresql://hot_stocks:password@postgres/hot_stocks
         # change back to hot_stocks (instead of postgres) once alex can help
       WAIT_HOSTS: postgres:5432
       PORT: 8000
@@ -42,7 +43,7 @@ services:
           dockerfile: ./Dockerfile.dev
       volumes:
           - postgres-data:/var/lib/postgresql/data
-          - ./relational-data/hot-stocks.sql:/docker-entrypoint-initdb.d/hot-stocks.sql
+          # - ./relational-data/hot-stocks.sql:/docker-entrypoint-initdb.d/hot-stocks.sql
       environment:
           - POSTGRES_MULTIPLE_DATABASES=hot_stocks
           - POSTGRES_PASSWORD=test-databases

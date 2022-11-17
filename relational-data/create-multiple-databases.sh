@@ -20,3 +20,8 @@ if [ -n "$POSTGRES_MULTIPLE_DATABASES" ]; then
     done
     echo "Multiple databases created"
 fi
+
+FILE=/data/hot-stocks.sql
+if [ -f "$FILE" ]; then
+    psql -U hot_stocks hot_stocks < /data/hot-stocks.sql
+fi

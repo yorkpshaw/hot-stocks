@@ -1,115 +1,16 @@
 from queries.pool import pool
+from queries.explore_news_items import get_all_explore_news_items
+from queries.explore_stocks import get_all_explore_stocks
 
 class ExploreItemsQueries:
     def get_all_explore_items(self):
-        with pool.connection () as conn:
-            with conn.cursor() as cur:
-                cur.execute(
-                    """
-                    SELECT id, username
-                    FROM users
-                    ORDER BY username
-                    """
-                )
-                results = []
-                for row in cur.fetchall():
-                    record = {}
-                    for i, column in enumerate(cur.description):
-                        record[column.name] = row[i]
-                    results.append(record)
-                return results
 
-    def get_explore_stock(self, id):
-        with pool.connection () as conn:
-            with conn.cursor() as cur:
-                cur.execute(
-                    """
-                    SELECT id, username
-                    FROM users
-                    WHERE id = %s
-                    """,
-                    [id],
-                )
-                record = None
-                row = cur.fetchone()
-                if row is not None:
-                    record = {}
-                    for i, column in enumerate(cur.description):
-                        record[column.name] = row[i]
-                return record
+        news_items = get_all_explore_news_items()
+        stocks = get_all_explore_stocks()
 
-    def get_explore_news_item(self, id):
-        with pool.connection () as conn:
-            with conn.cursor() as cur:
-                cur.execute(
-                    """
-                    SELECT id, username
-                    FROM users
-                    WHERE id = %s
-                    """,
-                    [id],
-                )
-                record = None
-                row = cur.fetchone()
-                if row is not None:
-                    record = {}
-                    for i, column in enumerate(cur.description):
-                        record[column.name] = row[i]
-                return record
+        explore_items = {
+            'news_items': news_items,
+            'stocks': stocks,
+        }
 
-    def create_explore_item(self, data):
-        with pool.connection () as conn:
-            with conn.cursor() as cur:
-                params = [
-                    data.username
-                ]
-                cur.execute(
-                    """
-                    INSERT INTO users (username)
-                    VALUES (%s)
-                    RETURNING id, username
-                    """,
-                    params,
-                )
-                record = None
-                row = cur.fetchone()
-                if row is not None:
-                    record = {}
-                    for i, column in enumerate(cur.description):
-                        record[column.name] = row[i]
-                return record
-
-    def update_explore_item(self, user_id, data):
-        with pool.connection () as conn:
-            with conn.cursor() as cur:
-                params = [
-                    data.username,
-                    user_id
-                ]
-                cur.execute(
-                    """
-                    UPDATE users
-                    SET username = %s
-                    WHERE ID = (%s)
-                    RETURNING id, username
-                    """,
-                    params,
-                )
-                record = None
-                row = cur.fetchone()
-                if row is not None:
-                    record = {}
-                    for i, column in enumerate(cur.description):
-                        record[column.name] = row[i]
-                return record
-
-    def delete_explore_item(self, user_id):
-        with pool.connection () as conn:
-            with conn.cursor() as cur:
-                cur.execute(
-                    """
-                    DELETE FROM users
-                    WHERE ID = (%s)
-                    """,
-                    user_id,
-                )
+        return explore_items
