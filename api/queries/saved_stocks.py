@@ -19,7 +19,7 @@ class SavedStocksOut(BaseModel):
     stocks: list[SavedStockOut]
 
 class SavedStockQueries:
-    def get_all_saved_stocks(self, user_id):
+    def get_all_saved_stocks(self, user_id: int) -> SavedStocksOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
@@ -38,7 +38,7 @@ class SavedStockQueries:
                     results.append(record)
                 return results
 
-    def create_saved_stock(self, data, user_id):
+    def create_saved_stock(self, data: SavedStockIn, user_id: int) -> SavedStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -62,7 +62,7 @@ class SavedStockQueries:
                         record[column.name] = row[i]
                 return record
 
-    def delete_saved_stock(self, stock_id):
+    def delete_saved_stock(self, stock_id: int) -> bool:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(

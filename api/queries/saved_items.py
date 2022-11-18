@@ -16,7 +16,7 @@ class SavedItemsOut(BaseModel):
     ]
 
 class SavedItemQueries:
-    def get_all_saved_items(self):
+    def get_all_saved_items(self) -> SavedItemsOut:
 
         news_items = SavedNewsItemQueries.get_all_saved_news_items()
         stocks = SavedStockQueries.get_all_saved_stocks()

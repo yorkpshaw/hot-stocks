@@ -29,7 +29,7 @@ class AccountQueries():
                 cur.execute(
                     """
                     SELECT id, username, hashed_password
-                    FROM users
+                    FROM accounts
                     WHERE username = %s
                     """,
                     [username],
@@ -47,7 +47,7 @@ class AccountQueries():
             with conn.cursor() as cur:
                 params = [
                     info.username,
-                    info.password
+                    hashed_password
                 ]
                 cur.execute(
                     """

@@ -23,7 +23,7 @@ class PortfolioStocksOut(BaseModel):
 
 class PortfolioStockQueries:
 
-    def get_all_portfolio_stocks(self, user_id):
+    def get_all_portfolio_stocks(self, user_id: int) -> PortfolioStocksOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
@@ -43,7 +43,7 @@ class PortfolioStockQueries:
                         results.append(record)
                 return results
 
-    def create_portfolio_stock(self, data, user_id):
+    def create_portfolio_stock(self, data: PortfolioStockIn, user_id: int) -> PortfolioStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -69,7 +69,7 @@ class PortfolioStockQueries:
                         record[column.name] = row[i]
                 return record
 
-    def update_portfolio_stock(self, portfolio_stock_id, data):
+    def update_portfolio_stock(self, portfolio_stock_id: int, data) -> PortfolioStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -96,7 +96,7 @@ class PortfolioStockQueries:
                 return record
 
 
-    def delete_portfolio_stock(self, portfolio_stock_id):
+    def delete_portfolio_stock(self, portfolio_stock_id: int) -> bool:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(

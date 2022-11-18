@@ -28,7 +28,7 @@ class SavedNewsItemsOut(BaseModel):
 
 
 class SavedNewsItemQueries:
-    def get_all_saved_news_items(self, user_id):
+    def get_all_saved_news_items(self, user_id: int) -> SavedNewsItemsOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
@@ -47,7 +47,7 @@ class SavedNewsItemQueries:
                     results.append(record)
                 return results
 
-    def create_saved_news_item(self, data, user_id):
+    def create_saved_news_item(self, data: SavedNewsItemIn, user_id: int) -> SavedNewsItemOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -74,7 +74,7 @@ class SavedNewsItemQueries:
                         record[column.name] = row[i]
                 return record
 
-    def delete_saved_news_item(self, news_item_id):
+    def delete_saved_news_item(self, news_item_id: int) -> bool:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
