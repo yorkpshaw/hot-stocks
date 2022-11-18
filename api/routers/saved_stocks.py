@@ -23,19 +23,21 @@ class SavedStocksOut(BaseModel):
     stocks: list[SavedStockOut]
 
 
-@router.get("/api/stocks", response_model=SavedStocksOut)
-def get_all_saved_stocks(queries: SavedStockQueries = Depends()):
+@router.get("/api/saved_stocks", response_model=SavedStocksOut)
+def get_all_saved_stocks(user_id: int, queries: SavedStockQueries = Depends()):
     return {
-        "stocks": queries.get_all_saved_stocks(),
+        "stocks": queries.get_all_saved_stocks(user_id),
     }
 
 
-@router.post("/api/stocks/", response_model=SavedStockOut)
-def create_saved_stock(stock_in: SavedStockIn, queries: SavedStockQueries = Depends()):
-    return queries.create_saved_stock(stock_in)
+@router.post("/api/saved_stocks/", response_model=SavedStockOut)
+def create_saved_stock(
+    stock_in: SavedStockIn, user_id: int, queries: SavedStockQueries = Depends()
+):
+    return queries.create_saved_stock(stock_in, user_id)
 
 
-@router.delete("/api/stocks/{stock_id}", response_model=bool)
+@router.delete("/api/saved_stocks/{stock_id}", response_model=bool)
 def delete_saved_stock(stock_id: int, queries: SavedStockQueries = Depends()):
     queries.delete_saved_stock(stock_id)
     return True

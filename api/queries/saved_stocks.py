@@ -2,14 +2,16 @@ from queries.pool import pool
 
 
 class SavedStockQueries:
-    def get_all_saved_stocks(self):
+    def get_all_saved_stocks(self, user_id):
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
                     SELECT id, user_id, symbol, preference
                     FROM saved_stocks
-                    """
+                    WHERE user_id = %s
+                    """,
+                    user_id,
                 )
                 results = []
                 for row in cur.fetchall():
@@ -19,13 +21,13 @@ class SavedStockQueries:
                     results.append(record)
                 return results
 
-    def create_saved_stock(self, data):
+    def create_saved_stock(self, data, user_id):
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
+                    user_id,
                     data.symbol,
-                    data.company_name,
-                    data.company_description,
+                    data.preference,
                 ]
                 cur.execute(
                     """

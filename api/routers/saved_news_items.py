@@ -31,7 +31,7 @@ class SavedNewsItemsOut(BaseModel):
     news_items: list[SavedNewsItemOut]
 
 
-@router.get("/api/news_items", response_model=SavedNewsItemsOut)
+@router.get("/api/saved_news_items", response_model=SavedNewsItemsOut)
 def get_all_saved_news_items(queries: SavedNewsItemQueries = Depends()):
     return {
         "news_items": queries.get_all_saved_news_items(),
