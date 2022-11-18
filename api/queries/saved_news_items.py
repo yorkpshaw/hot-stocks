@@ -3,7 +3,7 @@ from queries.pool import pool
 
 
 class SavedNewsItemIn(BaseModel):
-    user_id: int
+    account_id: int
     title: str
     news_url: str
     time_published: str
@@ -14,7 +14,7 @@ class SavedNewsItemIn(BaseModel):
 
 class SavedNewsItemOut(BaseModel):
     id: int
-    user_id: int
+    account_id: int
     title: str
     news_url: str
     time_published: str
@@ -28,14 +28,14 @@ class SavedNewsItemsOut(BaseModel):
 
 
 class SavedNewsItemQueries:
-    def get_all_saved_news_items(self, user_id: int) -> SavedNewsItemsOut:
+    def get_all_saved_news_items(self, account_id: int) -> SavedNewsItemsOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
                     SELECT id, title, news_url, time_published, banner_image, summary, preference
                     FROM saved_news_items
-                    WHERE user_id = %s
+                    WHERE account_id = %s
                     """,
                     user_id
                 )
@@ -47,11 +47,11 @@ class SavedNewsItemQueries:
                     results.append(record)
                 return results
 
-    def create_saved_news_item(self, data: SavedNewsItemIn, user_id: int) -> SavedNewsItemOut:
+    def create_saved_news_item(self, data: SavedNewsItemIn, account_id: int) -> SavedNewsItemOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
-                    user_id,
+                    account_id,
                     data.title,
                     data.url,
                     data.time_published,
@@ -60,7 +60,7 @@ class SavedNewsItemQueries:
                 ]
                 cur.execute(
                     """
-                    INSERT INTO saved_news_items (user_id, title, news_url, time_published, banner_image, summary, preference)
+                    INSERT INTO saved_news_items (account_id, title, news_url, time_published, banner_image, summary, preference)
                     VALUES (%s, %s, %s, %s, %s)
                     RETURNING id, user_id, title, news_url, time_published, banner_image, summary, preference
                     """,

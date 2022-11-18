@@ -37,10 +37,8 @@ from routers.saved_stocks import SavedStocksOut
 
 
 class SavedItemsOut(BaseModel):
-    explore_items: Dict[
-        SavedNewsItemsOut,
-        SavedStocksOut
-    ]
+    saved_items: Dict[SavedNewsItemsOut, SavedStocksOut]
+
 
 class SavedItemQueries:
     def get_all_saved_items(self) -> SavedItemsOut:
