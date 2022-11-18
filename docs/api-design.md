@@ -1,3 +1,5 @@
+## Authentication
+
 ### Log in
 
 * Endpoint path: /token
@@ -58,106 +60,10 @@
     ```
 
 
-
-### Get a combined list of news items, stocks
-
-* Endpoint path: /explore_items
-* Endpoint method: GET
-* Query parameters:
-  * q: the word(s) to search for
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A list of news items, stocks
-* Response shape:
-    ```json
-    {
-        "news_items": [
-            {
-            "title": string,
-            "time_published": string,
-            "banner_image": string,
-            }
-        ],
-        "stocks": [
-            {
-            "symbol": string,
-            "company_name": string,
-            "close": number, // pull from intraday API
-            "chart": string, // unknown at this time
-            }
-        ]
-    }
-    ```
+## Portfolio stocks
 
 
-### Get a detailed view of news item (info)
-
-* Endpoint path: /explore_items/news_items/`<int:id>`/
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A detail of news item
-* Response shape:
-    ```json
-    {
-        "title": string,
-        "time_published": string,
-        "summary": string,
-    }
-    ```
-
-
-### Get a detailed view of stock (info)
-
-* Endpoint path: /explore_items/stocks/`<int:id>`/
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-* Response: A detail of stock
-* Response shape:
-    ```json
-    {
-        "symbol": string,
-        "company_name": string,
-        "company_description": string,
-    }
-    ```
-
-
-## Add or update stock to or in portfolio
-
-* Endpoint path: /portfolio_stocks/`<int:id>`/
-* Endpoint method: PUT
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "user_id": number,
-      "stock_id": number,
-      "num_shares": number,
-      "cost_basis": number,
-    }
-    ```
-
-* Response: An indication of success or failure
-* Response shape:
-    ```json
-    {
-        "success": boolean,
-    }
-    ```
-
-
-### Get a list of PORTFOLIO stocks
+### Get list of portfolio stocks
 
 * Endpoint path: /portfolio_stocks
 * Endpoint method: GET
@@ -176,21 +82,20 @@
 * Response shape:
     ```json
     {
-        "portfolio_stocks": [
-            {
-            "stock_id": number,
-            "cost_basis": number,
-            "close": number, // get from intraday API
-            "chart": string, // unknown at this time; stretch?
-            }
-        ]
+      "portfolio_stocks": [
+        {
+          "id": number,
+          "stock_id": number,
+          "cost_basis": number
+        }
+      ]
     }
     ```
 
 
-### Add news items, stocks to SAVED
+### Create portfolio stock
 
-* Endpoint path: /saved_items
+* Endpoint path: /portfolio_stocks
 * Endpoint method: POST
 
 * Headers:
@@ -199,21 +104,61 @@
 * Request body:
     ```json
     {
-        "user_id": number,
-        "news_item_id": number,
-        "preference": bool,
+      "user_id": number,
+      "stock_id": number,
+      "num_shares": number,
+      "cost_basis": number
     }
     ```
 
-* Response: An indication of success or failure
+* Response: A detail of portfolio stock
 * Response shape:
     ```json
     {
-        "success": boolean,
+      "id": number,
+      "user_id": number,
+      "stock_id": number,
+      "num_shares": number,
+      "cost_basis": number
     }
 
 
-### Get a list of SAVED news items, stocks
+### Update portfolio stock
+
+* Endpoint path: /portfolio_stocks/`<int:id>`/
+* Endpoint method: PUT
+
+* Headers:
+  * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+      "id": number,
+      "user_id": number,
+      "stock_id": number,
+      "num_shares": number,
+      "cost_basis": number
+    }
+    ```
+
+* Response: An detail of portfolio stock
+* Response shape:
+    ```json
+    {
+      "id": number,
+      "user_id": number,
+      "stock_id": number,
+      "num_shares": number,
+      "cost_basis": number
+    }
+    ```
+
+
+
+## Saved items
+
+### Get a list of saved items
 
 * Endpoint path: /saved_items
 * Endpoint method: GET
@@ -224,7 +169,7 @@
 * Request body:
     ```json
     {
-        "user_id": number,
+      "user_id": number
     }
     ```
 
@@ -232,25 +177,105 @@
 * Response shape:
     ```json
     {
-        "news_items": [
-            {
-            "title": string,
-            "time_published": datetime,
-            }
-        ],
-        "stocks": [
-            {
-            "symbol": string,
-            "close": number, // get from intraday API
-            }
-        ]
+      "news_items": [
+        {
+          "id": number,
+          "user_id": number,
+          "title": str,
+          "news_url": str,
+          "time_published": str,
+          "banner_image": str,
+          "summary": str,
+          "preference": boolean
+        }
+      ],
+      "stocks": [
+        {
+          "id": number,
+          "user_id": number,
+          "symbol": number,
+          "preference": boolean
+        }
+      ]
     }
     ```
 
 
-### Delete SAVED news item, stock
+### Saved news items
 
-* Endpoint path: /saved_items/`<int:id>`
+### List saved news items
+
+* Endpoint path: /saved_items/news_items
+* Endpoint method: GET
+
+* Headers:
+  * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+      "user_id": number
+    }
+    ```
+
+* Response: An list of saved news items
+* Response shape:
+    ```json
+    {
+      "saved_news_items":[
+        {
+          "id": number,
+          "user_id": number,
+          "title": str,
+          "news_url": str,
+          "time_published": str,
+          "banner_image": str,
+          "summary": str,
+          "preference": boolean
+        }
+      ]
+    }
+
+
+### Create saved news item
+
+* Endpoint path: /saved_items/news_items
+* Endpoint method: POST
+
+* Headers:
+  * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+      "user_id": number,
+      "title": str,
+      "news_url": str,
+      "time_published": str,
+      "banner_image": str,
+      "summary": str,
+      "preference": boolean
+    }
+    ```
+
+* Response: An detail of saved news item
+* Response shape:
+    ```json
+    {
+      "id": number,
+      "user_id": number,
+      "title": str,
+      "news_url": str,
+      "time_published": str,
+      "banner_image": str,
+      "summary": str,
+      "preference": boolean
+    }
+
+
+### Delete saved news item
+
+* Endpoint path: /saved_items/news_items/`<int:id>`/
 * Endpoint method: DELETE
 
 * Headers:
@@ -259,9 +284,7 @@
 * Request body:
     ```json
     {
-        "user_id": number,
-        "item_id": number,
-        "item_type": str,
+      "id": number
     }
     ```
 
@@ -269,6 +292,90 @@
 * Response shape:
     ```json
     {
-        "success": boolean,
+      "success": boolean
+    }
+    ```
+
+
+### Saved stocks
+
+### List saved stocks
+
+* Endpoint path: /saved_items/stocks
+* Endpoint method: GET
+
+* Headers:
+  * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+      "user_id": number
+    }
+    ```
+
+* Response: An list of saved stocks
+* Response shape:
+    ```json
+    {
+      "saved_stocks":[
+        {
+          "id": number,
+          "user_id": number,
+          "symbol": number,
+          "preference": boolean
+        }
+      ]
+    }
+
+
+### Create saved stocks
+
+* Endpoint path: /saved_items/stocks
+* Endpoint method: POST
+
+* Headers:
+  * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+      "user_id": number,
+      "symbol": number,
+      "preference": boolean
+    }
+    ```
+
+* Response: An detail of saved stock
+* Response shape:
+    ```json
+    {
+      "id": number,
+      "user_id": number,
+      "symbol": number,
+      "preference": boolean
+    }
+
+
+### Delete saved stock
+
+* Endpoint path: /saved_items/news_items/`<int:id>`/
+* Endpoint method: DELETE
+
+* Headers:
+  * Authorization: Bearer token
+
+* Request body:
+    ```json
+    {
+      "id": number
+    }
+    ```
+
+* Response: An indication of success or failure
+* Response shape:
+    ```json
+    {
+      "success": boolean
     }
     ```
