@@ -9,12 +9,14 @@ class DuplicateAccountError(ValueError):
 
 class AccountIn(BaseModel):
     username: str
+    email: str
     password: str
 
 
 class AccountOut(BaseModel):
     id: str
     username: str
+    email: str
 
 
 class AccountOutWithPassword(AccountOut):
@@ -28,7 +30,7 @@ class AccountQueries():
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT id, username, hashed_password
+                    SELECT id, username, email, hashed_password
                     FROM accounts
                     WHERE username = %s
                     """,
@@ -47,13 +49,14 @@ class AccountQueries():
             with conn.cursor() as cur:
                 params = [
                     info.username,
+                    info.email,
                     hashed_password
                 ]
                 cur.execute(
                     """
-                    INSERT INTO accounts (username, hashed_password)
-                    VALUES (%s, %s)
-                    RETURNING id, username, hashed_password
+                    INSERT INTO accounts (username, email, hashed_password)
+                    VALUES (%s, %s, %s)
+                    RETURNING id, username, email, hashed_password
                     """,
                     params,
                 )

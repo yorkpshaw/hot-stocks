@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS saved_stocks;
 CREATE TABLE accounts (
     id SERIAL NOT NULL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(200) NOT NULL UNIQUE,
     hashed_password VARCHAR(500) NOT NULL
 );
 
@@ -39,9 +40,9 @@ CREATE TABLE saved_stocks (
 
 
 INSERT INTO accounts VALUES
-    (1, 'wpooh', 'asldkj12089'),
-    (2, 'ccat', 'asd2`1897hdas'),
-    (3, 'twinky', '098adslkj18')
+    (1, 'wpooh', 'wpooh@gmail.com', 'asldkj12089'),
+    (2, 'ccat', 'ccat@gmail.com', 'asd2`1897hdas'),
+    (3, 'twinky', 'twinky@gmail.com', '098adslkj18')
 ;
 
 INSERT INTO portfolio_stocks VALUES

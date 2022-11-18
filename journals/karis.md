@@ -1,3 +1,16 @@
+## 11/18/2022
+
+Today, I worked on:
+
+* Practicing implementing authentication on my own per Learn
+* Moving all classes with BaseModel parent class to queries
+
+
+I followed along with Curtis' (instructor) instructional video to implement authentication using Galvanize's FastAPI-JWT library.
+
+I moved all classes with BaseModel parent class to queries per Curtis' instructional videos.
+
+
 ## 11/17/2022
 
 Today, I worked on:
