@@ -3,11 +3,9 @@ from pydantic import BaseModel
 from typing import List
 from queries.portfolio_stocks import PortfolioStocksQueries
 
-
 router = APIRouter()
 
 class PortfolioIn(BaseModel):
-    id: int
     user_id: int
     stock_id: int
     num_shares: int
