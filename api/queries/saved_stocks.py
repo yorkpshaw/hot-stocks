@@ -18,6 +18,7 @@ class SavedStockOut(BaseModel):
 class SavedStocksOut(BaseModel):
     stocks: list[SavedStockOut]
 
+
 class SavedStockQueries:
     def get_all_saved_stocks(self, user_id: int) -> SavedStocksOut:
         with pool.connection () as conn:
@@ -28,7 +29,7 @@ class SavedStockQueries:
                     FROM saved_stocks
                     WHERE user_id = %s
                     """,
-                    user_id
+                    user_id,
                 )
                 results = []
                 for row in cur.fetchall():

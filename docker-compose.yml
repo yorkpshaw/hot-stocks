@@ -3,8 +3,8 @@ volumes:
     external: true
   pg-admin:
     external: true
-  # mongo-data:
-  #   external: true
+  jwtdown-db-data:
+    external: true
 
 services:
   ghi:
@@ -58,10 +58,3 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
       PGADMIN_DISABLE_POSTFIX: 1
-  # mongo:
-  #   image: mongo:5
-  #   volumes:
-  #       - mongo-data:/data/db
-  #   environment:
-  #       MONGO_INITDB_ROOT_USERNAME: root
-  #       MONGO_INITDB_ROOT_PASSWORD: password

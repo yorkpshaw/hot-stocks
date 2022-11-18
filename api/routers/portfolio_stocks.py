@@ -18,11 +18,18 @@ def get_all_portfolio_stocks(
     queries: PortfolioStockQueries = Depends()
     ):
     return {
+        "portfolio_stocks": queries.create_portfolio_item(),
+    }
+
+
+@router.get("/api/portfolio_stocks", response_model=List[PortfolioListOut])
+def portfolio_list(queries: PortfolioStocksQueries = Depends()):
+    return {
         "portfolio_stocks": queries.get_all_portfolio_stocks(user_id),
     }
 
 
-@router.post("/api/portfolio_stocks/", response_model = PortfolioStockOut)
+@router.post("/api/portfolio_stocks/", response_model=PortfolioStockOut)
 def create_portfolio_stock(
     # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     portfolio_stock_in: PortfolioStockIn,
@@ -32,7 +39,9 @@ def create_portfolio_stock(
     return queries.create_portfolio_stock(portfolio_stock_in, user_id)
 
 
-@router.put("api/portfolio_stocks/{portfolio_stock_id}/", response_model = PortfolioStockOut)
+@router.put(
+    "api/portfolio_stocks/{portfolio_stock_id}/", response_model=PortfolioStockOut
+)
 def update_portfolio_stock(
     # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     portfolio_stock_id: int,
