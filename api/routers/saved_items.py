@@ -2,23 +2,18 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from typing import Dict
 
-from queries.saved_items import SavedItemsQueries
-
-from routers.saved_news_items import SavedNewsItemsOut
-from routers.saved_stocks import SavedStocksOut
+from queries.saved_items import (
+    SavedItemsOut,
+    SavedItemQueries,
+)
 
 
 router = APIRouter()
 
-class SavedItemsOut(BaseModel):
-    explore_items: Dict[
-        SavedNewsItemsOut,
-        SavedStocksOut
-    ]
 
 # list of saved items
 @router.get("/api/saved_items", response_model=SavedItemsOut)
-def get_all_saved_items(queries: SavedItemsQueries = Depends()):
+def get_all_saved_items(queries: SavedItemQueries = Depends()):
     return {
         "saved_items": queries.get_all_saved_items(),
     }

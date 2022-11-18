@@ -1,4 +1,22 @@
 from queries.pool import pool
+from pydantic import BaseModel
+
+
+class SavedStockIn(BaseModel):
+    user_id: int
+    symbol: str
+    preference: bool
+
+
+class SavedStockOut(BaseModel):
+    id: int
+    user_id: int
+    symbol: str
+    preference: bool
+
+
+class SavedStocksOut(BaseModel):
+    stocks: list[SavedStockOut]
 
 class SavedStockQueries:
     def get_all_saved_stocks(self, user_id):

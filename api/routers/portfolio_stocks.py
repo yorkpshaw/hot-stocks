@@ -1,32 +1,19 @@
 from fastapi import APIRouter, Depends, Response
-from pydantic import BaseModel
-from typing import List
-from queries.portfolio_stocks import PortfolioStocksQueries
 
+from queries.portfolio_stocks import (
+    PortfolioStockIn,
+    PortfolioStockOut,
+    PortfolioStocksOut,
+    PortfolioStockQueries,
+)
 
 router = APIRouter()
 
-class PortfolioStockIn(BaseModel):
-    user_id: int
-    symbol: str
-    num_shares: int
-    cost_basis: int
 
-class PortfolioStockOut(BaseModel):
-    id: int
-    user_id: int
-    symbol: str
-    num_shares: int
-    cost_basis: int
-
-class PortfolioListOut(BaseModel):
-    portfolio_stocks: List[PortfolioStockOut]
-
-
-@router.get("/api/portfolio_stocks", response_model = List[PortfolioListOut])
+@router.get("/api/portfolio_stocks", response_model = PortfolioStocksOut)
 def get_all_portfolio_stocks(
     user_id: int,
-    queries: PortfolioStocksQueries = Depends()
+    queries: PortfolioStockQueries = Depends()
     ):
     return {
         "portfolio_stocks": queries.get_all_portfolio_stocks(user_id),
@@ -37,7 +24,7 @@ def get_all_portfolio_stocks(
 def create_portfolio_stock(
     portfolio_stock_in: PortfolioStockIn,
     user_id: int,
-    queries: PortfolioStocksQueries = Depends()
+    queries: PortfolioStockQueries = Depends()
     ):
     return queries.create_portfolio_stock(portfolio_stock_in, user_id)
 
@@ -47,7 +34,7 @@ def update_portfolio_stock(
     portfolio_stock_id: int,
     portfolio_stock_in: PortfolioStockIn,
     response: Response,
-    queries: PortfolioStocksQueries = Depends()
+    queries: PortfolioStockQueries = Depends()
     ):
     record = queries.update_portfolio_stock(portfolio_stock_id, portfolio_stock_in)
     if record is None:
@@ -57,6 +44,6 @@ def update_portfolio_stock(
 
 
 @router.delete("/api/portfolio_stocks/{portfolio_stock_id}", response_model=bool)
-def delete_portfolio_stock(portfolio_stock_id: int, queries: PortfolioStocksQueries = Depends()):
+def delete_portfolio_stock(portfolio_stock_id: int, queries: PortfolioStockQueries = Depends()):
     queries.delete_portfolio_stock(portfolio_stock_id)
     return True

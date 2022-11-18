@@ -4,9 +4,10 @@ DROP TABLE IF EXISTS saved_news_items;
 DROP TABLE IF EXISTS saved_stocks;
 
 
-CREATE TABLE users (
+CREATE TABLE accounts (
     id SERIAL NOT NULL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL
+    username VARCHAR(50) NOT NULL UNIQUE,
+    hashed_password VARCHAR(50) NOT NULL,
 );
 
 
@@ -37,10 +38,10 @@ CREATE TABLE saved_stocks (
 );
 
 
-INSERT INTO users VALUES
-    (1, 'wpooh'),
-    (2, 'ccat'),
-    (3, 'twinky')
+INSERT INTO accounts VALUES
+    (1, 'wpooh', 'asldkj12089'),
+    (2, 'ccat', 'asd2`1897hdas'),
+    (3, 'twinky', '098adslkj18')
 ;
 
 INSERT INTO portfolio_stocks VALUES

@@ -1,4 +1,31 @@
+from pydantic import BaseModel
 from queries.pool import pool
+
+
+class SavedNewsItemIn(BaseModel):
+    user_id: int
+    title: str
+    news_url: str
+    time_published: str
+    banner_image: str
+    summary: str
+    preference: bool
+
+
+class SavedNewsItemOut(BaseModel):
+    id: int
+    user_id: int
+    title: str
+    news_url: str
+    time_published: str
+    banner_image: str
+    summary: str
+    preference: bool
+
+
+class SavedNewsItemsOut(BaseModel):
+    news_items: list[SavedNewsItemOut]
+
 
 class SavedNewsItemQueries:
     def get_all_saved_news_items(self, user_id):

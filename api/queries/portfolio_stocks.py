@@ -1,6 +1,27 @@
+from pydantic import BaseModel
+from typing import List
+
 from queries.pool import pool
 
-class PortfolioStocksQueries:
+
+class PortfolioStockIn(BaseModel):
+    user_id: int
+    symbol: str
+    num_shares: int
+    cost_basis: int
+
+class PortfolioStockOut(BaseModel):
+    id: int
+    user_id: int
+    symbol: str
+    num_shares: int
+    cost_basis: int
+
+class PortfolioStocksOut(BaseModel):
+    portfolio_stocks: List[PortfolioStockOut]
+
+
+class PortfolioStockQueries:
 
     def get_all_portfolio_stocks(self, user_id):
         with pool.connection() as conn:

@@ -1,34 +1,15 @@
 from fastapi import APIRouter, Depends, Response
 from pydantic import BaseModel
 
-from queries.saved_news_items import SavedNewsItemQueries
+from queries.saved_news_items import (
+    SavedNewsItemIn,
+    SavedNewsItemOut,
+    SavedNewsItemsOut,
+    SavedNewsItemQueries,
+)
 
 router = APIRouter()
 
-
-class SavedNewsItemIn(BaseModel):
-    user_id: int
-    title: str
-    news_url: str
-    time_published: str
-    banner_image: str
-    summary: str
-    preference: bool
-
-
-class SavedNewsItemOut(BaseModel):
-    id: int
-    user_id: int
-    title: str
-    news_url: str
-    time_published: str
-    banner_image: str
-    summary: str
-    preference: bool
-
-
-class SavedNewsItemsOut(BaseModel):
-    news_items: list[SavedNewsItemOut]
 
 
 @router.get("/api/saved_news_items", response_model=SavedNewsItemsOut)

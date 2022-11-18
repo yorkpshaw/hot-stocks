@@ -29,6 +29,9 @@ services:
       DATABASE_URL: postgresql://hot-stocks:hot-stocks@db/hot-stocks
       WAIT_HOSTS: db:5432
       PORT: 8000
+      SIGNING_KEY: b4rDKEvWf5TeGnENY7dTgP8nYldVpqixIb3cnWmt75o
+      WAIT_BEFORE: 5
+      WAIT_TIMEOUT: 60
     ports:
       - "8000:8000"
     volumes:

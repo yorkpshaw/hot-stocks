@@ -1,27 +1,15 @@
-from fastapi import APIRouter, Depends, Response
-from pydantic import BaseModel
+from fastapi import APIRouter, Depends
 
-from queries.saved_stocks import SavedStockQueries
+
+from queries.saved_stocks import (
+    SavedStockIn,
+    SavedStockOut,
+    SavedStocksOut,
+    SavedStockQueries,
+)
+
 
 router = APIRouter()
-
-
-class SavedStockIn(BaseModel):
-    user_id: int
-    symbol: str
-    preference: bool
-
-
-class SavedStockOut(BaseModel):
-    id: int
-    user_id: int
-    symbol: str
-    preference: bool
-
-
-class SavedStocksOut(BaseModel):
-    stocks: list[SavedStockOut]
-
 
 @router.get("/api/saved_stocks", response_model=SavedStocksOut)
 def get_all_saved_stocks(
