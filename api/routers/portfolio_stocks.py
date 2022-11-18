@@ -14,8 +14,8 @@ router = APIRouter()
 
 @router.get("/api/portfolio_stocks", response_model = PortfolioStocksOut)
 def get_all_portfolio_stocks(
-    # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
-    user_id: int,
+    # account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
+    account_id: int,
     queries: PortfolioStockQueries = Depends()
     ):
     return {
@@ -25,19 +25,19 @@ def get_all_portfolio_stocks(
 
 @router.post("/api/portfolio_stocks/", response_model=PortfolioStockOut)
 def create_portfolio_stock(
-    # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
+    # account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     portfolio_stock_in: PortfolioStockIn,
-    user_id: int,
+    account_id: int,
     queries: PortfolioStockQueries = Depends()
     ):
-    return queries.create_portfolio_stock(portfolio_stock_in, user_id)
+    return queries.create_portfolio_stock(portfolio_stock_in, account_id)
 
 
 @router.put(
     "api/portfolio_stocks/{portfolio_stock_id}/", response_model=PortfolioStockOut
 )
 def update_portfolio_stock(
-    # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
+    # account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     portfolio_stock_id: int,
     portfolio_stock_in: PortfolioStockIn,
     response: Response,
@@ -52,7 +52,7 @@ def update_portfolio_stock(
 
 @router.delete("/api/portfolio_stocks/{portfolio_stock_id}", response_model=bool)
 def delete_portfolio_stock(
-    # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
+    # account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     portfolio_stock_id: int,
     queries: PortfolioStockQueries = Depends()
     ):

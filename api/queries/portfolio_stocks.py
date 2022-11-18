@@ -5,14 +5,14 @@ from queries.pool import pool
 
 
 class PortfolioStockIn(BaseModel):
-    user_id: int
+    account_id: int
     symbol: str
     num_shares: int
     cost_basis: int
 
 class PortfolioStockOut(BaseModel):
     id: int
-    user_id: int
+    account_id: int
     symbol: str
     num_shares: int
     cost_basis: int
@@ -23,16 +23,16 @@ class PortfolioStocksOut(BaseModel):
 
 class PortfolioStockQueries:
 
-    def get_all_portfolio_stocks(self, user_id: int) -> PortfolioStocksOut:
+    def get_all_portfolio_stocks(self, account_id: int) -> PortfolioStocksOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT id, user_id, symbol, num_shares, cost_basis
+                    SELECT id, account_id, symbol, num_shares, cost_basis
                     FROM portfolio_stocks;
-                    WHERE user_id = %s
+                    WHERE account_id = %s
                     """,
-                    user_id
+                    account_id
                 )
                 results = []
                 for row in cur.fetchall():
@@ -43,11 +43,11 @@ class PortfolioStockQueries:
                         results.append(record)
                 return results
 
-    def create_portfolio_stock(self, data: PortfolioStockIn, user_id: int) -> PortfolioStockOut:
+    def create_portfolio_stock(self, data: PortfolioStockIn, account_id: int) -> PortfolioStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
-                    user_id,
+                    account_id,
                     data.symbol,
                     data.num_shares,
                     data.cost_basis,
@@ -55,7 +55,7 @@ class PortfolioStockQueries:
                 cur.execute(
                     """
                     INSERT INTO portfolio_stocks
-                        (user_id, symbol, num_shares, cost_basis)
+                        (account_id, symbol, num_shares, cost_basis)
                     VALUES
                         (%s,%s,%s,%s);
                     """,
@@ -69,7 +69,7 @@ class PortfolioStockQueries:
                         record[column.name] = row[i]
                 return record
 
-    def update_portfolio_stock(self, portfolio_stock_id: int, data) -> PortfolioStockOut:
+    def update_portfolio_stock(self, portfolio_stock_id: int, data: PortfolioStockIn) -> PortfolioStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -83,7 +83,7 @@ class PortfolioStockQueries:
                     SET num_shares = %s
                         , cost_basis = %s
                     WHERE ID = %s
-                    RETURNING id, user_id, symbol, num_shares, cost_basis
+                    RETURNING id, account_id, symbol, num_shares, cost_basis
                     """,
                     params,
                 )

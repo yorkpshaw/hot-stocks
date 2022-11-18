@@ -74,7 +74,7 @@
 * Request body:
     ```json
     {
-      "user_id": number
+      "account_id": number
     }
     ```
 
@@ -104,7 +104,7 @@
 * Request body:
     ```json
     {
-      "user_id": number,
+      "account_id": number,
       "stock_id": number,
       "num_shares": number,
       "cost_basis": number
@@ -116,7 +116,7 @@
     ```json
     {
       "id": number,
-      "user_id": number,
+      "account_id": number,
       "stock_id": number,
       "num_shares": number,
       "cost_basis": number
@@ -135,7 +135,7 @@
     ```json
     {
       "id": number,
-      "user_id": number,
+      "account_id": number,
       "stock_id": number,
       "num_shares": number,
       "cost_basis": number
@@ -147,7 +147,7 @@
     ```json
     {
       "id": number,
-      "user_id": number,
+      "account_id": number,
       "stock_id": number,
       "num_shares": number,
       "cost_basis": number
@@ -181,7 +181,7 @@
 
 ## Saved items
 
-### Get a list of saved items
+### Get list of saved items
 
 * Endpoint path: /saved_items
 * Endpoint method: GET
@@ -192,7 +192,7 @@
 * Request body:
     ```json
     {
-      "user_id": number
+      "account_id": number
     }
     ```
 
@@ -203,7 +203,7 @@
       "news_items": [
         {
           "id": number,
-          "user_id": number,
+          "account_id": number,
           "title": str,
           "news_url": str,
           "time_published": str,
@@ -215,7 +215,7 @@
       "stocks": [
         {
           "id": number,
-          "user_id": number,
+          "account_id": number,
           "symbol": number,
           "preference": boolean
         }
@@ -226,7 +226,7 @@
 
 ### Saved news items
 
-### List saved news items
+### Get list of saved news items
 
 * Endpoint path: /saved_news_items
 * Endpoint method: GET
@@ -237,7 +237,7 @@
 * Request body:
     ```json
     {
-      "user_id": number
+      "account_id": number
     }
     ```
 
@@ -248,7 +248,7 @@
       "saved_news_items":[
         {
           "id": number,
-          "user_id": number,
+          "account_id": number,
           "title": str,
           "news_url": str,
           "time_published": str,
@@ -271,7 +271,7 @@
 * Request body:
     ```json
     {
-      "user_id": number,
+      "account_id": number,
       "title": str,
       "news_url": str,
       "time_published": str,
@@ -286,7 +286,7 @@
     ```json
     {
       "id": number,
-      "user_id": number,
+      "account_id": number,
       "title": str,
       "news_url": str,
       "time_published": str,
@@ -322,7 +322,7 @@
 
 ### Saved stocks
 
-### List saved stocks
+### Get list of saved stocks
 
 * Endpoint path: /saved_stocks
 * Endpoint method: GET
@@ -333,7 +333,7 @@
 * Request body:
     ```json
     {
-      "user_id": number
+      "account_id": number
     }
     ```
 
@@ -344,7 +344,7 @@
       "saved_stocks":[
         {
           "id": number,
-          "user_id": number,
+          "account_id": number,
           "symbol": number,
           "preference": boolean
         }
@@ -363,7 +363,7 @@
 * Request body:
     ```json
     {
-      "user_id": number,
+      "account_id": number,
       "symbol": number,
       "preference": boolean
     }
@@ -374,7 +374,7 @@
     ```json
     {
       "id": number,
-      "user_id": number,
+      "account_id": number,
       "symbol": number,
       "preference": boolean
     }
@@ -392,7 +392,7 @@
     ```json
     {
       "id": number,
-      "user_id": number,
+      "account_id": number,
       "symbol": number,
       "preference": boolean
     }
@@ -403,7 +403,7 @@
     ```json
     {
       "id": number,
-      "user_id": number,
+      "account_id": number,
       "symbol": number,
       "preference": boolean
     }
@@ -430,5 +430,84 @@
     ```json
     {
       "success": boolean
+    }
+    ```
+
+
+## External-API-interfacing endpoints
+
+### Get company
+
+* Endpoint path: /companies/`<str:symbol>`
+* Endpoint method: GET
+
+* Headers:
+  * Authorization: Alphavantage token
+
+* Request body:
+    ```json
+    {
+      "symbol": str
+    }
+    ```
+
+* Response: A detail of stock
+* Response shape:
+    ```json
+    {
+      "company": [
+        {
+          TODO
+        }
+      ]
+    }
+    ```
+
+
+### Get stock
+
+* Endpoint path: /stocks/`<str:symbol>`
+* Endpoint method: GET
+
+* Headers:
+  * Authorization: Alphavantage token
+
+* Request body:
+    ```json
+    {
+      "symbol": str
+    }
+    ```
+
+* Response: A detail of stock
+* Response shape:
+    ```json
+    {
+      "stock": [
+        {
+          TODO
+        }
+      ]
+    }
+    ```
+
+
+### Get list of news items
+
+* Endpoint path: /news_items
+* Endpoint method: GET
+
+* Headers:
+  * Authorization: Alphavantage token
+
+* Response: A list of news items
+* Response shape:
+    ```json
+    {
+      "news_items": [
+        {
+          TODO
+        }
+      ]
     }
     ```
