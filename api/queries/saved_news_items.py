@@ -37,7 +37,7 @@ class SavedNewsItemQueries:
                     FROM saved_news_items
                     WHERE account_id = %s
                     """,
-                    user_id
+                    account_id
                 )
                 results = []
                 for row in cur.fetchall():
@@ -53,7 +53,7 @@ class SavedNewsItemQueries:
                 params = [
                     account_id,
                     data.title,
-                    data.url,
+                    data.news_url,
                     data.time_published,
                     data.banner_image,
                     data.summary
@@ -62,7 +62,7 @@ class SavedNewsItemQueries:
                     """
                     INSERT INTO saved_news_items (account_id, title, news_url, time_published, banner_image, summary, preference)
                     VALUES (%s, %s, %s, %s, %s)
-                    RETURNING id, user_id, title, news_url, time_published, banner_image, summary, preference
+                    RETURNING id, account_id, title, news_url, time_published, banner_image, summary, preference
                     """,
                     params,
                 )

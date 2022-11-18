@@ -3,14 +3,14 @@ from pydantic import BaseModel
 
 
 class SavedStockIn(BaseModel):
-    user_id: int
+    account_id: int
     symbol: str
     preference: bool
 
 
 class SavedStockOut(BaseModel):
     id: int
-    user_id: int
+    account_id: int
     symbol: str
     preference: bool
 
@@ -20,16 +20,16 @@ class SavedStocksOut(BaseModel):
 
 
 class SavedStockQueries:
-    def get_all_saved_stocks(self, user_id: int) -> SavedStocksOut:
+    def get_all_saved_stocks(self, account_id: int) -> SavedStocksOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT id, user_id, symbol, preference
+                    SELECT id, account_id, symbol, preference
                     FROM saved_stocks
-                    WHERE user_id = %s
+                    WHERE account_id = %s
                     """,
-                    user_id,
+                    account_id,
                 )
                 results = []
                 for row in cur.fetchall():
@@ -39,19 +39,19 @@ class SavedStockQueries:
                     results.append(record)
                 return results
 
-    def create_saved_stock(self, data: SavedStockIn, user_id: int) -> SavedStockOut:
+    def create_saved_stock(self, data: SavedStockIn, account_id: int) -> SavedStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
-                    user_id,
+                    account_id,
                     data.symbol,
                     data.preference,
                 ]
                 cur.execute(
                     """
-                    INSERT INTO saved_stocks (user_id, symbol, preference)
+                    INSERT INTO saved_stocks (account_id, symbol, preference)
                     VALUES (%s, %s, %s)
-                    RETURNING id, user_id, symbol, preference
+                    RETURNING id, account_id, symbol, preference
                     """,
                     params,
                 )
@@ -63,7 +63,7 @@ class SavedStockQueries:
                         record[column.name] = row[i]
                 return record
 
-    def delete_saved_stock(self, stock_id: int) -> bool:
+    def delete_saved_stock(self, saved_stock_id: int) -> bool:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
@@ -71,5 +71,5 @@ class SavedStockQueries:
                     DELETE FROM saved_stocks
                     WHERE ID = (%s)
                     """,
-                    stock_id,
+                    saved_stock_id,
                 )

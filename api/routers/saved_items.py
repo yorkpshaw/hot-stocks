@@ -15,7 +15,7 @@ router = APIRouter()
 # list of saved items
 @router.get("/api/saved_items", response_model=SavedItemsOut)
 def get_all_saved_items(
-    # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
+    # account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     queries: SavedItemQueries = Depends()
     ):
     return {
