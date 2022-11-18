@@ -1,8 +1,29 @@
+from pydantic import BaseModel
+from typing import List
+
 from queries.pool import pool
 
-class PortfolioStocksQueries:
 
-    def get_all_portfolio_stocks(self, user_id):
+class PortfolioStockIn(BaseModel):
+    user_id: int
+    symbol: str
+    num_shares: int
+    cost_basis: int
+
+class PortfolioStockOut(BaseModel):
+    id: int
+    user_id: int
+    symbol: str
+    num_shares: int
+    cost_basis: int
+
+class PortfolioStocksOut(BaseModel):
+    portfolio_stocks: List[PortfolioStockOut]
+
+
+class PortfolioStockQueries:
+
+    def get_all_portfolio_stocks(self, user_id: int) -> PortfolioStocksOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
@@ -22,7 +43,7 @@ class PortfolioStocksQueries:
                         results.append(record)
                 return results
 
-    def create_portfolio_stock(self, data, user_id):
+    def create_portfolio_stock(self, data: PortfolioStockIn, user_id: int) -> PortfolioStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -48,7 +69,7 @@ class PortfolioStocksQueries:
                         record[column.name] = row[i]
                 return record
 
-    def update_portfolio_stock(self, portfolio_stock_id, data):
+    def update_portfolio_stock(self, portfolio_stock_id: int, data) -> PortfolioStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -75,7 +96,7 @@ class PortfolioStocksQueries:
                 return record
 
 
-    def delete_portfolio_stock(self, portfolio_stock_id):
+    def delete_portfolio_stock(self, portfolio_stock_id: int) -> bool:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(

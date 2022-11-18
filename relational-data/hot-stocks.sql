@@ -1,18 +1,20 @@
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS accounts;
 DROP TABLE IF EXISTS portfolio_stocks;
 DROP TABLE IF EXISTS saved_news_items;
 DROP TABLE IF EXISTS saved_stocks;
 
 
-CREATE TABLE users (
+CREATE TABLE accounts (
     id SERIAL NOT NULL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(200) NOT NULL UNIQUE,
+    hashed_password VARCHAR(500) NOT NULL
 );
 
 
 CREATE TABLE portfolio_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES users("id") ON DELETE CASCADE,
+    account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
     symbol VARCHAR(10) UNIQUE,
     num_shares SMALLINT,
     cost_basis FLOAT
@@ -20,7 +22,7 @@ CREATE TABLE portfolio_stocks (
 
 CREATE TABLE saved_news_items (
     id SERIAL NOT NULL PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES users("id") ON DELETE CASCADE,
+    account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
     title VARCHAR(5000),
     news_url VARCHAR(5000),
     time_published VARCHAR(50),
@@ -31,16 +33,16 @@ CREATE TABLE saved_news_items (
 
 CREATE TABLE saved_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES users("id") ON DELETE CASCADE,
+    account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
     symbol VARCHAR(10) UNIQUE,
     preference BOOLEAN -- 0 = hate, 1 = heart
 );
 
 
-INSERT INTO users VALUES
-    (1, 'wpooh'),
-    (2, 'ccat'),
-    (3, 'twinky')
+INSERT INTO accounts VALUES
+    (1, 'wpooh', 'wpooh@gmail.com', 'asldkj12089'),
+    (2, 'ccat', 'ccat@gmail.com', 'asd2`1897hdas'),
+    (3, 'twinky', 'twinky@gmail.com', '098adslkj18')
 ;
 
 INSERT INTO portfolio_stocks VALUES

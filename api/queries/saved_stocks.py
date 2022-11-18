@@ -1,7 +1,26 @@
 from queries.pool import pool
+from pydantic import BaseModel
+
+
+class SavedStockIn(BaseModel):
+    user_id: int
+    symbol: str
+    preference: bool
+
+
+class SavedStockOut(BaseModel):
+    id: int
+    user_id: int
+    symbol: str
+    preference: bool
+
+
+class SavedStocksOut(BaseModel):
+    stocks: list[SavedStockOut]
+
 
 class SavedStockQueries:
-    def get_all_saved_stocks(self, user_id):
+    def get_all_saved_stocks(self, user_id: int) -> SavedStocksOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
@@ -10,7 +29,7 @@ class SavedStockQueries:
                     FROM saved_stocks
                     WHERE user_id = %s
                     """,
-                    user_id
+                    user_id,
                 )
                 results = []
                 for row in cur.fetchall():
@@ -20,7 +39,7 @@ class SavedStockQueries:
                     results.append(record)
                 return results
 
-    def create_saved_stock(self, data, user_id):
+    def create_saved_stock(self, data: SavedStockIn, user_id: int) -> SavedStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -44,7 +63,7 @@ class SavedStockQueries:
                         record[column.name] = row[i]
                 return record
 
-    def delete_saved_stock(self, stock_id):
+    def delete_saved_stock(self, stock_id: int) -> bool:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(

@@ -1,30 +1,19 @@
-from fastapi import APIRouter, Depends, Response
-from pydantic import BaseModel
+from fastapi import APIRouter, Depends
 
-from queries.saved_stocks import SavedStockQueries
+# from authenticator import authenticator
+from queries.saved_stocks import (
+    SavedStockIn,
+    SavedStockOut,
+    SavedStocksOut,
+    SavedStockQueries,
+)
+
 
 router = APIRouter()
 
-
-class SavedStockIn(BaseModel):
-    user_id: int
-    symbol: str
-    preference: bool
-
-
-class SavedStockOut(BaseModel):
-    id: int
-    user_id: int
-    symbol: str
-    preference: bool
-
-
-class SavedStocksOut(BaseModel):
-    stocks: list[SavedStockOut]
-
-
 @router.get("/api/saved_stocks", response_model=SavedStocksOut)
 def get_all_saved_stocks(
+    # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     user_id: int,
     queries: SavedStockQueries = Depends()
     ):
@@ -35,6 +24,7 @@ def get_all_saved_stocks(
 
 @router.post("/api/saved_stocks/", response_model=SavedStockOut)
 def create_saved_stock(
+    # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     stock_in: SavedStockIn,
     user_id: int,
     queries: SavedStockQueries = Depends()
@@ -43,6 +33,9 @@ def create_saved_stock(
 
 
 @router.delete("/api/saved_stocks/{stock_id}", response_model=bool)
-def delete_saved_stock(stock_id: int, queries: SavedStockQueries = Depends()):
+def delete_saved_stock(
+    # user_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
+    stock_id: int,
+    queries: SavedStockQueries = Depends()):
     queries.delete_saved_stock(stock_id)
     return True

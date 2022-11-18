@@ -1,3 +1,32 @@
+## 11/18/2022
+
+Today, I worked on:
+
+* Practicing implementing authentication on my own per Learn
+* Moving all classes with BaseModel parent class to queries
+
+
+I followed along with Curtis' (instructor) instructional video to implement authentication using Galvanize's FastAPI-JWT library.
+
+I moved all classes with BaseModel parent class to queries per Curtis' instructional videos.
+
+
+## 11/17/2022
+
+Today, I worked on:
+
+* Changing database setup to reflect Learn examples
+* Improving db schema with team and Riley
+* Reviewing team's routes and queries
+* Group coding updates to team's routes and queries
+
+I adjusted our docker-compose file to not run create-multiple-databases. Rather, each service will reference its own database, if necessary. This will allow us to more easily populate dbs with tables.
+
+The team thought through how to improve our db schema and adjusted the code, accordingly.
+
+We all went through routes and queries we worked on the past few days and updated in accordance with updated db schema.
+
+
 ## 11/16/2022
 
 Today, I worked on:
