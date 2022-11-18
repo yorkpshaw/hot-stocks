@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, Response
+from typing import List
 
 # from authenticator import authenticator
 from queries.portfolio_stocks import (
@@ -19,13 +20,6 @@ def get_all_portfolio_stocks(
     ):
     return {
         "portfolio_stocks": queries.create_portfolio_item(),
-    }
-
-
-@router.get("/api/portfolio_stocks", response_model=List[PortfolioListOut])
-def portfolio_list(queries: PortfolioStocksQueries = Depends()):
-    return {
-        "portfolio_stocks": queries.get_all_portfolio_stocks(user_id),
     }
 
 
