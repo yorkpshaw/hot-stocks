@@ -52,16 +52,17 @@ class PortfolioStockQueries:
                     data.symbol,
                     data.num_shares,
                     data.cost_basis,
-                ] #TODO figure out ON DUPLICATE KEY UPDATE
+                ]
+                #TODO figure out ON DUPLICATE KEY UPDATE
+                        # ON DUPLICATE KEY UPDATE
+                        # num_shares=VALUES(num_shares),
+                        # cost_basis=VALUES(cost_basis)
                 cur.execute(
                     """
                     INSERT INTO portfolio_stocks
                         (account_id, symbol, num_shares, cost_basis)
                     VALUES
                         (%s,%s,%s,%s)
-                    ON DUPLICATE KEY UPDATE
-                        num_shares=VALUES(num_shares),
-                        cost_basis=VALUES(cost_basis)
                     RETURNING id, account_id, symbol, num_shares, cost_basis;
                     """,
                     params
