@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Response
 from typing import List
+from authenticator import authenticator
 
 # from authenticator import authenticator
 from queries.portfolio_stocks import (
