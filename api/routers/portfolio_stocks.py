@@ -62,5 +62,6 @@ def delete_portfolio_stock(
     queries: PortfolioStockQueries = Depends()
     ):
     account_id = account_data['id']
+
     queries.delete_portfolio_stock(portfolio_stock_id, account_id)
     return True

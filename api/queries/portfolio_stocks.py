@@ -101,7 +101,7 @@ class PortfolioStockQueries:
                 return record
 
 
-    def delete_portfolio_stock(self, portfolio_stock_id: int, account_id: str) -> bool:
+    def delete_portfolio_stock(self, portfolio_stock_id: str, account_id: str) -> bool:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
