@@ -25,7 +25,7 @@ def get_all_saved_news_items(
 
 
 @router.post("/api/saved_news_items/", response_model=SavedNewsItemOut)
-def ccreate_or_update_saved_news_item(
+def create_or_update_saved_news_item(
     news_item_in: SavedNewsItemIn,
     account_data: dict = Depends(authenticator.get_current_account_data),
     queries: SavedNewsItemQueries = Depends(),
