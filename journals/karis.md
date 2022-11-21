@@ -1,3 +1,32 @@
+## 11/21/2022
+
+Today, I worked on:
+
+* Developing create or update logic for portfolio stocks
+
+
+I adjusted the router and query for create_portfolio_stock to be create_or_update_portfolio stock, and I adjusted the code, accordingly.
+
+
+## 11/20/2022
+
+Today, I worked on:
+
+* Implementing authentication requirements at endpoints
+* Fixing all routers and queries
+* Developing companies ACL and router
+* Starting front-end work
+
+
+I ensured authentication is required at each endpoint, and I troubleshooted only displaying items based on logged-in user.
+
+I fixed all routers and queries to correctly show the information being requested.
+
+I developed the ACL to obtain company information from Alphavantage, as well as the api/companies/{symbol} router.
+
+I started working on the front-end; I added MainPage, Nav, AccountForm, and PortfolioStocks components, and I looked into Material UI framework.
+
+
 ## 11/18/2022
 
 Today, I worked on:
