@@ -5,7 +5,7 @@ export function Search(props) {
 
     return (
         <div>
-            hello
+            searchsearchsearchsearchsearchsearchsearchsearchsearchsearch
         </div>
       );
 }

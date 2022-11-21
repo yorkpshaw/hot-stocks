@@ -5,7 +5,7 @@ export function About(props) {
 
     return (
         <div>
-            hello
+            aboutaboutaboutaboutaboutaboutaboutabout
         </div>
       );
 }

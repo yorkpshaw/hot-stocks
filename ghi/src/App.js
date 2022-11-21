@@ -15,7 +15,7 @@ import { Search } from './hot-stocks/Search';
 function App() {
   return (
     <BrowserRouter>
-      <HotStocksNav />
+      <HotStocksNav component={<Explore />} />
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />

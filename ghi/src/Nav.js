@@ -22,7 +22,7 @@ import {Explore} from './hot-stocks/Explore';
 
 const drawerWidth = 240;
 
-export default function HotStocksNav() {
+export default function HotStocksNav(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -80,7 +80,7 @@ export default function HotStocksNav() {
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
         <Toolbar />
-        <Explore />
+        {props.component}
       </Box>
     </Box>
   );
