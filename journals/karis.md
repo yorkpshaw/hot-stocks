@@ -1,3 +1,16 @@
+## 11/20/2022
+
+Today, I worked on:
+
+* Implementing authentication requirements at endpoints
+* Fixing all routers and queries
+
+
+I ensured authentication is required at each endpoint, and I troubleshooted only displaying items based on logged-in user.
+
+I fixed all routers and queries to correctly show the information being requested.
+
+
 ## 11/18/2022
 
 Today, I worked on:
