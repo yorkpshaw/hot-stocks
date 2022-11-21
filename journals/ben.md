@@ -7,7 +7,6 @@ Today, I worked on:
 * Got Docker running.
 
 
-
 ## November 17, 2022
 
 Today, I worked on:

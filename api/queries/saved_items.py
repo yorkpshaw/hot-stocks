@@ -7,10 +7,8 @@ from queries.saved_stocks import SavedStocksOut, SavedStockQueries
 
 
 class SavedItemsOut(BaseModel):
-    saved_items: Dict[
-        SavedNewsItemsOut,
-        SavedStocksOut
-    ]
+    saved_items: Dict[SavedNewsItemsOut, SavedStocksOut]
+
 
 class SavedItemQueries:
     def get_all_saved_items(self, account_id: str) -> SavedItemsOut:
