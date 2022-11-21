@@ -2,22 +2,22 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 
 
-export function PortfolioStocks(props) {
+export function Portfolio(props) {
 
-    const [portfolioStocks, setPortfolioStocks] = useState([]);
+    const [portfolioStocks, setPortfolio] = useState([]);
 
     useEffect(() => {
-        const getPortfolioStocks = async () => {
+        const getPortfolio = async () => {
             const url = `http://localhost:8000/api/portfolio_stocks`;
             const response = await fetch(url);
             console.log(response);
             if (response.ok) {
                 const data = await response.json();
-                setPortfolioStocks(data);
+                setPortfolio(data);
             }
         }
-        getPortfolioStocks();
-    }, [setPortfolioStocks]);
+        getPortfolio();
+    }, [setPortfolio]);
 
     return (
         <div>
