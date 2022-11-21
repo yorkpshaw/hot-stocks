@@ -40,8 +40,10 @@ class SavedStockQueries:
                     results.append(record)
                 return results
 
-    def create_saved_stock(self, data: SavedStockIn, account_id: int) -> SavedStockOut:
-        with pool.connection () as conn:
+    def create_or_update_saved_stock(
+        self, data: SavedStockIn, account_id: int
+    ) -> SavedStockOut:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     account_id,
@@ -52,6 +54,8 @@ class SavedStockQueries:
                     """
                     INSERT INTO saved_stocks (account_id, symbol, preference)
                     VALUES (%s, %s, %s)
+                    ON CONFLICT (account_id, symbol) DO UPDATE
+                      SET preference=(EXCLUDED.preference)
                     RETURNING id, account_id, symbol, preference
                     """,
                     params,
@@ -65,7 +69,7 @@ class SavedStockQueries:
                 return record
 
     def delete_saved_stock(self, saved_stock_id: int, account_id: int) -> bool:
-        with pool.connection () as conn:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     saved_stock_id,

@@ -11,12 +11,13 @@ from queries.saved_stocks import (
 
 router = APIRouter()
 
-@router.get("/api/saved_stocks") #, response_model = SavedStocksOut)
+
+@router.get("/api/saved_stocks")  # , response_model = SavedStocksOut)
 def get_all_saved_stocks(
     account_data: dict = Depends(authenticator.get_current_account_data),
-    queries: SavedStockQueries = Depends()
-    ):
-    account_id = account_data['id']
+    queries: SavedStockQueries = Depends(),
+):
+    account_id = account_data["id"]
 
     return {
         "saved_stocks": queries.get_all_saved_stocks(account_id),
@@ -24,21 +25,21 @@ def get_all_saved_stocks(
 
 
 @router.post("/api/saved_stocks/", response_model=SavedStockOut)
-def create_saved_stock(
+def create_or_update_saved_stock(
     stock_in: SavedStockIn,
     account_data: dict = Depends(authenticator.get_current_account_data),
-    queries: SavedStockQueries = Depends()
-    ):
-    account_id = account_data['id']
-    return queries.create_saved_stock(stock_in, account_id)
+    queries: SavedStockQueries = Depends(),
+):
+    account_id = account_data["id"]
+    return queries.create_or_update_saved_stock(stock_in, account_id)
 
 
 @router.delete("/api/saved_stocks/{saved_stock_id}", response_model=bool)
 def delete_saved_stock(
     saved_stock_id: int,
     account_data: dict = Depends(authenticator.get_current_account_data),
-    queries: SavedStockQueries = Depends()
-    ):
-    account_id = account_data['id']
+    queries: SavedStockQueries = Depends(),
+):
+    account_id = account_data["id"]
     queries.delete_saved_stock(saved_stock_id, account_id)
     return True
