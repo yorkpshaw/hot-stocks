@@ -17,7 +17,8 @@ CREATE TABLE portfolio_stocks (
     account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
     symbol VARCHAR(10),
     num_shares SMALLINT,
-    cost_basis FLOAT
+    cost_basis FLOAT,
+    CONSTRAINT check_account_portfolio UNIQUE (account_id, symbol)
 );
 
 CREATE TABLE saved_news_items (
@@ -28,14 +29,18 @@ CREATE TABLE saved_news_items (
     time_published VARCHAR(50),
     banner_image VARCHAR(5000),
     summary TEXT,
-    preference BOOLEAN -- 0 = hate, 1 = heart
+    preference BOOLEAN, -- 0 = hate, 1 = heart
+    CONSTRAINT check_account_url UNIQUE (account_id, news_url)
+
 );
 
 CREATE TABLE saved_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
     account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
     symbol VARCHAR(10),
-    preference BOOLEAN -- 0 = hate, 1 = heart
+    preference BOOLEAN, -- 0 = hate, 1 = heart
+    CONSTRAINT check_account_saved UNIQUE (account_id, symbol)
+
 );
 
 

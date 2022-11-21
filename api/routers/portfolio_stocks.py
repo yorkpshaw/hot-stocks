@@ -40,6 +40,7 @@ def create_portfolio_stock(
     "/api/portfolio_stocks/{portfolio_stock_id}/",
     response_model=PortfolioStockOut
 )
+
 def update_portfolio_stock(
     portfolio_stock_id: int,
     portfolio_stock_in: PortfolioStockUpdateIn,
