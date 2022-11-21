@@ -7,7 +7,7 @@ export function PortfolioStocks(props) {
     const [portfolioStocks, setPortfolioStocks] = useState([]);
 
     useEffect(() => {
-        async function getPortfolioStocks() {
+        const getPortfolioStocks = async () => {
             const url = `http://localhost:8000/api/portfolio_stocks`;
             const response = await fetch(url);
             console.log(response);

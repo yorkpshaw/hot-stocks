@@ -44,7 +44,7 @@ class PortfolioStockQueries:
                     results.append(record)
                 return results
 
-    def create_portfolio_stock(self, data: PortfolioStockIn, account_id: str) -> PortfolioStockOut:
+    def create_or_update_portfolio_stock(self, data: PortfolioStockIn, account_id: str) -> PortfolioStockOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -53,16 +53,15 @@ class PortfolioStockQueries:
                     data.num_shares,
                     data.cost_basis,
                 ]
-                #TODO figure out ON DUPLICATE KEY UPDATE
-                        # ON DUPLICATE KEY UPDATE
-                        # num_shares=VALUES(num_shares),
-                        # cost_basis=VALUES(cost_basis)
                 cur.execute(
                     """
                     INSERT INTO portfolio_stocks
                         (account_id, symbol, num_shares, cost_basis)
                     VALUES
                         (%s,%s,%s,%s)
+                    ON CONFLICT (account_id, symbol) DO UPDATE
+                        SET num_shares=(EXCLUDED.num_shares)
+                        , cost_basis=(EXCLUDED.cost_basis)
                     RETURNING id, account_id, symbol, num_shares, cost_basis;
                     """,
                     params
@@ -76,33 +75,33 @@ class PortfolioStockQueries:
                         record[column.name] = row[i]
                 return record
 
-    def update_portfolio_stock(self, portfolio_stock_id: int, data: PortfolioStockUpdateIn, account_id: str) -> PortfolioStockOut:
-        with pool.connection () as conn:
-            with conn.cursor() as cur:
-                params = [
-                    data.num_shares,
-                    data.cost_basis,
-                    portfolio_stock_id,
-                    account_id,
-                ]
-                cur.execute(
-                    """
-                    UPDATE portfolio_stocks
-                    SET num_shares = %s
-                        , cost_basis = %s
-                    WHERE ID = %s
-                    AND account_id = %s
-                    RETURNING id, account_id, symbol, num_shares, cost_basis
-                    """,
-                    params,
-                )
-                record = None
-                row = cur.fetchone()
-                if row is not None:
-                    record = {}
-                    for i, column in enumerate(cur.description):
-                        record[column.name] = row[i]
-                return record
+    # def update_portfolio_stock(self, portfolio_stock_id: int, data: PortfolioStockUpdateIn, account_id: str) -> PortfolioStockOut:
+    #     with pool.connection () as conn:
+    #         with conn.cursor() as cur:
+    #             params = [
+    #                 data.num_shares,
+    #                 data.cost_basis,
+    #                 portfolio_stock_id,
+    #                 account_id,
+    #             ]
+    #             cur.execute(
+    #                 """
+    #                 UPDATE portfolio_stocks
+    #                 SET num_shares = %s
+    #                     , cost_basis = %s
+    #                 WHERE ID = %s
+    #                 AND account_id = %s
+    #                 RETURNING id, account_id, symbol, num_shares, cost_basis
+    #                 """,
+    #                 params,
+    #             )
+    #             record = None
+    #             row = cur.fetchone()
+    #             if row is not None:
+    #                 record = {}
+    #                 for i, column in enumerate(cur.description):
+    #                     record[column.name] = row[i]
+    #             return record
 
 
     def delete_portfolio_stock(self, portfolio_stock_id: str, account_id: str) -> bool:
