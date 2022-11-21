@@ -4,11 +4,14 @@ Today, I worked on:
 
 * Implementing authentication requirements at endpoints
 * Fixing all routers and queries
+* Developing companies ACL and router
 
 
 I ensured authentication is required at each endpoint, and I troubleshooted only displaying items based on logged-in user.
 
 I fixed all routers and queries to correctly show the information being requested.
+
+I developed the ACL to obtain company information from Alphavantage, as well as the api/companies/{symbol} router.
 
 
 ## 11/18/2022
