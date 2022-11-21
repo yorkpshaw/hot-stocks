@@ -43,7 +43,10 @@ def get_all_news_items():
 
     try:
         return {
-            "": content[""]
+            "title": content["Title"],
+            "time_published": content["Time Published"],
+            "banner_image": content["Banner Image"],
+            "summary": content["Summary"],
             }
     except (KeyError, IndexError):
         return None
