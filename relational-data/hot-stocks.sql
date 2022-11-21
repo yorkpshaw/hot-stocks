@@ -15,7 +15,7 @@ CREATE TABLE accounts (
 CREATE TABLE portfolio_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
     account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
-    symbol VARCHAR(10) UNIQUE,
+    symbol VARCHAR(10),
     num_shares SMALLINT,
     cost_basis FLOAT
 );
@@ -34,28 +34,29 @@ CREATE TABLE saved_news_items (
 CREATE TABLE saved_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
     account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
-    symbol VARCHAR(10) UNIQUE,
+    symbol VARCHAR(10),
     preference BOOLEAN -- 0 = hate, 1 = heart
 );
 
 
 INSERT INTO accounts VALUES
-    (1, 'wpooh', 'wpooh@gmail.com', 'asldkj12089'),
-    (2, 'ccat', 'ccat@gmail.com', 'asd2`1897hdas'),
-    (3, 'twinky', 'twinky@gmail.com', '098adslkj18')
+    (0, 'wpooh', 'wpooh@gmail.com', 'asldkj12089'),
+    (1, 'ccat', 'ccat@gmail.com', 'asd2`1897hdas'),
+    (2, 'twinky', 'twinky@gmail.com', '098adslkj18')
 ;
 
 INSERT INTO portfolio_stocks VALUES
-    (1, 1, 'AAPL', '2', '100.00'),
-    (2, 2, 'NFLX', '3', '100.00')
+    (0, 1, 'AAPL', '2', '100.00'),
+    (1, 2, 'NFLX', '3', '100.00'),
+    (2, 2, 'AAPL', '1', '100.00')
 ;
 
 INSERT INTO saved_news_items VALUES
-    (1, 2, 'Best news article', '20201010', 'bestnews.img', 'summarysummarysummary', '1'),
-    (2, 2, 'Worst news article', '20201012', 'worstnews.img', 'summarysummarysummary', '0')
+    (0, 2, 'Best news article', '20201010', 'bestnews.img', 'summarysummarysummary', '1'),
+    (1, 2, 'Worst news article', '20201012', 'worstnews.img', 'summarysummarysummary', '0')
 ;
 
 INSERT INTO saved_stocks VALUES
-    (1, 2, 'AAPL', '0'),
-    (2, 2, 'NFLX', '1')
+    (0, 2, 'AAPL', '0'),
+    (1, 2, 'NFLX', '1')
 ;
