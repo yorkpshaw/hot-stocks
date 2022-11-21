@@ -3,7 +3,7 @@ from typing import List
 
 from authenticator import authenticator
 from queries.portfolio_stocks import (
-    PortfolioStockUpdateIn,
+    # PortfolioStockUpdateIn,
     PortfolioStockIn,
     PortfolioStockOut,
     PortfolioStocksOut,

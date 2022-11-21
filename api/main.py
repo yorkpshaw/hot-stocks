@@ -21,7 +21,6 @@ app.add_middleware(
 
 app.include_router(authenticator.router)
 app.include_router(accounts.router)
-# app.include_router(users.router)
 app.include_router(portfolio_stocks.router)
 app.include_router(saved_items.router)
 app.include_router(saved_news_items.router)
