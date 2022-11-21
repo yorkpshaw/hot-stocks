@@ -14,7 +14,7 @@ router = APIRouter()
 
 @router.get("/api/portfolio_stocks", response_model = PortfolioStocksOut)
 def get_all_portfolio_stocks(
-    account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
+    # account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     account_id: int,
     queries: PortfolioStockQueries = Depends()
     ):
