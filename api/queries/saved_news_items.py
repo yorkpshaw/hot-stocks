@@ -3,7 +3,6 @@ from queries.pool import pool
 
 
 class SavedNewsItemIn(BaseModel):
-    account_id: int
     title: str
     news_url: str
     time_published: str
@@ -28,16 +27,16 @@ class SavedNewsItemsOut(BaseModel):
 
 
 class SavedNewsItemQueries:
-    def get_all_saved_news_items(self, account_id: int) -> SavedNewsItemsOut:
+    def get_all_saved_news_items(self, account_id: str) -> SavedNewsItemsOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT id, title, news_url, time_published, banner_image, summary, preference
+                    SELECT id, account_id, title, news_url, time_published, banner_image, summary, preference
                     FROM saved_news_items
                     WHERE account_id = %s
                     """,
-                    account_id
+                    [account_id]
                 )
                 results = []
                 for row in cur.fetchall():
@@ -47,7 +46,7 @@ class SavedNewsItemQueries:
                     results.append(record)
                 return results
 
-    def create_saved_news_item(self, data: SavedNewsItemIn, account_id: int) -> SavedNewsItemOut:
+    def create_saved_news_item(self, data: SavedNewsItemIn, account_id: str) -> SavedNewsItemOut:
         with pool.connection () as conn:
             with conn.cursor() as cur:
                 params = [
@@ -56,16 +55,18 @@ class SavedNewsItemQueries:
                     data.news_url,
                     data.time_published,
                     data.banner_image,
-                    data.summary
+                    data.summary,
+                    data.preference
                 ]
                 cur.execute(
                     """
                     INSERT INTO saved_news_items (account_id, title, news_url, time_published, banner_image, summary, preference)
-                    VALUES (%s, %s, %s, %s, %s)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s)
                     RETURNING id, account_id, title, news_url, time_published, banner_image, summary, preference
                     """,
                     params,
                 )
+
                 record = None
                 row = cur.fetchone()
                 if row is not None:
@@ -74,13 +75,19 @@ class SavedNewsItemQueries:
                         record[column.name] = row[i]
                 return record
 
-    def delete_saved_news_item(self, news_item_id: int) -> bool:
+
+    def delete_saved_news_item(self, news_item_id: int, account_id: str) -> bool:
         with pool.connection () as conn:
             with conn.cursor() as cur:
+                params = [
+                    news_item_id,
+                    account_id,
+                ]
                 cur.execute(
                     """
                     DELETE FROM saved_news_items
-                    WHERE ID = (%s)
+                    WHERE ID = %s
+                    AND account_id = %s
                     """,
-                    news_item_id,
+                    params,
                 )

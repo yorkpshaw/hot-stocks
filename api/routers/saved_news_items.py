@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Response
 from pydantic import BaseModel
 
-# from authenticator import authenticator
+from authenticator import authenticator
 from queries.saved_news_items import (
     SavedNewsItemIn,
     SavedNewsItemOut,
@@ -15,28 +15,34 @@ router = APIRouter()
 
 @router.get("/api/saved_news_items", response_model=SavedNewsItemsOut)
 def get_all_saved_news_items(
-    # account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
+    account_data: dict = Depends(authenticator.get_current_account_data),
     queries: SavedNewsItemQueries = Depends()
     ):
+    account_id = account_data['id']
+
     return {
-        "news_items": queries.get_all_saved_news_items(),
+        "news_items": queries.get_all_saved_news_items(account_id),
     }
 
 
 @router.post("/api/saved_news_items/", response_model=SavedNewsItemOut)
 def create_saved_news_item(
-    # account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     news_item_in: SavedNewsItemIn,
+    account_data: dict = Depends(authenticator.get_current_account_data),
     queries: SavedNewsItemQueries = Depends()
     ):
-    return queries.create_saved_news_item(news_item_in)
+    account_id = account_data['id']
+
+    return queries.create_saved_news_item(news_item_in, account_id)
 
 
 @router.delete("/api/saved_news_items/{news_item_id}", response_model=bool)
 def delete_saved_news_item(
-    # account_id: int = Depends(authenticator.get_current_account_data)['account']['id'],
     news_item_id: int,
+    account_data: dict = Depends(authenticator.get_current_account_data),
     queries: SavedNewsItemQueries = Depends()
     ):
-    queries.delete_saved_news_item(news_item_id)
+    account_id = account_data['id']
+
+    queries.delete_saved_news_item(news_item_id, account_id)
     return True

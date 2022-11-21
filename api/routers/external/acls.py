@@ -4,6 +4,7 @@ import os
 
 ALPHAVANTAGE_API_KEY = os.environ["ALPHAVANTAGE_API_KEY"]
 
+
 class ACLs:
     def get_company(symbol):
 
@@ -19,6 +20,7 @@ class ACLs:
             }
         except (KeyError, IndexError):
             return None
+
 
     def get_stock(symbol):
 
