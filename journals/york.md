@@ -1,9 +1,15 @@
+## Tuesday, November 22
+Today, I worked on:
+
+    -
+
 ## Monday, November 21
 Today, I worked on:
 
-    - Added code for get_all_news_items ACL and polished it up with the team
+    - Added code for get_all_news_items ACL
     - Reviewing database table organization with the team
-    -
+    - Began to work on side Navbar with the team
+    - Will try to solve the issue of main page text hiding behind navbar
 
 ## Sunday, November 20
 Today, I worked on:
