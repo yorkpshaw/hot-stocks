@@ -17,7 +17,7 @@ export const accountsApi = createApi({
                 body: data,
                 method: 'post',
             }),
-            invlidatesTags: ['AccountList'],
+            invalidatesTags: ['AccountList'],
         })
     }),
 });

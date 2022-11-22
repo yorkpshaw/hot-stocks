@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import HotStocksNav from './Nav';
 
-import { AuthProvider, useToken } from "./accounts/AuthProvider";
+import { AuthProvider, useToken } from "./accounts/Auth";
 import { AccountForm } from './accounts/AccountForm';
 import { LoginForm } from './accounts/LoginForm';
 import { About } from './hot-stocks/About';
@@ -25,9 +25,11 @@ function App() {
         <HotStocksNav>
         <div className="container">
           <Routes>
-            <Route path="accounts">
-              <Route path="new" element={<AccountForm />}></Route>
-              <Route path="login" element={<LoginForm />}></Route>
+            <Route path="signup">
+              <Route path="" element={<AccountForm />}></Route>
+            </Route>
+            <Route path="login">
+              <Route path="" element={<LoginForm />}></Route>
             </Route>
             <Route path="search">
               <Route path="" element={<Search />}></Route>

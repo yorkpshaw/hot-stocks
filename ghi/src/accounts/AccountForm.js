@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useCreateAccountMutation } from '../store/accountsApi';
 import { ErrorNotification } from '../common/ErrorNotification';
+import { Copyright } from '../common/Copyright';
 import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -13,7 +14,12 @@ import Avatar from '@mui/material/Avatar';
 import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
 import { deepOrange } from '@mui/material/colors';
 import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+
+const theme = createTheme();
 
 export function AccountForm(props) {
 
@@ -37,66 +43,87 @@ export function AccountForm(props) {
     }
 
     return (
-        <>
+        <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
-                    sx={{
-                        '& > :not(style)': {
-                            marginTop: 8,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center', },
-                    }}>
-                    <Avatar sx={{ m: 1, bgcolor: deepOrange[500] }}>
-                        <LocalFireDepartmentOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign up
-                    </Typography>
-                    <ErrorNotification error={error} />
-                    <Box
-                        component="form"
-                        sx={{
-                        '& > :not(style)': { m: 1, width: '25ch' },
-                        }}
-                        noValidate
-                        autoComplete="off"
+                sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+                >
+                <Avatar sx={{ m: 1, bgcolor: deepOrange[500] }}>
+                    <LocalFireDepartmentOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Sign up
+                </Typography>
+                <ErrorNotification error={error} />
+                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="username"
+                            label="Username"
+                            value={username}
+                            onChange={e => setUsername(e.target.value)}
+                            variant="outlined"
+                            autoFocus
+                        />
+
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            variant="outlined"
+                        />
+
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="password"
+                            label="Password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            type="password"
+                            autoComplete="current-password"
+                            variant="outlined"
+                        />
+
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="confirmPassword"
+                            label="Confirm password"
+                            value={password}
+                            onChange={e => setConfirmPassword(e.target.value)}
+                            variant="outlined"
+                        />
+
+
+                    <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2, bgcolor: deepOrange[500] }}
                     >
-                    <TextField
-                        id="username"
-                        label="Username"
-                        value={username}
-                        onChange={e => setUsername(e.target.value)}
-                        variant="outlined"
-                        required />
-                    <TextField
-                        id="email"
-                        label="Email"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                        variant="outlined"
-                        required />
-                    <TextField
-                        id="password"
-                        label="Password"
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        type="password"
-                        autoComplete="current-password"
-                        variant="outlined"
-                        required />
-                    <TextField
-                        id="confirmPassword"
-                        label="Confirm password"
-                        value={password}
-                        onChange={e => setConfirmPassword(e.target.value)}
-                        variant="outlined"
-                        required />
-                    <Button variant="contained">Submit</Button>
+                    Sign up
+                    </Button>
+
                 </Box>
                 </Box>
-                </Container>
-        </>
+                <Copyright sx={{ mt: 8, mb: 4 }} />
+            </Container>
+        </ThemeProvider>
       );
 }

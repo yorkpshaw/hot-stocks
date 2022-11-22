@@ -3,9 +3,15 @@
 Today, I worked on:
 
 * Fixing sidebar nav
+* Developing Redux reducer endpoints
+* Implementing front-end authentication
 
 
 I fixed the sidebar nav, ensuring it won't overlay our components, by following these Material UI tutorials: https://www.youtube.com/watch?v=Ix1LZGBSp-E, https://www.youtube.com/watch?v=DSuJLPRsdZQ&list=PL4cUxeGkcC9gjxLvV4VEkZ6H6H4yWuS58&index=12. I also linked each element of the sidebar nav to its corresponding url and cleaned up the map code within the sidebar (that which displays each page name).
+
+I developed the companiesApi and stocksApi reducer endpoints given a stock symbol. With the team, we developed the newsItemsApi and savedItemsApi reducer endpoints.
+
+I began implentation of front-end authentication per Learn.
 
 
 ## 11/21/2022
