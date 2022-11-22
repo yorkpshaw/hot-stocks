@@ -36,10 +36,10 @@ def create_or_update_portfolio_stock(
 
     return queries.create_or_update_portfolio_stock(portfolio_stock_in, account_id)
 
-@router.put(
-    "/api/portfolio_stocks/{portfolio_stock_id}/",
-    response_model=PortfolioStockOut
-)
+# @router.put(
+#     "/api/portfolio_stocks/{portfolio_stock_id}/",
+#     response_model=PortfolioStockOut
+# )
 
 # def update_portfolio_stock(
 #     portfolio_stock_id: int,

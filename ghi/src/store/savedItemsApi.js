@@ -6,7 +6,7 @@ export const savedItemsApi = createApi({
         baseUrl: process.env.API_SERVICE,
     }),
     endpoints: builder => ({
-        getsavedItems: builder.query({
+        getSavedItems: builder.query({
             query: () => '/api/saved_items/',
         }),
     }),
