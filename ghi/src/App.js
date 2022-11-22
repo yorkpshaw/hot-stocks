@@ -15,7 +15,7 @@ import { Search } from './hot-stocks/Search';
 function App() {
   return (
     <BrowserRouter>
-      <HotStocksNav component={<Explore />} />
+      <HotStocksNav>
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -59,6 +59,7 @@ function App() {
               />
         </Routes>
       </div>
+      </HotStocksNav>
     </BrowserRouter>
   );
 }
