@@ -2,7 +2,7 @@
 Today, I worked on:
 
     -Developing reducer endpoints for createOrUpdateSavedStock, deleteSavedStock
-    -Developing reducer endpoints for createOrUpdateSavedNewsItem, deleteSavedNewsItem
+    -Developing reducer endpoints for createOrUpdateSavedNewsItem, deleteSavedNewsItemsgit
 
 ## Monday, November 21
 Today, I worked on:

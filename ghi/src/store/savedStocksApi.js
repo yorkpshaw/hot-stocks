@@ -32,6 +32,7 @@ export const savedStocksApi = createApi({
                 body: data,
                 method: 'delete',
             }),
+            invalidatesTags: ['SavedNewsItems'],
         }),
     }),
 });
