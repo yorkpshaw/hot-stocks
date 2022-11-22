@@ -29,7 +29,7 @@ const upper_data = [
 ];
 
 const lower_data = [
-  { name: "Logout", icon: <LogoutOutlinedIcon />, link: "/logout" },
+  { name: "Logout", icon: <LogoutOutlinedIcon />, link: "/accounts/login" },
   { name: "About", icon: <HelpOutlineOutlinedIcon />, link: "/about" },
 ];
 
