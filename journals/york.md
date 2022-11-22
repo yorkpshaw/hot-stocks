@@ -1,3 +1,9 @@
+## Tuesday, November 22
+Today, I worked on:
+
+    -Developing reducer endpoints for createOrUpdateSavedStock, deleteSavedStock
+    -Developing reducer endpoints for createOrUpdateSavedNewsItem, deleteSavedNewsItem
+
 ## Monday, November 21
 Today, I worked on:
 
