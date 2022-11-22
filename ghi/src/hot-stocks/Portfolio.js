@@ -1,27 +1,31 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useGetPortfolioStocksQuery } from '../store/portfolioStocksApi';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
 
 
 export function Portfolio(props) {
 
-    const [portfolioStocks, setPortfolio] = useState([]);
+    const { data, error, isLoading } = useGetPortfolioStocksQuery;
 
-    useEffect(() => {
-        const getPortfolio = async () => {
-            const url = `http://localhost:8000/api/portfolio_stocks`;
-            const response = await fetch(url);
-            console.log(response);
-            if (response.ok) {
-                const data = await response.json();
-                setPortfolio(data);
-            }
-        }
-        getPortfolio();
-    }, [setPortfolio]);
+    if (isLoading) {
+        return (
+            <CircularProgress color="inherit" />
+        )
+    }
 
     return (
         <div>
-            hello
+            <Alert variant="outlined" severity="error">
+                {error}
+            </Alert>
+            <div>
+                {data.portfolioStocks.map(portfolioStock => {
+                    <p key={portfolioStock.id}>
+                        {portfolioStock.symbol}
+                    </p>
+                })}
+            </div>
         </div>
       );
 }
