@@ -1,3 +1,11 @@
+
+
+
+## November 21, 2022
+
+Today, I was sick with the flu :(
+
+
 ## November 18, 2022
 
 Today, I worked on:
