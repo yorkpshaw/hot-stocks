@@ -22,10 +22,10 @@ import { Link } from "react-router-dom";
 const drawerWidth = 240;
 
 const upper_data = [
-  { name: "Explore", icon: <LocalFireDepartmentOutlinedIcon/>, link: "/explore" },
-  { name: "Search", icon: <SearchOutlinedIcon />, link: "/search"  },
-  { name: "Saved", icon: <TurnedInNotOutlinedIcon />, link: "/saved"  },
-  { name: "Portfolio", icon: <WorkOutlineOutlinedIcon />, link: "/portfolio"  },
+  { name: "Explore", icon: <LocalFireDepartmentOutlinedIcon />, link: "/explore" },
+  { name: "Search", icon: <SearchOutlinedIcon />, link: "/search" },
+  { name: "Saved", icon: <TurnedInNotOutlinedIcon />, link: "/saved" },
+  { name: "Portfolio", icon: <WorkOutlineOutlinedIcon />, link: "/portfolio" },
 ];
 
 const lower_data = [
@@ -49,43 +49,43 @@ export default function HotStocksNav({ children }) {
 
   return (
     <>
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar
-      position="fixed"
-      sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-      >
-      </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+        >
+        </AppBar>
+        <Drawer
+          sx={{
             width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
-        <Toolbar />
-        <Divider />
-        <List>
-              {getList(upper_data)}
-        </List>
-        <Divider />
-        <List>
-              {getList(lower_data)}
-        </List>
-      </Drawer>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-        <Toolbar />
-        { children }
+            flexShrink: 0,
+            '& .MuiDrawer-paper': {
+              width: drawerWidth,
+              boxSizing: 'border-box',
+            },
+          }}
+          variant="permanent"
+          anchor="left"
+        >
+          <Toolbar />
+          <Divider />
+          <List>
+            {getList(upper_data)}
+          </List>
+          <Divider />
+          <List>
+            {getList(lower_data)}
+          </List>
+        </Drawer>
+        <Box
+          component="main"
+          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        >
+          <Toolbar />
+          {children}
+        </Box>
       </Box>
-    </Box>
     </>
   );
 }

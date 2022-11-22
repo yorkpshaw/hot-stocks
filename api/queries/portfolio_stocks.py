@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 from typing import List
-
 from queries.pool import pool
 
 # class PortfolioStockUpdateIn(BaseModel):
@@ -12,7 +11,6 @@ class PortfolioStockIn(BaseModel):
     num_shares: int
     cost_basis: int
 
-
 class PortfolioStockOut(BaseModel):
     id: int
     account_id: int
@@ -20,10 +18,8 @@ class PortfolioStockOut(BaseModel):
     num_shares: int
     cost_basis: int
 
-
 class PortfolioStocksOut(BaseModel):
     portfolio_stocks: List[PortfolioStockOut]
-
 
 class PortfolioStockQueries:
 
