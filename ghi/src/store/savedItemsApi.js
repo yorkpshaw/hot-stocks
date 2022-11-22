@@ -12,4 +12,4 @@ export const savedItemsApi = createApi({
     }),
 });
 
-export const { useGetsavedItemsQuery } = savedItemsApi;
+export const { useGetSavedItemsQuery } = savedItemsApi;
