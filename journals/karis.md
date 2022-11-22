@@ -3,9 +3,15 @@
 Today, I worked on:
 
 * Developing create or update logic for portfolio stocks
+* Developing nav with team
+* Implementing beginnings of React Redux
 
 
 I adjusted the router and query for create_portfolio_stock to be create_or_update_portfolio stock, and I adjusted the code, accordingly.
+
+I worked on developing our sidebar nav using Material UI with team.
+
+I followed the exploration to begin implementation of React Redux.
 
 
 ## 11/20/2022
