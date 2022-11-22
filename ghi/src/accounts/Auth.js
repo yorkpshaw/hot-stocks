@@ -84,7 +84,8 @@ export function useToken() {
   }
 
   async function login(username, password) {
-    const url = `${process.env.API_SERVICE}/login/`;
+    const url = `https://localhost:8000/login/`;
+    console.log(url)
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);
