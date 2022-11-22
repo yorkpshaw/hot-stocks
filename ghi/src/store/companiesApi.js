@@ -1,15 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const stocksApi = createApi({
-    reducerPath: 'stocks',
+export const companiesApi = createApi({
+    reducerPath: 'companies',
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.API_SERVICE,
     }),
     endpoints: builder => ({
-        getStock: builder.query({
-            query: () => '/api/stocks/',
+        getCompany: builder.query({
+            query: () => '/api/companies/',
         }),
     }),
 });
 
-export const { useGetStockQuery } = stocksApi;
+export const { useGetCompanyQuery } = companiesApi;

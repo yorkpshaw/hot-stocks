@@ -15,15 +15,28 @@ import { Search } from './hot-stocks/Search';
 function App() {
   return (
     <BrowserRouter>
-      <HotStocksNav />
+      <HotStocksNav>
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="accounts">
             <Route path="new" element={<AccountForm />}></Route>
+            <Route path="login" element={<LoginForm />}></Route>
           </Route>
           <Route path="search">
             <Route path="" element={<Search />}></Route>
+          </Route>
+          <Route path="saved">
+            <Route path="" element={<Saved />}></Route>
+          </Route>
+          <Route path="explore">
+            <Route path="" element={<Explore />}></Route>
+          </Route>
+          <Route path="portfolio">
+            <Route path="" element={<Portfolio />}></Route>
+          </Route>
+          <Route path="about">
+            <Route path="" element={<About />}></Route>
           </Route>
           <Route
             path="*"
