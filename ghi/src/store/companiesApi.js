@@ -7,7 +7,7 @@ export const companiesApi = createApi({
     }),
     endpoints: builder => ({
         getCompany: builder.query({
-            query: () => '/api/companies/',
+            query: (symbol) => `/api/companies/${symbol}/`,
         }),
     }),
 });

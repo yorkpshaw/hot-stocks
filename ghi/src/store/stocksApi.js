@@ -7,7 +7,7 @@ export const stocksApi = createApi({
     }),
     endpoints: builder => ({
         getStock: builder.query({
-            query: () => '/api/stocks/',
+            query: (symbol) => `/api/stocks/${symbol}/`,
         }),
     }),
 });
