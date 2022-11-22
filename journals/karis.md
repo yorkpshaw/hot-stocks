@@ -1,11 +1,27 @@
+## 11/22/2022
+
+Today, I worked on:
+
+* Fixing sidebar nav
+
+
+I fixed the sidebar nav, ensuring it won't overlay our components, by following these Material UI tutorials: https://www.youtube.com/watch?v=Ix1LZGBSp-E, https://www.youtube.com/watch?v=DSuJLPRsdZQ&list=PL4cUxeGkcC9gjxLvV4VEkZ6H6H4yWuS58&index=12. I also linked each element of the sidebar nav to its corresponding url and cleaned up the map code within the sidebar (that which displays each page name).
+
+
 ## 11/21/2022
 
 Today, I worked on:
 
 * Developing create or update logic for portfolio stocks
+* Developing nav with team
+* Implementing beginnings of React Redux
 
 
 I adjusted the router and query for create_portfolio_stock to be create_or_update_portfolio stock, and I adjusted the code, accordingly.
+
+I worked on developing our sidebar nav using Material UI with team.
+
+I followed the exploration to begin implementation of React Redux.
 
 
 ## 11/20/2022
