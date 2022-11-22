@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 const drawerWidth = 240;
 
 const upper_data = [
-  { name: "Explore", icon: <LocalFireDepartmentOutlinedIcon />, link: "/explore" },
+  { name: "Explore", icon: <LocalFireDepartmentOutlinedIcon />, link: "/" },
   { name: "Search", icon: <SearchOutlinedIcon />, link: "/search" },
   { name: "Saved", icon: <TurnedInNotOutlinedIcon />, link: "/saved" },
   { name: "Portfolio", icon: <WorkOutlineOutlinedIcon />, link: "/portfolio" },

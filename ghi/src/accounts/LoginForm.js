@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { useCreateAccountMutation } from '../store/accountsApi';
+import { useToken } from "../accounts/AuthProvider";
+
 import { ErrorNotification } from '../common/ErrorNotification';
 import { useNavigate } from 'react-router-dom';
 
@@ -42,6 +44,7 @@ export function LoginForm() {
   const [password, setPassword] = useState('');
   const [createAccount, result] = useCreateAccountMutation();
   const [error, setError] = useState('');
+  const [token, login] = useToken();
 
   async function handleSubmit(e) {
     e.preventDefault();
