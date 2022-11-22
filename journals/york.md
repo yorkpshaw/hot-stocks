@@ -1,8 +1,9 @@
 ## Monday, November 21
 Today, I worked on:
 
-    - Added code for get_all_news_items ACL
+    - Added code for get_all_news_items ACL and polished it up with the team
     - Reviewing database table organization with the team
+    -
 
 ## Sunday, November 20
 Today, I worked on:
