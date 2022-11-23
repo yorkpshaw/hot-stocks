@@ -35,7 +35,7 @@ export function Search() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="s">
+      <Container component="main" maxWidth="sm">
         <CssBaseline />
         <Box
           sx={{
