@@ -6,7 +6,7 @@ export function Explore(props) {
   return (
     <>
       <div>
-        exploreexploreexploreexploreexploreexploreexplore
+        explore explore explore this is working now
       </div>
       <div>
         <ContentCard />
