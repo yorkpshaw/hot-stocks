@@ -9,7 +9,7 @@ import { About } from './hot-stocks/About';
 import { Explore } from './hot-stocks/Explore';
 import { Portfolio } from './hot-stocks/Portfolio';
 import { Saved } from './hot-stocks/Saved';
-import { Search } from './hot-stocks/Search';
+import { SearchList } from './hot-stocks/SearchList';
 
 function GetToken() {
   // Get token from JWT cookie (if already logged in)
@@ -32,7 +32,7 @@ function App() {
               <Route path="" element={<LoginForm />}></Route>
             </Route>
             <Route path="search">
-              <Route path="" element={<Search />}></Route>
+              <Route path="" element={<SearchList />}></Route>
             </Route>
             <Route path="saved">
               <Route path="" element={<Saved />}></Route>

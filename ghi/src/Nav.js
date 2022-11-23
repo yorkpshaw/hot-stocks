@@ -5,10 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -18,7 +16,7 @@ import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import { Link } from "react-router-dom";
-import { useToken } from "./accounts/Auth";
+import { useToken, useAuthContext } from "./accounts/Auth";
 
 const drawerWidth = 240;
 
@@ -38,12 +36,15 @@ const lower_data = [
 
 export default function HotStocksNav({ children }) {
 
-  const [token, logout] = useToken();
+  const [token, login, logout] = useToken();
 
   async function handleClick(e) {
     e.preventDefault();
     logout();
+    console.log('logged out maybe?');
   }
+
+  console.log(token);
 
   const getList = (data) => (
     <div style={{ width: 250 }}>

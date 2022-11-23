@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 import { CssBaseline } from '@mui/material';
 import { deepOrange } from '@mui/material/colors';
-import { ContentCard } from '../common/ContentCard';
+import { CardList } from '../common/CardList';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
@@ -20,7 +20,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const theme = createTheme();
 
-export function Search() {
+export function SearchList() {
 
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
@@ -32,6 +32,7 @@ export function Search() {
     console.log('submitted');
   }
 
+  const cards_test = [1,2,3,4,5,6];
 
   return (
     <ThemeProvider theme={theme}>
@@ -59,14 +60,11 @@ export function Search() {
             <IconButton
               type="submit"
               variant="contained"
-              sx={{ mt: 3, mb: 2, ml: 2.5, bgcolor: deepOrange[500] }}>
+              size="large"
+              sx={{ mt: 2.5, mb: 2, ml: 2.5, bgcolor: deepOrange[500] }}>
               <SearchOutlinedIcon />
             </IconButton>
-            <Grid container>
-              <Grid item>
-                <ContentCard />
-              </Grid>
-            </Grid>
+            <CardList cards={cards_test}/>
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />

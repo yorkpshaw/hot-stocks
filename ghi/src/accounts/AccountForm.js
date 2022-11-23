@@ -14,8 +14,6 @@ import Avatar from '@mui/material/Avatar';
 import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
 import { deepOrange } from '@mui/material/colors';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
