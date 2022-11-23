@@ -3,8 +3,11 @@
 Today, I worked on:
 
 * Developing Search component
+* Implementing front-end auth
 
 I completed developing the design the Search component, abstracting away all potentially reusable portions of code into their own components.
+
+I completed implementing login/logout front-end functionality. Woot woot!
 
 
 ## 11/22/2022

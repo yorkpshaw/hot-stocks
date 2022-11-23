@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useCreateAccountMutation } from '../store/accountsApi';
 import { ErrorNotification } from '../common/ErrorNotification';
+import { useToken } from "../accounts/Auth";
 import { Copyright } from '../common/Copyright';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,18 +27,13 @@ export function AccountForm(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [createAccount, result] = useCreateAccountMutation();
+    // const [createAccount, result] = useCreateAccountMutation();
     const [error, setError] = useState('');
+    const [token, login, logout, signup, update] = useToken();
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createAccount({username, email, password});
-    }
-
-    if (result.isSuccess) {
-        navigate("/portfolio");
-    } else if (result.isError) {
-        setError(result.error);
+        signup(username, email, password);
     }
 
     return (
@@ -103,8 +99,9 @@ export function AccountForm(props) {
                             fullWidth
                             id="confirmPassword"
                             label="Confirm password"
-                            value={password}
+                            value={confirmPassword}
                             onChange={e => setConfirmPassword(e.target.value)}
+                            type="password"
                             variant="outlined"
                         />
 
