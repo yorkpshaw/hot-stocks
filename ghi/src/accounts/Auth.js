@@ -7,14 +7,14 @@ export function getToken() {
 }
 
 export async function getTokenInternal() {
-  const url = `http://localhost:8000/token/`;
+  const url = `http://localhost:8000/token`;
   try {
     const response = await fetch(url, {
       credentials: "include",
     });
     if (response.ok) {
       const data = await response.json();
-      internalToken = data.token;
+      internalToken = data.access_token;
       return internalToken;
     }
   } catch (e) {}
@@ -74,8 +74,6 @@ export function useToken() {
   }, [setToken, token]);
 
   async function logout() {
-    console.log('trying to logout');
-    console.log(token);
     if (token) {
       const url = `http://localhost:8000/token/`;
       await fetch(url, {
@@ -84,7 +82,6 @@ export function useToken() {
       });
       internalToken = null;
       setToken(null);
-      console.log('logged out for sure');
       navigate("/login");
     }
   }
@@ -102,7 +99,6 @@ export function useToken() {
     if (response.ok) {
       const token = await getTokenInternal();
       setToken(token);
-      console.log(token);
       navigate("/");
     }
     let error = await response.json();

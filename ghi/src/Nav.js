@@ -41,7 +41,6 @@ export default function HotStocksNav({ children }) {
   async function handleClick(e) {
     e.preventDefault();
     logout();
-    console.log('logged out maybe?');
   }
 
   console.log(token);

@@ -7,6 +7,11 @@ import Typography from '@mui/material/Typography';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 
+async function handleClick(e) {
+  e.preventDefault();
+  console.log('clicked');
+}
+
 
 export function SimpleCard() {
   return (
@@ -25,8 +30,8 @@ export function SimpleCard() {
           </Typography>
         </CardContent>
         <CardActions>
-          <IconButton size="small"><TurnedInNotOutlinedIcon /></IconButton>
-          <IconButton size="small"><WorkOutlineOutlinedIcon /></IconButton>
+          <IconButton onClick={handleClick} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+          <IconButton onClick={handleClick} size="small"><WorkOutlineOutlinedIcon /></IconButton>
         </CardActions>
       </Card>
   );
