@@ -32,7 +32,7 @@ export function LoginForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    login();
+    login(username, password);
   }
 
 
@@ -82,7 +82,7 @@ export function LoginForm() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2, bgcolor: deepOrange[500] }}>
-              Sign In
+              Log In
             </Button>
             <Grid container>
               <Grid item>

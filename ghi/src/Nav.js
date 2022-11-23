@@ -18,6 +18,7 @@ import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import { Link } from "react-router-dom";
+import { useToken } from "./accounts/Auth";
 
 const drawerWidth = 240;
 
@@ -29,17 +30,25 @@ const upper_data = [
 ];
 
 const lower_data = [
-  { name: "Logout", icon: <LogoutOutlinedIcon />, link: "/login" },
+  { name: "Logout", icon: <LogoutOutlinedIcon />, link: "/login", click: true },
   { name: "About", icon: <HelpOutlineOutlinedIcon />, link: "/about" },
 ];
 
 
+
 export default function HotStocksNav({ children }) {
+
+  const [token, logout] = useToken();
+
+  async function handleClick(e) {
+    e.preventDefault();
+    logout();
+  }
 
   const getList = (data) => (
     <div style={{ width: 250 }}>
       {data.map((item, index) => (
-        <ListItem button key={index} component={Link} to={item.link}>
+        <ListItem button onClick={item.click ? handleClick : null} key={index} component={Link} to={item.link}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.name} />
         </ListItem>
