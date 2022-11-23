@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useCreateAccountMutation } from '../store/accountsApi';
 import { ErrorNotification } from '../common/ErrorNotification';
 import { useToken } from "../accounts/Auth";
 import { Copyright } from '../common/Copyright';
@@ -17,37 +16,51 @@ import { deepOrange } from '@mui/material/colors';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useSignUpMutation } from '../store/apiSlice';
+import { preventDefault } from '../common/utils';
+import { updateField } from '../slices/accountSlice';
+
 
 const theme = createTheme();
 
 export function AccountForm(props) {
 
-    const navigate = useNavigate();
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    // const [createAccount, result] = useCreateAccountMutation();
-    const [error, setError] = useState('');
-    const [token, login, logout, signup, update] = useToken();
+    // const navigate = useNavigate();
+    // const [username, setUsername] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [confirmPassword, setConfirmPassword] = useState('');
+    // // const [createAccount, result] = useCreateAccountMutation();
+    // const [error, setError] = useState('');
+    // const [token, login, logout, signup, update] = useToken();
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        signup(username, email, password);
-    }
+    // async function handleSubmit(e) {
+    //     e.preventDefault();
+    //     signup(username, email, password);
+    // }
+
+    const dispatch = useDispatch();
+    const {username, email, password } = useSelector(state => state.account);
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [signUp, { error, isLoading: signUpLoading }] = useSignUpMutation();
+    const field = useCallback(
+      e => dispatch(updateField({field: e.target.name, value: e.target.value})),
+      [dispatch],
+    );
 
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
-                sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-                >
+                    sx={{
+                        marginTop: 8,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}>
                 <Avatar sx={{ m: 1, bgcolor: deepOrange[500] }}>
                     <LocalFireDepartmentOutlinedIcon />
                 </Avatar>
@@ -55,16 +68,18 @@ export function AccountForm(props) {
                     Sign up
                 </Typography>
                 <ErrorNotification error={error} />
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-
+                <Box
+                    component="form"
+                    onSubmit={preventDefault(signUp, () => ({ username, email, password }))}
+                    noValidate sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
                             required
                             fullWidth
-                            id="username"
+                            name="username"
                             label="Username"
                             value={username}
-                            onChange={e => setUsername(e.target.value)}
+                            onChange={field}
                             variant="outlined"
                             autoFocus
                         />
@@ -73,10 +88,10 @@ export function AccountForm(props) {
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
+                            name="email"
                             label="Email"
                             value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            onChange={field}
                             variant="outlined"
                         />
 
@@ -84,10 +99,10 @@ export function AccountForm(props) {
                             margin="normal"
                             required
                             fullWidth
-                            id="password"
+                            name="password"
                             label="Password"
                             value={password}
-                            onChange={e => setPassword(e.target.value)}
+                            onChange={field}
                             type="password"
                             autoComplete="current-password"
                             variant="outlined"
@@ -97,7 +112,7 @@ export function AccountForm(props) {
                             margin="normal"
                             required
                             fullWidth
-                            id="confirmPassword"
+                            name="confirmPassword"
                             label="Confirm password"
                             value={confirmPassword}
                             onChange={e => setConfirmPassword(e.target.value)}
