@@ -1,4 +1,9 @@
+## November 22, 2022
 
+Today, I worked on:
+
+* Develop Get_stock ACL
+* Develop the Redux mutations for PortfolioStockApi.js
 
 
 ## November 21, 2022
