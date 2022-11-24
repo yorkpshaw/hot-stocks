@@ -1,13 +1,13 @@
+## Wednesday, November 23
+Today, I worked on:
+
+    - Began development on design for the saved and about components
+
 ## Tuesday, November 22
 Today, I worked on:
 
-    -
-
-## Tuesday, November 22
-Today, I worked on:
-
-    -Developing reducer endpoints for createOrUpdateSavedStock, deleteSavedStock
-    -Developing reducer endpoints for createOrUpdateSavedNewsItem, deleteSavedNewsItemsgit
+    - Developing reducer endpoints for createOrUpdateSavedStock, deleteSavedStock
+    - Developing reducer endpoints for createOrUpdateSavedNewsItem, deleteSavedNewsItemsgit
 
 ## Monday, November 21
 Today, I worked on:
