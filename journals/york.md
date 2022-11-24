@@ -1,7 +1,7 @@
-## Tuesday, November 22
+## Wednesday, November 23
 Today, I worked on:
 
-    -
+    - Began work on the design of the saved and about components on the front-end
 
 ## Tuesday, November 22
 Today, I worked on:
