@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { ErrorNotification } from '../common/ErrorNotification';
-import { useToken } from "../accounts/Auth";
 import { Copyright } from '../common/Copyright';
-import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -26,20 +24,6 @@ import { updateField } from '../slices/accountSlice';
 const theme = createTheme();
 
 export function AccountForm(props) {
-
-    // const navigate = useNavigate();
-    // const [username, setUsername] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [confirmPassword, setConfirmPassword] = useState('');
-    // // const [createAccount, result] = useCreateAccountMutation();
-    // const [error, setError] = useState('');
-    // const [token, login, logout, signup, update] = useToken();
-
-    // async function handleSubmit(e) {
-    //     e.preventDefault();
-    //     signup(username, email, password);
-    // }
 
     const dispatch = useDispatch();
     const {username, email, password } = useSelector(state => state.account);
@@ -70,6 +54,7 @@ export function AccountForm(props) {
                 <ErrorNotification error={error} />
                 <Box
                     component="form"
+                    method="post"
                     onSubmit={preventDefault(signUp, () => ({ username, email, password }))}
                     noValidate sx={{ mt: 1 }}>
                         <TextField

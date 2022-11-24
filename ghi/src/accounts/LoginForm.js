@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { useToken } from "../accounts/Auth";
 
 import { ErrorNotification } from '../common/ErrorNotification';
 import { Copyright } from '../common/Copyright';
@@ -30,17 +28,6 @@ const theme = createTheme();
 
 export function LoginForm() {
 
-  // const navigate = useNavigate();
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [error, setError] = useState('');
-  // const [token, login] = useToken();
-
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-  //   login(username, password);
-  // }
-
   const dispatch = useDispatch();
   const { username, password } = useSelector(state => state.account);
   const [logIn, { error, isLoading: logInLoading }] = useLogInMutation();
@@ -69,7 +56,11 @@ export function LoginForm() {
             Log in
           </Typography>
           <ErrorNotification error={error} />
-          <Box component="form" onSubmit={preventDefault(logIn, target)} noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            method="post"
+            onSubmit={preventDefault(logIn, target)}
+            noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required

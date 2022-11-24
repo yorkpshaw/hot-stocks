@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import HotStocksNav from './Nav';
 
-import { AuthProvider, useToken } from "./accounts/Auth";
 import { AccountForm } from './accounts/AccountForm';
 import { LoginForm } from './accounts/LoginForm';
 import { About } from './hot-stocks/About';
@@ -11,17 +10,10 @@ import { Portfolio } from './hot-stocks/Portfolio';
 import { Saved } from './hot-stocks/Saved';
 import { SearchList } from './hot-stocks/SearchList';
 
-function GetToken() {
-  // Get token from JWT cookie (if already logged in)
-  useToken();
-  return null
-}
 
 function App() {
   return (
-    <AuthProvider>
       <BrowserRouter>
-        <GetToken />
         <HotStocksNav>
         <div className="container">
           <Routes>
@@ -69,7 +61,6 @@ function App() {
         </div>
       </HotStocksNav>
       </BrowserRouter >
-    </AuthProvider>
   );
 }
 

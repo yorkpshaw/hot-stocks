@@ -16,7 +16,11 @@ import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import { Link } from "react-router-dom";
-import { useToken, useAuthContext } from "./accounts/Auth";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGetTokenQuery, useLogOutMutation } from './store/apiSlice';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const drawerWidth = 240;
 
@@ -28,27 +32,37 @@ const upper_data = [
 ];
 
 const lower_data = [
-  { name: "Logout", icon: <LogoutOutlinedIcon />, link: "/login", click: true },
   { name: "About", icon: <HelpOutlineOutlinedIcon />, link: "/about" },
 ];
 
 
+function LogoutListItem() {
+  const navigate = useNavigate();
+  const [logOut, { data }] = useLogOutMutation();
+
+  useEffect(() => {
+    console.log(data);
+    if (data) {
+      navigate('/login');
+    }
+  }, [data, navigate]);
+
+  return (
+    <ListItem button onClick={logOut}>
+      <ListItemIcon><LogoutOutlinedIcon /></ListItemIcon>
+      <ListItemText primary='Logout' />
+    </ListItem>
+  );
+}
 
 export default function HotStocksNav({ children }) {
 
-  const [token, login, logout] = useToken();
-
-  async function handleClick(e) {
-    e.preventDefault();
-    logout();
-  }
-
-  console.log(token);
+  const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
 
   const getList = (data) => (
     <div style={{ width: 250 }}>
       {data.map((item, index) => (
-        <ListItem button onClick={item.click ? handleClick : null} key={index} component={Link} to={item.link}>
+        <ListItem button key={index} component={Link} to={item.link}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.name} />
         </ListItem>
@@ -85,6 +99,7 @@ export default function HotStocksNav({ children }) {
           <Divider />
           <List>
             {getList(lower_data)}
+            <LogoutListItem />
           </List>
         </Drawer>
         <Box

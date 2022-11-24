@@ -13,9 +13,6 @@ export const accountSlice = createSlice({
         updateField: (state, action) => {
             state[action.payload.field] = action.payload.value;
         },
-        showModal: (state, action) => {
-            state.show = action.payload;
-        },
         clearForm: () => {
             return initialState;
         }

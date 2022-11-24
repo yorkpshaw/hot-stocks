@@ -52,6 +52,7 @@ export const apiSlice = createApi({
             credentials: 'include',
           };
         },
+        providesTags: ['Account'],
         invalidatesTags: result => {
           return (result && ['Token']) || [];
         },
