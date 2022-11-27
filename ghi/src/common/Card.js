@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import './Card.css';
 
@@ -14,6 +14,10 @@ function Card() {
       url: 'https://image.cnbcfm.com/api/v1/image/107074440-1668701675872-GettyImages-1241224834r.jpg?v=1669386690&w=600&h=630&ffmt=webp&vtcrop=y'
     }
   ]);
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <div className="cardContainer">

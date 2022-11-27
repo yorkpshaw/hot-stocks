@@ -11,8 +11,8 @@ export function Explore(props) {
       <div>
         <Header />
         <Card />
+        <SwipeButtons />
         {/* <ContentCard /> */}
-        {/* <SwipeButtons /> */}
         {/* Card */}
         {/* Buttons */}
       </div>
