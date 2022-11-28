@@ -17,20 +17,20 @@ import './SwipeButtons.css';
 function SwipeButtons() {
   return (
     <div className="swipeButtons">
-      <IconButton className="swipeButtons_repeat">
+      {/* <IconButton className="swipeButtons_repeat">
         <ReplayIcon fontSize="large" />
-      </IconButton>
+      </IconButton> */}
       <IconButton className="swipeButtons_left">
         <CloseIcon fontSize="large" />
       </IconButton>
       <IconButton className="swipeButtons_star">
         <StarIcon fontSize="large" />
       </IconButton>
-      <IconButton className="swipeButtons_ right">
+      <IconButton className="swipeButtons_right">
         <FavoriteIcon fontSize="large" />
       </IconButton>
       <IconButton className="swipeButtons_lightning">
-        <FlashOnIcon fontSize="large" />
+        <InfoIcon fontSize="large" />
       </IconButton>
     </div>
   );

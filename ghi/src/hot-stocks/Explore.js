@@ -4,12 +4,14 @@ import SwipeButtons from '../common/SwipeButtons';
 import Header from '../common/Header';
 import Card from '../common/Card';
 
+import './Explore.css';
+
 export function Explore(props) {
 
   return (
     <>
-      <div>
-        <Header />
+      <div className="explore">
+        {/* <Header /> */}
         <Card />
         <SwipeButtons />
         {/* <ContentCard /> */}

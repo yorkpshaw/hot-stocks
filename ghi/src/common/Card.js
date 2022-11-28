@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import './Card.css';
 
-
 function Card() {
   const [people, setPeople] = useState([
     {
@@ -14,13 +13,22 @@ function Card() {
       url: 'https://image.cnbcfm.com/api/v1/image/107074440-1668701675872-GettyImages-1241224834r.jpg?v=1669386690&w=600&h=630&ffmt=webp&vtcrop=y'
     }
   ]);
-
+  // Need function for when I swipe right vs left
+  /* if ____ is ok (swiped right)
+        updates the state with news item
+        (method: "post")
+      else
+        swipe left
+        (method: "delete")
+        */
   useEffect(() => {
 
   }, []);
 
   return (
     <div className="cardContainer">
+      {/* Watch Karis video, as that may help with the h1 over the container */}
+      <h1 className="title"> Why is nothing showing up? </h1>
       {people.map(person => (
         <TinderCard
           className="swipe"
