@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { useToken } from "../accounts/Auth";
 
 import { ErrorNotification } from '../common/ErrorNotification';
 import { Copyright } from '../common/Copyright';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -19,25 +18,34 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useGetTokenQuery, useLogInMutation } from '../store/apiSlice';
+import { eventTargetSelector as target, preventDefault } from '../common/utils';
+import { updateField } from '../slices/accountSlice';
+
 
 const theme = createTheme();
 
 export function LoginForm() {
 
+  const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [token, login] = useToken();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    login(username, password);
-  }
-
+  const dispatch = useDispatch();
+  const { username, password } = useSelector(state => state.account);
+  const [logIn, { error, isLoading: logInLoading }] = useLogInMutation();
+  const field = useCallback(
+    e => dispatch(updateField({field: e.target.name, value: e.target.value})),
+    [dispatch],
+  );
 
   return (
+    // TODO make it redirect to home if logged in already
     <ThemeProvider theme={theme}>
+      { tokenLoading ?
+      <></> :
+      token ?
+      "You're already logged in, silly!" :
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -55,25 +63,29 @@ export function LoginForm() {
             Log in
           </Typography>
           <ErrorNotification error={error} />
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            method="post"
+            onSubmit={preventDefault(logIn, target)}
+            noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
-              id="username"
+              name="username"
               label="Username"
               value={username}
-              onChange={e => setUsername(e.target.value)}
+              onChange={field}
               variant="outlined"
               autoFocus />
             <TextField
               margin="normal"
               required
               fullWidth
-              id="password"
+              name="password"
               label="Password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={field}
               type="password"
               autoComplete="current-password"
               variant="outlined"/>
@@ -95,6 +107,7 @@ export function LoginForm() {
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
+    }
     </ThemeProvider>
   );
 }
