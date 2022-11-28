@@ -1,7 +1,7 @@
 ## Wednesday, November 23
 Today, I worked on:
 
-    -
+    - Began development on design for the saved and about components
 
 ## Tuesday, November 22
 Today, I worked on:
