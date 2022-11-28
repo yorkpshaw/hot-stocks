@@ -1,8 +1,21 @@
+## Wednesday, November 23
+Today, I worked on:
+
+    -
+
+## Tuesday, November 22
+Today, I worked on:
+
+    - Developing reducer endpoints for createOrUpdateSavedStock, deleteSavedStock
+    - Developing reducer endpoints for createOrUpdateSavedNewsItem, deleteSavedNewsItemsgit
+
 ## Monday, November 21
 Today, I worked on:
 
     - Added code for get_all_news_items ACL
     - Reviewing database table organization with the team
+    - Began to work on side Navbar with the team
+    - Will try to solve the issue of main page text hiding behind navbar
 
 ## Sunday, November 20
 Today, I worked on:

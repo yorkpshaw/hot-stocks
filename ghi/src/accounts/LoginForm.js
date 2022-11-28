@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { useCreateAccountMutation } from '../store/accountsApi';
+
 import { ErrorNotification } from '../common/ErrorNotification';
+import { Copyright } from '../common/Copyright';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -16,46 +17,35 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useGetTokenQuery, useLogInMutation } from '../store/apiSlice';
+import { eventTargetSelector as target, preventDefault } from '../common/utils';
+import { updateField } from '../slices/accountSlice';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Hot Stocks
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const theme = createTheme();
 
 export function LoginForm() {
 
+  const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [createAccount, result] = useCreateAccountMutation();
-  const [error, setError] = useState('');
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    console.log(username, password);
-  }
-
-  if (result.isSuccess) {
-    navigate("/portfolio");
-  } else if (result.isError) {
-    setError(result.error);
-  }
+  const dispatch = useDispatch();
+  const { username, password } = useSelector(state => state.account);
+  const [logIn, { error, isLoading: logInLoading }] = useLogInMutation();
+  const field = useCallback(
+    e => dispatch(updateField({field: e.target.name, value: e.target.value})),
+    [dispatch],
+  );
 
   return (
+    // TODO make it redirect to home if logged in already
     <ThemeProvider theme={theme}>
+      { tokenLoading ?
+      <></> :
+      token ?
+      "You're already logged in, silly!" :
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -73,38 +63,42 @@ export function LoginForm() {
             Log in
           </Typography>
           <ErrorNotification error={error} />
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            method="post"
+            onSubmit={preventDefault(logIn, target)}
+            noValidate sx={{ mt: 1 }}>
             <TextField
-              id="username"
+              margin="normal"
+              required
+              fullWidth
+              name="username"
               label="Username"
               value={username}
-              onChange={e => setUsername(e.target.value)}
+              onChange={field}
               variant="outlined"
-              required />
+              autoFocus />
             <TextField
-              id="password"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
               label="Password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={field}
               type="password"
               autoComplete="current-password"
-              variant="outlined"
-              required />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+              variant="outlined"/>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: deepOrange[500] }}
-            >
-              Sign In
+              sx={{ mt: 3, mb: 2, bgcolor: deepOrange[500] }}>
+              Log In
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign up"}
                 </Link>
               </Grid>
@@ -113,6 +107,7 @@ export function LoginForm() {
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
+    }
     </ThemeProvider>
   );
 }

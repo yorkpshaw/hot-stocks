@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { useGetPortfolioStocksQuery } from '../store/portfolioStocksApi';
+import { useCreatePortfolioStockMutation, useDeletePortfolioStockMutation, useGetPortfolioStocksQuery, useUpdatePortfolioStockMutation } from '../store/portfolioStocksApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 
 
 export function Portfolio(props) {
 
-    const { data, error, isLoading } = useGetPortfolioStocksQuery;
+    const { data, error, isLoading } = useGetPortfolioStocksQuery();
+    // const [createPortfolioStock, result] = useCreatePortfolioStockMutation();
+    // const [updatePortfolioStock, result] = useUpdatePortfolioStockMutation();
+    // const [deletePortfolioStock, result] = useDeletePortfolioStockMutation();
 
     if (isLoading) {
         return (

@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import MainPage from './MainPage';
 import HotStocksNav from './Nav';
 
 import { AccountForm } from './accounts/AccountForm';
@@ -9,7 +8,7 @@ import { About } from './hot-stocks/About';
 import { Explore } from './hot-stocks/Explore';
 import { Portfolio } from './hot-stocks/Portfolio';
 import { Saved } from './hot-stocks/Saved';
-import { Search } from './hot-stocks/Search';
+import { SearchList } from './hot-stocks/SearchList';
 
 
 function App() {
@@ -18,18 +17,19 @@ function App() {
       <HotStocksNav>
         <div className="container">
           <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="accounts">
-              <Route path="new" element={<AccountForm />}></Route>
-              <Route path="login" element={<LoginForm />}></Route>
+            <Route path="signup">
+              <Route path="" element={<AccountForm />}></Route>
+            </Route>
+            <Route path="login">
+              <Route path="" element={<LoginForm />}></Route>
             </Route>
             <Route path="search">
-              <Route path="" element={<Search />}></Route>
+              <Route path="" element={<SearchList />}></Route>
             </Route>
             <Route path="saved">
               <Route path="" element={<Saved />}></Route>
             </Route>
-            <Route path="explore">
+            <Route path="/">
               <Route path="" element={<Explore />}></Route>
             </Route>
             <Route path="portfolio">
