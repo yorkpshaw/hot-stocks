@@ -1,3 +1,11 @@
+## November 27, 2002
+
+Today, I worked on:
+
+*Study Auth and RTK materials
+*Code review on auth and upcoming RTK changes
+
+
 ## November 22, 2022
 
 Today, I worked on:
