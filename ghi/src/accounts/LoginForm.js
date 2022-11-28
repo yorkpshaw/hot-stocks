@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { ErrorNotification } from '../common/ErrorNotification';
 import { Copyright } from '../common/Copyright';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import Box from '@mui/material/Box';
@@ -20,9 +19,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetTokenQuery, useLogInMutation } from '../store/apiSlice';
+import { useGetTokenQuery, useLogInMutation } from '../rtk/apiSlice';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
-import { updateField } from '../slices/accountSlice';
+import { updateField } from '../rtk/accountSlice';
+import { AccountForm } from './AccountForm';
 
 
 const theme = createTheme();
@@ -30,7 +30,6 @@ const theme = createTheme();
 export function LoginForm() {
 
   const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { username, password } = useSelector(state => state.account);
   const [logIn, { error, isLoading: logInLoading }] = useLogInMutation();
@@ -38,9 +37,13 @@ export function LoginForm() {
     e => dispatch(updateField({field: e.target.name, value: e.target.value})),
     [dispatch],
   );
+  const [signUp, setSignUp] = useState(false);
 
   return (
     // TODO make it redirect to home if logged in already
+    <>
+    { signUp ?
+    <AccountForm /> :
     <ThemeProvider theme={theme}>
       { tokenLoading ?
       <></> :
@@ -98,7 +101,7 @@ export function LoginForm() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link onClick={() => setSignUp(true)} variant="body2">
                   {"Don't have an account? Sign up"}
                 </Link>
               </Grid>
@@ -109,5 +112,7 @@ export function LoginForm() {
       </Container>
     }
     </ThemeProvider>
+}
+    </>
   );
 }

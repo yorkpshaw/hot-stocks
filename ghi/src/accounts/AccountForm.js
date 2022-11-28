@@ -16,9 +16,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSignUpMutation } from '../store/apiSlice';
+import { useSignUpMutation } from '../rtk/apiSlice';
 import { preventDefault } from '../common/utils';
-import { updateField } from '../slices/accountSlice';
+import { updateField } from '../rtk/accountSlice';
 
 
 const theme = createTheme();
