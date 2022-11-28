@@ -19,7 +19,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLogInMutation } from '../store/apiSlice';
+import { useGetTokenQuery, useLogInMutation } from '../store/apiSlice';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
 import { updateField } from '../slices/accountSlice';
 
@@ -28,6 +28,8 @@ const theme = createTheme();
 
 export function LoginForm() {
 
+  const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { username, password } = useSelector(state => state.account);
   const [logIn, { error, isLoading: logInLoading }] = useLogInMutation();
@@ -38,7 +40,12 @@ export function LoginForm() {
 
 
   return (
+    // TODO make it redirect to home if logged in already
     <ThemeProvider theme={theme}>
+      { tokenLoading ?
+      <></> :
+      token ?
+      navigate('/') :
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -100,6 +107,7 @@ export function LoginForm() {
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
+    }
     </ThemeProvider>
   );
 }

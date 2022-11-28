@@ -20,6 +20,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGetTokenQuery, useLogOutMutation } from './store/apiSlice';
 import CircularProgress from '@mui/material/CircularProgress';
+import { LoginForm } from './accounts/LoginForm';
 
 
 const drawerWidth = 240;
@@ -43,7 +44,7 @@ function LogoutListItem() {
   useEffect(() => {
     console.log({data});
     if (data) {
-      navigate('/login');
+      navigate('/');
     }
   }, [data, navigate]);
 
@@ -113,7 +114,10 @@ export default function HotStocksNav({ children }) {
           <Toolbar />
           { tokenLoading ?
           <CircularProgress /> :
-          children
+          token ?
+          children :
+          <LoginForm />
+          // 'hello'
           }
 
         </Box>
