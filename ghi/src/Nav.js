@@ -42,7 +42,6 @@ function LogoutListItem() {
   const [logOut, { data }] = useLogOutMutation();
 
   useEffect(() => {
-    console.log({data});
     if (data) {
       navigate('/');
     }

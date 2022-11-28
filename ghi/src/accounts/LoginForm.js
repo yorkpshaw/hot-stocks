@@ -3,6 +3,7 @@ import * as React from 'react';
 import { ErrorNotification } from '../common/ErrorNotification';
 import { Copyright } from '../common/Copyright';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -38,14 +39,13 @@ export function LoginForm() {
     [dispatch],
   );
 
-
   return (
     // TODO make it redirect to home if logged in already
     <ThemeProvider theme={theme}>
       { tokenLoading ?
       <></> :
       token ?
-      navigate('/') :
+      "You're already logged in, silly!" :
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
