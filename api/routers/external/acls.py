@@ -1,10 +1,9 @@
-import finnhub
+import csv
 import json
 import requests
 import os
 
 ALPHAVANTAGE_API_KEY = os.environ["ALPHAVANTAGE_API_KEY"]
-FINNHUB_API_KEY = os.environ["FINNHUB_API_KEY"]
 
 
 class ACLs:
@@ -42,10 +41,19 @@ class ACLs:
             return None
 
 
-    def search_all_stocks(value):
+    def get_all_stocks():
 
-        finnhub_client = finnhub.Client(api_key=FINNHUB_API_KEY)
-        return finnhub_client.symbol_lookup(value)
+        url = f"https://www.alphavantage.co/query?function=LISTING_STATUS&apikey={ALPHAVANTAGE_API_KEY}"
+        with requests.Session() as s:
+            download = s.get(url)
+            decoded_content = download.content.decode('utf-8')
+            cr = csv.reader(decoded_content.splitlines(), delimiter=',')
+            my_list = list(cr)
+            stocks = []
+            for i in my_list:
+                if i[-1] == 'Active':
+                    stocks.append(i[:2])
+            return stocks
 
 
     def get_all_news_items():

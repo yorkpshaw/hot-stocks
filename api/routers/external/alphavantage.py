@@ -18,9 +18,9 @@ def get_stock(symbol: str):
     }
 
 @router.get("/api/stocks")
-def search_all_stocks(value: str):
+def get_all_stocks():
     return {
-        "stocks": ACLs.search_all_stocks(value),
+        "stocks": ACLs.get_all_stocks(),
     }
 
 @router.get("/api/news_items")
