@@ -15,7 +15,7 @@ export function Explore(props) {
         {/* <Header /> */}
         <Card />
         {/* <BackOfCard /> */}
-        <SwipeButtons />
+        {/* <SwipeButtons /> */}
         {/* <ContentCard /> */}
         {/* Card */}
         {/* Buttons */}
