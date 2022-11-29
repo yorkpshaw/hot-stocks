@@ -42,7 +42,6 @@ export function LoginForm() {
 
 
   return (
-    // TODO make it redirect to home if logged in already
     <>
     { signUp ?
     <AccountForm /> :

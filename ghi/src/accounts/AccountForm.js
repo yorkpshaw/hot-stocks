@@ -28,7 +28,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 // add error handling
     // not same password
     // already exists
-// figure out setsignup
 
 const theme = createTheme();
 

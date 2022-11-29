@@ -17,12 +17,6 @@ function App() {
       <HotStocksNav>
         <div className="container">
           <Routes>
-            <Route path="signup">
-              <Route path="" element={<AccountForm />}></Route>
-            </Route>
-            <Route path="login">
-              <Route path="" element={<LoginForm />}></Route>
-            </Route>
             <Route path="search">
               <Route path="" element={<SearchList />}></Route>
             </Route>
