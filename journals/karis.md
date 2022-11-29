@@ -1,3 +1,15 @@
+## 11/29/2022
+
+Today, I worked on:
+
+* Developing get_all_stocks endpoint
+* Setting up bare bones files for tests
+
+I developed get_all_stocks acl and router to obtain all stock symbols and names from Alphavantage.
+
+I set up the test files.
+
+
 ## 11/28/2022
 
 Today, I worked on:

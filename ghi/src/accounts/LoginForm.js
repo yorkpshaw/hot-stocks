@@ -18,10 +18,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetTokenQuery, useLogInMutation } from '../rtk/apiSlice';
+import { useGetTokenQuery, useLogInMutation } from '../rtk/authApi';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
 import { updateField } from '../rtk/accountSlice';
-import { AccountForm } from './AccountForm';
+import { SignUpForm } from './SignUpForm';
 import { setSignUp } from '../rtk/signUpSlice';
 
 
@@ -44,7 +44,7 @@ export function LoginForm() {
   return (
     <>
     { signUp ?
-    <AccountForm /> :
+    <SignUpForm /> :
     tokenLoading ?
     <></> :
     token ?

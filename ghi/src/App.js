@@ -2,8 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import HotStocksNav from './Nav';
 
-import { AccountForm } from './accounts/AccountForm';
-import { LoginForm } from './accounts/LoginForm';
 import { About } from './hot-stocks/About';
 import { Explore } from './hot-stocks/Explore';
 import { Portfolio } from './hot-stocks/Portfolio';

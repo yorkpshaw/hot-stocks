@@ -18,7 +18,7 @@ import Grid from '@mui/material/Grid';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSignUpMutation } from '../rtk/apiSlice';
+import { useSignUpMutation } from '../rtk/authApi';
 import { preventDefault } from '../common/utils';
 import { updateField } from '../rtk/accountSlice';
 import { setSignUp } from '../rtk/signUpSlice';
@@ -31,7 +31,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const theme = createTheme();
 
-export function AccountForm(props) {
+export function SignUpForm(props) {
 
     const dispatch = useDispatch();
     const {username, email, password } = useSelector(state => state.account);
