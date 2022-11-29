@@ -15,4 +15,4 @@ export function Saved(props) {
 // all boxes will have a delete button on the bottom right
 // each stock box will have Symbol, current value
 // each news box will have the news title and posted date
-// do the boxes still need a plus sign button?
+// do the boxes still need a plus sign button? it'll be edit

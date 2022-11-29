@@ -1,8 +1,6 @@
 ## Tuesday, November 29
 Today, I worked on:
 
-<<<<<<< HEAD
-=======
     -
     -
 
@@ -16,7 +14,6 @@ Today, I worked on:
 ## Wednesday, November 23
 Today, I worked on:
 
->>>>>>> york-branch-temp
     - Began development on design for the saved and about components
 
 ## Tuesday, November 22
