@@ -9,3 +9,8 @@ export function About(props) {
     </div>
   );
 }
+
+
+// Logo in a box at center of page
+// Description right below
+// Ask group what logo and description will look like
