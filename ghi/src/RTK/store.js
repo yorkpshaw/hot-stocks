@@ -9,11 +9,13 @@ import { savedNewsItemsApi } from './savedNewsItemsApi';
 import { savedStocksApi } from './savedStocksApi';
 import { apiSlice } from './apiSlice';
 import { accountSlice } from './accountSlice';
+import { signUpSlice } from './signUpSlice';
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     [accountSlice.name]: accountSlice.reducer,
+    [signUpSlice.name]: signUpSlice.reducer,
     [companiesApi.reducerPath]: companiesApi.reducer,
     [portfolioStocksApi.reducerPath]: portfolioStocksApi.reducer,
     [savedItemsApi.reducerPath]: savedItemsApi.reducer,

@@ -13,13 +13,22 @@ import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepart
 import { deepOrange } from '@mui/material/colors';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSignUpMutation } from '../rtk/apiSlice';
 import { preventDefault } from '../common/utils';
 import { updateField } from '../rtk/accountSlice';
+import { setSignUp } from '../rtk/signUpSlice';
+import CircularProgress from '@mui/material/CircularProgress';
 
+// TODO
+// add error handling
+    // not same password
+    // already exists
+// make calling setSignUp on submit work
 
 const theme = createTheme();
 
@@ -35,6 +44,9 @@ export function AccountForm(props) {
     );
 
     return (
+        <>
+        {signUpLoading ?
+        <CircularProgress /> :
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
@@ -114,11 +126,19 @@ export function AccountForm(props) {
                     >
                     Sign up
                     </Button>
-
+                <Grid container>
+                    <Grid item>
+                        <Link onClick={() => dispatch(setSignUp())} variant="body2">
+                        {"Already have an account? Log in"}
+                        </Link>
+                    </Grid>
+                </Grid>
                 </Box>
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
         </ThemeProvider>
+        }
+        </>
       );
 }

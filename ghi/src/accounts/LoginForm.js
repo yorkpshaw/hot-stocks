@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { ErrorNotification } from '../common/ErrorNotification';
 import { Copyright } from '../common/Copyright';
-import { useState } from 'react';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -23,6 +22,8 @@ import { useGetTokenQuery, useLogInMutation } from '../rtk/apiSlice';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
 import { updateField } from '../rtk/accountSlice';
 import { AccountForm } from './AccountForm';
+import { setSignUp } from '../rtk/signUpSlice';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const theme = createTheme();
@@ -37,13 +38,16 @@ export function LoginForm() {
     e => dispatch(updateField({field: e.target.name, value: e.target.value})),
     [dispatch],
   );
-  const [signUp, setSignUp] = useState(false);
+  const { signUp } = useSelector(state => state.signUp);
+
 
   return (
     // TODO make it redirect to home if logged in already
     <>
     { signUp ?
     <AccountForm /> :
+    logInLoading ?
+    <CircularProgress /> :
     <ThemeProvider theme={theme}>
       { tokenLoading ?
       <></> :
@@ -101,7 +105,7 @@ export function LoginForm() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link onClick={() => setSignUp(true)} variant="body2">
+                <Link onClick={() => dispatch(setSignUp())} variant="body2">
                   {"Don't have an account? Sign up"}
                 </Link>
               </Grid>

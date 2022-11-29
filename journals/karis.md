@@ -1,3 +1,13 @@
+## 11/28/2022
+
+Today, I worked on:
+
+* Debugging front-end auth
+
+I am adjusting front-end auth code to improve UX (e.g. no flashing after clicking logout, enable clicking between log in and sign up, etc.).
+
+
+
 ## 11/23/2022
 
 Today, I worked on:
