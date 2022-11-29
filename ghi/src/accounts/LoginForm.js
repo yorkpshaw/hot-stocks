@@ -23,7 +23,7 @@ import { eventTargetSelector as target, preventDefault } from '../common/utils';
 import { updateField } from '../rtk/accountSlice';
 import { AccountForm } from './AccountForm';
 import { setSignUp } from '../rtk/signUpSlice';
-import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 const theme = createTheme();
@@ -33,7 +33,7 @@ export function LoginForm() {
   const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
   const dispatch = useDispatch();
   const { username, password } = useSelector(state => state.account);
-  const [logIn, { error, isLoading: logInLoading }] = useLogInMutation();
+  const [logIn, { error }] = useLogInMutation();
   const field = useCallback(
     e => dispatch(updateField({field: e.target.name, value: e.target.value})),
     [dispatch],
@@ -46,13 +46,11 @@ export function LoginForm() {
     <>
     { signUp ?
     <AccountForm /> :
-    logInLoading ?
-    <CircularProgress /> :
+    tokenLoading ?
+    <></> :
+    token ?
+    "You're already logged in, silly!" :
     <ThemeProvider theme={theme}>
-      { tokenLoading ?
-      <></> :
-      token ?
-      "You're already logged in, silly!" :
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -114,9 +112,8 @@ export function LoginForm() {
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
-    }
     </ThemeProvider>
-}
+    }
     </>
   );
 }
