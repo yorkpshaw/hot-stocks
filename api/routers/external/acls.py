@@ -1,3 +1,4 @@
+import csv
 import json
 import requests
 import os
@@ -38,6 +39,22 @@ class ACLs:
                 }
         except (KeyError, IndexError):
             return None
+
+
+    def get_all_stocks():
+
+        url = f"https://www.alphavantage.co/query?function=LISTING_STATUS&apikey={ALPHAVANTAGE_API_KEY}"
+        with requests.Session() as s:
+            download = s.get(url)
+            decoded_content = download.content.decode('utf-8')
+            cr = csv.reader(decoded_content.splitlines(), delimiter=',')
+            my_list = list(cr)
+            stocks = []
+            for i in my_list:
+                if i[-1] == 'Active':
+                    stocks.append(i[:2])
+            return stocks
+
 
     def get_all_news_items():
 

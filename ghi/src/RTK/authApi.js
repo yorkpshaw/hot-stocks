@@ -1,13 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { clearForm } from './accountSlice';
+import { setSignUp } from './signUpSlice';
 
-export const apiSlice = createApi({
+export const authApi = createApi({
     reducerPath: 'authentication',
-    tagTypes: ['Token'],
     baseQuery: fetchBaseQuery({
       baseUrl: 'http://localhost:8000/', //process.env.API_SERVICE,
       prepareHeaders: (headers, { getState }) => {
-        const selector = apiSlice.endpoints.getToken.select();
+        const selector = authApi.endpoints.getToken.select();
         const { data: tokenData } = selector(getState());
         if (tokenData && tokenData.access_token) {
           headers.set('Authorization', `Bearer ${tokenData.access_token}`);
@@ -32,6 +32,7 @@ export const apiSlice = createApi({
           try {
             await queryFulfilled;
             dispatch(clearForm());
+            dispatch(setSignUp());
           } catch (err) {}
         },
       }),
@@ -86,4 +87,4 @@ export const {
   useLogInMutation,
   useLogOutMutation,
   useSignUpMutation,
-} = apiSlice;
+} = authApi;

@@ -17,6 +17,12 @@ def get_stock(symbol: str):
         "stock": ACLs.get_stock(symbol),
     }
 
+@router.get("/api/stocks")
+def get_all_stocks():
+    return {
+        "stocks": ACLs.get_all_stocks(),
+    }
+
 @router.get("/api/news_items")
 def get_all_news_items():
     return {
