@@ -20,9 +20,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetTokenQuery, useLogInMutation } from '../store/apiSlice';
+import { useGetTokenQuery, useLogInMutation } from '../RTK/apiSlice';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
-import { updateField } from '../slices/accountSlice';
+import { updateField } from '../RTK/accountSlice';
 
 
 const theme = createTheme();

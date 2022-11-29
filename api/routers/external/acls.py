@@ -27,14 +27,14 @@ class ACLs:
         url = f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=5min&apikey={ALPHAVANTAGE_API_KEY}"
         response = requests.get(url)
         content = json.loads(response.content)
-        timeSeries = []
+        time_series = []
         try:
-            timeSeries = content["Time Series (5min)"]
-            for i in timeSeries:
-                closePrice = {}
-                closePrice["4. close"] = i["4. close"]
+            time_series = content["Time Series (5min)"]
+            for i in time_series:
+                close_price = {}
+                close_price["4. close"] = i["4. close"]
             return {
-                closePrice
+                close_price
                 }
         except (KeyError, IndexError):
             return None

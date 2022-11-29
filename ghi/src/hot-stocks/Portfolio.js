@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useCreatePortfolioStockMutation, useDeletePortfolioStockMutation, useGetPortfolioStocksQuery, useUpdatePortfolioStockMutation } from '../store/portfolioStocksApi';
+import { useCreatePortfolioStockMutation, useDeletePortfolioStockMutation, useGetPortfolioStocksQuery, useUpdatePortfolioStockMutation } from '../RTK/portfolioStocksApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
-
+import QuoteAndChart from '../common/QuoteAndChart';
 
 export function Portfolio(props) {
 
@@ -19,15 +19,18 @@ export function Portfolio(props) {
 
     return (
         <div>
-            <Alert variant="outlined" severity="error">
+            {/* <Alert variant="outlined" severity="error">
                 {error}
-            </Alert>
-            <div>
+            </Alert> */}
+            {/* <div>
                 {data.portfolioStocks.map(portfolioStock => {
                     <p key={portfolioStock.id}>
                         {portfolioStock.symbol}
                     </p>
                 })}
+            </div> */}
+            <div>
+                <QuoteAndChart/>
             </div>
         </div>
       );

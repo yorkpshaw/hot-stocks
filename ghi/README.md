@@ -72,9 +72,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 <!-- npm install -g npm@latest
 npm cache clean --force
 npm install
+npm install react-plotly.js
 npm start
 
 npm install
+npm install react-plotly.js
 npm install @mui/material @emotion/react @emotion/styled
 npm install @fontsource/roboto
 npm install @mui/icons-material

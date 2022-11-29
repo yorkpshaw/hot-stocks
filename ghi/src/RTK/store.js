@@ -8,7 +8,7 @@ import { stocksApi } from './stocksApi';
 import { savedNewsItemsApi } from './savedNewsItemsApi';
 import { savedStocksApi } from './savedStocksApi';
 import { apiSlice } from './apiSlice';
-import { accountSlice } from '../slices/accountSlice';
+import { accountSlice } from '../RTK/accountSlice';
 
 export const store = configureStore({
   reducer: {
