@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { clearForm } from '../slices/accountSlice';
+import { clearForm } from '../RTK/accountSlice';
 
 export const apiSlice = createApi({
     reducerPath: 'authentication',

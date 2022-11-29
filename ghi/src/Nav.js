@@ -18,7 +18,7 @@ import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGetTokenQuery, useLogOutMutation } from './store/apiSlice';
+import { useGetTokenQuery, useLogOutMutation } from './RTK/apiSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 import { LoginForm } from './accounts/LoginForm';
 

@@ -1,7 +1,20 @@
-## Wednesday, November 23
+## Tuesday, November 29
 Today, I worked on:
 
     -
+    -
+
+## Monday, November 28
+Today, I worked on:
+
+    - Wrote an outline for how to tackle setting up the saved and about components
+    - Reorganized the files into different folders with the team
+    - Studied the rest of the team's code up until this point
+
+## Wednesday, November 23
+Today, I worked on:
+
+    - Began development on design for the saved and about components
 
 ## Tuesday, November 22
 Today, I worked on:
