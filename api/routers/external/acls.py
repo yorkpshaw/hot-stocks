@@ -1,8 +1,10 @@
+import finnhub
 import json
 import requests
 import os
 
 ALPHAVANTAGE_API_KEY = os.environ["ALPHAVANTAGE_API_KEY"]
+FINNHUB_API_KEY = os.environ["FINNHUB_API_KEY"]
 
 
 class ACLs:
@@ -38,6 +40,13 @@ class ACLs:
                 }
         except (KeyError, IndexError):
             return None
+
+
+    def search_all_stocks(value):
+
+        finnhub_client = finnhub.Client(api_key=FINNHUB_API_KEY)
+        return finnhub_client.symbol_lookup(value)
+
 
     def get_all_news_items():
 
