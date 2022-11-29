@@ -20,6 +20,8 @@ services:
         HOST_OS: ${OS}
         NODE_ENV: development
         HOST: "0.0.0.0"
+        CHOKIDAR_USEPOLLING: true # create-ui-app <= 5.x
+        WATCHPACK_POLLING: true # create-ui-app >= 5.x
   api:
     build:
       context: ./api

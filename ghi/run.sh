@@ -5,5 +5,4 @@ npm install @mui/icons-material
 npm install react-router-dom
 npm install @reduxjs/toolkit
 npm install @reduxjs/toolkit react-redux
-
 npm start

@@ -7,7 +7,9 @@ Today, I worked on:
 
 I completed developing the design the Search component, abstracting away all potentially reusable portions of code into their own components.
 
-I completed implementing login/logout front-end functionality. Woot woot!
+I completed implementing login/logout/signup front-end functionality (using hooks). Woot woot!
+
+I partially re-implemented login/logout/signup front-end functionality with Redux. Need to continue troubleshooting responsiveness, navigation.
 
 
 ## 11/22/2022
