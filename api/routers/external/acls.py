@@ -1,3 +1,4 @@
+import csv
 import json
 import requests
 import os
@@ -27,17 +28,33 @@ class ACLs:
         url = f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=5min&apikey={ALPHAVANTAGE_API_KEY}"
         response = requests.get(url)
         content = json.loads(response.content)
-        timeSeries = []
+        time_series = []
         try:
-            timeSeries = content["Time Series (5min)"]
-            for i in timeSeries:
-                closePrice = {}
-                closePrice["4. close"] = i["4. close"]
+            time_series = content["Time Series (5min)"]
+            for i in time_series:
+                close_price = {}
+                close_price["4. close"] = i["4. close"]
             return {
-                closePrice
+                close_price
                 }
         except (KeyError, IndexError):
             return None
+
+
+    def get_all_stocks():
+
+        url = f"https://www.alphavantage.co/query?function=LISTING_STATUS&apikey={ALPHAVANTAGE_API_KEY}"
+        with requests.Session() as s:
+            download = s.get(url)
+            decoded_content = download.content.decode('utf-8')
+            cr = csv.reader(decoded_content.splitlines(), delimiter=',')
+            my_list = list(cr)
+            stocks = []
+            for i in my_list:
+                if i[-1] == 'Active':
+                    stocks.append(i[:2])
+            return stocks
+
 
     def get_all_news_items():
 

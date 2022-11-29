@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import { ErrorNotification } from '../common/ErrorNotification';
 import { Copyright } from '../common/Copyright';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -20,9 +18,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetTokenQuery, useLogInMutation } from '../RTK/apiSlice';
+import { useGetTokenQuery, useLogInMutation } from '../rtk/authApi';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
-import { updateField } from '../RTK/accountSlice';
+import { updateField } from '../rtk/accountSlice';
+import { SignUpForm } from './SignUpForm';
+import { setSignUp } from '../rtk/signUpSlice';
+
 
 
 const theme = createTheme();
@@ -30,22 +31,25 @@ const theme = createTheme();
 export function LoginForm() {
 
   const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { username, password } = useSelector(state => state.account);
-  const [logIn, { error, isLoading: logInLoading }] = useLogInMutation();
+  const [logIn, { error }] = useLogInMutation();
   const field = useCallback(
     e => dispatch(updateField({field: e.target.name, value: e.target.value})),
     [dispatch],
   );
+  const { signUp } = useSelector(state => state.signUp);
+
 
   return (
-    // TODO make it redirect to home if logged in already
+    <>
+    { signUp ?
+    <SignUpForm /> :
+    tokenLoading ?
+    <></> :
+    token ?
+    "You're already logged in, silly!" :
     <ThemeProvider theme={theme}>
-      { tokenLoading ?
-      <></> :
-      token ?
-      "You're already logged in, silly!" :
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -98,7 +102,7 @@ export function LoginForm() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link onClick={() => dispatch(setSignUp())} variant="body2">
                   {"Don't have an account? Sign up"}
                 </Link>
               </Grid>
@@ -107,7 +111,8 @@ export function LoginForm() {
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
-    }
     </ThemeProvider>
+    }
+    </>
   );
 }

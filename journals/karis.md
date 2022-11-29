@@ -1,3 +1,25 @@
+## 11/29/2022
+
+Today, I worked on:
+
+* Developing get_all_stocks endpoint
+* Setting up bare bones files for tests
+
+I developed get_all_stocks acl and router to obtain all stock symbols and names from Alphavantage.
+
+I set up the test files.
+
+
+## 11/28/2022
+
+Today, I worked on:
+
+* Debugging front-end auth
+
+I am adjusting front-end auth code to improve UX (e.g. no flashing after clicking logout, enable clicking between log in and sign up, etc.). I also removed /login and /signup routes to prevent someone from logging in or signing up if they're already logged in.
+
+
+
 ## 11/23/2022
 
 Today, I worked on:

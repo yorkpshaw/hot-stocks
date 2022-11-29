@@ -30,6 +30,7 @@ services:
       REACT_APP_SERVICE: http://localhost:3000
       THIRD_PARTY_SERVICE: https://www.alphavantage.co
       ALPHAVANTAGE_API_KEY: RDM3VKZSAAEPH920 # ${ALPHAVANTAGE_API_KEY}
+      FINNHUB_API_KEY: ce32r7aad3ici68dpargce32r7aad3ici68dpas0 # ${FINNHUB_API_KEY}
       DATABASE_URL: postgresql://hot-stocks:hot-stocks@db/hot-stocks
       WAIT_HOSTS: db:5432
       PORT: 8000

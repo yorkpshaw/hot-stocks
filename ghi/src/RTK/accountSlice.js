@@ -22,5 +22,4 @@ export const accountSlice = createSlice({
 export const {
     clearForm,
     updateField,
-    showModal,
 } = accountSlice.actions;

@@ -7,13 +7,15 @@ import { companiesApi} from './companiesApi';
 import { stocksApi } from './stocksApi';
 import { savedNewsItemsApi } from './savedNewsItemsApi';
 import { savedStocksApi } from './savedStocksApi';
-import { apiSlice } from './apiSlice';
+import { authApi } from './authApi';
 import { accountSlice } from './accountSlice';
+import { signUpSlice } from './signUpSlice';
 
 export const store = configureStore({
   reducer: {
-    [apiSlice.reducerPath]: apiSlice.reducer,
+    [authApi.reducerPath]: authApi.reducer,
     [accountSlice.name]: accountSlice.reducer,
+    [signUpSlice.name]: signUpSlice.reducer,
     [companiesApi.reducerPath]: companiesApi.reducer,
     [portfolioStocksApi.reducerPath]: portfolioStocksApi.reducer,
     [savedItemsApi.reducerPath]: savedItemsApi.reducer,
@@ -24,7 +26,7 @@ export const store = configureStore({
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
-        .concat(apiSlice.middleware)
+        .concat(authApi.middleware)
         .concat(companiesApi.middleware)
         .concat(portfolioStocksApi.middleware)
         .concat(savedItemsApi.middleware)

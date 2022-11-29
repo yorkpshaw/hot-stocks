@@ -16,9 +16,7 @@ import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import { Link } from "react-router-dom";
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useGetTokenQuery, useLogOutMutation } from './RTK/apiSlice';
+import { useGetTokenQuery, useLogOutMutation } from './rtk/authApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import { LoginForm } from './accounts/LoginForm';
 
@@ -37,15 +35,9 @@ const lower_data = [
 ];
 
 
-function LogoutListItem() {
-  const navigate = useNavigate();
-  const [logOut, { data }] = useLogOutMutation();
 
-  useEffect(() => {
-    if (data) {
-      navigate('/');
-    }
-  }, [data, navigate]);
+function LogoutListItem() {
+  const [logOut] = useLogOutMutation();
 
   return (
     <ListItem button onClick={logOut}>
@@ -116,7 +108,6 @@ export default function HotStocksNav({ children }) {
           token ?
           children :
           <LoginForm />
-          // 'hello'
           }
 
         </Box>
