@@ -1,3 +1,10 @@
+## Monday, November 28
+Today, I worked on:
+
+    - Wrote out the pseudocode for the saved and about components
+    - Reorganized the files into different folders with the team
+    - Studied the rest of the team's code up until this point
+
 ## Wednesday, November 23
 Today, I worked on:
 
