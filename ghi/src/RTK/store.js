@@ -10,7 +10,8 @@ import { savedStocksApi } from './savedStocksApi';
 import { authApi } from './authApi';
 import { accountSlice } from './accountSlice';
 import { signUpSlice } from './signUpSlice';
-import { portfolioSlice } from './portfolioSlice';
+import { portfolioSlice} from './portfolioslice';
+
 
 export const store = configureStore({
   reducer: {

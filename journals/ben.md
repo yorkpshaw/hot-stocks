@@ -11,15 +11,15 @@ Today, I worked on:
 
 Today, I worked on:
 
-*Create PortfolioSlice.JS in RTK
+*Create PortfolioSlice.JS in rtk
 *Create QuoteAndChart.JS component
 
 ## November 27, 2022
 
 Today, I worked on:
 
-*Study Auth and RTK materials
-*Code review on auth and upcoming RTK changes
+*Study Auth and rtk materials
+*Code review on auth and upcoming rtk changes
 
 
 ## November 22, 2022

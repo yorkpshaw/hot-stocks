@@ -5,59 +5,69 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
+import { deepOrange } from '@mui/material/colors';
 import { Container } from '@mui/material';
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
+import { textAlign } from '@mui/system';
+import { Copyright } from '../common/Copyright';
 
 export function About(props) {
   return (
-    <Card sx={{ minWidth: 1000 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
+    <Container component="main" maxWidth="sm">
+      <Box
+      sx={{
+        marginTop: 8,
+        mx: 'auto',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      >
+       <Typography
+       component="h1"
+       variant="h3"
+       justifyContent="center"
+        >
+        About Hot Stocks
         </Typography>
-        <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+      </Box>
+    <Box
+      sx={{
+        marginTop: 8,
+        border: 3,
+        borderColor: "black",
+        height: 400,
+        width: 400,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        mx: 'auto',
+        fontSize: 24,
+      }}
+    >
+    <Avatar sx={{ m: 10, bgcolor: deepOrange[500], width: 100, height: 100 }}>
+      <LocalFireDepartmentOutlinedIcon />
+    </Avatar>
+    </Box>
+    <Box
+      sx={{
+        marginTop: 8,
+        mx: 'auto',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      Hot Stocks!!!!!!!!!!
+    </Box>
+    <Copyright sx={{ mt: 8, mb: 4 }} />
+    </Container>
   );
 }
-
-
-// export function About(props) {
-
-//   return (
-//     <Container maxWidth="sm">
-//     <div>
-//       aboutaboutaboutaboutaboutaboutaboutabout
-//     </div>
-//     </Container>
-//   );
-// }
-
 
 // Logo in a box at center of page
 // Description right below
 // Ask group what logo and description will look like
 // LoginForm - import { deepOrange } from '@mui/material/colors';
 // import Typography from '@mui/material/Typography';
-// lines 60s

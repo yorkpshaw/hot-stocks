@@ -5,7 +5,9 @@ import Alert from '@mui/material/Alert';
 import QuoteAndChart from '../portfolio/QuoteAndChart';
 import { SimpleCard,  } from '../common/SimpleCard';
 import { getTotalPortfolioValue } from '../portfolio/GetTotalPortfolioValue';
-
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export function Portfolio(props) {
     const { portfolio } = useSelector(state => state.local)
