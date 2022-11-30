@@ -18,10 +18,10 @@ import Grid from '@mui/material/Grid';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSignUpMutation } from '../rtk/authApi';
+import { useSignUpMutation } from '../RTK/authApi';
 import { preventDefault } from '../common/utils';
-import { updateField } from '../rtk/accountSlice';
-import { setSignUp } from '../rtk/signUpSlice';
+import { updateField } from '../RTK/accountSlice';
+import { setSignUp } from '../RTK/signUpSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // TODO

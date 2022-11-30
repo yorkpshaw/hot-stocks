@@ -17,7 +17,7 @@ import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { useGetTokenQuery } from '../rtk/authApi';
+import { useGetTokenQuery } from '../RTK/authApi';
 
 
 const theme = createTheme();
