@@ -65,11 +65,11 @@ class ACLs:
         stocks = []
         try:
             for i in content:
-                if i["type"] == "stock" and i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE':
+                if i['type'] =='stock' and i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE':
                     stock = {}
                     stock["symbol"] = i["symbol"]
                     stock["name"] = i["name"]
-                    stock["cost_current"] = i["cost_current"]
+                    stock["cost_current"] = i["price"]
                     stocks.append(stock)
             return stocks
         except (KeyError, IndexError):

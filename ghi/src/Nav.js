@@ -16,7 +16,7 @@ import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import { Link } from "react-router-dom";
-import { useGetTokenQuery, useLogOutMutation } from './RTK/authApi';
+import { useGetTokenQuery, useLogOutMutation } from './rtk/authApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import { LoginForm } from './accounts/LoginForm';
 
