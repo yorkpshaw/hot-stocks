@@ -12,14 +12,12 @@ import IconButton from '@mui/material/IconButton';
 
 
 
-import './SwipeButtons.css';
-
 function SwipeButtons() {
   return (
     <div className="swipeButtons">
-      {/* <IconButton className="swipeButtons_repeat">
+      <IconButton className="swipeButtons_repeat">
         <ReplayIcon fontSize="large" />
-      </IconButton> */}
+      </IconButton>
       <IconButton className="swipeButtons_left">
         <CloseIcon fontSize="large" />
       </IconButton>
