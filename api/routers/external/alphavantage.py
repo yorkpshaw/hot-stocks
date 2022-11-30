@@ -18,10 +18,16 @@ def get_stock(symbol: str):
     }
 
 @router.get("/api/stocks")
-def get_all_stocks():
+def get_all_stocks(value=None):
+    if value:
+        return {
+            "stocks": ACLs.search_all_stocks(value),
+        }
+    print('no value')
     return {
         "stocks": ACLs.get_all_stocks(),
     }
+
 
 @router.get("/api/news_items")
 def get_all_news_items():

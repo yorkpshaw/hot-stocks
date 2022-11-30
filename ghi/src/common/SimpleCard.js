@@ -6,6 +6,9 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import { deepOrange } from '@mui/material/colors';
+import Link from '@mui/material/Link';
+
 
 async function handleClick(e) {
   e.preventDefault();
@@ -13,21 +16,39 @@ async function handleClick(e) {
 }
 
 
-export function SimpleCard() {
+export function SimpleCard(props) {
+
+  const card = props.card;
+
   return (
     <Card
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Apple
-          </Typography>
-          <Typography variant="h5" component="div">
-            AAPL
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            $150
-          </Typography>
+          { card.name ?
+            <>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                {card.name }
+              </Typography>
+              <Typography variant="h5" component="div">
+                {card.symbol}
+              </Typography>
+              <Typography sx={{color: deepOrange[500]}}>
+                C $ {card.cost_current}
+              </Typography>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                B $ {card.cost_basis}
+              </Typography>
+            </> :
+            <>
+              <Link href={card.news_url} color="inherit" underline="none" variant="h7">
+                {card.title.slice(0,40)}...
+              </Link>
+              <Typography sx={{ mb: 1.5, color: deepOrange[500] }}>
+                {card.time_published}
+              </Typography>
+            </>
+            }
         </CardContent>
         <CardActions>
           <IconButton onClick={handleClick} size="small"><TurnedInNotOutlinedIcon /></IconButton>

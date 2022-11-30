@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 import { ErrorNotification } from '../common/ErrorNotification';
 import { Copyright } from '../common/Copyright';
-import { useNavigate } from 'react-router-dom';
 
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -13,33 +12,36 @@ import Container from '@mui/material/Container';
 import { CssBaseline } from '@mui/material';
 import { deepOrange } from '@mui/material/colors';
 import { CardList } from '../common/CardList';
-import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useGetTokenQuery } from '../rtk/authApi';
+import { useGetNewsItemsQuery } from '../rtk/newsItemsApi';
+import { useLazyGetStocksQuery, useGetStocksQuery } from '../rtk/stocksApi';
+import { useDispatch } from 'react-redux';
+import { eventTargetSelector as target, preventDefault } from '../common/utils';
+import Grid from '@mui/material/Grid';
+
 
 
 const theme = createTheme();
 
 export function SearchList() {
 
-  const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
+  const dispatch = useDispatch();
   const [search, setSearch] = useState('');
+  const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
+  const [ triggerStocks, { data: stocksData, isLoading: stocksLoading } ] = useLazyGetStocksQuery();
   const [error, setError] = useState('');
+
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log('submitted');
+    triggerStocks({value: search});
   }
-
-  const cards_test = [1,2,3,4,5,6];
 
   return (
     <>
-    {tokenLoading
-      ? <CircularProgress />
-      :
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="sm">
           <CssBaseline />
@@ -72,13 +74,33 @@ export function SearchList() {
                 sx={{ mt: 2.5, mb: 2, ml: 2.5, bgcolor: deepOrange[500] }}>
                 <SearchOutlinedIcon />
               </IconButton>
-              <CardList cards={cards_test}/>
+              {
+                stocksLoading ?
+                  <Container sx={{ py: 8 }} maxWidth="md">
+                    <Grid container sx={{ mx: 40 }}>
+                      <CircularProgress />
+                    </Grid>
+                  </Container> :
+                stocksData ?
+                  <CardList cards={stocksData.stocks} /> :
+                <></>
+              }
+              {
+                newsItemsLoading ?
+                  <Container sx={{ py: 8 }} maxWidth="md">
+                    <Grid container sx={{ mx: 40 }}>
+                      <CircularProgress />
+                    </Grid>
+                  </Container> :
+                newsItemsData ?
+                  <CardList cards={newsItemsData.news_items} /> :
+                <></>
+              }
             </Box>
           </Box>
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
       </ThemeProvider>
-    }
     </>
   );
 }

@@ -15,9 +15,9 @@ export function CardList(props) {
   return (
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <SimpleCard />
+            {cards.map((card, index) => (
+              <Grid item key={index} xs={12} sm={6} md={4}>
+                <SimpleCard card={card} />
               </Grid>
             ))}
           </Grid>

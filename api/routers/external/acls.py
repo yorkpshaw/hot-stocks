@@ -4,7 +4,7 @@ import requests
 import os
 
 ALPHAVANTAGE_API_KEY = os.environ["ALPHAVANTAGE_API_KEY"]
-
+FMP_API_KEY = 'd9d102aa66e8530a6ae66e89468b5aa1'
 
 class ACLs:
     def get_company(symbol):
@@ -28,32 +28,52 @@ class ACLs:
         url = f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=5min&apikey={ALPHAVANTAGE_API_KEY}"
         response = requests.get(url)
         content = json.loads(response.content)
-        time_series = []
+        stock = {}
         try:
             time_series = content["Time Series (5min)"]
             for i in time_series:
-                close_price = {}
-                close_price["4. close"] = i["4. close"]
-            return {
-                close_price
-                }
+                stock[i] = time_series[i]["4. close"]
+            return stock
+        except (KeyError, IndexError):
+            return None
+
+
+
+    def search_all_stocks(value):
+
+        url = f"https://financialmodelingprep.com/api/v3/search?query={value}&limit=10&apikey={FMP_API_KEY}"
+        response = requests.get(url)
+        content = json.loads(response.content)
+        stocks = []
+        try:
+            for i in content:
+                if i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE':
+                    stock = {}
+                    stock["symbol"] = i["symbol"]
+                    stock["name"] = i["name"]
+                    stocks.append(stock)
+            return stocks
         except (KeyError, IndexError):
             return None
 
 
     def get_all_stocks():
 
-        url = f"https://www.alphavantage.co/query?function=LISTING_STATUS&apikey={ALPHAVANTAGE_API_KEY}"
-        with requests.Session() as s:
-            download = s.get(url)
-            decoded_content = download.content.decode('utf-8')
-            cr = csv.reader(decoded_content.splitlines(), delimiter=',')
-            my_list = list(cr)
-            stocks = []
-            for i in my_list:
-                if i[-1] == 'Active':
-                    stocks.append(i[:2])
+        url = f"https://financialmodelingprep.com/api/v3/stock/list?apikey={FMP_API_KEY}"
+        response = requests.get(url)
+        content = json.loads(response.content)
+        stocks = []
+        try:
+            for i in content:
+                if i["type"] == "stock" and i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE':
+                    stock = {}
+                    stock["symbol"] = i["symbol"]
+                    stock["name"] = i["name"]
+                    stock["cost_current"] = i["cost_current"]
+                    stocks.append(stock)
             return stocks
+        except (KeyError, IndexError):
+            return None
 
 
     def get_all_news_items():
@@ -67,6 +87,7 @@ class ACLs:
             for i in feed:
                 news_item = {}
                 news_item["title"] = i["title"]
+                news_item["news_url"] = i["url"]
                 news_item["time_published"] = i["time_published"]
                 news_item["summary"] = i["summary"]
                 news_item["banner_image"] = i["banner_image"]
