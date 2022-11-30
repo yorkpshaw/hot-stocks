@@ -23,7 +23,6 @@ def get_all_stocks(value=None):
         return {
             "stocks": ACLs.search_all_stocks(value),
         }
-    print('no value')
     return {
         "stocks": ACLs.get_all_stocks(),
     }
