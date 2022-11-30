@@ -14,8 +14,7 @@ import IconButton from '@mui/material/IconButton';
 
 
 import './Card.css';
-import './SwipeButtons.css';
-
+import { SwipeableDrawer } from "@mui/material";
 
 function Card() {
   const [people, setPeople] = useState([
@@ -48,7 +47,7 @@ function Card() {
   return (
     <div className="cardContainer">
       {/* Watch Karis video, as that may help with the h1 over the container */}
-      <h1 className="title"> Why is nothing showing up? </h1>
+      <h1 className="title"> Remember that this is behind -_- again </h1>
       {people.map(person => (
         <TinderCard
           className="swipe"
@@ -63,14 +62,14 @@ function Card() {
         </TinderCard>
       ))}
       <div className="swipeButtons">
-        {/* <IconButton className="swipeButtons_repeat">
-        <ReplayIcon fontSize="large" />
-      </IconButton> */}
+        <IconButton className="swipeButtons_repeat">
+          <ReplayIcon fontSize="large" />
+        </IconButton>
         <IconButton className="swipeButtons_left">
           <CloseIcon fontSize="large" />
         </IconButton>
-        <IconButton className="swipeButtons_star">
-          <StarIcon fontSize="large" />
+        <IconButton className="swipeButtons_share">
+          <ShareIcon fontSize="large" />
         </IconButton>
         <IconButton className="swipeButtons_right">
           <FavoriteIcon fontSize="large" />
