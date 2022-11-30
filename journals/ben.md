@@ -1,4 +1,20 @@
-## November 27, 2002
+## November 29, 2022
+
+Today, I worked on:
+
+*Finished 4 actions in PortfolioSlice.JS
+*Continued work on Portfolio.JS
+*Added code to total Portfolio Value every time portfolio changes in Portfolio Page
+
+
+## November 28, 2022
+
+Today, I worked on:
+
+*Create PortfolioSlice.JS in RTK
+*Create QuoteAndChart.JS component
+
+## November 27, 2022
 
 Today, I worked on:
 
