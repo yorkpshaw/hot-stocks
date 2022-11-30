@@ -18,6 +18,7 @@ class QuoteAndChart extends React.Component {
         console.log(pointerToThis);
         const ALPHAVANTAGE_API_KEY = '7WL80KSR62SGQH2Z';
         let StockSymbol = 'SPY'
+        // TODO - tie in search
         let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${StockSymbol}&interval=5min&apikey=${ALPHAVANTAGE_API_KEY}`
         // let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
 
@@ -59,7 +60,7 @@ class QuoteAndChart extends React.Component {
                         // x: [1, 2, 3],
                         // y: [2, 6, 3],
                         type: 'scatter',
-                        mode: 'lines+markers',
+                        mode: 'lines+markers+text',
                         marker: {color: 'red'},
                     },
                     // {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
