@@ -1,8 +1,15 @@
-## Tuesday, November 29
+# Wednesday, November 30
 Today, I worked on:
 
     -
-    -
+
+## Tuesday, November 29
+Today, I worked on:
+
+    - Dove deep into the MUI library and learned about how to integrate it into the app
+    - Developing the about and saved components using Material UI
+    - Formed the skeleton of the save page, will need to figure out how to differentiate between stocks and news cards
+    - Will need to figure out how to make a box with a logo inside for the about
 
 ## Monday, November 28
 Today, I worked on:

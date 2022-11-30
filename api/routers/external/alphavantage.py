@@ -19,7 +19,7 @@ def get_stock(symbol: str):
 
 @router.get("/api/stocks")
 def get_all_stocks(value=None):
-    if value:
+    if value and value != '':
         return {
             "stocks": ACLs.search_all_stocks(value),
         }
