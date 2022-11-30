@@ -6,26 +6,23 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import { deepOrange } from '@mui/material/colors';
 import Link from '@mui/material/Link';
-
-
-async function handleClick(e) {
-  e.preventDefault();
-  console.log('clicked');
-}
+import { handlePortfolioClick, handleSavedClick, handleDeleteSavedClick } from '../common/utils';
 
 
 export function SimpleCard(props) {
 
   const card = props.card;
+  const type = props.type;
 
   return (
     <Card
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         <CardContent sx={{ flexGrow: 1 }}>
-          { card.name ?
+          { card.symbol ?
             <>
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 {card.name }
@@ -51,8 +48,14 @@ export function SimpleCard(props) {
             }
         </CardContent>
         <CardActions>
-          <IconButton onClick={handleClick} size="small"><TurnedInNotOutlinedIcon /></IconButton>
-          <IconButton onClick={handleClick} size="small"><WorkOutlineOutlinedIcon /></IconButton>
+          { type == 'SAVED' ?
+          <IconButton onClick={handleDeleteSavedClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>:
+          <IconButton onClick={handleSavedClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>}
+          { card.symbol ?
+            <IconButton onClick={handlePortfolioClick} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton> :
+            <></>
+          }
+
         </CardActions>
       </Card>
   );

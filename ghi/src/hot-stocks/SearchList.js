@@ -15,11 +15,9 @@ import { CardList } from '../common/CardList';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { useGetTokenQuery } from '../rtk/authApi';
 import { useGetNewsItemsQuery } from '../rtk/newsItemsApi';
-import { useLazyGetStocksQuery, useGetStocksQuery } from '../rtk/stocksApi';
+import { useLazyGetStocksQuery } from '../rtk/stocksApi';
 import { useDispatch } from 'react-redux';
-import { eventTargetSelector as target, preventDefault } from '../common/utils';
 import Grid from '@mui/material/Grid';
 
 
