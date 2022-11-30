@@ -44,7 +44,7 @@ export function SimpleCard(props) {
               <Link href={card.news_url} color="text.primary" underline="none" variant="h7">
                 {card.title.slice(0,40)}...
               </Link>
-              <Typography sx={{ mb: 1.5 }} sx={{ fontSize: 14 }} color="text.secondary">
+              <Typography sx={{ mb: 1.5, fontSize: 14 }} color="text.secondary">
                 {card.time_published}
               </Typography>
             </>
