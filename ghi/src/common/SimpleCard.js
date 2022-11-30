@@ -41,10 +41,10 @@ export function SimpleCard(props) {
               </Typography>
             </> :
             <>
-              <Link href={card.news_url} color="inherit" underline="none" variant="h7">
+              <Link href={card.news_url} color="text.primary" underline="none" variant="h7">
                 {card.title.slice(0,40)}...
               </Link>
-              <Typography sx={{ mb: 1.5, color: deepOrange[500] }}>
+              <Typography sx={{ mb: 1.5 }} sx={{ fontSize: 14 }} color="text.secondary">
                 {card.time_published}
               </Typography>
             </>
