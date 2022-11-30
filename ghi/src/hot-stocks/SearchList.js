@@ -33,11 +33,19 @@ export function SearchList() {
   const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
   const [ triggerStocks, { data: stocksData, isLoading: stocksLoading } ] = useLazyGetStocksQuery();
   const [error, setError] = useState('');
+  const [filteredNewsItemsData, setFilteredNewsItemsData] = useState([]);
 
 
   async function handleSubmit(e) {
     e.preventDefault();
     triggerStocks({value: search});
+
+    setFilteredNewsItemsData(
+        newsItemsData.news_items.filter(
+        newsItem => newsItem.title.toLowerCase().includes(search.toLowerCase())
+        )
+      )
+
   }
 
   return (
@@ -93,7 +101,7 @@ export function SearchList() {
                     </Grid>
                   </Container> :
                 newsItemsData ?
-                  <CardList cards={newsItemsData.news_items} /> :
+                  <CardList cards={filteredNewsItemsData} /> :
                 <></>
               }
             </Box>
