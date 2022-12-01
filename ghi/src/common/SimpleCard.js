@@ -14,7 +14,7 @@ import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi
 import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
 import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useDispatch } from 'react-redux';
-
+import { PortfolioDialog } from './PortfolioDialog';
 
 
 export function SimpleCard(props) {
@@ -73,7 +73,7 @@ export function SimpleCard(props) {
                 <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: false } ))} value={card} size="small"><ClearOutlinedIcon /></IconButton> :
                 <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: true } ))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
               }
-              <IconButton onClick={() => dispatch(togglePortfolioDialog())} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton>
+              <PortfolioDialog />
             </> :
             <>
               { type == 'SAVED' ?

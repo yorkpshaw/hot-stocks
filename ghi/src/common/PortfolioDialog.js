@@ -8,6 +8,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useDispatch } from 'react-redux';
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import IconButton from '@mui/material/IconButton';
+import { useSelector } from 'react-redux';
 
 
 export function PortfolioDialog() {
@@ -17,7 +20,10 @@ export function PortfolioDialog() {
 
   return (
     <div>
-      <Dialog open={open} onClose={() => dispatch(togglePortfolioDialog())}>
+      <IconButton onClick={() => dispatch(togglePortfolioDialog())}>
+        <WorkOutlineOutlinedIcon />
+      </IconButton>
+      <Dialog open={portfolioDialog} onClose={() => dispatch(togglePortfolioDialog())}>
         <DialogTitle>Update portfolio</DialogTitle>
         <DialogContent>
           <DialogContentText>
