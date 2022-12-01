@@ -2,8 +2,6 @@ import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react'
 import TinderCard from 'react-tinder-card';
 
 import CloseIcon from '@mui/icons-material/Close';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-// import InfoIcon from '@mui/icons-material/Info';
 import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
 

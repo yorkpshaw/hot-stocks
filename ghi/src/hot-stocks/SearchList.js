@@ -29,20 +29,20 @@ export function SearchList() {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
   const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
-  const [ triggerStocks, { data: stocksData, isLoading: stocksLoading } ] = useLazyGetStocksQuery();
+  const [triggerStocks, { data: stocksData, isLoading: stocksLoading }] = useLazyGetStocksQuery();
   const [error, setError] = useState('');
   const [filteredNewsItemsData, setFilteredNewsItemsData] = useState([]);
 
 
   async function handleSubmit(e) {
     e.preventDefault();
-    triggerStocks({value: search});
+    triggerStocks({ value: search });
 
     setFilteredNewsItemsData(
-        newsItemsData.news_items.filter(
+      newsItemsData.news_items.filter(
         newsItem => newsItem.title.toLowerCase().includes(search.toLowerCase())
-        )
       )
+    );
 
   }
 
@@ -73,7 +73,7 @@ export function SearchList() {
                 onChange={e => setSearch(e.target.value)}
                 variant="outlined"
                 autoFocus
-                sx={{ mt: 2, mb: 3, width: '50ch' }}/>
+                sx={{ mt: 2, mb: 3, width: '50ch' }} />
               <IconButton
                 type="submit"
                 variant="contained"
@@ -88,9 +88,9 @@ export function SearchList() {
                       <CircularProgress />
                     </Grid>
                   </Container> :
-                stocksData ?
-                  <CardList cards={stocksData.stocks} /> :
-                <></>
+                  stocksData ?
+                    <CardList cards={stocksData.stocks} /> :
+                    <></>
               }
               {
                 newsItemsLoading ?
@@ -99,9 +99,9 @@ export function SearchList() {
                       <CircularProgress />
                     </Grid>
                   </Container> :
-                newsItemsData ?
-                  <CardList cards={filteredNewsItemsData} /> :
-                <></>
+                  newsItemsData ?
+                    <CardList cards={filteredNewsItemsData} /> :
+                    <></>
               }
             </Box>
           </Box>

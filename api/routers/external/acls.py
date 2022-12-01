@@ -4,7 +4,8 @@ import requests
 import os
 
 ALPHAVANTAGE_API_KEY = os.environ["ALPHAVANTAGE_API_KEY"]
-FMP_API_KEY = 'd9d102aa66e8530a6ae66e89468b5aa1'
+FMP_API_KEY = "d9d102aa66e8530a6ae66e89468b5aa1"
+
 
 class ACLs:
     def get_company(symbol):
@@ -22,7 +23,6 @@ class ACLs:
         except (KeyError, IndexError):
             return None
 
-
     def get_stock(symbol):
 
         url = f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=5min&apikey={ALPHAVANTAGE_API_KEY}"
@@ -37,8 +37,6 @@ class ACLs:
         except (KeyError, IndexError):
             return None
 
-
-
     def search_all_stocks(value):
 
         url = f"https://financialmodelingprep.com/api/v3/search?query={value}&limit=10&apikey={FMP_API_KEY}"
@@ -47,7 +45,10 @@ class ACLs:
         stocks = []
         try:
             for i in content:
-                if i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE':
+                if (
+                    i["exchangeShortName"] == "NASDAQ"
+                    or i["exchangeShortName"] == "NYSE"
+                ):
                     stock = {}
                     stock["symbol"] = i["symbol"]
                     stock["name"] = i["name"]
@@ -56,16 +57,21 @@ class ACLs:
         except (KeyError, IndexError):
             return None
 
-
     def get_all_stocks():
 
-        url = f"https://financialmodelingprep.com/api/v3/stock/list?apikey={FMP_API_KEY}"
+        url = (
+            f"https://financialmodelingprep.com/api/v3/stock/list?apikey={FMP_API_KEY}"
+        )
         response = requests.get(url)
         content = json.loads(response.content)
         stocks = []
         try:
             for i in content:
-                if i['type'] =='stock' and i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE':
+                if (
+                    i["type"] == "stock"
+                    and i["exchangeShortName"] == "NASDAQ"
+                    or i["exchangeShortName"] == "NYSE"
+                ):
                     stock = {}
                     stock["symbol"] = i["symbol"]
                     stock["name"] = i["name"]
@@ -74,7 +80,6 @@ class ACLs:
             return stocks
         except (KeyError, IndexError):
             return None
-
 
     def get_all_news_items():
 

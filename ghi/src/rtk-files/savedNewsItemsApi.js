@@ -28,13 +28,6 @@ export const savedNewsItemsApi = createApi({
             }),
             invalidatesTags: ['SavedNewsItems'],
         }),
-        // editSavedNewsItem: builder.mutation({
-        //     query: data => ({
-        //         url: `/api/saved_news_items/${data.id}/`,
-        //         body: data,
-        //         method: 'put',
-        //     }),
-        // }),
         deleteSavedNewsItem: builder.mutation({
             query: data => ({
                 url: `/api/saved_news_items/${data.id}/`,
@@ -48,6 +41,5 @@ export const savedNewsItemsApi = createApi({
 export const {
     useGetSavedNewsItemsQuery,
     useCreateOrUpdateSavedNewsItemMutation,
-    // useEditSavedNewsItemsMutation,
     useDeleteSavedNewsItemMutation,
  } = savedNewsItemsApi;

@@ -28,13 +28,6 @@ export const savedStocksApi = createApi({
             }),
             invalidatesTags: ['SavedStocks'],
         }),
-        // editSavedStock: builder.mutation({
-        //     query: data => ({
-        //         url: `/api/saved_stocks/${data.id}/`,
-        //         body: data,
-        //         method: 'put',
-        //     }),
-        // }),
         deleteSavedStock: builder.mutation({
             query: data => ({
                 url: `/api/saved_news_items/${data.id}/`,
@@ -48,6 +41,5 @@ export const savedStocksApi = createApi({
 export const {
     useGetSavedStocksQuery,
     useCreateOrUpdateSavedStockMutation,
-    // useEditSavedStockMutation,
     useDeleteSavedStockMutation,
 } = savedStocksApi;

@@ -35,7 +35,7 @@ export function LoginForm() {
   const { username, password } = useSelector(state => state.account);
   const [logIn, { error }] = useLogInMutation();
   const field = useCallback(
-    e => dispatch(updateField({field: e.target.name, value: e.target.value})),
+    e => dispatch(updateField({ field: e.target.name, value: e.target.value })),
     [dispatch],
   );
   const { signUp } = useSelector(state => state.signUp);

@@ -1,3 +1,9 @@
+## November 30, 2022
+
+Today, I worked on:
+*Working through data bugs and getting the portfolio component to render..yay!
+
+
 ## November 29, 2022
 
 Today, I worked on:
