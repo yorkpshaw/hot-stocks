@@ -17,6 +17,7 @@ import Link from '@mui/material/Link';
 import { Copyright } from '../common/Copyright';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { SimpleCard } from '../common/SimpleCard';
+import { CardList } from '../common/CardList';
 
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
