@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { authApi } from './authApi';
 
 export const savedStocksApi = createApi({
     reducerPath: 'savedStocks',
@@ -37,7 +38,6 @@ export const savedStocksApi = createApi({
         deleteSavedStock: builder.mutation({
             query: data => ({
                 url: `/api/saved_news_items/${data.id}/`,
-                body: data,
                 method: 'delete',
             }),
             invalidatesTags: ['SavedNewsItems'],
@@ -48,6 +48,6 @@ export const savedStocksApi = createApi({
 export const {
     useGetSavedStocksQuery,
     useCreateOrUpdateSavedStockMutation,
-    // useEditSavedStocksMutation,
+    // useEditSavedStockMutation,
     useDeleteSavedStockMutation,
 } = savedStocksApi;

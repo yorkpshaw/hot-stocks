@@ -38,7 +38,6 @@ export const savedNewsItemsApi = createApi({
         deleteSavedNewsItem: builder.mutation({
             query: data => ({
                 url: `/api/saved_news_items/${data.id}/`,
-                body: data,
                 method: 'delete',
             }),
             invalidatesTags: ['SavedNewsItems'],

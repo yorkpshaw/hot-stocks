@@ -69,7 +69,7 @@ class ACLs:
                     stock = {}
                     stock["symbol"] = i["symbol"]
                     stock["name"] = i["name"]
-                    stock["cost_current"] = i["cost_current"]
+                    stock["cost_current"] = i["price"]
                     stocks.append(stock)
             return stocks
         except (KeyError, IndexError):
