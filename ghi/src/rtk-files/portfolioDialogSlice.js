@@ -11,9 +11,9 @@ export const portfolioDialogSlice = createSlice({
     reducers: {
         togglePortfolioDialog: (state, card) => {
             state.portfolioDialog = !state.portfolioDialog;
-            { card ?
+             card ?
                 state.card = card.payload :
-                state.card = initialState.card }
+                state.card = initialState.card
         }
     },
 });
