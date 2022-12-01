@@ -10,6 +10,7 @@ import { savedStocksApi } from './savedStocksApi';
 import { authApi } from './authApi';
 import { accountSlice } from './accountSlice';
 import { signUpSlice } from './signUpSlice';
+import { portfolioDialogSlice } from './portfolioDialogSlice';
 
 
 export const store = configureStore({
@@ -17,6 +18,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [accountSlice.name]: accountSlice.reducer,
     [signUpSlice.name]: signUpSlice.reducer,
+    [portfolioDialogSlice.name]: portfolioDialogSlice.reducer,
     [companiesApi.reducerPath]: companiesApi.reducer,
     [portfolioStocksApi.reducerPath]: portfolioStocksApi.reducer,
     [savedItemsApi.reducerPath]: savedItemsApi.reducer,

@@ -6,24 +6,18 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
+import { useDispatch } from 'react-redux';
 
-export default function PortfolioDialog() {
-  const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+export function PortfolioDialog() {
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const { portfolioDialog } = useSelector(state => state.portfolioDialog);
+  const dispatch = useDispatch();
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
-      </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={() => dispatch(togglePortfolioDialog())}>
         <DialogTitle>Update portfolio</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -39,8 +33,8 @@ export default function PortfolioDialog() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={() => dispatch(togglePortfolioDialog())}>Cancel</Button>
+          <Button onClick={() => dispatch(togglePortfolioDialog())}>Subscribe</Button>
         </DialogActions>
       </Dialog>
     </div>

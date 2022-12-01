@@ -22,7 +22,7 @@ import { useGetTokenQuery, useLogInMutation } from '../rtk-files/authApi';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
 import { updateField } from '../rtk-files/accountSlice';
 import { SignUpForm } from './SignUpForm';
-import { setSignUp } from '../rtk-files/signUpSlice';
+import { toggleSignUp } from '../rtk-files/signUpSlice';
 
 
 
@@ -102,7 +102,7 @@ export function LoginForm() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link onClick={() => dispatch(setSignUp())} variant="body2">
+                <Link onClick={() => dispatch(toggleSignUp())} variant="body2">
                   {"Don't have an account? Sign up"}
                 </Link>
               </Grid>

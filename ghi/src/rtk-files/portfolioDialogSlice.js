@@ -1,27 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    show: null,
+    portfolioDialog: false,
 }
 
 export const portfolioDialogSlice = createSlice({
-    name: 'portfolioModal',
+    name: 'portfolioDialog',
     initialState,
     reducers: {
-        showModal: (state, action) => {
-            state.show = action.payload;
-        },
-        clearForm: () => {
-            return initialState;
+        togglePortfolioDialog: (state) => {
+            state.portfolioDialog = !state.portfolioDialog;
         }
     },
 });
 
 export const {
-    clearForm,
-    updateField,
-    showModal,
-} = accountSlice.actions;
-
-export const LOG_IN_MODAL = 'LOG_IN_MODAL';
-export const SIGN_UP_MODAL = 'SIGN_UP_MODAL';
+    togglePortfolioDialog,
+} = portfolioDialogSlice.actions;

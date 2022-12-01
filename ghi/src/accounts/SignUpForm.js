@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSignUpMutation } from '../rtk-files/authApi';
 import { preventDefault } from '../common/utils';
 import { updateField } from '../rtk-files/accountSlice';
-import { setSignUp } from '../rtk-files/signUpSlice';
+import { toggleSignUp } from '../rtk-files/signUpSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // TODO
@@ -127,7 +127,7 @@ export function SignUpForm(props) {
                     </Button>
                 <Grid container>
                     <Grid item>
-                        <Link onClick={() => dispatch(setSignUp())} variant="body2">
+                        <Link onClick={() => dispatch(toggleSignUp())} variant="body2">
                         {"Already have an account? Log in"}
                         </Link>
                     </Grid>

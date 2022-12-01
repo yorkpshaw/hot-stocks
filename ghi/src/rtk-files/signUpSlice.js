@@ -8,12 +8,12 @@ export const signUpSlice = createSlice({
     name: 'signUp',
     initialState,
     reducers: {
-        setSignUp: (state) => {
+        toggleSignUp: (state) => {
             state.signUp = !state.signUp;
         }
     },
 });
 
 export const {
-    setSignUp,
+    toggleSignUp,
 } = signUpSlice.actions;

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { clearForm } from './accountSlice';
-import { setSignUp } from './signUpSlice';
+import { toggleSignUp } from './signUpSlice';
 
 export const authApi = createApi({
     reducerPath: 'authentication',
@@ -32,7 +32,7 @@ export const authApi = createApi({
           try {
             await queryFulfilled;
             dispatch(clearForm());
-            dispatch(setSignUp());
+            dispatch(toggleSignUp());
           } catch (err) {}
         },
       }),
