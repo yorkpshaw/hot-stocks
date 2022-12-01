@@ -13,7 +13,7 @@ export const portfolioDialogSlice = createSlice({
             state.portfolioDialog = !state.portfolioDialog;
              card ?
                 state.card = card.payload :
-                state.card = initialState.card
+                state.card = initialState.card;
         }
     },
 });
