@@ -9,13 +9,20 @@ import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import { deepOrange } from '@mui/material/colors';
 import Link from '@mui/material/Link';
-import { handlePortfolioClick, handleSavedClick, handleDeleteSavedClick } from '../common/utils';
+import { preventDefault } from '../common/utils';
+import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
+import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
+
+
+import { handlePortfolioClick } from '../common/utils';
 
 
 export function SimpleCard(props) {
 
   const card = props.card;
   const type = props.type;
+  const [createOrUpdateSavedStock, { error: savedStockError, isLoading: savedStockLoading }] = useCreateOrUpdateSavedStockMutation();
+  const [createOrUpdateSavedNewsItem, { error: savedNewsItemError, isLoading: savedNewsItemLoading }] = useCreateOrUpdateSavedNewsItemMutation();
 
   return (
     <Card
@@ -30,11 +37,23 @@ export function SimpleCard(props) {
               <Typography variant="h5" component="div">
                 {card.symbol}
               </Typography>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                { card.num_shares ?
+                  card.num_shares + 'sh' :
+                  <></>
+                }
+              </Typography>
               <Typography sx={{color: deepOrange[500]}}>
-                C $ {card.cost_current}
+                { card.cost_current ?
+                  'C $' + card.cost_current :
+                  <></>
+                }
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                B $ {card.cost_basis}
+                { card.cost_basis ?
+                  'B $' + card.cost_basis :
+                  <></>
+                }
               </Typography>
             </> :
             <>
@@ -48,12 +67,20 @@ export function SimpleCard(props) {
             }
         </CardContent>
         <CardActions>
-          { type == 'SAVED' ?
-          <IconButton onClick={handleDeleteSavedClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>:
-          <IconButton onClick={handleSavedClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>}
           { card.symbol ?
-            <IconButton onClick={handlePortfolioClick} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton> :
-            <></>
+            <>
+              { type == 'SAVED' ?
+                <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: false } ))} value={card} size="small"><ClearOutlinedIcon /></IconButton> :
+                <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: true } ))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+              }
+              <IconButton onClick={handlePortfolioClick} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton>
+            </> :
+            <>
+              { type == 'SAVED' ?
+                <IconButton onClick={preventDefault(createOrUpdateSavedNewsItem, () => ( { title: card.title, news_url: card.news_url, time_published: card.time_published, banner_image: card.banner_image, summary: card.summary, preference: false } ))} value={card} size="small"><ClearOutlinedIcon /></IconButton> :
+                <IconButton onClick={preventDefault(createOrUpdateSavedNewsItem, () => ( { title: card.title, news_url: card.news_url, time_published: card.time_published, banner_image: card.banner_image, summary: card.summary, preference: true } ))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+              }
+            </>
           }
 
         </CardActions>

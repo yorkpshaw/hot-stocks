@@ -14,21 +14,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import { Copyright } from '../common/Copyright';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { SimpleCard } from '../common/SimpleCard';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Hot Stocks
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { CardList } from '../common/CardList';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -39,16 +28,7 @@ export function Saved(props) {
     <Container maxWidth="sm">
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
-        {/* <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar> */}
-      </AppBar>
       <main>
-        {/* Hero unit */}
         <Box
           sx={{
             bgcolor: 'background.paper',
@@ -69,35 +49,18 @@ export function Saved(props) {
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               Here lies a whole bunch of text that will be replaced.
             </Typography>
-            {/* <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
-            </Stack> */}
           </Container>
         </Box>
+             {/* saved_news_items
+          saved_stocks */}
+
         <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
-                <SimpleCard />
-                {/* <Card
+                <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
-                  />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Heading
@@ -111,17 +74,14 @@ export function Saved(props) {
                     <Button size="small">View</Button>
                     <Button size="small">Edit</Button>
                   </CardActions>
-                </Card> */}
+                </Card>
               </Grid>
             ))}
           </Grid>
         </Container>
+
       </main>
-      {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Hello There!
-        </Typography>
         <Typography
           variant="subtitle1"
           align="center"
@@ -132,32 +92,7 @@ export function Saved(props) {
         </Typography>
         <Copyright />
       </Box>
-      {/* End footer */}
     </ThemeProvider>
     </Container>
   );
 }
-
-
-// import { valueToPercent } from '@mui/base';
-// import * as React from 'react';
-// import { Container } from '@mui/material';
-
-
-// export function Saved(props) {
-
-//     return (
-//         <Container maxWidth="sm">
-//         <div>
-//             savedsavedsavedsavedsavedsavedsavedsavedsavedsaved
-//         </div>
-//         </Container>
-//       );
-// }
-
-// 9 boxes on the page (get)
-// all boxes will have a delete button on the bottom right
-// each stock box will have Symbol, current value
-// each news box will have the news title and posted date
-// do the boxes still need a plus sign button? it'll be edit
-// connect this component to the back end for saved list

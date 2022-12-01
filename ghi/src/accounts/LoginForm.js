@@ -18,11 +18,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetTokenQuery, useLogInMutation } from '../rtk/authApi';
+import { useGetTokenQuery, useLogInMutation } from '../rtk-files/authApi';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
-import { updateField } from '../rtk/accountSlice';
+import { updateField } from '../rtk-files/accountSlice';
 import { SignUpForm } from './SignUpForm';
-import { setSignUp } from '../rtk/signUpSlice';
+import { setSignUp } from '../rtk-files/signUpSlice';
 
 
 

@@ -1,10 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { authApi } from './authApi';
 
 export const savedNewsItemsApi = createApi({
     reducerPath: 'savedNewsItems',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.API_SERVICE,
-    }),
+        baseUrl: 'http://localhost:8000/', //process.env.API_SERVICE,
+        prepareHeaders: (headers, { getState }) => {
+          const selector = authApi.endpoints.getToken.select();
+          const { data: tokenData } = selector(getState());
+          if (tokenData && tokenData.access_token) {
+            headers.set('Authorization', `Bearer ${tokenData.access_token}`);
+          }
+          return headers;
+        }
+      }),
     tagTypes: ['SavedNewsItems'],
     endpoints: builder => ({
         getSavedNewsItems: builder.query({
@@ -19,17 +28,9 @@ export const savedNewsItemsApi = createApi({
             }),
             invalidatesTags: ['SavedNewsItems'],
         }),
-        // editSavedNewsItem: builder.mutation({
-        //     query: data => ({
-        //         url: `/api/saved_news_items/${data.id}/`,
-        //         body: data,
-        //         method: 'put',
-        //     }),
-        // }),
         deleteSavedNewsItem: builder.mutation({
             query: data => ({
                 url: `/api/saved_news_items/${data.id}/`,
-                body: data,
                 method: 'delete',
             }),
             invalidatesTags: ['SavedNewsItems'],
@@ -39,7 +40,6 @@ export const savedNewsItemsApi = createApi({
 
 export const {
     useGetSavedNewsItemsQuery,
-    useCreateSavedNewsItemsMutation,
-    // useEditSavedNewsItemsMutation,
-    useDeleteSavedNewsItemsMutation,
+    useCreateOrUpdateSavedNewsItemMutation,
+    useDeleteSavedNewsItemMutation,
  } = savedNewsItemsApi;
