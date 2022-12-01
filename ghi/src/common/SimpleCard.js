@@ -5,15 +5,12 @@ import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
-import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import { deepOrange } from '@mui/material/colors';
 import Link from '@mui/material/Link';
 import { preventDefault } from '../common/utils';
 import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
-import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
-import { useDispatch } from 'react-redux';
 import { PortfolioDialog } from './PortfolioDialog';
 
 
@@ -23,7 +20,6 @@ export function SimpleCard(props) {
   const type = props.type;
   const [createOrUpdateSavedStock, { error: savedStockError, isLoading: savedStockLoading }] = useCreateOrUpdateSavedStockMutation();
   const [createOrUpdateSavedNewsItem, { error: savedNewsItemError, isLoading: savedNewsItemLoading }] = useCreateOrUpdateSavedNewsItemMutation();
-  const dispatch = useDispatch();
 
 
   return (
@@ -73,7 +69,7 @@ export function SimpleCard(props) {
                 <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: false } ))} value={card} size="small"><ClearOutlinedIcon /></IconButton> :
                 <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: true } ))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
               }
-              <PortfolioDialog />
+              <PortfolioDialog card={ card } />
             </> :
             <>
               { type == 'SAVED' ?

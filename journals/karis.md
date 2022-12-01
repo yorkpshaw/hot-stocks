@@ -14,7 +14,7 @@ I incorporated useMutations on button clicks for SimpleCard to permit full integ
 
 I made SimpleCard responsive to the type of data received (i.e. news item, stock).
 
-I began developing PortfolioDialog, which will allow users to add or update stocks in portfolio.
+I began developing PortfolioDialog, which will allow users to add or update stocks in portfolio. I've been able to get the dialog to appear when the Portfolio button is clicked (and toggle based on user clicking), though I'm stuck on a bug where the card passed in via props is the last card in the mapped CardList.
 
 I worked with Ben and York to help troubleshoot issues with Portfolio and Saved components.
 

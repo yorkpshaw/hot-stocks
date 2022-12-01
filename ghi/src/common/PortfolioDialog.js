@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -9,14 +9,18 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useDispatch } from 'react-redux';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-import IconButton from '@mui/material/IconButton';
 import { useSelector } from 'react-redux';
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import NextWeekOutlinedIcon from '@mui/icons-material/NextWeekOutlined';
+import { useCreateOrUpdatePortfolioStockMutation } from '../rtk-files/portfolioStocksApi';
 
 
-export function PortfolioDialog() {
+export function PortfolioDialog(props) {
 
   const { portfolioDialog } = useSelector(state => state.portfolioDialog);
+  const [createOrUpdatePortfolioStock, { error }] = useCreateOrUpdatePortfolioStockMutation();
   const dispatch = useDispatch();
+  const card = props.card;
 
   return (
     <div>
@@ -24,11 +28,11 @@ export function PortfolioDialog() {
         <WorkOutlineOutlinedIcon />
       </IconButton>
       <Dialog open={portfolioDialog} onClose={() => dispatch(togglePortfolioDialog())}>
-        <DialogTitle>Update portfolio</DialogTitle>
+        <DialogTitle>{ card.symbol }</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+            B ${ card.cost_basis }
+            {/* TODO should be cost_current, will need to hit get_stock api endpoint */}
           </DialogContentText>
           <TextField
             autoFocus
@@ -39,8 +43,9 @@ export function PortfolioDialog() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => dispatch(togglePortfolioDialog())}>Cancel</Button>
-          <Button onClick={() => dispatch(togglePortfolioDialog())}>Subscribe</Button>
+          <IconButton onClick={() => dispatch(togglePortfolioDialog())}><ClearOutlinedIcon /></IconButton>
+          <IconButton onClick={() => dispatch(togglePortfolioDialog())}><NextWeekOutlinedIcon /></IconButton>
+          {/* TODO need to also create or update portfolio stock */}
         </DialogActions>
       </Dialog>
     </div>
