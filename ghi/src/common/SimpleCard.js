@@ -2,26 +2,18 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
-import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import { deepOrange } from '@mui/material/colors';
 import Link from '@mui/material/Link';
-import { preventDefault } from '../common/utils';
 import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
-import { PortfolioDialog } from './PortfolioDialog';
-import { PrefTrueSavedNewsItemButton, PrefFalseSavedNewsItemButton, PrefTrueSavedStockButton, PrefFalseSavedStockButton } from './Buttons';
+import { PortfolioStockButton, PrefTrueSavedNewsItemButton, PrefFalseSavedNewsItemButton, PrefTrueSavedStockButton, PrefFalseSavedStockButton } from './Buttons';
 
 
 export function SimpleCard(props) {
 
   const card = props.card;
   const type = props.type;
-  const [createOrUpdateSavedStock, { error: savedStockError, isLoading: savedStockLoading }] = useCreateOrUpdateSavedStockMutation();
-  const [createOrUpdateSavedNewsItem, { error: savedNewsItemError, isLoading: savedNewsItemLoading }] = useCreateOrUpdateSavedNewsItemMutation();
-
 
   return (
     <Card
@@ -70,7 +62,7 @@ export function SimpleCard(props) {
                 <PrefFalseSavedStockButton card={ card }/>:
                 <PrefTrueSavedStockButton card={ card }/>
               }
-              <PortfolioDialog card={ card } />
+              <PortfolioStockButton card={ card }/>
             </> :
             <>
               { type == 'SAVED' ?

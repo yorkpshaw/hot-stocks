@@ -15,39 +15,41 @@ import NextWeekOutlinedIcon from '@mui/icons-material/NextWeekOutlined';
 import { useCreateOrUpdatePortfolioStockMutation } from '../rtk-files/portfolioStocksApi';
 
 
-export function PortfolioDialog(props) {
+export function PortfolioDialog() {
 
-  const { portfolioDialog } = useSelector(state => state.portfolioDialog);
+  const { portfolioDialog, card } = useSelector(state => state.portfolioDialog);
   const [createOrUpdatePortfolioStock, { error }] = useCreateOrUpdatePortfolioStockMutation();
   const dispatch = useDispatch();
-  const card = props.card;
 
   return (
-    <div>
-      <IconButton onClick={() => dispatch(togglePortfolioDialog())}>
-        <WorkOutlineOutlinedIcon />
-      </IconButton>
-      <Dialog open={portfolioDialog} onClose={() => dispatch(togglePortfolioDialog())}>
-        <DialogTitle>{ card.symbol }</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            B ${ card.cost_basis }
-            {/* TODO should be cost_current, will need to hit get_stock api endpoint */}
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="numShares"
-            label="Number of shares"
-            variant="standard"
-          />
-        </DialogContent>
-        <DialogActions>
-          <IconButton onClick={() => dispatch(togglePortfolioDialog())}><ClearOutlinedIcon /></IconButton>
-          <IconButton onClick={() => dispatch(togglePortfolioDialog())}><NextWeekOutlinedIcon /></IconButton>
-          {/* TODO need to also create or update portfolio stock */}
-        </DialogActions>
-      </Dialog>
-    </div>
+    <>
+    {
+      card ?
+        <>
+        <Dialog open={ portfolioDialog } onClose={() => dispatch(togglePortfolioDialog())}>
+          <DialogTitle>{ card.symbol }</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              C ${ card.cost_current }
+              {/* TODO will need to hit get_stock api endpoint */}
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="numShares"
+              label="Number of shares"
+              variant="standard"
+            />
+          </DialogContent>
+          <DialogActions>
+            <IconButton onClick={() => dispatch(togglePortfolioDialog())}><ClearOutlinedIcon /></IconButton>
+            <IconButton onClick={() => dispatch(togglePortfolioDialog())}><NextWeekOutlinedIcon /></IconButton>
+            {/* TODO need to also create or update portfolio stock */}
+          </DialogActions>
+        </Dialog>
+      </> :
+      <></>
+    }
+  </>
   );
 }

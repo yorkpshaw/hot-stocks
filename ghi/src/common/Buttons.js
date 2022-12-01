@@ -5,6 +5,22 @@ import IconButton from '@mui/material/IconButton';
 import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
 import { preventDefault } from '../common/utils';
+import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
+import { useDispatch } from 'react-redux';
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+
+
+export function PortfolioStockButton(props) {
+
+    const dispatch = useDispatch();
+    const card = props.card;
+
+    return (
+        <IconButton onClick={() => dispatch(togglePortfolioDialog(card))}>
+            <WorkOutlineOutlinedIcon />
+        </IconButton>
+    )
+}
 
 export function PrefTrueSavedStockButton(props) {
 

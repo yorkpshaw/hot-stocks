@@ -19,7 +19,7 @@ import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
 import { useLazyGetStocksQuery } from '../rtk-files/stocksApi';
 import { useDispatch } from 'react-redux';
 import Grid from '@mui/material/Grid';
-
+import { PortfolioDialog } from '../common/PortfolioDialog';
 
 
 const theme = createTheme();
@@ -48,6 +48,7 @@ export function SearchList() {
 
   return (
     <>
+      <PortfolioDialog />
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="sm">
           <CssBaseline />
