@@ -65,7 +65,7 @@ class ACLs:
         stocks = []
         try:
             for i in content:
-                if i["type"] == "stock" and i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE':
+                if i['type'] =='stock' and i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE':
                     stock = {}
                     stock["symbol"] = i["symbol"]
                     stock["name"] = i["name"]
