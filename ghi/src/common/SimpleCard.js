@@ -33,15 +33,13 @@ export function SimpleCard(props) {
             <>
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 {card.name }
-              </Typography>
-              <Typography variant="h5" component="div">
-                {card.symbol}
-              </Typography>
-              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 { card.num_shares ?
                   card.num_shares + ' sh' :
                   <></>
                 }
+              </Typography>
+              <Typography variant="h5" component="div">
+                {card.symbol}
               </Typography>
               <Typography sx={{color: deepOrange[500]}}>
                 { card.cost_current ?
