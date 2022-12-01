@@ -17,7 +17,7 @@ import Link from '@mui/material/Link';
 import { Copyright } from '../common/Copyright';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { SimpleCard } from '../common/SimpleCard';
-
+import { CardList } from '../common/CardList';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -28,8 +28,6 @@ export function Saved(props) {
     <Container maxWidth="sm">
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* <AppBar position="relative">
-      </AppBar> */}
       <main>
         <Box
           sx={{
@@ -53,28 +51,16 @@ export function Saved(props) {
             </Typography>
           </Container>
         </Box>
-        <CardList />
-
-          {/* news_items
+             {/* saved_news_items
           saved_stocks */}
 
-        {/* <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
-                <CardList />
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
-                  />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Heading
@@ -92,7 +78,7 @@ export function Saved(props) {
               </Grid>
             ))}
           </Grid>
-        </Container> */}
+        </Container>
 
       </main>
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
@@ -110,27 +96,3 @@ export function Saved(props) {
     </Container>
   );
 }
-
-
-// import { valueToPercent } from '@mui/base';
-// import * as React from 'react';
-// import { Container } from '@mui/material';
-
-
-// export function Saved(props) {
-
-//     return (
-//         <Container maxWidth="sm">
-//         <div>
-//             savedsavedsavedsavedsavedsavedsavedsavedsavedsaved
-//         </div>
-//         </Container>
-//       );
-// }
-
-// 9 boxes on the page (get)
-// all boxes will have a delete button on the bottom right
-// each stock box will have Symbol, current value
-// each news box will have the news title and posted date
-// do the boxes still need a plus sign button? it'll be edit
-// connect this component to the back end for saved list

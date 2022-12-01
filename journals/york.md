@@ -1,7 +1,8 @@
 # Wednesday, November 30
 Today, I worked on:
 
-    -
+    - Finished the basic layout of the About component
+    - Experimented with the design of the Saved component
 
 ## Tuesday, November 29
 Today, I worked on:

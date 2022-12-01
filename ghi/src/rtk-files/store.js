@@ -10,7 +10,6 @@ import { savedStocksApi } from './savedStocksApi';
 import { authApi } from './authApi';
 import { accountSlice } from './accountSlice';
 import { signUpSlice } from './signUpSlice';
-import { portfolioSlice} from './portfolioSlice';
 
 
 export const store = configureStore({
@@ -25,7 +24,6 @@ export const store = configureStore({
     [savedStocksApi.reducerPath]: savedItemsApi.reducer,
     [stocksApi.reducerPath]: stocksApi.reducer,
     [newsItemsApi.reducerPath]: newsItemsApi.reducer,
-    [portfolioSlice.reducerPath]: portfolioSlice.reducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
