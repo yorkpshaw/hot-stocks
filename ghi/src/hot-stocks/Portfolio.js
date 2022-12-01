@@ -51,7 +51,7 @@ export function Portfolio() {
               alignItems: 'center',
             }}
           >
-            <ErrorNotification error={error} />
+            {/* <ErrorNotification error={error} /> */}
               {
                 portfolioLoading ?
                   <Container sx={{ py: 8 }} maxWidth="md">

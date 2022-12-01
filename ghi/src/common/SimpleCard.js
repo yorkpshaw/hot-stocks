@@ -39,7 +39,7 @@ export function SimpleCard(props) {
               </Typography>
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 { card.num_shares ?
-                  card.num_shares + 'sh' :
+                  card.num_shares + ' sh' :
                   <></>
                 }
               </Typography>
