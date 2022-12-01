@@ -1,3 +1,24 @@
+## 11/30/2022
+
+Today, I worked on:
+
+* Developing Search component
+* Incorporating reducer endpoints in SimpleCard
+* Developing SimpleCard
+* Developing PortfolioDialog
+* Troubleshooting Portfolio, Saved with team
+
+I completed development of search mechanism for news items (will likely base it off of title).
+
+I incorporated useMutations on button clicks for SimpleCard to permit full integration of front-end and back-end.
+
+I made SimpleCard responsive to the type of data received (i.e. news item, stock).
+
+I began developing PortfolioDialog, which will allow users to add or update stocks in portfolio.
+
+I worked with Ben and York to help troubleshoot issues with Portfolio and Saved components.
+
+
 ## 11/29/2022
 
 Today, I worked on:
