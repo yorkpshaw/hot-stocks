@@ -18,11 +18,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetTokenQuery, useLogInMutation } from '../RTK/authApi';
+import { useGetTokenQuery, useLogInMutation } from '../rtk/authApi';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
-import { updateField } from '../RTK/accountSlice';
+import { updateField } from '../rtk/accountSlice';
 import { SignUpForm } from './SignUpForm';
-import { setSignUp } from '../RTK/signUpSlice';
+import { setSignUp } from '../rtk/signUpSlice';
 
 
 
@@ -35,7 +35,7 @@ export function LoginForm() {
   const { username, password } = useSelector(state => state.account);
   const [logIn, { error }] = useLogInMutation();
   const field = useCallback(
-    e => dispatch(updateField({field: e.target.name, value: e.target.value})),
+    e => dispatch(updateField({ field: e.target.name, value: e.target.value })),
     [dispatch],
   );
   const { signUp } = useSelector(state => state.signUp);
@@ -43,76 +43,76 @@ export function LoginForm() {
 
   return (
     <>
-    { signUp ?
-    <SignUpForm /> :
-    tokenLoading ?
-    <></> :
-    token ?
-    "You're already logged in, silly!" :
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: deepOrange[500] }}>
-            <LocalFireDepartmentOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Log in
-          </Typography>
-          <ErrorNotification error={error} />
-          <Box
-            component="form"
-            method="post"
-            onSubmit={preventDefault(logIn, target)}
-            noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="username"
-              label="Username"
-              value={username}
-              onChange={field}
-              variant="outlined"
-              autoFocus />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              value={password}
-              onChange={field}
-              type="password"
-              autoComplete="current-password"
-              variant="outlined"/>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: deepOrange[500] }}>
-              Log In
-            </Button>
-            <Grid container>
-              <Grid item>
-                <Link onClick={() => dispatch(setSignUp())} variant="body2">
-                  {"Don't have an account? Sign up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
-    }
+      {signUp ?
+        <SignUpForm /> :
+        tokenLoading ?
+          <></> :
+          token ?
+            "You're already logged in, silly!" :
+            <ThemeProvider theme={theme}>
+              <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                  sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Avatar sx={{ m: 1, bgcolor: deepOrange[500] }}>
+                    <LocalFireDepartmentOutlinedIcon />
+                  </Avatar>
+                  <Typography component="h1" variant="h5">
+                    Log in
+                  </Typography>
+                  <ErrorNotification error={error} />
+                  <Box
+                    component="form"
+                    method="post"
+                    onSubmit={preventDefault(logIn, target)}
+                    noValidate sx={{ mt: 1 }}>
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="username"
+                      label="Username"
+                      value={username}
+                      onChange={field}
+                      variant="outlined"
+                      autoFocus />
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="password"
+                      label="Password"
+                      value={password}
+                      onChange={field}
+                      type="password"
+                      autoComplete="current-password"
+                      variant="outlined" />
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      sx={{ mt: 3, mb: 2, bgcolor: deepOrange[500] }}>
+                      Log In
+                    </Button>
+                    <Grid container>
+                      <Grid item>
+                        <Link onClick={() => dispatch(setSignUp())} variant="body2">
+                          {"Don't have an account? Sign up"}
+                        </Link>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Box>
+                <Copyright sx={{ mt: 8, mb: 4 }} />
+              </Container>
+            </ThemeProvider>
+      }
     </>
   );
 }

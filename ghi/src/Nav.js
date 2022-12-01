@@ -16,7 +16,7 @@ import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import { Link } from "react-router-dom";
-import { useGetTokenQuery, useLogOutMutation } from './RTK/authApi';
+import { useGetTokenQuery, useLogOutMutation } from './rtk/authApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import { LoginForm } from './accounts/LoginForm';
 
@@ -71,43 +71,43 @@ export default function HotStocksNav({ children }) {
           sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
         >
         </AppBar>
-        { tokenLoading ?
+        {tokenLoading ?
           <></> :
           token ?
-          <Drawer
-            sx={{
-              width: drawerWidth,
-              flexShrink: 0,
-              '& .MuiDrawer-paper': {
+            <Drawer
+              sx={{
                 width: drawerWidth,
-                boxSizing: 'border-box',
-              },
-            }}
-            variant="permanent"
-            anchor="left"
-          >
-            <Toolbar />
-            <Divider />
-            <List>
-              {getList(upper_data)}
-            </List>
-            <Divider />
-            <List>
-              {getList(lower_data)}
-              <LogoutListItem />
-            </List>
-          </Drawer>
-          : <></> }
+                flexShrink: 0,
+                '& .MuiDrawer-paper': {
+                  width: drawerWidth,
+                  boxSizing: 'border-box',
+                },
+              }}
+              variant="permanent"
+              anchor="left"
+            >
+              <Toolbar />
+              <Divider />
+              <List>
+                {getList(upper_data)}
+              </List>
+              <Divider />
+              <List>
+                {getList(lower_data)}
+                <LogoutListItem />
+              </List>
+            </Drawer>
+            : <></>}
         <Box
           component="main"
           sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
         >
           <Toolbar />
-          { tokenLoading ?
-          <CircularProgress /> :
-          token ?
-          children :
-          <LoginForm />
+          {tokenLoading ?
+            <CircularProgress /> :
+            token ?
+              children :
+              <LoginForm />
           }
 
         </Box>

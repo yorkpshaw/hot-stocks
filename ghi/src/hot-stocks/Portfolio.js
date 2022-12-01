@@ -3,20 +3,22 @@ import { useCreatePortfolioStockMutation, useDeletePortfolioStockMutation, useGe
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import QuoteAndChart from '../portfolio/QuoteAndChart';
-import { SimpleCard,  } from '../common/SimpleCard';
+import { SimpleCard, } from '../common/SimpleCard';
 import { getTotalPortfolioValue } from '../portfolio/GetTotalPortfolioValue';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 
 
 export function Portfolio(props) {
-    const { portfolio } = useSelector(state => state.local)
-    const [getTotalPortfolioValue, setTotalPortfolioValue] = useState(0);
+  const { portfolio } = useSelector(state => state.local);
+  const [getTotalPortfolioValue, setTotalPortfolioValue] = useState(0);
 
 
-    useEffect(() => {
-        if(portfolio.length > 0) {
-            setTotalPortfolioValue(getTotalPortfolioValue(portfolio));
-        }
-    }, [portfolio]);
+  useEffect(() => {
+    if (portfolio.length > 0) {
+      setTotalPortfolioValue(getTotalPortfolioValue(portfolio));
+    }
+  }, [portfolio]);
 
   const { data, error, isLoading } = useGetPortfolioStocksQuery();
   // const [createPortfolioStock, result] = useCreatePortfolioStockMutation();

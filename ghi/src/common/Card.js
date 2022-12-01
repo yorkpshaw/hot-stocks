@@ -1,19 +1,17 @@
 import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import TinderCard from 'react-tinder-card';
-
 import CloseIcon from '@mui/icons-material/Close';
 import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
-
 import ReplayIcon from '@mui/icons-material/Replay';
-// import StarIcon from '@mui/icons-material/Star';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-// import FlashOnIcon from '@mui/icons-material/FlashOn';
 import IconButton from '@mui/material/IconButton';
 
 import './Card.css';
+import { useGetStockQuery, useGetStocksQuery } from '../rtk/stocksApi';
+import { useGetNewsItemsQuery } from '../rtk/newsItemsApi';
 
-
+//Should be a token here because you can only see this when you are logged in
 const db = [
   {
     name: 'Warren Bufffett explains his donation',
@@ -25,7 +23,15 @@ const db = [
   }
 ];
 
-function Advanced() {
+// Lets write the logic out and then fill in the blanks
+// - i need a function that calls to the newsItem and stocks API data
+// I wanted to use the useState and set it to a a empty array but that doesn't make sense if i want the data at all times -_-
+// (lets start with one first lol)
+//
+
+function Card() {
+
+
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
   // used for outOfFrame closure
@@ -53,6 +59,12 @@ function Advanced() {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
   };
+
+
+  // Need a function that will map through news items and stock to combine the two then map through them again
+  //   const setFilterNewsItemDataAndStockData(
+
+  // );
 
   const outOfFrame = (name, idx) => {
     // console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current);
@@ -90,6 +102,7 @@ function Advanced() {
             onCardLeftScreen={() => outOfFrame(character.name, index)}
           >
             <div
+              //Background image is where stock ticker image and news item photo will be displayed
               style={{ backgroundImage: 'url(' + character.url + ')' }}
               className='card'
             >
@@ -113,17 +126,8 @@ function Advanced() {
         </IconButton>
 
       </div>
-      {/* {lastDirection ? (
-        <h2 key={lastDirection} className='infoText'>
-          You swiped {lastDirection}
-        </h2>
-      ) : (
-        <h2 className='infoText'>
-          Swipe a card or press a button to get Restore Card button visible!
-        </h2>
-      )} */}
     </div>
   );
 }
 
-export default Advanced;
+export default Card;
