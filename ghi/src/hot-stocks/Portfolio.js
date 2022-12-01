@@ -1,7 +1,6 @@
 import { useState, useEffect, useSelector } from 'react';
 import * as React from 'react';
-import { useCreatePortfolioStockMutation, useDeletePortfolioStockMutation, useGetPortfolioStocksQuery, useUpdatePortfolioStockMutation } from '../rtk-files/portfolioStocksApi';
-import { portfolioStocksApi, useGetPortfolioStocksQuery } from '../rtk/portfolioStocksApi';
+import { portfolioStocksApi, useGetPortfolioStocksQuery } from '../rtk-files/portfolioStocksApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import QuoteAndChart from '../portfolio/QuoteAndChart';
