@@ -10,8 +10,8 @@ import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import { deepOrange } from '@mui/material/colors';
 import Link from '@mui/material/Link';
 import { preventDefault } from '../common/utils';
-import { useCreateOrUpdateSavedStockMutation } from '../rtk/savedStocksApi';
-import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk/savedNewsItemsApi';
+import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
+import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
 
 
 import { handlePortfolioClick } from '../common/utils';

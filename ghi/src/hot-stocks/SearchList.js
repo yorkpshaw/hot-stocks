@@ -15,8 +15,8 @@ import { CardList } from '../common/CardList';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { useGetNewsItemsQuery } from '../rtk/newsItemsApi';
-import { useLazyGetStocksQuery } from '../rtk/stocksApi';
+import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
+import { useLazyGetStocksQuery } from '../rtk-files/stocksApi';
 import { useDispatch } from 'react-redux';
 import Grid from '@mui/material/Grid';
 
