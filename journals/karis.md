@@ -1,3 +1,16 @@
+## 12/01/2022
+
+Today, I worked on:
+
+* DRYing reusable button components
+* Developing PortfolioDialog
+
+I abstracted away PrefTrue/FalseSavedStock/NewsItemButton, PortfolioStockButton to their own components in Buttons.js.
+
+I completed development of PortfolioDialog! It's no longer buggy with showing the last card.symbol in the CardList. Just need to incorporate it with useCreateOrUpdatePortfolioStock still.
+
+
+
 ## 11/30/2022
 
 Today, I worked on:

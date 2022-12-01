@@ -8,11 +8,11 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useDispatch } from 'react-redux';
-import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import { useSelector } from 'react-redux';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import NextWeekOutlinedIcon from '@mui/icons-material/NextWeekOutlined';
 import { useCreateOrUpdatePortfolioStockMutation } from '../rtk-files/portfolioStocksApi';
+import { deepOrange } from '@mui/material/colors';
 
 
 export function PortfolioDialog() {
@@ -29,7 +29,7 @@ export function PortfolioDialog() {
         <Dialog open={ portfolioDialog } onClose={() => dispatch(togglePortfolioDialog())}>
           <DialogTitle>{ card.symbol }</DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText sx={{color: deepOrange[500]}}>
               C ${ card.cost_current }
               {/* TODO will need to hit get_stock api endpoint */}
             </DialogContentText>

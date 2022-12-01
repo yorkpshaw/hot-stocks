@@ -5,8 +5,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { deepOrange } from '@mui/material/colors';
 import Link from '@mui/material/Link';
-import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
-import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
 import { PortfolioStockButton, PrefTrueSavedNewsItemButton, PrefFalseSavedNewsItemButton, PrefTrueSavedStockButton, PrefFalseSavedStockButton } from './Buttons';
 
 
