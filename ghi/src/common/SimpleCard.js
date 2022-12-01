@@ -12,6 +12,7 @@ import { preventDefault } from '../common/utils';
 import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
 import { PortfolioDialog } from './PortfolioDialog';
+import { PrefTrueSavedNewsItemButton, PrefFalseSavedNewsItemButton, PrefTrueSavedStockButton, PrefFalseSavedStockButton } from './Buttons';
 
 
 export function SimpleCard(props) {
@@ -66,15 +67,15 @@ export function SimpleCard(props) {
           { card.symbol ?
             <>
               { type == 'SAVED' ?
-                <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: false } ))} value={card} size="small"><ClearOutlinedIcon /></IconButton> :
-                <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: true } ))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+                <PrefFalseSavedStockButton card={ card }/>:
+                <PrefTrueSavedStockButton card={ card }/>
               }
               <PortfolioDialog card={ card } />
             </> :
             <>
               { type == 'SAVED' ?
-                <IconButton onClick={preventDefault(createOrUpdateSavedNewsItem, () => ( { title: card.title, news_url: card.news_url, time_published: card.time_published, banner_image: card.banner_image, summary: card.summary, preference: false } ))} value={card} size="small"><ClearOutlinedIcon /></IconButton> :
-                <IconButton onClick={preventDefault(createOrUpdateSavedNewsItem, () => ( { title: card.title, news_url: card.news_url, time_published: card.time_published, banner_image: card.banner_image, summary: card.summary, preference: true } ))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+                <PrefFalseSavedNewsItemButton card={ card }/>:
+                <PrefTrueSavedNewsItemButton card={ card }/>
               }
             </>
           }
