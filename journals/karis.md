@@ -31,7 +31,7 @@ I developed get_all_stocks ACL and router to obtain all stock symbols and names 
 
 I set up the test files with outline structure for applicable tests.
 
-I continued development of the front-end Search component. This included revisiting news_items and stocks ACL, router, and RTK code; making the SimpleCard dynamic to be able to handle both news items and stocks; and enabling the search mechanism for stocks. Still have to implement search mechanism for news items (will likely base it off of title).
+I continued development of the front-end Search component. This included revisiting news_items and stocks ACL, router, and rtk code; making the SimpleCard dynamic to be able to handle both news items and stocks; and enabling the search mechanism for stocks. Still have to implement search mechanism for news items (will likely base it off of title).
 
 
 ## 11/28/2022
