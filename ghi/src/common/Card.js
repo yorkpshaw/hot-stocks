@@ -8,8 +8,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 
 import './Card.css';
-import { useGetStockQuery, useGetStocksQuery } from '../rtk/stocksApi';
-import { useGetNewsItemsQuery } from '../rtk/newsItemsApi';
+import { useGetStockQuery, useGetStocksQuery } from '../rtk-files/stocksApi';
+import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
 
 //Should be a token here because you can only see this when you are logged in
 const db = [
