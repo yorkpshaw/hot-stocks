@@ -19,7 +19,7 @@ export const portfolioStocksApi = createApi({
     tagTypes: ['PortfolioStock'],
     endpoints: builder => ({
         getPortfolioStocks: builder.query({
-            query: () => '/api/portfolio_stocks/',
+            query: () => '/api/portfolio_stocks',
             // providesTags: ['PortfolioStock']
         }),
         createOrUpdatePortfolioStock: builder.mutation({

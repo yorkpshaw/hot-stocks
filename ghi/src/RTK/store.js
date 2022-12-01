@@ -10,7 +10,7 @@ import { savedStocksApi } from './savedStocksApi';
 import { authApi } from './authApi';
 import { accountSlice } from './accountSlice';
 import { signUpSlice } from './signUpSlice';
-import { portfolioSlice} from './portfolioslice';
+import { portfolioSlice} from './portfolioSlice';
 
 
 export const store = configureStore({
