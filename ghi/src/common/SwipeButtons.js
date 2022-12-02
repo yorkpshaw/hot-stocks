@@ -9,27 +9,30 @@ import StarIcon from '@mui/icons-material/Star';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import IconButton from '@mui/material/IconButton';
+import Card from './Card.js';
 
+import './SwipeButton.css';
 
 
 function SwipeButtons() {
+
+
+
   return (
-    <div className="swipeButtons">
-      <IconButton className="swipeButtons_repeat">
-        <ReplayIcon fontSize="large" />
-      </IconButton>
+    <div className='swipeButtons'>
       <IconButton className="swipeButtons_left">
         <CloseIcon fontSize="large" />
       </IconButton>
-      <IconButton className="swipeButtons_star">
-        <StarIcon fontSize="large" />
+      <IconButton className="swipeButtons_repeat">
+        <ReplayIcon fontSize="large" />
+      </IconButton>
+      <IconButton className="swipeButtons_share">
+        <ShareIcon fontSize="large" />
       </IconButton>
       <IconButton className="swipeButtons_right">
         <FavoriteIcon fontSize="large" />
       </IconButton>
-      <IconButton className="swipeButtons_lightning">
-        <InfoIcon fontSize="large" />
-      </IconButton>
+
     </div>
   );
 }
