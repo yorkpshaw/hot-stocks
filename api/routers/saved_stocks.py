@@ -4,7 +4,6 @@ from authenticator import authenticator
 from queries.saved_stocks import (
     SavedStockIn,
     SavedStockOut,
-    SavedStocksOut,
     SavedStockQueries,
 )
 

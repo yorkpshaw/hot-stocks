@@ -17,7 +17,7 @@ export const savedNewsItemsApi = createApi({
     tagTypes: ['SavedNewsItems'],
     endpoints: builder => ({
         getSavedNewsItems: builder.query({
-            query: () => '/api/saved_news_items/',
+            query: () => '/api/saved_news_items',
             providesTags: ['SavedNewsItems'],
         }),
         createOrUpdateSavedNewsItem: builder.mutation({

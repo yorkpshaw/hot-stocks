@@ -31,15 +31,24 @@ const db = [
 
 function Card() {
 
+  const [newsItems, setNewsItems] = useState([]);
+  const [stocks, setStocks] = useState([]);
 
+  const { data: newsItemsData } = useGetNewsItemsQuery();
+  console.log(newsItemsData);
+  const { data: stocksData } = useGetStockQuery();
+  const [filterNewsItemDataAndStocksData, setFilterNewsItemDataAndStockData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex);
 
+  console.log(newsItemsData);
+  // useEffect
   const childRefs = useMemo(
     () =>
-      Array(db.length)
+      Array(newsItemsData.length)
+        // Array(db.length)
         .fill(0)
         .map((i) => React.createRef()),
     []
@@ -49,8 +58,8 @@ function Card() {
     setCurrentIndex(val);
     currentIndexRef.current = val;
   };
-
-  const canGoBack = currentIndex < db.length - 1;
+  // const canGoBack = currentIndex < db.length - 1;
+  const canGoBack = currentIndex < newsItemsData.length - 1;
 
   const canSwipe = currentIndex >= 0;
 
@@ -76,7 +85,8 @@ function Card() {
   };
 
   const swipe = async (dir) => {
-    if (canSwipe && currentIndex < db.length) {
+    // if (canSwipe && currentIndex < db.length) {
+    if (canSwipe && currentIndex < newsItemsData.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
     }
   };
@@ -88,12 +98,13 @@ function Card() {
     updateCurrentIndex(newIndex);
     await childRefs[newIndex].current.restoreCard();
   };
-
+  { newsItemsData.map(news_items => { }); }
   return (
     <div>
-      <h1>Super eye-catching article name</h1>
+      <h1>{newsItemsData.title}</h1>
       <div className='cardContainer'>
-        {db.map((character, index) => (
+        {/* {db.map((character, index) => ( */}
+        {newsItemsData.map((character, index) => (
           <TinderCard
             ref={childRefs[index]}
             className='swipe'
@@ -106,7 +117,7 @@ function Card() {
               style={{ backgroundImage: 'url(' + character.url + ')' }}
               className='card'
             >
-              {/* <h3>{character.name}</h3> */}
+              <h3>{character.name}</h3>
             </div>
           </TinderCard>
         ))}
