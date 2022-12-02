@@ -16,7 +16,7 @@ import { CircularProgress } from '@mui/material';
 import { SimpleCard } from '../common/SimpleCard';
 import { useGetSavedStocksQuery } from '../rtk-files/savedStocksApi';
 import { useGetSavedNewsItemsQuery } from '../rtk-files/savedNewsItemsApi';
-
+import { PortfolioDialog } from '../common/PortfolioDialog';
 
 // const card = {symbol: "York", name: "Onyx", cost_current: "300"}
 // const cards = [card];
@@ -33,6 +33,8 @@ export function Saved(props) {
 
 
   return (
+    <>
+    <PortfolioDialog />
     <Container maxWidth="sm">
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -108,5 +110,6 @@ export function Saved(props) {
       </Box>
     </ThemeProvider>
     </Container>
+    </>
   );
 }

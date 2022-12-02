@@ -17,6 +17,8 @@ import { Copyright } from '../common/Copyright';
 import { ErrorNotification } from '../common/ErrorNotification';
 import { CssBaseline } from '@mui/material';
 import { useGetStockQuery } from '../rtk-files/stocksApi';
+import { PortfolioDialog } from '../common/PortfolioDialog';
+
 const theme = createTheme();
 export function Portfolio() {
     // const { portfolio } = useSelector(state => state.local)
@@ -37,6 +39,7 @@ export function Portfolio() {
 //   }
   return (
     <>
+      <PortfolioDialog />
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="sm">
           <CssBaseline />
