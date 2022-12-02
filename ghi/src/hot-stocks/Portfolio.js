@@ -16,6 +16,7 @@ import { CardList } from '../common/CardList';
 import { Copyright } from '../common/Copyright';
 import { ErrorNotification } from '../common/ErrorNotification';
 import { CssBaseline } from '@mui/material';
+import { useGetStockQuery } from '../rtk-files/stocksApi';
 const theme = createTheme();
 export function Portfolio() {
     // const { portfolio } = useSelector(state => state.local)
@@ -25,6 +26,9 @@ export function Portfolio() {
     //         setTotalPortfolioValue(getTotalPortfolioValue(portfolio));
     //     }
     // }, [portfolio]);
+
+
+
   const { data: portfolioStocks, error, isLoading: portfolioLoading } = useGetPortfolioStocksQuery();
 //   if (isLoading) {
 //     return (
@@ -59,6 +63,7 @@ export function Portfolio() {
             </Box>
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
+        {/* {<QuoteAndChart/>} */}
       </ThemeProvider>
     </>
   );

@@ -17,7 +17,7 @@ export const savedStocksApi = createApi({
     tagTypes: ['SavedStocks'],
     endpoints: builder => ({
         getSavedStocks: builder.query({
-            query: () => '/api/saved_stocks/',
+            query: () => '/api/saved_stocks',
             providesTags: ['SavedStocks'],
         }),
         createOrUpdateSavedStock: builder.mutation({
