@@ -88,7 +88,7 @@ export function SearchList() {
                     </Grid>
                   </Container> :
                   stocksData ?
-                    <CardList cards={stocksData.stocks} /> :
+                    <CardList cards={stocksData.stocks} type={'SEARCH'} /> :
                     <></>
               }
               {
@@ -99,7 +99,7 @@ export function SearchList() {
                     </Grid>
                   </Container> :
                   newsItemsData ?
-                    <CardList cards={filteredNewsItemsData} /> :
+                    <CardList cards={filteredNewsItemsData} type={'SEARCH'} /> :
                     <></>
               }
             </Box>

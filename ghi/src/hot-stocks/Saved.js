@@ -32,6 +32,8 @@ export function Saved() {
   const { data: savedStocksData,  error: savedStocksError, isLoading: savedStocksLoading } = useGetSavedStocksQuery();
 
 
+  console.log(savedStocks);
+  console.log(savedNewsItems);
   return (
     <>
     <PortfolioDialog />
