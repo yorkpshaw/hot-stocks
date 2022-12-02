@@ -25,12 +25,12 @@ class ACLs:
 
     def get_stock(symbol):
 
-        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=5min&apikey={ALPHAVANTAGE_API_KEY}"
+        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=15min&apikey={ALPHAVANTAGE_API_KEY}"
         response = requests.get(url)
         content = json.loads(response.content)
         stock = {}
         try:
-            time_series = content["Time Series (5min)"]
+            time_series = content["Time Series (15min)"]
             for i in time_series:
                 stock[i] = time_series[i]["4. close"]
             return stock
