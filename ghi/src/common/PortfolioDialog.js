@@ -14,7 +14,7 @@ import NextWeekOutlinedIcon from '@mui/icons-material/NextWeekOutlined';
 import { useCreateOrUpdatePortfolioStockMutation } from '../rtk-files/portfolioStocksApi';
 import { deepOrange } from '@mui/material/colors';
 import { useState, useEffect } from 'react';
-import { useLazyGetStockQuery } from '../rtk-files/stocksApi';
+import { useLazyGetStockQuery, useGetStockQuery } from '../rtk-files/stocksApi';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -27,33 +27,21 @@ export function PortfolioDialog() {
   const [numShares, setNumShares] = useState('');
   const [costCurrent, setCostCurrent] = useState('');
   const [triggerStock, {data: stockData, error: getStockError, isLoading: getStockLoading }] = useLazyGetStockQuery();
+  // const {data: stockData, error: getStockError, isLoading: getStockLoading } = useGetStockQuery(card.symbol);
   const [dialogContentText, setDialogContentText] = useState(<CircularProgress />);
 
-  useEffect(() => {
-    if (card) {
-      triggerStock(card.symbol);
-      setDialogContentText(
-        <DialogContentText sx={{color: deepOrange[500]}}>
-          C $ {
-            card.cost_current ?
-            card.cost_current :
+  // if (card) {
+  //   triggerStock(card.symbol);
+  // }
 
-            getStockLoading ?
-            'Loading' :
-
-            stockData ?
-            // Object.values(stockData.stock)[0] :
-            // console.log(Object.values(stockData.stock)[0]) :
-            console.log(stockData):
-            // console.log(stockData.hasOwnProperty('stock')):
-            'No data'
-
-          }
-          {/* TODO will need to hit get_stock api endpoint */}
-        </DialogContentText>
-      );
-    }
-  }, []);
+  // useEffect(() => {
+  //   const fetchStock = async () => {
+  //     if (stockData.stock != null) {
+  //       setCostCurrent(Object.values(stockData.stock)[0]);
+  //     }
+  //   }
+  //   fetchStock();
+  // }, []);
 
   // setCostCurrent(Object.values(stockData.stock)[0]);
 
@@ -66,6 +54,21 @@ export function PortfolioDialog() {
   //   console.log('no portdial');
   // }
 
+  // if (stockData.stock != null) {
+  //   setCostCurrent(Object.values(stockData.stock)[0]);
+  // }
+
+  let cost_current = 0;
+
+  // if (getStockLoading) {
+  //   console.log('loading');
+  // } else {
+  //   if (stockData.stock != null) {
+  //     cost_current = Object.values(stockData.stock)[0];
+  //     console.log(cost_current);
+  //   }
+  // }
+
   return (
     <>
     {
@@ -74,7 +77,24 @@ export function PortfolioDialog() {
         <Dialog open={portfolioDialog} onClose={() => dispatch(togglePortfolioDialog())}>
           <DialogTitle>{card.symbol}</DialogTitle>
           <DialogContent>
-            {dialogContentText}
+            <DialogContentText sx={{color: deepOrange[500]}}>
+              {
+                card.cost_current ?
+                'C $' + card.cost_current :
+
+                getStockLoading ?
+                'Loading' :
+
+                cost_current != 0 ?
+                // Object.values(stockData.stock)[0] :
+                // console.log(Object.values(stockData.stock)[0]) :
+                'C $' + cost_current :
+                // console.log(stockData.stock):
+                // console.log(stockData.hasOwnProperty('stock')):
+                'No current cost data'
+
+              }
+            </DialogContentText>
             <TextField
               autoFocus
               margin="dense"
@@ -89,7 +109,7 @@ export function PortfolioDialog() {
             <IconButton onClick={() => dispatch(togglePortfolioDialog())}><ClearOutlinedIcon /></IconButton>
             <IconButton onClick={
               () => dispatch(togglePortfolioDialog()
-              , createOrUpdatePortfolioStock({symbol: card.symbol, num_shares: numShares, cost_basis: 150  })
+              , createOrUpdatePortfolioStock({symbol: card.symbol, num_shares: numShares, cost_basis: '150'  }) //cost_current
               , setNumShares(''))
               }><NextWeekOutlinedIcon />
             </IconButton>

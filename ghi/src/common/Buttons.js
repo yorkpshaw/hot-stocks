@@ -15,8 +15,12 @@ export function PortfolioStockButton(props) {
 
     const dispatch = useDispatch();
     const card = props.card;
-    // const [triggerStock, {data: stockData, error: getStockError }] = useLazyGetStockQuery();
+    // const [triggerStock, {data: stockData, error: getStockError}] = useLazyGetStockQuery();
 
+    // const fetchStock = () => {
+    //     triggerStock(card.symbol);
+    //     const data = stockData.stock;
+    // }
 
     return (
         <IconButton onClick={() => dispatch(togglePortfolioDialog(card))}>
