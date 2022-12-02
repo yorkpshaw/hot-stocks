@@ -7,7 +7,7 @@ import { Explore } from './hot-stocks/Explore';
 import { Portfolio } from './hot-stocks/Portfolio';
 import { Saved } from './hot-stocks/Saved';
 import { SearchList } from './hot-stocks/SearchList';
-import QuoteAndChart from './portfolio/QuoteAndChart';
+import QuoteAndChartClass from './portfolio/QuoteAndChartClass';
 
 function App() {
   return (
