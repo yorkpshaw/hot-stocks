@@ -36,13 +36,13 @@ export function SearchList() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    triggerStocks({ value: search });
-
-    setFilteredNewsItemsData(
-      newsItemsData.news_items.filter(
-        newsItem => newsItem.title.toLowerCase().includes(search.toLowerCase())
-      )
-    );
+    if (search) {
+      triggerStocks({ value: search });
+      setFilteredNewsItemsData(
+        newsItemsData.news_items.filter(
+          newsItem => newsItem.title.toLowerCase().includes(search.toLowerCase())
+        ));
+      }
 
   }
 

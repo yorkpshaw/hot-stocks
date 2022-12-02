@@ -8,12 +8,15 @@ import { preventDefault } from '../common/utils';
 import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useDispatch } from 'react-redux';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import { useLazyGetStockQuery } from '../rtk-files/stocksApi';
 
 
 export function PortfolioStockButton(props) {
 
     const dispatch = useDispatch();
     const card = props.card;
+    // const [triggerStock, {data: stockData, error: getStockError }] = useLazyGetStockQuery();
+
 
     return (
         <IconButton onClick={() => dispatch(togglePortfolioDialog(card))}>

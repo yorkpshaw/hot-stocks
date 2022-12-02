@@ -7,7 +7,7 @@ Today, I worked on:
 
 I abstracted away PrefTrue/FalseSavedStock/NewsItemButton, PortfolioStockButton to their own components in Buttons.js.
 
-I completed development of PortfolioDialog! It's no longer buggy with showing the last card.symbol in the CardList. Just need to incorporate it with useCreateOrUpdatePortfolioStock still.
+I completed development of PortfolioDialog! It's no longer buggy with showing the last card.symbol in the CardList. Completed incorporation with useCreateOrUpdatePortfolioStock, though having issues with useGetStockQuery to get current cost. In process of debugging.
 
 
 

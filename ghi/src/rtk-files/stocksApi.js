@@ -29,6 +29,7 @@ export const stocksApi = createApi({
 
 export const {
   useGetStockQuery,
+  useLazyGetStockQuery,
   useGetStocksQuery,
   useLazyGetStocksQuery
  } = stocksApi;
