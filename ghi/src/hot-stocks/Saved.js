@@ -1,30 +1,37 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { Copyright } from '../common/Copyright';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { SimpleCard } from '../common/SimpleCard';
 import { CardList } from '../common/CardList';
+import { CircularProgress } from '@mui/material';
+import { SimpleCard } from '../common/SimpleCard';
+import { useGetSavedStocksQuery } from '../rtk-files/savedStocksApi';
+import { useGetSavedNewsItemsQuery } from '../rtk-files/savedNewsItemsApi';
 
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const card = {symbol: "York", name: "Onyx", cost_current: "300"}
+// const cards = [card];
+
+// SQL Database ---> ACLs/Query ---> Routers ---> RTK Slice ---> Components
+/* Access data from get_saved_news_items and get_saved_stocks in RTK */
 
 const theme = createTheme();
 
 export function Saved(props) {
+
+  const { data: savedNewsItems } = useGetSavedNewsItemsQuery();
+  const { data: savedStocks } = useGetSavedStocksQuery();
+
+
   return (
     <Container maxWidth="sm">
     <ThemeProvider theme={theme}>
@@ -52,34 +59,40 @@ export function Saved(props) {
             </Typography>
           </Container>
         </Box>
-             {/* saved_news_items
-          saved_stocks */}
 
-        <Container sx={{ py: 8 }} maxWidth="md">
+                {/* // savedStocksLoading ?
+                //   <Container sx={{ py: 8 }} maxWidth="md">
+                //     <Grid container sx={{ mx: 40 }}>
+                //       <CircularProgress />
+                //     </Grid>
+                //   </Container> : */}
+                {
+                  savedStocks ?
+                  <CardList cards={savedStocks} /> :
+                    <></>
+              }
+              {
+                  savedNewsItems ?
+                  <CardList cards={savedNewsItems} /> :
+                    <></>
+              }
+
+              {/* <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
+
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
-                    </Typography>
+
                   </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
                 </Card>
               </Grid>
             ))}
           </Grid>
-        </Container>
+        </Container> */}
 
       </main>
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">

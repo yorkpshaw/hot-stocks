@@ -1,3 +1,13 @@
+# Friday, December 2
+Today, I worked on:
+
+    -
+
+# Thursday, December 1
+Today, I worked on:
+
+    - Trying to get the saved component to be able to retrieve data from the saved stocks/news items database
+
 # Wednesday, November 30
 Today, I worked on:
 
