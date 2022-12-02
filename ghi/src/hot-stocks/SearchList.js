@@ -32,6 +32,7 @@ export function SearchList() {
   const [triggerStocks, { data: stocksData, isLoading: stocksLoading }] = useLazyGetStocksQuery();
   const [error, setError] = useState('');
   const [filteredNewsItemsData, setFilteredNewsItemsData] = useState([]);
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (search) {

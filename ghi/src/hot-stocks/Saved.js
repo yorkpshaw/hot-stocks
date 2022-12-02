@@ -26,10 +26,10 @@ import { PortfolioDialog } from '../common/PortfolioDialog';
 
 const theme = createTheme();
 
-export function Saved(props) {
+export function Saved() {
 
-  const { data: savedNewsItems } = useGetSavedNewsItemsQuery();
-  const { data: savedStocks } = useGetSavedStocksQuery();
+  const { data: savedNewsItemsData, error: savedNewsItemsError, isLoading: savedNewsItemsLoading } = useGetSavedNewsItemsQuery();
+  const { data: savedStocksData,  error: savedStocksError, isLoading: savedStocksLoading } = useGetSavedStocksQuery();
 
 
   return (
@@ -61,21 +61,26 @@ export function Saved(props) {
             </Typography>
           </Container>
         </Box>
-
-                {/* // savedStocksLoading ?
-                //   <Container sx={{ py: 8 }} maxWidth="md">
-                //     <Grid container sx={{ mx: 40 }}>
-                //       <CircularProgress />
-                //     </Grid>
-                //   </Container> : */}
-                {
-                  savedStocks ?
-                  <CardList cards={savedStocks} /> :
+            {
+                savedStocksLoading ?
+                  <Container sx={{ py: 8 }} maxWidth="md">
+                    <Grid container sx={{ mx: 40 }}>
+                      <CircularProgress />
+                    </Grid>
+                  </Container> :
+                  savedStocksData ?
+                    <CardList cards={savedStocksData.saved_stocks} /> :
                     <></>
               }
               {
-                  savedNewsItems ?
-                  <CardList cards={savedNewsItems} /> :
+                savedNewsItemsLoading ?
+                  <Container sx={{ py: 8 }} maxWidth="md">
+                    <Grid container sx={{ mx: 40 }}>
+                      <CircularProgress />
+                    </Grid>
+                  </Container> :
+                  savedNewsItemsData ?
+                    <CardList cards={savedNewsItemsData.news_items} /> :
                     <></>
               }
 

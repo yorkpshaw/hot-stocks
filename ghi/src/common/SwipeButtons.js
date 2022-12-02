@@ -9,7 +9,7 @@ import StarIcon from '@mui/icons-material/Star';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import IconButton from '@mui/material/IconButton';
-import Card from './Card.js';
+import Card from './Tinder-Card';
 
 import './SwipeButton.css';
 
