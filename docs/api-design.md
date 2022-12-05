@@ -1,7 +1,7 @@
 ## Authentication
 
 
-### Get token
+### Get Token
 
 * Endpoint path: /token
 * Endpoint method: GET
@@ -41,7 +41,7 @@
     ```
 
 
-### Log out
+### Logout
 
 * Endpoint path: /token
 * Endpoint method: DELETE
@@ -73,9 +73,9 @@
       "access_token": string,
       "token_type": string,
       "account": {
-        id: string,
-        username: string,
-        email: string,
+        "id": string,
+        "username": string,
+        "email": string,
       },
     }
     ```
@@ -83,21 +83,13 @@
 
 ## Portfolio stocks
 
-
-### Get list of portfolio stocks
+### Get All Portfolio Stocks
 
 * Endpoint path: /portfolio_stocks
 * Endpoint method: GET
 
 * Headers:
   * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "account_id": number
-    }
-    ```
 
 * Response: A list of portfolio stocks
 * Response shape:
@@ -114,9 +106,9 @@
     ```
 
 
-### Create portfolio stock
+### Create or Update Portfolio Stock
 
-* Endpoint path: /portfolio_stocks
+* Endpoint path: /portfolio_stocks/
 * Endpoint method: POST
 
 * Headers:
@@ -143,40 +135,7 @@
       "cost_basis": number
     }
 
-
-### Update portfolio stock
-
-* Endpoint path: /portfolio_stocks/`<int:id>`/
-* Endpoint method: PUT
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "id": number,
-      "account_id": number,
-      "stock_id": number,
-      "num_shares": number,
-      "cost_basis": number
-    }
-    ```
-
-* Response: A detail of portfolio stock
-* Response shape:
-    ```json
-    {
-      "id": number,
-      "account_id": number,
-      "stock_id": number,
-      "num_shares": number,
-      "cost_basis": number
-    }
-    ```
-
-
-### Delete portfolio stock
+### Delete Portfolio Stock
 
 * Endpoint path: /portfolio_stocks/`<int:id>`
 * Endpoint method: DELETE
@@ -202,7 +161,7 @@
 
 ## Saved items
 
-### Get list of saved items
+### Get All Saved Items
 
 * Endpoint path: /saved_items
 * Endpoint method: GET
@@ -247,7 +206,7 @@
 
 ### Saved news items
 
-### Get list of saved news items
+### Get All Saved News Items
 
 * Endpoint path: /saved_news_items
 * Endpoint method: GET
@@ -281,9 +240,9 @@
     }
 
 
-### Create saved news item
+### Create Saved News Item
 
-* Endpoint path: /saved_news_items
+* Endpoint path: /saved_news_items/
 * Endpoint method: POST
 
 * Headers:
@@ -317,9 +276,9 @@
     }
 
 
-### Delete saved news item
+### Delete Saved News Item
 
-* Endpoint path: /saved_news_items/`<int:id>`/
+* Endpoint path: /saved_news_items/`<int:id>`
 * Endpoint method: DELETE
 
 * Headers:
@@ -343,7 +302,7 @@
 
 ### Saved stocks
 
-### Get list of saved stocks
+### Get All Saved Stocks
 
 * Endpoint path: /saved_stocks
 * Endpoint method: GET
@@ -373,9 +332,9 @@
     }
 
 
-### Create saved stock
+### Create Saved Stock
 
-* Endpoint path: /saved_stocks
+* Endpoint path: /saved_stocks/
 * Endpoint method: POST
 
 * Headers:
@@ -401,9 +360,9 @@
     }
 
 
-### Update saved stock
+### Update Saved Stock
 
-* Endpoint path: /saved_stocks/`<int:id>`/
+* Endpoint path: /saved_stocks/`<int:id>`
 * Endpoint method: PUT
 
 * Headers:
@@ -431,9 +390,9 @@
 
 
 
-### Delete saved stock
+### Delete Saved Stock
 
-* Endpoint path: /saved_stocks/`<int:id>`/
+* Endpoint path: /saved_stocks/`<int:id>`
 * Endpoint method: DELETE
 
 * Headers:
@@ -459,7 +418,7 @@
 
 ### Get company
 
-* Endpoint path: /companies/`<str:symbol>`
+* Endpoint path: /companies/`<str:symbol>`/
 * Endpoint method: GET
 
 * Headers:
