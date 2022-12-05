@@ -5,27 +5,46 @@ import IconButton from '@mui/material/IconButton';
 import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
 import { preventDefault } from '../common/utils';
-import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
+import { togglePortfolioDialog, updateCostCurrent } from '../rtk-files/portfolioDialogSlice';
 import { useDispatch } from 'react-redux';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import { useLazyGetStockQuery } from '../rtk-files/stocksApi';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 export function PortfolioStockButton(props) {
 
     const dispatch = useDispatch();
     const card = props.card;
-    // const [triggerStock, {data: stockData, error: getStockError}] = useLazyGetStockQuery();
+    const [triggerStock, {data: stockData, error: stockError, isLoading: stockLoading}] = useLazyGetStockQuery();
 
     // const fetchStock = () => {
     //     triggerStock(card.symbol);
     //     const data = stockData.stock;
+    //     console.log(data);
     // }
 
+    // onClick
+    // togglePortfolioDialog
+    // triggerStock, pass in data to PortfolioDialog
+
     return (
-        <IconButton onClick={() => dispatch(togglePortfolioDialog(card))}>
-            <WorkOutlineOutlinedIcon />
-        </IconButton>
+        <>
+            {/* {
+                stockLoading ?
+                  <Container sx={{ py: 8 }} maxWidth="md">
+                    <Grid container sx={{ mx: 40 }}>
+                      <CircularProgress />
+                    </Grid>
+                  </Container> :
+                  stockData ? */}
+                  <IconButton onClick={() => dispatch(togglePortfolioDialog(card), triggerStock(card.symbol))}>
+                    <WorkOutlineOutlinedIcon />
+                </IconButton>
+                {/* :
+                    <></> */}
+            {/* } */}
+        </>
     )
 }
 

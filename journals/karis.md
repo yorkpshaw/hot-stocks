@@ -1,3 +1,21 @@
+## 12/03/2022
+
+Today, I worked on:
+
+*
+
+
+
+
+## 12/02/2022
+
+Today, I worked on:
+
+* Debugging with team
+
+As a team, we worked on troubleshooting and debugging each of our assignments (e.g. Saved component, Explore component).
+
+
 ## 12/01/2022
 
 Today, I worked on:
