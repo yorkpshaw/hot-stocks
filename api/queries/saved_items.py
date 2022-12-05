@@ -1,7 +1,5 @@
 from pydantic import BaseModel
 from typing import Dict
-
-
 from queries.saved_news_items import SavedNewsItemsOut, SavedNewsItemQueries
 from queries.saved_stocks import SavedStocksOut, SavedStockQueries
 

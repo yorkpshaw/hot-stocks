@@ -1,7 +1,20 @@
+# Monday, December 5
+Today, I worked on:
+
+    - Studied testing a database using dependency injections
+    -
+
+# Sunday, December 4
+Today, I worked on:
+
+    - Studied on how to write unit tests for saved_news_items_routes
+    - Studied further on building the back-end and front-end authentication code
+
 # Friday, December 2
 Today, I worked on:
 
-    -
+    - Was able to get the saved component to be fully functioning at the MVP level thanks to the help of my wonderful team!
+    - Connected the saved component to the backend's database so that saved news and stock cards will populate on the page
 
 # Thursday, December 1
 Today, I worked on:

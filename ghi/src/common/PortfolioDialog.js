@@ -21,24 +21,33 @@ import CircularProgress from '@mui/material/CircularProgress';
 export function PortfolioDialog() {
 
   const { portfolioDialog, card } = useSelector(state => state.portfolioDialog);
-  const { queries } = useSelector(state => state.stocks);
   const [createOrUpdatePortfolioStock, { error: portfolioStockError }] = useCreateOrUpdatePortfolioStockMutation();
   const dispatch = useDispatch();
   const [numShares, setNumShares] = useState('');
-  const [costCurrent, setCostCurrent] = useState('');
-  const [triggerStock, {data: stockData, error: getStockError, isLoading: getStockLoading }] = useLazyGetStockQuery();
+  // const [costCurrent, setCostCurrent] = useState('');
+  // const [triggerStock, {data: stockData, error: stockError, isLoading: stockLoading }] = useLazyGetStockQuery();
   // const {data: stockData, error: getStockError, isLoading: getStockLoading } = useGetStockQuery(card.symbol);
   const [dialogContentText, setDialogContentText] = useState(<CircularProgress />);
+  const { queries } = useSelector(state => state.stocks);
 
-  // if (card) {
+  if (card) {
+    const queryName = `getStock("${card.symbol}")`;
+
+    console.log(queries);
+    console.log(Object.keys(queries));
+    console.log(queries.hasOwnProperty(queryName));
+    console.log(queryName);
+    console.log(queries[queryName]);
+  }
+
+
+  // if (portfolioDialog && card) {
   //   triggerStock(card.symbol);
   // }
 
   // useEffect(() => {
   //   const fetchStock = async () => {
-  //     if (stockData.stock != null) {
-  //       setCostCurrent(Object.values(stockData.stock)[0]);
-  //     }
+  //     triggerStock(card.symbol);
   //   }
   //   fetchStock();
   // }, []);
@@ -70,10 +79,12 @@ export function PortfolioDialog() {
   // }
 
   return (
-    <>
-    {
       card ?
-        <>
+      // dispatch(triggerStock(card.symbol)) :
+      // stockLoading ?
+      // 'Loading' :
+      // stockData ?
+        // <>
         <Dialog open={portfolioDialog} onClose={() => dispatch(togglePortfolioDialog())}>
           <DialogTitle>{card.symbol}</DialogTitle>
           <DialogContent>
@@ -82,8 +93,8 @@ export function PortfolioDialog() {
                 card.cost_current ?
                 'C $' + card.cost_current :
 
-                getStockLoading ?
-                'Loading' :
+                // stockLoading ?
+                // 'Loading' :
 
                 cost_current != 0 ?
                 // Object.values(stockData.stock)[0] :
@@ -114,10 +125,7 @@ export function PortfolioDialog() {
               }><NextWeekOutlinedIcon />
             </IconButton>
           </DialogActions>
-        </Dialog>
-      </> :
-      <></>
-    }
-  </>
+        </Dialog> :
+        <></>
   );
 }

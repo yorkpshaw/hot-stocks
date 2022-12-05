@@ -15,23 +15,6 @@ import { Copyright } from '../common/Copyright';
 export function About(props) {
   return (
     <Container component="main" maxWidth="sm">
-      <Box
-      sx={{
-        marginTop: 8,
-        mx: 'auto',
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-      >
-       <Typography
-       component="h1"
-       variant="h3"
-       justifyContent="center"
-        >
-        About Hot Stocks
-        </Typography>
-      </Box>
     <Box
       sx={{
         marginTop: 8,
@@ -46,7 +29,7 @@ export function About(props) {
         fontSize: 24,
       }}
     >
-    <Avatar sx={{ m: 10, bgcolor: deepOrange[500], width: 100, height: 100 }}>
+    <Avatar sx={{ m: 10, bgcolor: deepOrange[500] }}>
       <LocalFireDepartmentOutlinedIcon />
     </Avatar>
     </Box>
