@@ -1,6 +1,28 @@
 ## Authentication
 
-### Log in
+
+### Get token
+
+* Endpoint path: /token
+* Endpoint method: GET
+
+* Response: Account information and a token
+* Response shape (JSON):
+    ```json
+    {
+      "access_token": string,
+      "token_type": string,
+      "account": {
+        "id": string,
+        "username": string,
+        "email": string,
+      },
+      "token": string
+    }
+    ```
+
+
+### Login
 
 * Endpoint path: /token
 * Endpoint method: POST
@@ -13,11 +35,8 @@
 * Response shape (JSON):
     ```json
     {
-      "account": {
-        username: string,
-        password: secure string,
-      },
-      "token": string
+      "access_token": string,
+      "token_type": string
     }
     ```
 
