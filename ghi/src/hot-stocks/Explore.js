@@ -11,8 +11,9 @@ export function Explore() {
 
   return (
     <>
-      <div className="explore">
-        <Card />
+      <div >
+        <h2>This has to be a joke</h2>
+        {/* <Card /> */}
         {/* <SwipeButtons /> */}
       </div>
     </>

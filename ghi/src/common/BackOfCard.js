@@ -6,9 +6,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
 
 import ReplayIcon from '@mui/icons-material/Replay';
-// import StarIcon from '@mui/icons-material/Star';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-// import FlashOnIcon from '@mui/icons-material/FlashOn';
 import IconButton from '@mui/material/IconButton';
 
 import './Card.css';
@@ -91,14 +89,6 @@ function Advanced() {
 
   return (
     <div>
-      {/* <link
-        href='https://fonts.googleapis.com/css?family=Damion&display=swap'
-        rel='stylesheet'
-      />
-      <link
-        href='https://fonts.googleapis.com/css?family=Alatsi&display=swap'
-        rel='stylesheet'
-      /> */}
       <h1>Super eye-catching article name</h1>
       <div className='cardContainer'>
         {db.map((character, index) => (
@@ -131,19 +121,7 @@ function Advanced() {
         <IconButton className="swipeButtons_right">
           <FavoriteIcon fontSize="large" style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('right')} />
         </IconButton>
-        {/* <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('left')}>Swipe left!</button> */}
-        {/* <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button> */}
-        {/* <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('right')}>Swipe right!</button> */}
       </div>
-      {/* {lastDirection ? (
-        <h2 key={lastDirection} className='infoText'>
-          You swiped {lastDirection}
-        </h2>
-      ) : (
-        <h2 className='infoText'>
-          Swipe a card or press a button to get Restore Card button visible!
-        </h2>
-      )} */}
     </div>
   );
 }

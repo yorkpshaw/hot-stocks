@@ -40,8 +40,8 @@ export function SearchList() {
         newsItemsData.news_items.filter(
           newsItem => newsItem.title.toLowerCase().includes(search.toLowerCase())
         ));
-      }
-
+    }
+    console.log('Hey Karis!');
   }
 
   return (
