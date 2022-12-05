@@ -20,7 +20,7 @@ import { useLazyGetStocksQuery } from '../rtk-files/stocksApi';
 import { useDispatch } from 'react-redux';
 import Grid from '@mui/material/Grid';
 import { PortfolioDialog } from '../common/PortfolioDialog';
-
+import { useSelector } from 'react-redux';
 
 const theme = createTheme();
 
@@ -32,6 +32,7 @@ export function SearchList() {
   const [triggerStocks, { data: stocksData, isLoading: stocksLoading }] = useLazyGetStocksQuery();
   const [error, setError] = useState('');
   const [filteredNewsItemsData, setFilteredNewsItemsData] = useState([]);
+  const { portfolioDialog } = useSelector(state => state.portfolioDialog);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -47,7 +48,14 @@ export function SearchList() {
 
   return (
     <>
-      <PortfolioDialog />
+      {
+        portfolioDialog ?
+        <PortfolioDialog /> :
+        <></>
+      }
+
+      {/* <PortfolioDialog /> */}
+
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="sm">
           <CssBaseline />

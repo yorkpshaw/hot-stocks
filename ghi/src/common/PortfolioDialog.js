@@ -24,86 +24,21 @@ export function PortfolioDialog() {
   const [createOrUpdatePortfolioStock, { error: portfolioStockError }] = useCreateOrUpdatePortfolioStockMutation();
   const dispatch = useDispatch();
   const [numShares, setNumShares] = useState('');
-  // const [costCurrent, setCostCurrent] = useState('');
-  // const [triggerStock, {data: stockData, error: stockError, isLoading: stockLoading }] = useLazyGetStockQuery();
-  // const {data: stockData, error: getStockError, isLoading: getStockLoading } = useGetStockQuery(card.symbol);
   const [dialogContentText, setDialogContentText] = useState(<CircularProgress />);
   const { queries } = useSelector(state => state.stocks);
 
-  if (card) {
-    const queryName = `getStock("${card.symbol}")`;
-
-    console.log(queries);
-    console.log(Object.keys(queries));
-    console.log(queries.hasOwnProperty(queryName));
-    console.log(queryName);
-    console.log(queries[queryName]);
-  }
-
-
-  // if (portfolioDialog && card) {
-  //   triggerStock(card.symbol);
-  // }
-
-  // useEffect(() => {
-  //   const fetchStock = async () => {
-  //     triggerStock(card.symbol);
-  //   }
-  //   fetchStock();
-  // }, []);
-
-  // setCostCurrent(Object.values(stockData.stock)[0]);
-
-  // { portfolioDialog ?
-  //   // console.log(queries[`getStock("${card.symbol}")`]) :
-  //   // console.log(Object.values(queries[`getStock("${card.symbol}")`].data.stock)[0]) :
-  //   // console.log(null);
-  //   triggerStock('AAPL'):
-  //   // console.log('portdial'):
-  //   console.log('no portdial');
-  // }
-
-  // if (stockData.stock != null) {
-  //   setCostCurrent(Object.values(stockData.stock)[0]);
-  // }
-
-  let cost_current = 0;
-
-  // if (getStockLoading) {
-  //   console.log('loading');
-  // } else {
-  //   if (stockData.stock != null) {
-  //     cost_current = Object.values(stockData.stock)[0];
-  //     console.log(cost_current);
-  //   }
-  // }
-
   return (
       card ?
-      // dispatch(triggerStock(card.symbol)) :
-      // stockLoading ?
-      // 'Loading' :
-      // stockData ?
-        // <>
-        <Dialog open={portfolioDialog} onClose={() => dispatch(togglePortfolioDialog())}>
+        <Dialog open={true} onClose={() => dispatch(togglePortfolioDialog())}>
           <DialogTitle>{card.symbol}</DialogTitle>
           <DialogContent>
             <DialogContentText sx={{color: deepOrange[500]}}>
               {
                 card.cost_current ?
                 'C $' + card.cost_current :
-
-                // stockLoading ?
-                // 'Loading' :
-
-                cost_current != 0 ?
-                // Object.values(stockData.stock)[0] :
-                // console.log(Object.values(stockData.stock)[0]) :
-                'C $' + cost_current :
-                // console.log(stockData.stock):
-                // console.log(stockData.hasOwnProperty('stock')):
-                'No current cost data'
-
+                queries[`getStock("${card.symbol}")`].data?.stock ?
+                'C $' + Object.values(queries[`getStock("${card.symbol}")`].data?.stock)[0] :
+                'Loading...'
               }
             </DialogContentText>
             <TextField

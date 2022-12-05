@@ -30,14 +30,6 @@ export function PortfolioStockButton(props) {
 
     return (
         <>
-            {/* {
-                stockLoading ?
-                  <Container sx={{ py: 8 }} maxWidth="md">
-                    <Grid container sx={{ mx: 40 }}>
-                      <CircularProgress />
-                    </Grid>
-                  </Container> :
-                  stockData ? */}
                   <IconButton onClick={() => dispatch(togglePortfolioDialog(card), triggerStock(card.symbol))}>
                     <WorkOutlineOutlinedIcon />
                 </IconButton>
