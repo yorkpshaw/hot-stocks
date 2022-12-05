@@ -2,7 +2,7 @@
 Today, I worked on:
 
     - Studied testing a database using dependency injections
-    -
+    - Made revisions to the api-design.md file so it is consistent with fastAPI
 
 # Sunday, December 4
 Today, I worked on:

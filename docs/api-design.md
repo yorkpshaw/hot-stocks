@@ -1,6 +1,5 @@
 ## Authentication
 
-
 ### Get Token
 
 * Endpoint path: /token
@@ -15,21 +14,23 @@
       "account": {
         "id": string,
         "username": string,
-        "email": string,
-      },
-      "token": string
+        "email": string
+      }
     }
     ```
-
 
 ### Login
 
 * Endpoint path: /token
 * Endpoint method: POST
 
-* Request shape (form):
-  * username: string
-  * password: string
+* Request shape (JSON):
+    ```json
+    {
+      "username": string,
+      "password": string,
+    }
+    ```
 
 * Response: Account information and a token
 * Response shape (JSON):
@@ -39,7 +40,6 @@
       "token_type": string
     }
     ```
-
 
 ### Logout
 
@@ -55,16 +55,19 @@
     true
     ```
 
-
 ### Create Account
 
 * Endpoint path: /accounts
 * Endpoint method: POST
 
-* Request shape (form):
-    * username: string
-    * email: string
-    * password: string
+* Request shape (JSON):
+  ```json
+  {
+    "username": string,
+    "email": string,
+    "password": string,
+  }
+  ```
 
 * Response: Account information and a token, only returned if password == confirm_password
 * Response shape (JSON):
@@ -76,7 +79,7 @@
         "id": string,
         "username": string,
         "email": string,
-      },
+      }
     }
     ```
 
@@ -92,19 +95,20 @@
   * Authorization: Bearer token
 
 * Response: A list of portfolio stocks
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "portfolio_stocks": [
         {
           "id": number,
-          "stock_id": number,
+          "account_id": number,
+          "symbol": string,
+          "num_shares": number,
           "cost_basis": number
         }
       ]
     }
     ```
-
 
 ### Create or Update Portfolio Stock
 
@@ -114,23 +118,22 @@
 * Headers:
   * Authorization: Bearer token
 
-* Request body:
+* Request shape (JSON):
     ```json
     {
-      "account_id": number,
-      "stock_id": number,
+      "symbol": string,
       "num_shares": number,
-      "cost_basis": number
+      "cost_basis": number,
     }
     ```
 
 * Response: A detail of portfolio stock
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "id": number,
       "account_id": number,
-      "stock_id": number,
+      "symbol": string,
       "num_shares": number,
       "cost_basis": number
     }
@@ -139,19 +142,14 @@
 
 * Endpoint path: /portfolio_stocks/`<int:id>`
 * Endpoint method: DELETE
+* Query Parameters:
+  * portfolio_stock_id
 
 * Headers:
   * Authorization: Bearer token
 
-* Request body:
-    ```json
-    {
-      "id": number
-    }
-    ```
-
 * Response: A detail of portfolio stock
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "success": boolean
@@ -159,52 +157,7 @@
     ```
 
 
-## Saved items
-
-### Get All Saved Items
-
-* Endpoint path: /saved_items
-* Endpoint method: GET
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "account_id": number
-    }
-    ```
-
-* Response: A list of saved news items, stocks
-* Response shape:
-    ```json
-    {
-      "news_items": [
-        {
-          "id": number,
-          "account_id": number,
-          "title": str,
-          "news_url": str,
-          "time_published": str,
-          "banner_image": str,
-          "summary": str,
-          "preference": boolean
-        }
-      ],
-      "stocks": [
-        {
-          "id": number,
-          "account_id": number,
-          "symbol": number,
-          "preference": boolean
-        }
-      ]
-    }
-    ```
-
-
-### Saved news items
+## Saved news items
 
 ### Get All Saved News Items
 
@@ -214,33 +167,26 @@
 * Headers:
   * Authorization: Bearer token
 
-* Request body:
-    ```json
-    {
-      "account_id": number
-    }
-    ```
-
 * Response: An list of saved news items
 * Response shape:
     ```json
     {
-      "saved_news_items":[
+      "news_items":[
         {
           "id": number,
           "account_id": number,
-          "title": str,
-          "news_url": str,
-          "time_published": str,
-          "banner_image": str,
-          "summary": str,
+          "title": string,
+          "news_url": string,
+          "time_published": string,
+          "banner_image": string,
+          "summary": string,
           "preference": boolean
         }
       ]
     }
 
 
-### Create Saved News Item
+### Create Or Update Saved News Item
 
 * Endpoint path: /saved_news_items/
 * Endpoint method: POST
@@ -248,30 +194,29 @@
 * Headers:
   * Authorization: Bearer token
 
-* Request body:
+* Request shape (JSON):
     ```json
     {
-      "account_id": number,
-      "title": str,
-      "news_url": str,
-      "time_published": str,
-      "banner_image": str,
-      "summary": str,
+      "title": string,
+      "news_url": string,
+      "time_published": string,
+      "banner_image": string,
+      "summary": string,
       "preference": boolean
     }
     ```
 
 * Response: A detail of saved news item
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "id": number,
       "account_id": number,
-      "title": str,
-      "news_url": str,
-      "time_published": str,
-      "banner_image": str,
-      "summary": str,
+      "title": string,
+      "news_url": string,
+      "time_published": string,
+      "banner_image": string,
+      "summary": string,
       "preference": boolean
     }
 
@@ -280,19 +225,14 @@
 
 * Endpoint path: /saved_news_items/`<int:id>`
 * Endpoint method: DELETE
+* Query Parameters:
+  * news_item_id
 
 * Headers:
   * Authorization: Bearer token
 
-* Request body:
-    ```json
-    {
-      "id": number
-    }
-    ```
-
 * Response: An indication of success or failure
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "success": boolean
@@ -300,7 +240,7 @@
     ```
 
 
-### Saved stocks
+## Saved stocks
 
 ### Get All Saved Stocks
 
@@ -310,29 +250,21 @@
 * Headers:
   * Authorization: Bearer token
 
-* Request body:
-    ```json
-    {
-      "account_id": number
-    }
-    ```
-
 * Response: An list of saved stocks
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "saved_stocks":[
         {
           "id": number,
           "account_id": number,
-          "symbol": number,
+          "symbol": string,
           "preference": boolean
         }
       ]
     }
 
-
-### Create Saved Stock
+### Create Or Update Saved Stock
 
 * Endpoint path: /saved_stocks/
 * Endpoint method: POST
@@ -340,73 +272,38 @@
 * Headers:
   * Authorization: Bearer token
 
-* Request body:
+* Request shape (JSON):
     ```json
     {
-      "account_id": number,
-      "symbol": number,
+      "symbol": string,
       "preference": boolean
     }
     ```
 
 * Response: A detail of saved stock
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "id": number,
       "account_id": number,
-      "symbol": number,
-      "preference": boolean
-    }
-
-
-### Update Saved Stock
-
-* Endpoint path: /saved_stocks/`<int:id>`
-* Endpoint method: PUT
-
-* Headers:
-  * Authorization: Bearer token
-
-* Request body:
-    ```json
-    {
-      "id": number,
-      "account_id": number,
-      "symbol": number,
+      "symbol": string,
       "preference": boolean
     }
     ```
-
-* Response: A detail of saved stock
-* Response shape:
-    ```json
-    {
-      "id": number,
-      "account_id": number,
-      "symbol": number,
-      "preference": boolean
-    }
-
 
 
 ### Delete Saved Stock
 
 * Endpoint path: /saved_stocks/`<int:id>`
 * Endpoint method: DELETE
+* Query Parameters:
+  * saved_stock_id
 
 * Headers:
   * Authorization: Bearer token
 
-* Request body:
-    ```json
-    {
-      "id": number
-    }
-    ```
-
 * Response: An indication of success or failure
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "success": boolean
@@ -416,63 +313,73 @@
 
 ## External-API-interfacing endpoints
 
-### Get company
+### Get Company
 
 * Endpoint path: /companies/`<str:symbol>`/
 * Endpoint method: GET
+* Query Parameters:
+  * symbol
 
 * Headers:
   * Authorization: Alphavantage token
 
-* Request body:
-    ```json
-    {
-      "symbol": str
-    }
-    ```
-
 * Response: A detail of stock
-* Response shape:
+* Response shape (JSON):
     ```json
     {
-      "company": [
+      "company":
         {
-          TODO
+          "symbol": string,
+          "name": string,
+          "description": string
         }
-      ]
     }
     ```
 
+### Get Stock
 
-### Get stock
-
-* Endpoint path: /stocks/`<str:symbol>`
+* Endpoint path: /stocks/`<str:symbol>`/
 * Endpoint method: GET
+* Query Parameters:
+  * symbol
 
 * Headers:
   * Authorization: Alphavantage token
 
-* Request body:
-    ```json
-    {
-      "symbol": str
-    }
-    ```
-
 * Response: A detail of stock
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "stock": [
         {
-          TODO
+          string: string
         }
       ]
     }
     ```
 
+### Get All Stocks
 
-### Get list of news items
+* Endpoint path: /stocks
+* Endpoint method: GET
+
+* Headers:
+  * Authorization: Bearer token
+
+* Response: A list of stocks
+* Response shape (JSON):
+    ```json
+    {
+      "stocks":[
+        {
+          "symbol": string,
+          "name": string,
+          "cost_current": number
+        }
+      ]
+    }
+
+### Get All News Items
 
 * Endpoint path: /news_items
 * Endpoint method: GET
@@ -481,12 +388,16 @@
   * Authorization: Alphavantage token
 
 * Response: A list of news items
-* Response shape:
+* Response shape (JSON):
     ```json
     {
       "news_items": [
         {
-          TODO
+          "title": string,
+          "news_url": string,
+          "time_published": string,
+          "summary": string,
+          "banner_image": string
         }
       ]
     }
