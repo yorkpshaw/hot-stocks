@@ -1,9 +1,14 @@
-## 12/03/2022
+## 12/05/2022
 
 Today, I worked on:
 
-*
+* Troubleshooting portfolio dialog
+* Writing documentation
 
+
+I worked on troubleshooting portfolio dialog and its display of data that is obtained from hitting an API endpoint on appearance. Asking Candice for help after working on this item for days.
+
+I helped Micheline write documentation related to our README (integrations.md, data-model.md).
 
 
 
