@@ -1,6 +1,28 @@
 ## Authentication
 
-### Log in
+
+### Get token
+
+* Endpoint path: /token
+* Endpoint method: GET
+
+* Response: Account information and a token
+* Response shape (JSON):
+    ```json
+    {
+      "access_token": string,
+      "token_type": string,
+      "account": {
+        "id": string,
+        "username": string,
+        "email": string,
+      },
+      "token": string
+    }
+    ```
+
+
+### Login
 
 * Endpoint path: /token
 * Endpoint method: POST
@@ -13,11 +35,8 @@
 * Response shape (JSON):
     ```json
     {
-      "account": {
-        username: string,
-        password: secure string,
-      },
-      "token": string
+      "access_token": string,
+      "token_type": string
     }
     ```
 
@@ -37,25 +56,27 @@
     ```
 
 
-### Sign up
+### Create Account
 
-* Endpoint path: /signup
+* Endpoint path: /accounts
 * Endpoint method: POST
 
 * Request shape (form):
     * username: string
+    * email: string
     * password: string
-    * confirm_password: string
 
 * Response: Account information and a token, only returned if password == confirm_password
 * Response shape (JSON):
     ```json
     {
+      "access_token": string,
+      "token_type": string,
       "account": {
+        id: string,
         username: string,
-        password: secure string,
+        email: string,
       },
-      "token": string
     }
     ```
 
@@ -157,7 +178,7 @@
 
 ### Delete portfolio stock
 
-* Endpoint path: /portfolio_stocks/`<int:id>`/
+* Endpoint path: /portfolio_stocks/`<int:id>`
 * Endpoint method: DELETE
 
 * Headers:
