@@ -14,12 +14,7 @@ export function CardList(props) {
           <Grid container spacing={4}>
             {cards.map((card, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
-              { type == 'SEARCH' ?
-                <SimpleCard card={card} /> :
-                card.preference ?
-                <SimpleCard card={card} type={type} /> :
-                  <></>
-                }
+                <SimpleCard card={card} type={type} />
               </Grid>
             ))}
           </Grid>

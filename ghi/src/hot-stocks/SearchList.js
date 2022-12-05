@@ -17,10 +17,9 @@ import IconButton from '@mui/material/IconButton';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
 import { useLazyGetStocksQuery } from '../rtk-files/stocksApi';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Grid from '@mui/material/Grid';
 import { PortfolioDialog } from '../common/PortfolioDialog';
-import { useSelector } from 'react-redux';
 
 const theme = createTheme();
 
@@ -53,8 +52,6 @@ export function SearchList() {
         <PortfolioDialog /> :
         <></>
       }
-
-      {/* <PortfolioDialog /> */}
 
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="sm">

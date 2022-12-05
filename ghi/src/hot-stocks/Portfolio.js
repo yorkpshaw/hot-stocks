@@ -1,4 +1,4 @@
-import { useState, useEffect, useSelector } from 'react';
+import { useState, useEffect } from 'react';
 import * as React from 'react';
 import { portfolioStocksApi, useGetPortfolioStocksQuery } from '../rtk-files/portfolioStocksApi';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -19,6 +19,7 @@ import { CssBaseline } from '@mui/material';
 import { useGetStockQuery } from '../rtk-files/stocksApi';
 import { PortfolioDialog } from '../common/PortfolioDialog';
 import QuoteAndChartClass from '../portfolio/QuoteAndChartClass';
+import { useSelector } from 'react-redux';
 
 const theme = createTheme();
 export function Portfolio() {
@@ -38,9 +39,15 @@ export function Portfolio() {
 //       <CircularProgress color="inherit" />
 //     );
 //   }
+  const { portfolioDialog } = useSelector(state => state.portfolioDialog);
+
   return (
     <>
-      <PortfolioDialog />
+      {
+        portfolioDialog ?
+        <PortfolioDialog /> :
+        <></>
+      }
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="sm">
           <CssBaseline />

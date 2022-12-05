@@ -11,6 +11,7 @@ import { CircularProgress } from '@mui/material';
 import { useGetSavedStocksQuery } from '../rtk-files/savedStocksApi';
 import { useGetSavedNewsItemsQuery } from '../rtk-files/savedNewsItemsApi';
 import { PortfolioDialog } from '../common/PortfolioDialog';
+import { useSelector } from 'react-redux';
 
 // SQL Database ---> ACLs/Query ---> Routers ---> RTK Slice ---> Components
 
@@ -20,10 +21,15 @@ export function Saved() {
 
   const { data: savedNewsItemsData, error: savedNewsItemsError, isLoading: savedNewsItemsLoading } = useGetSavedNewsItemsQuery();
   const { data: savedStocksData,  error: savedStocksError, isLoading: savedStocksLoading } = useGetSavedStocksQuery();
+  const { portfolioDialog } = useSelector(state => state.portfolioDialog);
 
   return (
     <>
-    <PortfolioDialog />
+      {
+        portfolioDialog ?
+        <PortfolioDialog /> :
+        <></>
+      }
     <Container maxWidth="sm">
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -58,7 +64,7 @@ export function Saved() {
                     </Grid>
                   </Container> :
                   savedStocksData ?
-                    <CardList cards={savedStocksData.saved_stocks} /> :
+                    <CardList cards={savedStocksData.saved_stocks} type='SAVED'/> :
                     <></>
               }
               {

@@ -14,7 +14,6 @@ import NextWeekOutlinedIcon from '@mui/icons-material/NextWeekOutlined';
 import { useCreateOrUpdatePortfolioStockMutation } from '../rtk-files/portfolioStocksApi';
 import { deepOrange } from '@mui/material/colors';
 import { useState, useEffect } from 'react';
-import { useLazyGetStockQuery, useGetStockQuery } from '../rtk-files/stocksApi';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -24,7 +23,6 @@ export function PortfolioDialog() {
   const [createOrUpdatePortfolioStock, { error: portfolioStockError }] = useCreateOrUpdatePortfolioStockMutation();
   const dispatch = useDispatch();
   const [numShares, setNumShares] = useState('');
-  const [dialogContentText, setDialogContentText] = useState(<CircularProgress />);
   const { queries } = useSelector(state => state.stocks);
 
   return (

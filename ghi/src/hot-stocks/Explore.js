@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { PortfolioDialog } from '../common/PortfolioDialog';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 
 export function Explore() {
@@ -18,18 +18,15 @@ export function Explore() {
 
     const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
     const { data: stocksData, isLoading: stocksLoading } = useGetStocksQuery();
-
-    // const [ combinedData, setCombinedData ] = useState([]);
-
-    // if (newsItemsLoading || stocksLoading) {
-    //     console.log('loading');
-    // } else {
-    //     setCombinedData(stocksData.stocks.concat(newsItemsData.news_items));
-    // }
+    const { portfolioDialog } = useSelector(state => state.portfolioDialog);
 
     return (
         <>
-            <PortfolioDialog />
+            {
+                portfolioDialog ?
+                <PortfolioDialog /> :
+                <></>
+            }
             <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="sm">
                 <CssBaseline />

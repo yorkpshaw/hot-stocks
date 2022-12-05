@@ -9,7 +9,6 @@ import { togglePortfolioDialog, updateCostCurrent } from '../rtk-files/portfolio
 import { useDispatch } from 'react-redux';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import { useLazyGetStockQuery } from '../rtk-files/stocksApi';
-import CircularProgress from '@mui/material/CircularProgress';
 
 
 export function PortfolioStockButton(props) {
@@ -18,25 +17,10 @@ export function PortfolioStockButton(props) {
     const card = props.card;
     const [triggerStock, {data: stockData, error: stockError, isLoading: stockLoading}] = useLazyGetStockQuery();
 
-    // const fetchStock = () => {
-    //     triggerStock(card.symbol);
-    //     const data = stockData.stock;
-    //     console.log(data);
-    // }
-
-    // onClick
-    // togglePortfolioDialog
-    // triggerStock, pass in data to PortfolioDialog
-
     return (
-        <>
-                  <IconButton onClick={() => dispatch(togglePortfolioDialog(card), triggerStock(card.symbol))}>
-                    <WorkOutlineOutlinedIcon />
-                </IconButton>
-                {/* :
-                    <></> */}
-            {/* } */}
-        </>
+        <IconButton onClick={() => dispatch(togglePortfolioDialog(card), triggerStock(card.symbol))}>
+            <WorkOutlineOutlinedIcon />
+        </IconButton>
     )
 }
 
