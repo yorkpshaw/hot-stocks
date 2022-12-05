@@ -1,14 +1,14 @@
 # Monday, December 5
 Today, I worked on:
 
-    -
+    - Studied testing a database using dependency injections
     -
 
 # Sunday, December 4
 Today, I worked on:
 
-    - Worked on writing unit tests for my component
-    - Studied on how to build the back-end and front-end authentication code
+    - Studied on how to write unit tests for saved_news_items_routes
+    - Studied further on building the back-end and front-end authentication code
 
 # Friday, December 2
 Today, I worked on:

@@ -13,7 +13,6 @@ import { useGetSavedNewsItemsQuery } from '../rtk-files/savedNewsItemsApi';
 import { PortfolioDialog } from '../common/PortfolioDialog';
 
 // SQL Database ---> ACLs/Query ---> Routers ---> RTK Slice ---> Components
-/* Access data from get_saved_news_items and get_saved_stocks in RTK */
 
 const theme = createTheme();
 
