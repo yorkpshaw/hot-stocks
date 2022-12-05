@@ -1,3 +1,10 @@
+## December 5, 2022
+
+Today, I worked on:
+*Docker issues, updated Docker, reset connections and re-booted
+*Converting QuoteAndChart.js from class to functional component to work with Redux and pass into Explore
+
+
 ## December 2, 2022
 
 Today, I worked on:
