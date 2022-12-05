@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from authenticator import authenticator
 from routers import accounts, portfolio_stocks, saved_news_items, saved_stocks
+from routers.authenticator import authenticator
 from routers.external import external
 
 app = FastAPI()

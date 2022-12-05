@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { portfolioStocksApi } from './portfolioStocksApi';
-import { savedItemsApi } from './savedItemsApi';
 import { newsItemsApi} from './newsItemsApi';
 import { companiesApi} from './companiesApi';
 import { stocksApi } from './stocksApi';
@@ -21,7 +20,6 @@ export const store = configureStore({
     [portfolioDialogSlice.name]: portfolioDialogSlice.reducer,
     [companiesApi.reducerPath]: companiesApi.reducer,
     [portfolioStocksApi.reducerPath]: portfolioStocksApi.reducer,
-    [savedItemsApi.reducerPath]: savedItemsApi.reducer,
     [savedNewsItemsApi.reducerPath]: savedNewsItemsApi.reducer,
     [savedStocksApi.reducerPath]: savedStocksApi.reducer,
     [stocksApi.reducerPath]: stocksApi.reducer,
@@ -32,7 +30,6 @@ export const store = configureStore({
         .concat(authApi.middleware)
         .concat(companiesApi.middleware)
         .concat(portfolioStocksApi.middleware)
-        .concat(savedItemsApi.middleware)
         .concat(savedNewsItemsApi.middleware)
         .concat(savedStocksApi.middleware)
         .concat(stocksApi.middleware)

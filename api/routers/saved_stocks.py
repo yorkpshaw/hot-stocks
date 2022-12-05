@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from authenticator import authenticator
+from .authenticator import authenticator
 from queries.saved_stocks import (
     SavedStockIn,
     SavedStockOut,
