@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import { useGetTokenQuery, useLogOutMutation } from './rtk-files/authApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import { LoginForm } from './accounts/LoginForm';
+import { useGetStocksQuery } from './rtk-files/stocksApi';
 
 
 const drawerWidth = 240;
@@ -50,6 +51,7 @@ function LogoutListItem() {
 export default function HotStocksNav({ children }) {
 
   const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
+  const { data: stocksData, isLoading: stocksLoading } = useGetStocksQuery();
 
   const getList = (data) => (
     <div style={{ width: 250 }}>

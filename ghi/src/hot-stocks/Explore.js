@@ -17,7 +17,7 @@ export function Explore() {
     const theme = createTheme();
 
     const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
-    const { data: stocksData, isLoading: stocksLoading } = useGetStocksQuery();
+    const { queries } = useSelector(state => state.stocks);
     const { portfolioDialog } = useSelector(state => state.portfolioDialog);
 
     return (
@@ -40,25 +40,12 @@ export function Explore() {
                 >
                 {/* <ErrorNotification error={error} /> */}
                 <>
-                    { newsItemsLoading || stocksLoading ?
-                        'Loading' :
-                        newsItemsData && stocksData ?
-                        // combinedData ?
-                        <ContentCard cards={ stocksData.stocks.concat(newsItemsData.news_items) }/> :
+                    { newsItemsLoading ?
+                        'Loading...' :
+                        newsItemsData && queries[`getStocks(undefined)`]?.data?.stocks ?
+                        <ContentCard cards={ queries[`getStocks(undefined)`]?.data?.stocks.concat(newsItemsData.news_items) }/> :
                         <></>
                     }
-                    {/* { newsItemsLoading ?
-                        'Loading' :
-                        newsItemsData ?
-                        <ContentCard cards={ newsItemsData.news_items }/> :
-                        <></>
-                    } */}
-                    {/* { stocksLoading ?
-                        'Loading' :
-                        stocksData ?
-                        <ContentCard cards={ stocksData.stocks }/> :
-                        <></>
-                    } */}
                 </>
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />

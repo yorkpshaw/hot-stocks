@@ -9,14 +9,14 @@ from queries.pool import pool
 class PortfolioStockIn(BaseModel):
     symbol: str
     num_shares: int
-    cost_basis: int
+    cost_basis: float
 
 class PortfolioStockOut(BaseModel):
     id: int
     account_id: int
     symbol: str
     num_shares: int
-    cost_basis: int
+    cost_basis: float
 
 class PortfolioStocksOut(BaseModel):
     portfolio_stocks: List[PortfolioStockOut]
@@ -72,35 +72,6 @@ class PortfolioStockQueries:
                     for i, column in enumerate(cur.description):
                         record[column.name] = row[i]
                 return record
-
-    # def update_portfolio_stock(self, portfolio_stock_id: int, data: PortfolioStockUpdateIn, account_id: str) -> PortfolioStockOut:
-    #     with pool.connection () as conn:
-    #         with conn.cursor() as cur:
-    #             params = [
-    #                 data.num_shares,
-    #                 data.cost_basis,
-    #                 portfolio_stock_id,
-    #                 account_id,
-    #             ]
-    #             cur.execute(
-    #                 """
-    #                 UPDATE portfolio_stocks
-    #                 SET num_shares = %s
-    #                     , cost_basis = %s
-    #                 WHERE ID = %s
-    #                 AND account_id = %s
-    #                 RETURNING id, account_id, symbol, num_shares, cost_basis
-    #                 """,
-    #                 params,
-    #             )
-    #             record = None
-    #             row = cur.fetchone()
-    #             if row is not None:
-    #                 record = {}
-    #                 for i, column in enumerate(cur.description):
-    #                     record[column.name] = row[i]
-    #             return record
-
 
     def delete_portfolio_stock(self, portfolio_stock_id: str, account_id: str) -> bool:
         with pool.connection () as conn:

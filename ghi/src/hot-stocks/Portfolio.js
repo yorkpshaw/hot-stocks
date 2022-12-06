@@ -68,7 +68,7 @@ export function Portfolio() {
                     </Grid>
                   </Container> :
                 portfolioStocks ?
-                  <CardList cards={portfolioStocks.portfolio_stocks} /> :
+                  <CardList cards={portfolioStocks.portfolio_stocks} type={'PORTFOLIO'} /> :
                 <></>
               }
             </Box>

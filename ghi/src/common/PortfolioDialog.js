@@ -7,14 +7,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import NextWeekOutlinedIcon from '@mui/icons-material/NextWeekOutlined';
 import { useCreateOrUpdatePortfolioStockMutation } from '../rtk-files/portfolioStocksApi';
 import { deepOrange } from '@mui/material/colors';
 import { useState, useEffect } from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
 
 
 export function PortfolioDialog() {
@@ -34,8 +32,8 @@ export function PortfolioDialog() {
               {
                 card.cost_current ?
                 'C $' + card.cost_current :
-                queries[`getStock("${card.symbol}")`].data?.stock ?
-                'C $' + Object.values(queries[`getStock("${card.symbol}")`].data?.stock)[0] :
+                queries[`getStocks(undefined)`]?.data?.stocks.find(element => element.symbol === card.symbol)?.cost_current ?
+                'C $' + queries[`getStocks(undefined)`].data.stocks.find(element => element.symbol === card.symbol).cost_current :
                 'Loading...'
               }
             </DialogContentText>
@@ -52,8 +50,9 @@ export function PortfolioDialog() {
           <DialogActions>
             <IconButton onClick={() => dispatch(togglePortfolioDialog())}><ClearOutlinedIcon /></IconButton>
             <IconButton onClick={
-              () => dispatch(togglePortfolioDialog()
-              , createOrUpdatePortfolioStock({symbol: card.symbol, num_shares: numShares, cost_basis: '150'  }) //cost_current
+              () => dispatch(
+                togglePortfolioDialog()
+              , createOrUpdatePortfolioStock({symbol: card.symbol, num_shares: numShares, cost_basis: card.cost_current ? queries[`getStocks(undefined)`].data.stocks.find(element => element.symbol === card.symbol).cost_current: 0  })
               , setNumShares(''))
               }><NextWeekOutlinedIcon />
             </IconButton>

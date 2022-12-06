@@ -75,7 +75,7 @@ export function Saved() {
                     </Grid>
                   </Container> :
                   savedNewsItemsData ?
-                    <CardList cards={savedNewsItemsData.news_items} /> :
+                    <CardList cards={savedNewsItemsData.news_items} type='SAVED' /> :
                     <></>
               }
       </main>

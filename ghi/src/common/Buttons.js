@@ -5,20 +5,18 @@ import IconButton from '@mui/material/IconButton';
 import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
 import { preventDefault } from '../common/utils';
-import { togglePortfolioDialog, updateCostCurrent } from '../rtk-files/portfolioDialogSlice';
+import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useDispatch } from 'react-redux';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-import { useLazyGetStockQuery } from '../rtk-files/stocksApi';
 
 
 export function PortfolioStockButton(props) {
 
     const dispatch = useDispatch();
     const card = props.card;
-    const [triggerStock, {data: stockData, error: stockError, isLoading: stockLoading}] = useLazyGetStockQuery();
 
     return (
-        <IconButton onClick={() => dispatch(togglePortfolioDialog(card), triggerStock(card.symbol))}>
+        <IconButton onClick={() => dispatch(togglePortfolioDialog(card))}>
             <WorkOutlineOutlinedIcon />
         </IconButton>
     )

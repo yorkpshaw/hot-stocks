@@ -26,10 +26,9 @@ function randomIntFromInterval(min, max) {
 export function ContentCard(props) {
 
   const cards = props.cards;
-  console.log(cards);
 
   const dispatch = useDispatch();
-  const [cardIndex, setCardIndex] = useState(0);
+  const [cardIndex, setCardIndex] = useState(randomIntFromInterval(0, cards.length));
   const [card, setCard] = useState(cards[cardIndex]);
   const [createOrUpdateSavedNewsItem, { error: savedNewsItemError, isLoading: savedNewsItemLoading }] = useCreateOrUpdateSavedNewsItemMutation();
   const [createOrUpdateSavedStock, { error: savedStockError, isLoading: savedStockLoading }] = useCreateOrUpdateSavedStockMutation();
@@ -65,7 +64,7 @@ export function ContentCard(props) {
 
   async function handlePortfolioStockClick(e) {
     // e.preventDefault();
-    dispatch(togglePortfolioDialog(card));
+    dispatch(togglePortfolioDialog(card), setCard(cards[randomIntFromInterval(0, cards.length)]));
     // setCardIndex(cardIndex + 1);
     // setCard(cards[cardIndex]);
   }
@@ -106,6 +105,9 @@ export function ContentCard(props) {
           image={'https://mui.com/static/images/cards/contemplative-reptile.jpg'}
         />
         <CardContent>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            {card.name }
+          </Typography>
           <Typography gutterBottom variant="h5" component="div">
             {card.symbol}
           </Typography>
