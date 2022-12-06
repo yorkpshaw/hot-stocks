@@ -3,29 +3,28 @@ import Plot from 'react-plotly.js';
 import { useGetStockQuery } from '../rtk-files/stocksApi';
 
 export function IntradayChart(props) {
-
     const symbol = props.symbol;
     const { data: stockData, isLoading: stockLoading } = useGetStockQuery(symbol);
-
     return (
-        <div>
-            <h3> Daily 15 min price </h3>
-            <Plot
-                data={[
-                    {
-                    x: Object.keys(stockData.stock),
-                    y: Object.values(stockData.stock),
-                    type: 'scatter',
-                    mode: 'lines+markers+text',
-                    marker: {color: 'red'},
-                },
-
-                ]}
-                layout={{
-                    width: 720,
-                    height: 440,
-                    title: `Intraday 15 min Scatter Plot of ${symbol}`}}
-            />
-        </div>
+        <>
+        {stockData?.stock?
+            <div>
+                <Plot
+                    data={[
+                        {
+                        x: Object.keys(stockData?.stock),
+                        y: Object.values(stockData?.stock),
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        marker: {color: 'red'},
+                    },
+                    ]}
+                    layout={{
+                        width: 400,
+                        height: 350}}
+                />
+            </div>: 'Loading...'
+        }
+        </>
     )
 };
