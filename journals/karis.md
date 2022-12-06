@@ -5,6 +5,8 @@ Today, I worked on:
 * Troubleshooting portfolio dialog
 * Writing documentation
 * Writing tests
+* Removing saved_items
+* Enabling current cost
 
 
 I worked on troubleshooting portfolio dialog and its display of data that is obtained from hitting an API endpoint on appearance. I asked Candice for help after working on this item for days, and she helped fix it right away! Note to self: components are rerendered every time new input is provided; including ternary expressions on data that is not yet loaded is entirely valid.
@@ -12,6 +14,10 @@ I worked on troubleshooting portfolio dialog and its display of data that is obt
 I helped Micheline write documentation related to our README (integrations.md, data-model.md).
 
 I included tests for get_token and get_stock, though I'm having issues with imports with pytest.
+
+I removed all references to saved_items (i.e. routers, queries, slices, etc.), as we didn't end up using this information; we accessed saved_news_items and saved_stocks separately.
+
+I adjusted our code to enable displaying current cost across the application. It's a little buggy - we somehow need to repeatedly hit the getStocks endpoint - but it works!
 
 
 

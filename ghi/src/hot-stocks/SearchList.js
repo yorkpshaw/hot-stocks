@@ -77,7 +77,7 @@ export function SearchList() {
                 onChange={e => setSearch(e.target.value)}
                 variant="outlined"
                 autoFocus
-                sx={{ mt: 2, mb: 3, width: '50ch' }} />
+                sx={{ mt: 2, mb: 3}} />
               <IconButton
                 type="submit"
                 variant="contained"
