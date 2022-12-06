@@ -31,8 +31,11 @@ class ACLs:
         stock = {}
         try:
             time_series = content["Time Series (15min)"]
-            for i in time_series:
-                stock[i] = time_series[i]["4. close"]
+            for index, i in enumerate(time_series):
+                if index <= 32:
+                    stock[i] = time_series[i]["4. close"]
+                else:
+                    break
             return stock
         except (KeyError, IndexError):
             return None

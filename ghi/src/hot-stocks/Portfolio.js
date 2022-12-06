@@ -3,7 +3,6 @@ import * as React from 'react';
 import { portfolioStocksApi, useGetPortfolioStocksQuery } from '../rtk-files/portfolioStocksApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
-import QuoteAndChart from '../portfolio/QuoteAndChartFunctional';
 import { getTotalPortfolioValue } from '../portfolio/GetTotalPortfolioValue';
 import { SimpleCard } from '../common/SimpleCard';
 import Grid from '@mui/material/Grid';
@@ -18,8 +17,8 @@ import { ErrorNotification } from '../common/ErrorNotification';
 import { CssBaseline } from '@mui/material';
 import { useGetStockQuery } from '../rtk-files/stocksApi';
 import { PortfolioDialog } from '../common/PortfolioDialog';
-import QuoteAndChartClass from '../portfolio/QuoteAndChartClass';
 import { useSelector } from 'react-redux';
+import { IntradayChart } from '../portfolio/IntradayChart';
 
 const theme = createTheme();
 export function Portfolio() {
@@ -74,7 +73,7 @@ export function Portfolio() {
             </Box>
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
-        {<QuoteAndChartClass/>}
+        {<IntradayChart symbol={ `SPY` }/>}
       </ThemeProvider>
     </>
   );

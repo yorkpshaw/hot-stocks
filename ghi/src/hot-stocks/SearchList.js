@@ -20,6 +20,7 @@ import { useLazyGetStocksQuery } from '../rtk-files/stocksApi';
 import { useDispatch, useSelector } from 'react-redux';
 import Grid from '@mui/material/Grid';
 import { PortfolioDialog } from '../common/PortfolioDialog';
+import { useGetStockQuery } from '../rtk-files/stocksApi';
 
 const theme = createTheme();
 
@@ -28,6 +29,7 @@ export function SearchList() {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
   const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
+  const { data: stockData } = useGetStockQuery('AAPL');
   const [triggerStocks, { data: stocksData, isLoading: stocksLoading }] = useLazyGetStocksQuery();
   const [error, setError] = useState('');
   const [filteredNewsItemsData, setFilteredNewsItemsData] = useState([]);

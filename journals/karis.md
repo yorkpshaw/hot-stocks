@@ -1,3 +1,12 @@
+## 12/06/2022
+
+Today, I worked on:
+
+* Troubleshooting IntradayChart
+
+I helped Ben code and troubleshoot IntradayChart as a function component and troubleshoot.
+
+
 ## 12/05/2022
 
 Today, I worked on:
