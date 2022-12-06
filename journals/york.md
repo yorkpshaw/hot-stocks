@@ -1,3 +1,10 @@
+# Tuesday, December 6
+
+Today, I worked on:
+
+    - Finished writing the unit tests for saved_news_items
+    - Studied CD/CI
+
 # Monday, December 5
 Today, I worked on:
 

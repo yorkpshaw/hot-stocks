@@ -1,28 +1,43 @@
-def test_get_all_saved_news_items():
+from main import app
+from fastapi.testClient import TestClient
+from queries.saved_news_items import SavedNewsItemQueries
+import json
 
-    # arrange
+client = TestClient(app)
 
-    # act
+class SavedNewsItemsQueriesMock:
+    def get_all_saved_news_items(self):
+        return []
 
-    # assert
-    pass
+    def test_get_all_saved_news_items():
 
+        # arrange
 
-def test_create_or_update_saved_news_item():
+        # act
 
-    # arrange
+        # assert
+        pass
 
-    # act
+    # /saved_news_items
 
-    # assert
-    pass
+    def test_create_or_update_saved_news_item():
 
+        # arrange
 
-def test_delete_saved_news_item():
+        # act
 
-    # arrange
+        # assert
+        pass
 
-    # act
+    # /saved_news_items/
 
-    # assert
-    pass
+    def test_delete_saved_news_item():
+
+        # arrange
+
+        # act
+
+        # assert
+        pass
+
+    # /saved_news_items/`<int:id>`
