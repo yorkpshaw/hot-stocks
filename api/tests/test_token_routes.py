@@ -5,27 +5,48 @@ from main import app
 client = TestClient(app)
 
 
-def test_get_token_returns_none_for_user_not_logged_in():
-    app.dependency_overrides[authenticator.try_get_current_account_data] = lambda: None
-    response = client.get("/token")
+def get_token_with_token():
+    return {
+        'id': '500',
+        'username': 'example',
+        'email': 'example@example.com',
+    }
+
+def get_token_without_token():
+    return None
+
+
+def test_get_token_with_token():
+
+    # arrange
+    app.dependency_overrides[authenticator.try_get_current_account_data] = get_token_with_token()
+
+    # act
+    response = client.get('/token', cookies={authenticator.cookie_name: 'example'})
+    data = response.json()
+
+    # assert
+    assert response.status_code == 200
+    assert data['access_token'] == 'example'
+    assert data['account']['id'] == '500'
+    assert data['token_type'] == 'Bearer'
+
+    # clean up
     app.dependency_overrides = {}
+
+
+
+def test_get_token_without_token():
+
+    # arrange
+    app.dependency_overrides[authenticator.try_get_current_account_data] = get_token_without_token()
+
+    # act
+    response = client.get('/token')
+
+    # assert
     assert response.status_code == 200
     assert response.json() == None
 
-
-def test_get_token_returns_none_for_user_not_logged_in():
-    account = {
-        "id": "500",
-        "username": "example",
-        "email": "example@example.com",
-    }
-    app.dependency_overrides[
-        authenticator.try_get_current_account_data
-    ] = lambda: account
-    response = client.get("/token", cookies={authenticator.cookie_name: "exaple_cookie"})
+    # clean up
     app.dependency_overrides = {}
-    assert response.status_code == 200
-    data = response.json()
-    assert data["access_token"] == "exaple_cookie"
-    assert data["account"] == account
-    assert data["token_type"] == "Bearer"

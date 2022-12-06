@@ -4,11 +4,14 @@ Today, I worked on:
 
 * Troubleshooting portfolio dialog
 * Writing documentation
+* Writing tests
 
 
-I worked on troubleshooting portfolio dialog and its display of data that is obtained from hitting an API endpoint on appearance. Asking Candice for help after working on this item for days.
+I worked on troubleshooting portfolio dialog and its display of data that is obtained from hitting an API endpoint on appearance. I asked Candice for help after working on this item for days, and she helped fix it right away! Note to self: components are rerendered every time new input is provided; including ternary expressions on data that is not yet loaded is entirely valid.
 
 I helped Micheline write documentation related to our README (integrations.md, data-model.md).
+
+I included tests for get_token and get_stock, though I'm having issues with imports with pytest.
 
 
 
