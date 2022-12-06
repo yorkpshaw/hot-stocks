@@ -19,73 +19,73 @@ const theme = createTheme();
 export function Saved() {
 
   const { data: savedNewsItemsData, error: savedNewsItemsError, isLoading: savedNewsItemsLoading } = useGetSavedNewsItemsQuery();
-  const { data: savedStocksData,  error: savedStocksError, isLoading: savedStocksLoading } = useGetSavedStocksQuery();
+  const { data: savedStocksData, error: savedStocksError, isLoading: savedStocksLoading } = useGetSavedStocksQuery();
 
   return (
     <>
-    <PortfolioDialog />
-    <Container maxWidth="sm">
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <main>
-        <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
+      <PortfolioDialog />
+      <Container maxWidth="sm">
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <main>
+            <Box
+              sx={{
+                bgcolor: 'background.paper',
+                pt: 8,
+                pb: 6,
+              }}
             >
-              Saved
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Here lies a whole bunch of text that will be replaced.
-            </Typography>
-          </Container>
-        </Box>
+              <Container maxWidth="sm">
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="text.primary"
+                  gutterBottom
+                >
+                  Saved
+                </Typography>
+                <Typography variant="h5" align="center" color="text.secondary" paragraph>
+                  Here lies a whole bunch of text that will be replaced.
+                </Typography>
+              </Container>
+            </Box>
             {
-                savedStocksLoading ?
-                  <Container sx={{ py: 8 }} maxWidth="md">
-                    <Grid container sx={{ mx: 40 }}>
-                      <CircularProgress />
-                    </Grid>
-                  </Container> :
-                  savedStocksData ?
-                    <CardList cards={savedStocksData.saved_stocks} /> :
-                    <></>
-              }
-              {
-                savedNewsItemsLoading ?
-                  <Container sx={{ py: 8 }} maxWidth="md">
-                    <Grid container sx={{ mx: 40 }}>
-                      <CircularProgress />
-                    </Grid>
-                  </Container> :
-                  savedNewsItemsData ?
-                    <CardList cards={savedNewsItemsData.news_items} /> :
-                    <></>
-              }
-      </main>
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Currently In Development.
-        </Typography>
-        <Copyright />
-      </Box>
-    </ThemeProvider>
-    </Container>
+              savedStocksLoading ?
+                <Container sx={{ py: 8 }} maxWidth="md">
+                  <Grid container sx={{ mx: 40 }}>
+                    <CircularProgress />
+                  </Grid>
+                </Container> :
+                savedStocksData ?
+                  <CardList cards={savedStocksData.saved_stocks} /> :
+                  <></>
+            }
+            {
+              savedNewsItemsLoading ?
+                <Container sx={{ py: 8 }} maxWidth="md">
+                  <Grid container sx={{ mx: 40 }}>
+                    <CircularProgress />
+                  </Grid>
+                </Container> :
+                savedNewsItemsData ?
+                  <CardList cards={savedNewsItemsData.news_items} /> :
+                  <></>
+            }
+          </main>
+          <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+            <Typography
+              variant="subtitle1"
+              align="center"
+              color="text.secondary"
+              component="p"
+            >
+              Currently In Development.
+            </Typography>
+            <Copyright />
+          </Box>
+        </ThemeProvider>
+      </Container>
     </>
   );
 }
