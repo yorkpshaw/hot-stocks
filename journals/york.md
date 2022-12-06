@@ -2,7 +2,7 @@
 
 Today, I worked on:
 
-    - Finished writing the unit tests for saved_news_items
+    - Wrote unit tests for test_news_items_routes
     - Studied CD/CI
 
 # Monday, December 5
