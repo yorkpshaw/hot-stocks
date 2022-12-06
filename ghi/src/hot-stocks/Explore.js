@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ContentCard} from '../common/ContentCard';
+import { ContentCard } from '../common/ContentCard';
 import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
 import { useGetStocksQuery } from '../rtk-files/stocksApi';
 import { ErrorNotification } from '../common/ErrorNotification';
@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 
 export function Explore() {
 
-    const theme = createTheme();
+  const theme = createTheme();
 
     const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
     const { queries } = useSelector(state => state.stocks);
