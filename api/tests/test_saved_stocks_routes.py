@@ -1,5 +1,7 @@
 from main import app
 from queries.saved_stocks import SavedStockQueries
+from fastapi.testclient import TestClient
+
 
 client = TestClient(app)
 
