@@ -46,8 +46,8 @@ export function SearchList() {
     <>
       {
         portfolioDialog ?
-        <PortfolioDialog /> :
-        <></>
+          <PortfolioDialog /> :
+          <></>
       }
 
       <ThemeProvider theme={theme}>
@@ -74,7 +74,7 @@ export function SearchList() {
                 onChange={e => setSearch(e.target.value)}
                 variant="outlined"
                 autoFocus
-                sx={{ mt: 2, mb: 3}} />
+                sx={{ mt: 2, mb: 3 }} />
               <IconButton
                 type="submit"
                 variant="contained"
@@ -90,7 +90,7 @@ export function SearchList() {
                     </Grid>
                   </Container> :
                   stocksData ?
-                    <CardList cards={stocksData.stocks}  /> :
+                    <CardList cards={stocksData.stocks} /> :
                     <></>
               }
               {

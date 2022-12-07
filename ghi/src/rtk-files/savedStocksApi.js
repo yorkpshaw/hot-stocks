@@ -6,14 +6,14 @@ export const savedStocksApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:8000/', //process.env.API_SERVICE,
         prepareHeaders: (headers, { getState }) => {
-          const selector = authApi.endpoints.getToken.select();
-          const { data: tokenData } = selector(getState());
-          if (tokenData && tokenData.access_token) {
-            headers.set('Authorization', `Bearer ${tokenData.access_token}`);
-          }
-          return headers;
+            const selector = authApi.endpoints.getToken.select();
+            const { data: tokenData } = selector(getState());
+            if (tokenData && tokenData.access_token) {
+                headers.set('Authorization', `Bearer ${tokenData.access_token}`);
+            }
+            return headers;
         }
-      }),
+    }),
     tagTypes: ['SavedStocks'],
     endpoints: builder => ({
         getSavedStocks: builder.query({

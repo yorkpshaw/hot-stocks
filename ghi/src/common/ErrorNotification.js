@@ -10,7 +10,7 @@ export function ErrorNotification(props) {
     if (props.error) {
         setError(
             <Alert variant="outlined" severity="error">
-                    {error}
+                {error}
             </Alert>
         )
     }
@@ -19,7 +19,6 @@ export function ErrorNotification(props) {
         <>
             {error}
         </>
-
-      );
+    );
 
 }

@@ -28,7 +28,7 @@ export function PrefTrueSavedStockButton(props) {
     const card = props.card;
 
     return (
-        <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: true } ))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+        <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ({ symbol: card.symbol, preference: true }))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
     )
 }
 
@@ -38,7 +38,7 @@ export function PrefFalseSavedStockButton(props) {
     const card = props.card;
 
     return (
-        <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ( { symbol: card.symbol, preference: false } ))} value={card} size="small"><ClearOutlinedIcon /></IconButton>
+        <IconButton onClick={preventDefault(createOrUpdateSavedStock, () => ({ symbol: card.symbol, preference: false }))} value={card} size="small"><ClearOutlinedIcon /></IconButton>
     )
 }
 
@@ -48,7 +48,7 @@ export function PrefTrueSavedNewsItemButton(props) {
     const card = props.card;
 
     return (
-        <IconButton onClick={preventDefault(createOrUpdateSavedNewsItem, () => ( { title: card.title, news_url: card.news_url, time_published: card.time_published, banner_image: card.banner_image, summary: card.summary, preference: true } ))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+        <IconButton onClick={preventDefault(createOrUpdateSavedNewsItem, () => ({ title: card.title, news_url: card.news_url, time_published: card.time_published, banner_image: card.banner_image, summary: card.summary, preference: true }))} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
     )
 
 }
@@ -59,7 +59,7 @@ export function PrefFalseSavedNewsItemButton(props) {
     const card = props.card;
 
     return (
-        <IconButton onClick={preventDefault(createOrUpdateSavedNewsItem, () => ( { title: card.title, news_url: card.news_url, time_published: card.time_published, banner_image: card.banner_image, summary: card.summary, preference: false } ))} value={card} size="small"><ClearOutlinedIcon /></IconButton>
+        <IconButton onClick={preventDefault(createOrUpdateSavedNewsItem, () => ({ title: card.title, news_url: card.news_url, time_published: card.time_published, banner_image: card.banner_image, summary: card.summary, preference: false }))} value={card} size="small"><ClearOutlinedIcon /></IconButton>
     )
 
 }

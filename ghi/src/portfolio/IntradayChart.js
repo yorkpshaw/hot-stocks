@@ -7,27 +7,28 @@ export function IntradayChart(props) {
     const { data: stockData, isLoading: stockLoading } = useGetStockQuery(symbol);
     return (
         <>
-        {
-            stockLoading ?
-            'Loading' :
-            stockData?.stock?
-            <div>
-                <Plot
-                    data={[
-                        {
-                        x: Object.keys(stockData?.stock),
-                        y: Object.values(stockData?.stock),
-                        type: 'scatter',
-                        mode: 'lines+markers',
-                        marker: {color: 'red'},
-                    },
-                    ]}
-                    layout={{
-                        width: 400,
-                        height: 350}}
-                />
-            </div> : <></>
-        }
+            {
+                stockLoading ?
+                    'Loading' :
+                    stockData?.stock ?
+                        <div>
+                            <Plot
+                                data={[
+                                    {
+                                        x: Object.keys(stockData?.stock),
+                                        y: Object.values(stockData?.stock),
+                                        type: 'scatter',
+                                        mode: 'lines+markers',
+                                        marker: { color: 'red' },
+                                    },
+                                ]}
+                                layout={{
+                                    width: 400,
+                                    height: 350
+                                }}
+                            />
+                        </div> : <></>
+            }
         </>
     )
 };

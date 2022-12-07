@@ -70,9 +70,7 @@ export function SignUpForm(props) {
                   value={username}
                   onChange={field}
                   variant="outlined"
-                  autoFocus
-                />
-
+                  autoFocus />
                 <TextField
                   margin="normal"
                   required
@@ -81,9 +79,7 @@ export function SignUpForm(props) {
                   label="Email"
                   value={email}
                   onChange={field}
-                  variant="outlined"
-                />
-
+                  variant="outlined" />
                 <TextField
                   margin="normal"
                   required
@@ -94,9 +90,7 @@ export function SignUpForm(props) {
                   onChange={field}
                   type="password"
                   autoComplete="current-password"
-                  variant="outlined"
-                />
-
+                  variant="outlined" />
                 <TextField
                   margin="normal"
                   required
@@ -106,24 +100,20 @@ export function SignUpForm(props) {
                   value={confirmPassword}
                   onChange={e => setConfirmPassword(e.target.value)}
                   type="password"
-                  variant="outlined"
-                />
-
-
+                  variant="outlined" />
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2, bgcolor: deepOrange[500] }}
-                >
+                  sx={{ mt: 3, mb: 2, bgcolor: deepOrange[500] }}>
                   Sign up
                 </Button>
                 <Grid container>
-                    <Grid item>
-                        <Link onClick={() => dispatch(toggleSignUp())} variant="body2">
-                        {"Already have an account? Log in"}
-                        </Link>
-                    </Grid>
+                  <Grid item>
+                    <Link onClick={() => dispatch(toggleSignUp())} variant="body2">
+                      {"Already have an account? Log in"}
+                    </Link>
+                  </Grid>
                 </Grid>
               </Box>
             </Box>

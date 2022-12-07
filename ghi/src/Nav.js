@@ -36,7 +36,6 @@ const lower_data = [
 ];
 
 
-
 function LogoutListItem() {
   const [logOut] = useLogOutMutation();
 
@@ -102,8 +101,7 @@ export default function HotStocksNav({ children }) {
             : <></>}
         <Box
           component="main"
-          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-        >
+          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
           <Toolbar />
           {tokenLoading ?
             <CircularProgress /> :
@@ -111,7 +109,6 @@ export default function HotStocksNav({ children }) {
               children :
               <LoginForm />
           }
-
         </Box>
       </Box>
     </>

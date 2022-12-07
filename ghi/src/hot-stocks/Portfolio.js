@@ -23,8 +23,8 @@ export function Portfolio() {
     <>
       {
         portfolioDialog ?
-        <PortfolioDialog /> :
-        <></>
+          <PortfolioDialog /> :
+          <></>
       }
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="sm">
@@ -38,21 +38,21 @@ export function Portfolio() {
             }}
           >
             <ErrorNotification error={error} />
-              {
-                portfolioLoading ?
-                  <Container sx={{ py: 8 }} maxWidth="md">
-                    <Grid container sx={{ mx: 40 }}>
-                      <CircularProgress />
-                    </Grid>
-                  </Container> :
+            {
+              portfolioLoading ?
+                <Container sx={{ py: 8 }} maxWidth="md">
+                  <Grid container sx={{ mx: 40 }}>
+                    <CircularProgress />
+                  </Grid>
+                </Container> :
                 portfolioStocks ?
                   <CardList cards={portfolioStocks.portfolio_stocks} type={'PORTFOLIO'} /> :
-                <></>
-              }
-            </Box>
+                  <></>
+            }
+          </Box>
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
-        {<IntradayChart symbol={ `SPY` }/>}
+        {<IntradayChart symbol={`SPY`} />}
       </ThemeProvider>
     </>
   );

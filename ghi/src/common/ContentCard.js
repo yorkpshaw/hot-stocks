@@ -50,14 +50,14 @@ export function ContentCard(props) {
 
   async function handlePrefTrueSavedStockClick(e) {
     e.preventDefault();
-    createOrUpdateSavedStock( { symbol: card.symbol, preference: true } );
+    createOrUpdateSavedStock({ symbol: card.symbol, preference: true });
     setCardIndex(randomIntFromInterval(0, cards.length));
     setCard(cards[cardIndex]);
   }
 
   async function handlePrefFalseSavedStockClick(e) {
     e.preventDefault();
-    createOrUpdateSavedStock( { symbol: card.symbol, preference: false } );
+    createOrUpdateSavedStock({ symbol: card.symbol, preference: false });
     setCardIndex(randomIntFromInterval(0, cards.length));
     setCard(cards[cardIndex]);
   }
@@ -69,57 +69,57 @@ export function ContentCard(props) {
 
   return (
     <>
-    {
-      card.title ?
-      <>
-        <Card sx={{ maxWidth: 345 }}>
-          <CardMedia
-            component="img"
-            height="140"
-            image={card.banner_image}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {card.title.slice(0,40)}...
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              {card.time_published}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {card.summary.slice(0,100)}...
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <IconButton onClick={handlePrefTrueSavedNewsItemClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
-            <IconButton onClick={handlePrefFalseSavedNewsItemClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
-          </CardActions>
-        </Card>
-      </> :
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia>
-          <IntradayChart symbol={card.symbol}/>
-        </CardMedia>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {card.name }
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            {card.symbol}
-          </Typography>
-          <Typography sx={{color: deepOrange[500]}}>
-            { card.cost_current ?
-              'C $' + card.cost_current :
-              <></>
-            }
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <IconButton onClick={handlePrefTrueSavedStockClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
-          <IconButton onClick={handlePrefFalseSavedStockClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
-          <IconButton onClick={handlePortfolioStockClick} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton>
-        </CardActions>
-      </Card>
-    }
+      {
+        card.title ?
+          <>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia
+                component="img"
+                height="140"
+                image={card.banner_image}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {card.title.slice(0, 40)}...
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  {card.time_published}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {card.summary.slice(0, 100)}...
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <IconButton onClick={handlePrefTrueSavedNewsItemClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+                <IconButton onClick={handlePrefFalseSavedNewsItemClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
+              </CardActions>
+            </Card>
+          </> :
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia>
+              <IntradayChart symbol={card.symbol} />
+            </CardMedia>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                {card.name}
+              </Typography>
+              <Typography gutterBottom variant="h5" component="div">
+                {card.symbol}
+              </Typography>
+              <Typography sx={{ color: deepOrange[500] }}>
+                {card.cost_current ?
+                  'C $' + card.cost_current :
+                  <></>
+                }
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <IconButton onClick={handlePrefTrueSavedStockClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+              <IconButton onClick={handlePrefFalseSavedStockClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
+              <IconButton onClick={handlePortfolioStockClick} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton>
+            </CardActions>
+          </Card>
+      }
     </>
 
   );

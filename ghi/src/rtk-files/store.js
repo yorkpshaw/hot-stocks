@@ -27,13 +27,13 @@ export const store = configureStore({
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
-        .concat(authApi.middleware)
-        .concat(companiesApi.middleware)
-        .concat(portfolioStocksApi.middleware)
-        .concat(savedNewsItemsApi.middleware)
-        .concat(savedStocksApi.middleware)
-        .concat(stocksApi.middleware)
-        .concat(newsItemsApi.middleware),
+      .concat(authApi.middleware)
+      .concat(companiesApi.middleware)
+      .concat(portfolioStocksApi.middleware)
+      .concat(savedNewsItemsApi.middleware)
+      .concat(savedStocksApi.middleware)
+      .concat(stocksApi.middleware)
+      .concat(newsItemsApi.middleware),
 });
 
 setupListeners(store.dispatch);

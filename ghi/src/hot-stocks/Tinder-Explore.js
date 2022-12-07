@@ -1,6 +1,6 @@
 import * as React from 'react';
 import SwipeButtons from '../common/SwipeButtons';
-import {Card} from '../common/Card';
+import { Card } from '../common/Card';
 import BackOfCard from '../common/BackOfCard';
 import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
 import { useGetStocksQuery } from '../rtk-files/stocksApi';
@@ -15,11 +15,11 @@ export function Explore() {
 
   return (
     <>
-      { newsItemsLoading ?
+      {newsItemsLoading ?
         'Loading' :
         newsItemsData ?
-        <Card cards={ newsItemsData }/> :
-        <></>
+          <Card cards={newsItemsData} /> :
+          <></>
       }
     </>
     // <div>
