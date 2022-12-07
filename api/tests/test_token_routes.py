@@ -19,7 +19,7 @@ def get_token_without_token():
 def test_get_token_with_token():
 
     # arrange
-    app.dependency_overrides[authenticator.try_get_current_account_data] = get_token_with_token()
+    app.dependency_overrides[authenticator.try_get_current_account_data] = get_token_with_token
 
     # act
     response = client.get('/token', cookies={authenticator.cookie_name: 'example'})
@@ -39,7 +39,7 @@ def test_get_token_with_token():
 def test_get_token_without_token():
 
     # arrange
-    app.dependency_overrides[authenticator.try_get_current_account_data] = get_token_without_token()
+    app.dependency_overrides[authenticator.try_get_current_account_data] = get_token_without_token
 
     # act
     response = client.get('/token')
