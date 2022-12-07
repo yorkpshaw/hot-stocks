@@ -1,4 +1,4 @@
-from fastapi.testClient import TestClient
+from fastapi.testclient import TestClient
 from main import app
 
 # replace swagger in code
