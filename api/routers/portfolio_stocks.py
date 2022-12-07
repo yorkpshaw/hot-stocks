@@ -11,12 +11,13 @@ from queries.portfolio_stocks import (
 
 router = APIRouter()
 
-@router.get("/api/portfolio_stocks", response_model = PortfolioStocksOut)
+
+@router.get("/api/portfolio_stocks", response_model=PortfolioStocksOut)
 def get_all_portfolio_stocks(
     account_data: dict = Depends(authenticator.get_current_account_data),
-    queries: PortfolioStockQueries = Depends()
-    ):
-    account_id = account_data['id']
+    queries: PortfolioStockQueries = Depends(),
+):
+    account_id = account_data["id"]
 
     return {
         "portfolio_stocks": queries.get_all_portfolio_stocks(account_id),
@@ -27,9 +28,9 @@ def get_all_portfolio_stocks(
 def create_or_update_portfolio_stock(
     portfolio_stock_in: PortfolioStockIn,
     account_data: dict = Depends(authenticator.get_current_account_data),
-    queries: PortfolioStockQueries = Depends()
-    ):
-    account_id = account_data['id']
+    queries: PortfolioStockQueries = Depends(),
+):
+    account_id = account_data["id"]
 
     return queries.create_or_update_portfolio_stock(portfolio_stock_in, account_id)
 
@@ -38,9 +39,9 @@ def create_or_update_portfolio_stock(
 def delete_portfolio_stock(
     portfolio_stock_id: int,
     account_data: dict = Depends(authenticator.get_current_account_data),
-    queries: PortfolioStockQueries = Depends()
-    ):
-    account_id = account_data['id']
+    queries: PortfolioStockQueries = Depends(),
+):
+    account_id = account_data["id"]
 
     queries.delete_portfolio_stock(portfolio_stock_id, account_id)
     return True

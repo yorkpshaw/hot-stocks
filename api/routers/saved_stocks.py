@@ -9,6 +9,7 @@ from queries.saved_stocks import (
 
 router = APIRouter()
 
+
 @router.get("/api/saved_stocks")  # , response_model = SavedStocksOut)
 def get_all_saved_stocks(
     account_data: dict = Depends(authenticator.get_current_account_data),

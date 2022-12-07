@@ -22,10 +22,9 @@ class AccountOutWithPassword(AccountOut):
     hashed_password: str
 
 
-class AccountQueries():
-
+class AccountQueries:
     def get(self, username: str) -> AccountOutWithPassword:
-        with pool.connection () as conn:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
@@ -44,13 +43,9 @@ class AccountQueries():
                 return record
 
     def create(self, info: AccountIn, hashed_password: str) -> AccountOutWithPassword:
-        with pool.connection () as conn:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
-                params = [
-                    info.username,
-                    info.email,
-                    hashed_password
-                ]
+                params = [info.username, info.email, hashed_password]
                 cur.execute(
                     """
                     INSERT INTO accounts (username, email, hashed_password)

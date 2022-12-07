@@ -8,6 +8,7 @@ class PortfolioStockIn(BaseModel):
     num_shares: int
     cost_basis: float
 
+
 class PortfolioStockOut(BaseModel):
     id: int
     account_id: int
@@ -15,11 +16,12 @@ class PortfolioStockOut(BaseModel):
     num_shares: int
     cost_basis: float
 
+
 class PortfolioStocksOut(BaseModel):
     portfolio_stocks: List[PortfolioStockOut]
 
-class PortfolioStockQueries:
 
+class PortfolioStockQueries:
     def get_all_portfolio_stocks(self, account_id: str) -> PortfolioStocksOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
@@ -39,8 +41,10 @@ class PortfolioStockQueries:
                     results.append(record)
                 return results
 
-    def create_or_update_portfolio_stock(self, data: PortfolioStockIn, account_id: str) -> PortfolioStockOut:
-        with pool.connection () as conn:
+    def create_or_update_portfolio_stock(
+        self, data: PortfolioStockIn, account_id: str
+    ) -> PortfolioStockOut:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     account_id,
@@ -59,7 +63,7 @@ class PortfolioStockQueries:
                         , cost_basis=(EXCLUDED.cost_basis)
                     RETURNING id, account_id, symbol, num_shares, cost_basis;
                     """,
-                    params
+                    params,
                 )
 
                 record = None
@@ -71,7 +75,7 @@ class PortfolioStockQueries:
                 return record
 
     def delete_portfolio_stock(self, portfolio_stock_id: str, account_id: str) -> bool:
-        with pool.connection () as conn:
+        with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     portfolio_stock_id,
