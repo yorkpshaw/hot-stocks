@@ -68,21 +68,10 @@ class AccountQueriesMock:
             'hashed_password': '$2a$12$3NDZqR8ukkp9sHVK8H5.WOWeh70b7rpGwJgUpmRI3r0s8CXAtbk3G',
         }
 
-def hash_password():
-    return '$2a$12$3NDZqR8ukkp9sHVK8H5.WOWeh70b7rpGwJgUpmRI3r0s8CXAtbk3G'
-
-def login():
-    return {
-        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmZjc5YjFkZC1jNGQ1LTQzNDUtYmFmYS0xZWZkYTEyMmNmNzAiLCJleHAiOjE2NzA0MzkwMzIsInN1YiI6ImFkbWluIiwiYWNjb3VudCI6eyJpZCI6IjMiLCJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbiJ9fQ._kP5VnpJU92OY7eTNHSwfb4LCdS6W2HOZbs1EjCfHrU",
-        "token_type": "Bearer"
-    }
-
 def test_create_account():
 
     # arrange
     app.dependency_overrides[AccountQueries] = AccountQueriesMock
-    app.dependency_overrides[authenticator.hash_password] = hash_password
-    app.dependency_overrides[authenticator.login] = login
     account = {
         'username': 'user',
         'email': 'user@example.com',

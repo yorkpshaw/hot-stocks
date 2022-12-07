@@ -1,3 +1,12 @@
+## 12/07/2022
+
+Today, I worked on:
+
+* Writing tests
+
+I debugged tests in test_token_routes and test_company_routes, and all are working well now.
+
+
 ## 12/06/2022
 
 Today, I worked on:
