@@ -15,6 +15,7 @@ import { deepOrange } from '@mui/material/colors';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useDispatch } from 'react-redux';
+import { IntradayChart } from '../portfolio/IntradayChart';
 
 
 // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
@@ -99,6 +100,7 @@ export function ContentCard(props) {
         </Card>
       </> :
       <Card sx={{ maxWidth: 345 }}>
+        {<IntradayChart symbol={ card.symbol } />}
         <CardMedia
           component="img"
           height="140"
