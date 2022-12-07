@@ -63,21 +63,28 @@ class AccountQueriesMock:
             'id': '500',
             'username': 'example',
             'email': 'example@example.com',
-            'hashed_password': 'hashedexample',
+            'hashed_password': '$2y$10$/Q3yeQfy1HNpeXXw4GYlWuY2YU4e92GwIoUayrVIFxRhzJDo6gy.G',
         }
     def get(self, username):
         return {
             'id': '500',
             'username': 'example',
             'email': 'example@example.com',
-            'hashed_password': 'hashedexample',
+            'hashed_password': '$2y$10$/Q3yeQfy1HNpeXXw4GYlWuY2YU4e92GwIoUayrVIFxRhzJDo6gy.G',
         }
 
+def hash_password():
+    return '$2y$10$/Q3yeQfy1HNpeXXw4GYlWuY2YU4e92GwIoUayrVIFxRhzJDo6gy.G'
+
+def login():
+    return 'token'
 
 def test_create_account():
 
     # arrange
     app.dependency_overrides[AccountQueries] = AccountQueriesMock
+    app.dependency_overrides[authenticator.hash_password] = hash_password
+    app.dependency_overrides[authenticator.login] = login
     account = {
         'username': 'example',
         'email': 'example@example.com',
