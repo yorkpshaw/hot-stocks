@@ -56,23 +56,26 @@ class AccountQueriesMock:
     def create(self, info, hashed_password):
         return {
             'id': '500',
-            'username': 'example',
-            'email': 'example@example.com',
-            'hashed_password': '$2y$10$/Q3yeQfy1HNpeXXw4GYlWuY2YU4e92GwIoUayrVIFxRhzJDo6gy.G',
+            'username': 'user',
+            'email': 'user@example.com',
+            'hashed_password': '$2a$12$3NDZqR8ukkp9sHVK8H5.WOWeh70b7rpGwJgUpmRI3r0s8CXAtbk3G',
         }
     def get(self, username):
         return {
             'id': '500',
-            'username': 'example',
-            'email': 'example@example.com',
-            'hashed_password': '$2y$10$/Q3yeQfy1HNpeXXw4GYlWuY2YU4e92GwIoUayrVIFxRhzJDo6gy.G',
+            'username': 'user',
+            'email': 'user@example.com',
+            'hashed_password': '$2a$12$3NDZqR8ukkp9sHVK8H5.WOWeh70b7rpGwJgUpmRI3r0s8CXAtbk3G',
         }
 
 def hash_password():
-    return '$2y$10$/Q3yeQfy1HNpeXXw4GYlWuY2YU4e92GwIoUayrVIFxRhzJDo6gy.G'
+    return '$2a$12$3NDZqR8ukkp9sHVK8H5.WOWeh70b7rpGwJgUpmRI3r0s8CXAtbk3G'
 
 def login():
-    return 'token'
+    return {
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmZjc5YjFkZC1jNGQ1LTQzNDUtYmFmYS0xZWZkYTEyMmNmNzAiLCJleHAiOjE2NzA0MzkwMzIsInN1YiI6ImFkbWluIiwiYWNjb3VudCI6eyJpZCI6IjMiLCJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbiJ9fQ._kP5VnpJU92OY7eTNHSwfb4LCdS6W2HOZbs1EjCfHrU",
+        "token_type": "Bearer"
+    }
 
 def test_create_account():
 
@@ -81,9 +84,9 @@ def test_create_account():
     app.dependency_overrides[authenticator.hash_password] = hash_password
     app.dependency_overrides[authenticator.login] = login
     account = {
-        'username': 'example',
-        'email': 'example@example.com',
-        'password': 'hashedexample',
+        'username': 'user',
+        'email': 'user@example.com',
+        'password': 'example',
     }
 
     # act
@@ -100,7 +103,7 @@ def test_create_account():
     data = response.json()
     assert data['access_token'] is not None
     assert data['account']['id'] is not None
-    assert data['account']['username'] == 'example'
+    assert data['account']['username'] == 'user'
 
     # cleanup
     app.dependency_overrides = {}

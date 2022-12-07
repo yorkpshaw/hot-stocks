@@ -63,13 +63,22 @@ class ACLs:
 
     def get_all_stocks():
 
-        url = f"https://financialmodelingprep.com/api/v3/stock/list?apikey={FMP_API_KEY}"
+        url = (
+            f"https://financialmodelingprep.com/api/v3/stock/list?apikey={FMP_API_KEY}"
+        )
         response = requests.get(url)
         content = json.loads(response.content)
         stocks = []
         try:
             for i in content:
-                if i.get('type') == 'stock' and i.get("price") and (i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE'):
+                if (
+                    i.get("type") == "stock"
+                    and i.get("price")
+                    and (
+                        i["exchangeShortName"] == "NASDAQ"
+                        or i["exchangeShortName"] == "NYSE"
+                    )
+                ):
                     stock = {}
                     stock["symbol"] = i.get("symbol")
                     stock["name"] = i.get("name")
@@ -78,7 +87,6 @@ class ACLs:
             return stocks
         except (KeyError, IndexError):
             return None
-
 
     def get_all_news_items():
 
