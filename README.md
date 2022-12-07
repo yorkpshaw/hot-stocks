@@ -16,7 +16,7 @@ Hot Stocks - revolutionizing stocks to make them, like, totally cool.
 
 ## Intended market
 
-Our key demographic are men and women that are in the age range of 18 - 42. Our target audience are those that are interested in investing in stocks and growing their portfolio.  Hot Stocks interface is designed  to have the feel of a social media app to give users a sense of familiarity and make it less intimindating.
+Our key demographic are men and women that are in the age range of 18 - 42. Our target audience are those that are interested in investing in stocks and growing their portfolio.
 
 
 ## Functionality
