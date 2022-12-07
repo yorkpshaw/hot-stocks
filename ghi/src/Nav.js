@@ -65,7 +65,7 @@ export default function HotStocksNav({ children }) {
 
   return (
     <>
-      {stocksData ?
+      {stocksData?.stocks ?
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar

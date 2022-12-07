@@ -17,9 +17,9 @@ class ACLs:
 
         try:
             return {
-                "symbol": content["Symbol"],
-                "name": content["Name"],
-                "description": content["Description"],
+                "symbol": content.get("Symbol"),
+                "name": content.get("Name"),
+                "description": content.get("Description"),
             }
         except (KeyError, IndexError):
             return None
@@ -31,7 +31,7 @@ class ACLs:
         content = json.loads(response.content)
         stock = {}
         try:
-            time_series = content["Time Series (15min)"]
+            time_series = content.get("Time Series (15min)")
             for index, i in enumerate(time_series):
                 if index <= 32:
                     stock[i] = time_series[i]["4. close"]
@@ -54,8 +54,8 @@ class ACLs:
                     or i["exchangeShortName"] == "NYSE"
                 ):
                     stock = {}
-                    stock["symbol"] = i["symbol"]
-                    stock["name"] = i["name"]
+                    stock["symbol"] = i.get("symbol")
+                    stock["name"] = i.get("name")
                     stocks.append(stock)
             return stocks
         except (KeyError, IndexError):
@@ -63,27 +63,22 @@ class ACLs:
 
     def get_all_stocks():
 
-        url = (
-            f"https://financialmodelingprep.com/api/v3/stock/list?apikey={FMP_API_KEY}"
-        )
+        url = f"https://financialmodelingprep.com/api/v3/stock/list?apikey={FMP_API_KEY}"
         response = requests.get(url)
         content = json.loads(response.content)
         stocks = []
         try:
             for i in content:
-                if (
-                    i["type"] == "stock"
-                    and i["exchangeShortName"] == "NASDAQ"
-                    or i["exchangeShortName"] == "NYSE"
-                ):
+                if i.get('type') == 'stock' and i.get("price") and (i['exchangeShortName'] == 'NASDAQ' or i['exchangeShortName'] == 'NYSE'):
                     stock = {}
-                    stock["symbol"] = i["symbol"]
-                    stock["name"] = i["name"]
-                    stock["cost_current"] = i["price"]
+                    stock["symbol"] = i.get("symbol")
+                    stock["name"] = i.get("name")
+                    stock["cost_current"] = i.get("price")
                     stocks.append(stock)
             return stocks
         except (KeyError, IndexError):
             return None
+
 
     def get_all_news_items():
 
@@ -95,11 +90,11 @@ class ACLs:
             feed = content["feed"]
             for i in feed:
                 news_item = {}
-                news_item["title"] = i["title"]
-                news_item["news_url"] = i["url"]
-                news_item["time_published"] = i["time_published"]
-                news_item["summary"] = i["summary"]
-                news_item["banner_image"] = i["banner_image"]
+                news_item["title"] = i.get("title")
+                news_item["news_url"] = i.get("url")
+                news_item["time_published"] = i.get("time_published")
+                news_item["summary"] = i.get("summary")
+                news_item["banner_image"] = i.get("banner_image")
                 news_items.append(news_item)
             return news_items
         except (KeyError, IndexError):
