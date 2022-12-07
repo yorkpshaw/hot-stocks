@@ -13,13 +13,13 @@ export function CardList(props) {
     <Container sx={{ py: 8 }} maxWidth="md">
       <Grid container spacing={4}>
         {cards.map((card, index) => (
-          type == 'SAVED' ?
+          type === 'SAVED' ?
             card.preference ?
               <Grid item key={type + index} xs={12} sm={6} md={4}>
                 <SimpleCard card={card} type={type} />
               </Grid> :
               <></> :
-            type == 'PORTFOLIO' ?
+            type === 'PORTFOLIO' ?
               card.num_shares ?
                 <Grid item key={type + index} xs={12} sm={6} md={4}>
                   <SimpleCard card={card} type={type} />

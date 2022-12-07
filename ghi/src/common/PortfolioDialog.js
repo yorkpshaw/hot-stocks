@@ -17,8 +17,8 @@ import { useCreateOrUpdatePortfolioStockMutation } from '../rtk-files/portfolioS
 
 export function PortfolioDialog() {
 
-  const { portfolioDialog, card } = useSelector(state => state.portfolioDialog);
-  const [createOrUpdatePortfolioStock, { error: portfolioStockError }] = useCreateOrUpdatePortfolioStockMutation();
+  const { card } = useSelector(state => state.portfolioDialog);
+  const [createOrUpdatePortfolioStock] = useCreateOrUpdatePortfolioStockMutation();
   const dispatch = useDispatch();
   const [numShares, setNumShares] = useState('');
   const { queries } = useSelector(state => state.stocks);

@@ -30,8 +30,8 @@ export function ContentCard(props) {
   const dispatch = useDispatch();
   const [cardIndex, setCardIndex] = useState(randomIntFromInterval(0, cards.length));
   const [card, setCard] = useState(cards[cardIndex]);
-  const [createOrUpdateSavedNewsItem, { error: savedNewsItemError, isLoading: savedNewsItemLoading }] = useCreateOrUpdateSavedNewsItemMutation();
-  const [createOrUpdateSavedStock, { error: savedStockError, isLoading: savedStockLoading }] = useCreateOrUpdateSavedStockMutation();
+  const [createOrUpdateSavedNewsItem] = useCreateOrUpdateSavedNewsItemMutation();
+  const [createOrUpdateSavedStock] = useCreateOrUpdateSavedStockMutation();
 
 
   async function handlePrefTrueSavedNewsItemClick(e) {

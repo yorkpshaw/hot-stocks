@@ -50,7 +50,7 @@ function LogoutListItem() {
 export default function HotStocksNav({ children }) {
 
   const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
-  const { data: stocksData, isLoading: stocksLoading } = useGetStocksQuery();
+  const { data: stocksData } = useGetStocksQuery();
 
   const getList = (data) => (
     <div style={{ width: 250 }}>
@@ -65,52 +65,53 @@ export default function HotStocksNav({ children }) {
 
   return (
     <>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-        >
-        </AppBar>
-        {tokenLoading ?
-          <></> :
-          token ?
-            <Drawer
-              sx={{
-                width: drawerWidth,
-                flexShrink: 0,
-                '& .MuiDrawer-paper': {
-                  width: drawerWidth,
-                  boxSizing: 'border-box',
-                },
-              }}
-              variant="permanent"
-              anchor="left"
-            >
-              <Toolbar />
-              <Divider />
-              <List>
-                {getList(upper_data)}
-              </List>
-              <Divider />
-              <List>
-                {getList(lower_data)}
-                <LogoutListItem />
-              </List>
-            </Drawer>
-            : <></>}
-        <Box
-          component="main"
-          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
-          <Toolbar />
+      {stocksData ?
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <AppBar
+            position="fixed"
+            sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
+          </AppBar>
           {tokenLoading ?
-            <CircularProgress /> :
+            <></> :
             token ?
-              children :
-              <LoginForm />
-          }
-        </Box>
-      </Box>
+              <Drawer
+                sx={{
+                  width: drawerWidth,
+                  flexShrink: 0,
+                  '& .MuiDrawer-paper': {
+                    width: drawerWidth,
+                    boxSizing: 'border-box',
+                  },
+                }}
+                variant="permanent"
+                anchor="left">
+                <Toolbar />
+                <Divider />
+                <List>
+                  {getList(upper_data)}
+                </List>
+                <Divider />
+                <List>
+                  {getList(lower_data)}
+                  <LogoutListItem />
+                </List>
+              </Drawer>
+              : <></>}
+          <Box
+            component="main"
+            sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
+            <Toolbar />
+            {tokenLoading ?
+              <CircularProgress /> :
+              token ?
+                children :
+                <LoginForm />
+            }
+          </Box>
+        </Box> :
+        <></>
+      }
     </>
   );
 }

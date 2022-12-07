@@ -18,8 +18,8 @@ const theme = createTheme();
 
 export function Saved() {
 
-  const { data: savedNewsItemsData, error: savedNewsItemsError, isLoading: savedNewsItemsLoading } = useGetSavedNewsItemsQuery();
-  const { data: savedStocksData, error: savedStocksError, isLoading: savedStocksLoading } = useGetSavedStocksQuery();
+  const { data: savedNewsItemsData, isLoading: savedNewsItemsLoading } = useGetSavedNewsItemsQuery();
+  const { data: savedStocksData, isLoading: savedStocksLoading } = useGetSavedStocksQuery();
   const { portfolioDialog } = useSelector(state => state.portfolioDialog);
 
   return (
@@ -32,22 +32,18 @@ export function Saved() {
       <Container maxWidth="sm">
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <main>
             <Box
               sx={{
                 bgcolor: 'background.paper',
                 pt: 8,
-                pb: 6,
-              }}
-            >
+                pb: 6}}>
               <Container maxWidth="sm">
                 <Typography
                   component="h1"
                   variant="h2"
                   align="center"
                   color="text.primary"
-                  gutterBottom
-                >
+                  gutterBottom>
                   Saved
                 </Typography>
                 <Typography variant="h5" align="center" color="text.secondary" paragraph>
@@ -77,16 +73,7 @@ export function Saved() {
                   <CardList cards={savedNewsItemsData.news_items} type='SAVED' /> :
                   <></>
             }
-          </main>
           <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-            <Typography
-              variant="subtitle1"
-              align="center"
-              color="text.secondary"
-              component="p"
-            >
-              Currently In Development.
-            </Typography>
             <Copyright />
           </Box>
         </ThemeProvider>

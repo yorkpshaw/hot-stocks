@@ -31,8 +31,8 @@ export function SimpleCard(props) {
               {
                 card.cost_current ?
                   'C $' + card.cost_current :
-                  queries[`getStocks(undefined)`]?.data?.stocks.find(element => element.symbol == card.symbol)?.cost_current ?
-                    'C $' + queries[`getStocks(undefined)`].data.stocks.find(element => element.symbol == card.symbol).cost_current :
+                  queries[`getStocks(undefined)`]?.data?.stocks.find(element => element.symbol === card.symbol)?.cost_current ?
+                    'C $' + queries[`getStocks(undefined)`].data.stocks.find(element => element.symbol === card.symbol).cost_current :
                     'Loading...'
               }
             </Typography>
@@ -44,7 +44,7 @@ export function SimpleCard(props) {
             </Typography>
           </CardContent>
           <CardActions>
-            {type == 'SAVED' ?
+            {type === 'SAVED' ?
               <PrefFalseSavedStockButton card={card} /> :
               <PrefTrueSavedStockButton card={card} />
             }
@@ -62,7 +62,7 @@ export function SimpleCard(props) {
             </Typography>
           </CardContent>
           <CardActions>
-            {type == 'SAVED' ?
+            {type === 'SAVED' ?
               <PrefFalseSavedNewsItemButton card={card} /> :
               <PrefTrueSavedNewsItemButton card={card} />
             }

@@ -1,4 +1,3 @@
-
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
@@ -24,7 +23,7 @@ export function PortfolioStockButton(props) {
 
 export function PrefTrueSavedStockButton(props) {
 
-    const [createOrUpdateSavedStock, { error: savedStockError, isLoading: savedStockLoading }] = useCreateOrUpdateSavedStockMutation();
+    const [createOrUpdateSavedStock] = useCreateOrUpdateSavedStockMutation();
     const card = props.card;
 
     return (
@@ -34,7 +33,7 @@ export function PrefTrueSavedStockButton(props) {
 
 export function PrefFalseSavedStockButton(props) {
 
-    const [createOrUpdateSavedStock, { error: savedStockError, isLoading: savedStockLoading }] = useCreateOrUpdateSavedStockMutation();
+    const [createOrUpdateSavedStock] = useCreateOrUpdateSavedStockMutation();
     const card = props.card;
 
     return (
@@ -44,7 +43,7 @@ export function PrefFalseSavedStockButton(props) {
 
 export function PrefTrueSavedNewsItemButton(props) {
 
-    const [createOrUpdateSavedNewsItem, { error: savedNewsItemError, isLoading: savedNewsItemLoading }] = useCreateOrUpdateSavedNewsItemMutation();
+    const [createOrUpdateSavedNewsItem] = useCreateOrUpdateSavedNewsItemMutation();
     const card = props.card;
 
     return (
@@ -55,7 +54,7 @@ export function PrefTrueSavedNewsItemButton(props) {
 
 export function PrefFalseSavedNewsItemButton(props) {
 
-    const [createOrUpdateSavedNewsItem, { error: savedNewsItemError, isLoading: savedNewsItemLoading }] = useCreateOrUpdateSavedNewsItemMutation();
+    const [createOrUpdateSavedNewsItem] = useCreateOrUpdateSavedNewsItemMutation();
     const card = props.card;
 
     return (
