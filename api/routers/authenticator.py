@@ -1,4 +1,3 @@
-# authenticator.py
 import os
 from fastapi import Depends
 from jwtdown_fastapi.authentication import Authenticator
@@ -34,5 +33,3 @@ class HotStocksAuthenticator(Authenticator):
 
 
 authenticator = HotStocksAuthenticator(os.environ["SIGNING_KEY"])
-
-# Comment out this file and accounts.py in routers and queries

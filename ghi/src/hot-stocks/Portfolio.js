@@ -15,22 +15,8 @@ import { useGetPortfolioStocksQuery } from '../rtk-files/portfolioStocksApi';
 
 const theme = createTheme();
 export function Portfolio() {
-    // const { portfolio } = useSelector(state => state.local)
-    // const [getTotalPortfolioValue, setTotalPortfolioValue] = useState(0);
-    // useEffect(() => {
-    //     if(portfolio.length > 0) {
-    //         setTotalPortfolioValue(getTotalPortfolioValue(portfolio));
-    //     }
-    // }, [portfolio]);
-
-
 
   const { data: portfolioStocks, error, isLoading: portfolioLoading } = useGetPortfolioStocksQuery();
-//   if (isLoading) {
-//     return (
-//       <CircularProgress color="inherit" />
-//     );
-//   }
   const { portfolioDialog } = useSelector(state => state.portfolioDialog);
 
   return (
@@ -71,17 +57,3 @@ export function Portfolio() {
     </>
   );
 }
-//     <div>
-//       <Alert variant="outlined" severity="error">
-//                 {error}
-//             </Alert>
-//             <div>
-//                 {data.portfolioStocks.map(portfolioStock => {
-//                     <p key={portfolioStock.id}>
-//                         {portfolioStock.symbol}
-//                     </p>
-//                 })}
-//             </div>
-//     </div>
-//   );
-// }

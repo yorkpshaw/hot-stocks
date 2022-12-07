@@ -42,9 +42,3 @@ export function About() {
     </Container>
   );
 }
-
-// Logo in a box at center of page
-// Description right below
-// Ask group what logo and description will look like
-// LoginForm - import { deepOrange } from '@mui/material/colors';
-// import Typography from '@mui/material/Typography';

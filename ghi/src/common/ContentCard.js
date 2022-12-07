@@ -63,10 +63,7 @@ export function ContentCard(props) {
   }
 
   async function handlePortfolioStockClick(e) {
-    // e.preventDefault();
     dispatch(togglePortfolioDialog(card), setCard(cards[randomIntFromInterval(0, cards.length)]));
-    // setCardIndex(cardIndex + 1);
-    // setCard(cards[cardIndex]);
   }
 
 

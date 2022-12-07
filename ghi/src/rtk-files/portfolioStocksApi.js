@@ -18,7 +18,7 @@ export const portfolioStocksApi = createApi({
     endpoints: builder => ({
         getPortfolioStocks: builder.query({
             query: () => '/api/portfolio_stocks',
-            // providesTags: ['PortfolioStock']
+            providesTags: ['PortfolioStock']
         }),
         createOrUpdatePortfolioStock: builder.mutation({
             query: data => ({
@@ -28,14 +28,6 @@ export const portfolioStocksApi = createApi({
             }),
             invalidateTags: ['PortfolioStock'],
         }),
-        // updatePortfolioStock: builder.mutation({
-        //     query: data => ({
-        //         url: '/api/portfolio_stocks/{portfolio_stock_id}/',
-        //         body: data,
-        //         method: 'put',
-        //     }),
-        //     invalidateTags: ['PortfolioStock'],
-        // }),
         deletePortfolioStock: builder.mutation({
             query: data => ({
                 url: "/api/portfolio_stocks/{portfolio_stock_id}",
@@ -51,7 +43,6 @@ export const portfolioStocksApi = createApi({
 export const {
     useGetPortfolioStocksQuery,
     useCreateOrUpdatePortfolioStockMutation,
-    // useUpdatePortfolioStockMutation,
     useDeletePortfolioStockMutation,
 } = portfolioStocksApi;
 
