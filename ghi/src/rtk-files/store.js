@@ -5,6 +5,7 @@ import { authApi } from './authApi';
 import { companiesApi } from './companiesApi';
 import { newsItemsApi } from './newsItemsApi';
 import { portfolioDialogSlice } from './portfolioDialogSlice';
+import { infoDialogSlice } from './infoDialogSlice';
 import { portfolioStocksApi } from './portfolioStocksApi';
 import { savedNewsItemsApi } from './savedNewsItemsApi';
 import { savedStocksApi } from './savedStocksApi';
@@ -18,6 +19,7 @@ export const store = configureStore({
     [accountSlice.name]: accountSlice.reducer,
     [signUpSlice.name]: signUpSlice.reducer,
     [portfolioDialogSlice.name]: portfolioDialogSlice.reducer,
+    [infoDialogSlice.name]: infoDialogSlice.reducer,
     [companiesApi.reducerPath]: companiesApi.reducer,
     [portfolioStocksApi.reducerPath]: portfolioStocksApi.reducer,
     [savedNewsItemsApi.reducerPath]: savedNewsItemsApi.reducer,

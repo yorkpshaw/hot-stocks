@@ -1,4 +1,5 @@
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import Card from '@mui/material/Card';
@@ -12,6 +13,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { IntradayChart } from '../portfolio/IntradayChart';
+import { toggleInfoDialog } from '../rtk-files/infoDialogSlice';
 import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
 import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
@@ -66,6 +68,10 @@ export function ContentCard(props) {
     dispatch(togglePortfolioDialog(card), setCard(cards[randomIntFromInterval(0, cards.length)]));
   }
 
+  async function handleStockInfoClick(e) {
+    dispatch(toggleInfoDialog(card));
+  }
+
 
   return (
     <>
@@ -117,6 +123,7 @@ export function ContentCard(props) {
               <IconButton onClick={handlePrefTrueSavedStockClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
               <IconButton onClick={handlePrefFalseSavedStockClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
               <IconButton onClick={handlePortfolioStockClick} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton>
+              <IconButton onClick={handleStockInfoClick} value={card} size="small"><InfoOutlinedIcon /></IconButton>
             </CardActions>
           </Card>
       }
