@@ -1,29 +1,25 @@
 import * as React from 'react';
-
-import { ErrorNotification } from '../common/ErrorNotification';
 import { Copyright } from '../common/Copyright';
-
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+import { ErrorNotification } from '../common/ErrorNotification';
+import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
 import { CssBaseline } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
-import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import { deepOrange } from '@mui/material/colors';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetTokenQuery, useLogInMutation } from '../rtk-files/authApi';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
 import { updateField } from '../rtk-files/accountSlice';
-import { SignUpForm } from './SignUpForm';
+import { useGetTokenQuery, useLogInMutation } from '../rtk-files/authApi';
 import { toggleSignUp } from '../rtk-files/signUpSlice';
-
+import { SignUpForm } from './SignUpForm';
 
 
 const theme = createTheme();

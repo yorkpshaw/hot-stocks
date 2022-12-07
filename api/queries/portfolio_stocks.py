@@ -2,9 +2,6 @@ from pydantic import BaseModel
 from typing import List
 from queries.pool import pool
 
-# class PortfolioStockUpdateIn(BaseModel):
-#     num_shares: int
-#     cost_basis: int
 
 class PortfolioStockIn(BaseModel):
     symbol: str

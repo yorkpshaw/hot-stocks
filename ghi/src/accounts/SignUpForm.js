@@ -1,33 +1,26 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { ErrorNotification } from '../common/ErrorNotification';
-import { Copyright } from '../common/Copyright';
-
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
 import { CssBaseline } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
-import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import { deepOrange } from '@mui/material/colors';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Link from '@mui/material/Link';
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-
-import { useCallback } from 'react';
+import Link from '@mui/material/Link';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import * as React from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSignUpMutation } from '../rtk-files/authApi';
+import { Copyright } from '../common/Copyright';
+import { ErrorNotification } from '../common/ErrorNotification';
 import { preventDefault } from '../common/utils';
 import { updateField } from '../rtk-files/accountSlice';
+import { useSignUpMutation } from '../rtk-files/authApi';
 import { toggleSignUp } from '../rtk-files/signUpSlice';
-import CircularProgress from '@mui/material/CircularProgress';
 
-// TODO
-// add error handling
-// not same password
-// already exists
 
 const theme = createTheme();
 

@@ -3,6 +3,7 @@ import json
 import requests
 import os
 
+
 ALPHAVANTAGE_API_KEY = os.environ["ALPHAVANTAGE_API_KEY"]
 FMP_API_KEY = "d9d102aa66e8530a6ae66e89468b5aa1"
 

@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends, Response
 from pydantic import BaseModel
-
 from .authenticator import authenticator
 from queries.saved_news_items import (
     SavedNewsItemIn,
@@ -9,8 +8,8 @@ from queries.saved_news_items import (
     SavedNewsItemQueries,
 )
 
-router = APIRouter()
 
+router = APIRouter()
 
 @router.get("/api/saved_news_items", response_model=SavedNewsItemsOut)
 def get_all_saved_news_items(

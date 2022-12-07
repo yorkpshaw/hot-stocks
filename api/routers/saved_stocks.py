@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends
-
 from .authenticator import authenticator
 from queries.saved_stocks import (
     SavedStockIn,
@@ -9,7 +8,6 @@ from queries.saved_stocks import (
 
 
 router = APIRouter()
-
 
 @router.get("/api/saved_stocks")  # , response_model = SavedStocksOut)
 def get_all_saved_stocks(
