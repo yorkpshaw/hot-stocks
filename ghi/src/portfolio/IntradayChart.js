@@ -8,23 +8,26 @@ export function IntradayChart(props) {
     return (
         <>
         {stockData?.stock?
-            <div>
-                <Plot
-                    data={[
-                        {
-                        x: Object.keys(stockData?.stock),
-                        y: Object.values(stockData?.stock),
-                        type: 'scatter',
-                        mode: 'lines+markers',
-                        marker: {color: 'red'},
-                    },
-                    ]}
-                    layout={{
-                        width: 400,
-                        height: 350}}
-                />
-            </div>: 'Loading...'
-        }
-        </>
+        <div>
+            <h3> Daily 15 min price </h3>
+            <Plot
+                data={[
+                    {
+                    x: Object.keys(stockData?.stock),
+                    y: Object.values(stockData?.stock),
+                    type: 'scatter',
+                    mode: 'lines+markers+text',
+                    marker: {color: 'red'},
+                },
+
+                ]}
+                layout={{
+                    width: 400,
+                    height: 400,
+                    title: `Intraday 15 min ${symbol}`}}
+            />
+        </div>: 'loading...'
+}
+</>
     )
 };

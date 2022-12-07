@@ -100,9 +100,12 @@ export function ContentCard(props) {
         </Card>
       </> :
       <Card sx={{ maxWidth: 345 }}>
-        <CardMedia>
-          <IntradayChart symbol={card.symbol}/>
-        </CardMedia>
+        {<IntradayChart symbol={ card.symbol } />}
+        <CardMedia
+          component="img"
+          height="140"
+          image={'https://mui.com/static/images/cards/contemplative-reptile.jpg'}
+        />
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {card.name }
