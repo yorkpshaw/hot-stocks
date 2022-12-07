@@ -1,28 +1,28 @@
-def test_get_all_portfolio_stocks():
+# def test_get_all_portfolio_stocks():
 
-    # arrange
+#     # arrange
 
-    # act
+#     # act
 
-    # assert
-    pass
-
-
-def test_create_or_update_portfolio_stock():
-
-    # arrange
-
-    # act
-
-    # assert
-    pass
+#     # assert
+#     pass
 
 
-def test_delete_portfolio_stock():
+# def test_create_or_update_portfolio_stock():
 
-    # arrange
+#     # arrange
 
-    # act
+#     # act
 
-    # assert
-    pass
+#     # assert
+#     pass
+
+
+# def test_delete_portfolio_stock():
+
+#     # arrange
+
+#     # act
+
+#     # assert
+#     pass

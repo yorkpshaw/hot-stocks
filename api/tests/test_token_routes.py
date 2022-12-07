@@ -6,7 +6,6 @@ from main import app
 client = TestClient(app)
 
 
-
 def get_token_with_token():
     return {
         'id': '500',
@@ -37,7 +36,6 @@ def test_get_token_with_token():
     app.dependency_overrides = {}
 
 
-
 def test_get_token_without_token():
 
     # arrange
@@ -52,9 +50,6 @@ def test_get_token_without_token():
 
     # clean up
     app.dependency_overrides = {}
-
-
-
 
 
 class AccountQueriesMock:
