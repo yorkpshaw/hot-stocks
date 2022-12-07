@@ -3,8 +3,13 @@
 Today, I worked on:
 
 * Troubleshooting IntradayChart
+* Debugging tests
 
 I helped Ben code and troubleshoot IntradayChart as a function component and troubleshoot.
+
+I helped York debug tests for the api/news_items endpoint.
+
+Still need to fix add to portfolio from Saved not showing current_cost bug.
 
 
 ## 12/05/2022
