@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { authApi } from './authApi';
 
-
 export const newsItemsApi = createApi({
     reducerPath: 'newsItems',
     baseQuery: fetchBaseQuery({

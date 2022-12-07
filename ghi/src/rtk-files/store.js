@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { accountSlice } from './accountSlice';
+import { authApi } from './authApi';
+import { companiesApi } from './companiesApi';
+import { newsItemsApi } from './newsItemsApi';
+import { portfolioDialogSlice } from './portfolioDialogSlice';
 import { portfolioStocksApi } from './portfolioStocksApi';
-import { newsItemsApi} from './newsItemsApi';
-import { companiesApi} from './companiesApi';
-import { stocksApi } from './stocksApi';
 import { savedNewsItemsApi } from './savedNewsItemsApi';
 import { savedStocksApi } from './savedStocksApi';
-import { authApi } from './authApi';
-import { accountSlice } from './accountSlice';
 import { signUpSlice } from './signUpSlice';
-import { portfolioDialogSlice } from './portfolioDialogSlice';
+import { stocksApi } from './stocksApi';
 
 
 export const store = configureStore({

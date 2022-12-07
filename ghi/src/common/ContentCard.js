@@ -1,21 +1,20 @@
-import * as React from 'react';
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { useState } from 'react';
-import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
-import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
-import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
-import IconButton from '@mui/material/IconButton';
-import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
 import { deepOrange } from '@mui/material/colors';
-import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import * as React from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { IntradayChart } from '../portfolio/IntradayChart';
+import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
+import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
+import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
 
 
 // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript

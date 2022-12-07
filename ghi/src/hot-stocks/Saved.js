@@ -1,17 +1,17 @@
-import * as React from 'react';
+import { CircularProgress } from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { Copyright } from '../common/Copyright';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { CardList } from '../common/CardList';
-import { CircularProgress } from '@mui/material';
-import { useGetSavedStocksQuery } from '../rtk-files/savedStocksApi';
-import { useGetSavedNewsItemsQuery } from '../rtk-files/savedNewsItemsApi';
-import { PortfolioDialog } from '../common/PortfolioDialog';
+import Typography from '@mui/material/Typography';
+import * as React from 'react';
 import { useSelector } from 'react-redux';
+import { CardList } from '../common/CardList';
+import { Copyright } from '../common/Copyright';
+import { PortfolioDialog } from '../common/PortfolioDialog';
+import { useGetSavedNewsItemsQuery } from '../rtk-files/savedNewsItemsApi';
+import { useGetSavedStocksQuery } from '../rtk-files/savedStocksApi';
 
 // SQL Database ---> ACLs/Query ---> Routers ---> RTK Slice ---> Components
 

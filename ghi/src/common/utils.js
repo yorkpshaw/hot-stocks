@@ -9,8 +9,3 @@ export function preventDefault(callback, selector) {
 export function eventTargetSelector(event) {
     return event.target;
 }
-
-export function handlePortfolioClick(e) {
-    e.preventDefault();
-    console.log('portfolio clicked');
-}

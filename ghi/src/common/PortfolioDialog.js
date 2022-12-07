@@ -1,18 +1,18 @@
-import * as React from 'react';
-import IconButton from '@mui/material/IconButton';
-import TextField from '@mui/material/TextField';
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import NextWeekOutlinedIcon from '@mui/icons-material/NextWeekOutlined';
+import { deepOrange } from '@mui/material/colors';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
+import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
+import * as React from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
-import NextWeekOutlinedIcon from '@mui/icons-material/NextWeekOutlined';
+import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useCreateOrUpdatePortfolioStockMutation } from '../rtk-files/portfolioStocksApi';
-import { deepOrange } from '@mui/material/colors';
-import { useState, useEffect } from 'react';
 
 
 export function PortfolioDialog() {

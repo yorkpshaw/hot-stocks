@@ -1,7 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import { useCreatePortfolioStockMutation } from './accountsApi';
 import { authApi } from './authApi';
-
 
 export const portfolioStocksApi = createApi({
     reducerPath: 'portfolioStocks',

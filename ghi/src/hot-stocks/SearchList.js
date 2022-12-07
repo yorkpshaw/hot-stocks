@@ -1,26 +1,22 @@
 import * as React from 'react';
 import { useState } from 'react';
-
-import { ErrorNotification } from '../common/ErrorNotification';
 import { Copyright } from '../common/Copyright';
-
+import { ErrorNotification } from '../common/ErrorNotification';
 import CircularProgress from '@mui/material/CircularProgress';
-
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Container from '@mui/material/Container';
-import { CssBaseline } from '@mui/material';
-import { deepOrange } from '@mui/material/colors';
-import { CardList } from '../common/CardList';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
-import { useLazyGetStocksQuery } from '../rtk-files/stocksApi';
-import { useDispatch, useSelector } from 'react-redux';
+import { CssBaseline } from '@mui/material';
+import Box from '@mui/material/Box';
+import { deepOrange } from '@mui/material/colors';
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import { useDispatch, useSelector } from 'react-redux';
+import { CardList } from '../common/CardList';
 import { PortfolioDialog } from '../common/PortfolioDialog';
-import { useGetStockQuery } from '../rtk-files/stocksApi';
+import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
+import { useGetStockQuery, useLazyGetStocksQuery } from '../rtk-files/stocksApi';
 
 const theme = createTheme();
 
@@ -44,7 +40,6 @@ export function SearchList() {
           newsItem => newsItem.title.toLowerCase().includes(search.toLowerCase())
         ));
     }
-    console.log('Hey Karis!');
   }
 
   return (

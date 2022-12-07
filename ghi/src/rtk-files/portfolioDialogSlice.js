@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { useLazyGetStockQuery } from './stocksApi';
-import { useDispatch } from 'react-redux';
 
 const initialState = {
     portfolioDialog: false,

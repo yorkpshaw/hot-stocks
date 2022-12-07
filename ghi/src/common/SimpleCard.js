@@ -1,12 +1,12 @@
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import { deepOrange } from '@mui/material/colors';
 import Link from '@mui/material/Link';
-import { PortfolioStockButton, PrefTrueSavedNewsItemButton, PrefFalseSavedNewsItemButton, PrefTrueSavedStockButton, PrefFalseSavedStockButton } from './Buttons';
+import Typography from '@mui/material/Typography';
+import * as React from 'react';
 import { useSelector } from 'react-redux';
+import { PortfolioStockButton, PrefFalseSavedNewsItemButton, PrefFalseSavedStockButton, PrefTrueSavedNewsItemButton, PrefTrueSavedStockButton } from './Buttons';
 
 
 export function SimpleCard(props) {

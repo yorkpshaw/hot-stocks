@@ -1,24 +1,17 @@
-import { useState, useEffect } from 'react';
-import * as React from 'react';
-import { portfolioStocksApi, useGetPortfolioStocksQuery } from '../rtk-files/portfolioStocksApi';
+import { CssBaseline } from '@mui/material';
+import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import Alert from '@mui/material/Alert';
-import { getTotalPortfolioValue } from '../portfolio/GetTotalPortfolioValue';
-import { SimpleCard } from '../common/SimpleCard';
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
+import * as React from 'react';
+import { useSelector } from 'react-redux';
 import { CardList } from '../common/CardList';
 import { Copyright } from '../common/Copyright';
 import { ErrorNotification } from '../common/ErrorNotification';
-import { CssBaseline } from '@mui/material';
-import { useGetStockQuery } from '../rtk-files/stocksApi';
 import { PortfolioDialog } from '../common/PortfolioDialog';
-import { useSelector } from 'react-redux';
 import { IntradayChart } from '../portfolio/IntradayChart';
+import { useGetPortfolioStocksQuery } from '../rtk-files/portfolioStocksApi';
 
 const theme = createTheme();
 export function Portfolio() {

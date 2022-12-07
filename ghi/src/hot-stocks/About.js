@@ -1,18 +1,12 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
 import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
-import { deepOrange } from '@mui/material/colors';
 import { Container } from '@mui/material';
-import { textAlign } from '@mui/system';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import { deepOrange } from '@mui/material/colors';
+import * as React from 'react';
 import { Copyright } from '../common/Copyright';
 
-export function About(props) {
+export function About() {
   return (
     <Container component="main" maxWidth="sm">
     <Box

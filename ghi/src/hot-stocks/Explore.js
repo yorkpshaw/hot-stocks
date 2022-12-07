@@ -1,15 +1,13 @@
-import * as React from 'react';
-import { ContentCard } from '../common/ContentCard';
-import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
-import { useGetStocksQuery } from '../rtk-files/stocksApi';
-import { ErrorNotification } from '../common/ErrorNotification';
-import { Copyright } from '../common/Copyright';
+import { CssBaseline } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { PortfolioDialog } from '../common/PortfolioDialog';
+import * as React from 'react';
 import { useSelector } from 'react-redux';
+import { ContentCard } from '../common/ContentCard';
+import { Copyright } from '../common/Copyright';
+import { PortfolioDialog } from '../common/PortfolioDialog';
+import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
 
 
 export function Explore() {

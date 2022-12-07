@@ -1,13 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import HotStocksNav from './Nav';
-
 import { About } from './hot-stocks/About';
 import { Explore } from './hot-stocks/Explore';
 import { Portfolio } from './hot-stocks/Portfolio';
 import { Saved } from './hot-stocks/Saved';
 import { SearchList } from './hot-stocks/SearchList';
-import QuoteAndChartClass from './portfolio/QuoteAndChartClass';
 
 function App() {
   return (
