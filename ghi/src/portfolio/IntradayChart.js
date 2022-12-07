@@ -7,7 +7,10 @@ export function IntradayChart(props) {
     const { data: stockData, isLoading: stockLoading } = useGetStockQuery(symbol);
     return (
         <>
-        {stockData?.stock?
+        {
+            stockLoading ?
+            'Loading' :
+            stockData?.stock?
             <div>
                 <Plot
                     data={[
@@ -23,7 +26,7 @@ export function IntradayChart(props) {
                         width: 400,
                         height: 350}}
                 />
-            </div>: 'Loading...'
+            </div> : <></>
         }
         </>
     )

@@ -52,7 +52,7 @@ export function PortfolioDialog() {
             <IconButton onClick={
               () => dispatch(
                 togglePortfolioDialog()
-              , createOrUpdatePortfolioStock({symbol: card.symbol, num_shares: numShares, cost_basis: card.cost_current ? queries[`getStocks(undefined)`].data.stocks.find(element => element.symbol === card.symbol).cost_current: 0  })
+              , createOrUpdatePortfolioStock({symbol: card.symbol, num_shares: numShares, cost_basis: card.cost_current ? card.cost_current : queries[`getStocks(undefined)`]?.data?.stocks.find(element => element.symbol === card.symbol)?.cost_current ? queries[`getStocks(undefined)`].data.stocks.find(element => element.symbol === card.symbol).cost_current : 0  })
               , setNumShares(''))
               }><NextWeekOutlinedIcon />
             </IconButton>
