@@ -6,6 +6,7 @@ Today, I worked on:
 * Debugging tests
 * Debugging add to Portfolio from Saved
 * Cleaning up code
+* Writing tests
 
 I helped Ben code and troubleshoot IntradayChart as a function component and troubleshoot.
 
@@ -14,6 +15,8 @@ I helped York debug tests for the api/news_items endpoint.
 I fixed the SimpleCard Portfolio button logic to include cost_basis from current_cost of Saved as cost_basis in Portfolio.
 
 I cleaned up code using black (Python), Format Document (JS), and Sort Imports (all). I also removed unused variables from our ghi files.
+
+I wrote test_create_account, though debugging is necessary.
 
 
 ## 12/05/2022

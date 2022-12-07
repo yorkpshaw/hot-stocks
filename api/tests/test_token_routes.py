@@ -1,8 +1,10 @@
 from fastapi.testclient import TestClient
 from routers.authenticator import authenticator
+from queries.accounts import AccountQueries
 from main import app
 
 client = TestClient(app)
+
 
 
 def get_token_with_token():
@@ -49,4 +51,54 @@ def test_get_token_without_token():
     assert response.json() == None
 
     # clean up
+    app.dependency_overrides = {}
+
+
+
+
+
+class AccountQueriesMock:
+    def create(self, info, hashed_password):
+        return {
+            'id': '500',
+            'username': 'example',
+            'email': 'example@example.com',
+            'hashed_password': 'hashedexample',
+        }
+    def get(self, username):
+        return {
+            'id': '500',
+            'username': 'example',
+            'email': 'example@example.com',
+            'hashed_password': 'hashedexample',
+        }
+
+
+def test_create_account():
+
+    # arrange
+    app.dependency_overrides[AccountQueries] = AccountQueriesMock
+    account = {
+        'username': 'example',
+        'email': 'example@example.com',
+        'password': 'hashedexample',
+    }
+
+    # act
+    response = client.post(
+        '/api/accounts',
+        json=account,
+    )
+
+    # assert
+    # get a 200
+    assert response.status_code == 200
+
+    # response as expected
+    data = response.json()
+    assert data['access_token'] is not None
+    assert data['account']['id'] is not None
+    assert data['account']['username'] == 'example'
+
+    # cleanup
     app.dependency_overrides = {}
