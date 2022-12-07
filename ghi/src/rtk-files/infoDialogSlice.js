@@ -1,17 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    portfolioDialog: false,
+    infoDialog: false,
     card: {},
 }
 
 
-export const portfolioDialogSlice = createSlice({
-    name: 'portfolioDialog',
+export const infoDialogSlice = createSlice({
+    name: 'infoDialog',
     initialState,
     reducers: {
-        togglePortfolioDialog: (state, card) => {
-            state.portfolioDialog = !state.portfolioDialog;
+        toggleInfoDialog: (state, card) => {
+            state.infoDialog = !state.infoDialog;
             if (card) {
                 state.card = card.payload;
             } else {
@@ -22,5 +22,5 @@ export const portfolioDialogSlice = createSlice({
 });
 
 export const {
-    togglePortfolioDialog
-} = portfolioDialogSlice.actions;
+    toggleInfoDialog,
+} = infoDialogSlice.actions;
