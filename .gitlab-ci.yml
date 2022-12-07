@@ -1,0 +1,85 @@
+stages:
+  - test   # Run tests first
+  - build  # Run build after tests
+  - deploy # Run deploy after build
+
+api-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - cd api
+    - pip install -r requirements.txt
+    - python -m pytest  # Run unit tests
+
+lint-test-job:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - pip install flake8
+    - flake8 api  # Run flake8 on Python project to check
+                  # for code quality
+
+build-front-end-job: # name it react-build-job?
+  rules:
+    # Only run if pushing to the main branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  stage: build
+  image: node:lts-bullseye
+  needs:
+    - api-unit-test-job  # These two jobs must succeed for
+    - lint-test-job      # this build-job to run
+  variables:
+    PUBLIC_URL: https://igneous-rocks.gitlab.io/hot-stocks
+  script:
+    - cd ghi
+    - npm install
+    - npm run build  # Build the React application
+    # - cp build/index.html build/404.html  # Make this a SPA
+  artifacts:
+    paths:
+      - ghi/build/  # Save all of the files in the build path
+
+build-back-end-job:
+  rules:
+    # Only run if pushing to the main branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  script:
+    # DO THIS FOR EACH SERVICE YOU NEED TO BUILD A DOCKER
+    # IMAGE FOR
+    - cd api
+
+    # Builds the image CHANGE THE /app FOR EACH SERVICE
+    - docker build -t ${CI_REGISTRY_IMAGE}/app:latest .
+
+    # Gives the image a specific name
+    - docker tag ${CI_REGISTRY_IMAGE}/app:latest ${CI_REGISTRY_IMAGE}/app:$CI_JOB_ID
+
+    # Authenticates with the GitLab image registry
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+
+    # Stores your image in the GitLab image registry
+    # with two different tags, the version from the tag
+    # and the name "latest"
+    - docker push ${CI_REGISTRY_IMAGE}/app:$CI_JOB_ID
+    - docker push ${CI_REGISTRY_IMAGE}/app:latest
+
+pages:  # THIS STEP MUST BE NAME PAGES
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  dependencies:
+    - build-front-end-job
+  needs:
+    - build-front-end-job
+  script:
+     # THE FIRST PART OF THIS COMMAND MUST BE THE DIRECTORY
+     # THAT YOU cd INTO TO BUILD IT PLUS THE build/ AT THE
+     # END
+    - mv ghi/build/ public
+  artifacts:
+    paths:
+      - public
