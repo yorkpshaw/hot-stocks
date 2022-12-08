@@ -6,9 +6,12 @@ import { Saved } from './hot-stocks/Saved';
 import { SearchList } from './hot-stocks/SearchList';
 import HotStocksNav from './Nav';
 
+const domain = /https:\/\/[^/]+/;
+const basename = process.env.PUBLIC_URL.replace(domain, '/hot-stocks');
+
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <HotStocksNav>
         <div className="container">
           <Routes>

@@ -1,23 +1,26 @@
-# from fastapi.testclient import TestClient
-# from main import app
+from fastapi.testclient import TestClient
+from main import app
 
-# # replace swagger in code
-# client = TestClient(app)
+# replace swagger in code
+client = TestClient(app)
 
-# def test_get_company():
 
-#     # arrange
-#     symbol = 'example'
+def test_get_company():
 
-#     # act
-#     response = client.get(f'/api/companies/{symbol}/')
+    # arrange
+    symbol = "example"
 
-#     # assert
-#     # get a 200
-#     assert response.status_code == 200
+    # act
+    response = client.get(f"/api/companies/{symbol}/")
 
-#     # should call queries.get_stock()
-#     assert response.json() == {'company': None}
+    # assert
+    # get a 200
+    assert response.status_code == 200
 
-#     # cleanup
-#     app.dependency_overrides = {}
+    # response as expected
+    assert response.json() == {
+        "company": {"description": None, "name": None, "symbol": None}
+    }
+
+    # cleanup
+    app.dependency_overrides = {}

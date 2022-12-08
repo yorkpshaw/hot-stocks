@@ -10,7 +10,6 @@ import { CardList } from '../common/CardList';
 import { Copyright } from '../common/Copyright';
 import { ErrorNotification } from '../common/ErrorNotification';
 import { PortfolioDialog } from '../common/PortfolioDialog';
-import { IntradayChart } from '../portfolio/IntradayChart';
 import { useGetPortfolioStocksQuery } from '../rtk-files/portfolioStocksApi';
 
 const theme = createTheme();

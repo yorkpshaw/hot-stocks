@@ -15,7 +15,8 @@
 #         return {}
 
 
-# mockAccount = {"username": "password"}
+def mockAccount():
+    return {"id": "1", "username": "username", "password": "pasword"}
 
 
 # def override_account():
@@ -24,13 +25,10 @@
 
 # def test_get_all_saved_stocks():
 
-#     # arrange
-#     app.dependency_overrides[SavedStockQueries] = SavedStockQueriesMock
-#     app.dependency_overrides[
-#         authenticator.try_get_current_account_data
-#     ] = override_account
-#     # act
-#     response = client.get("api/saved_stocks")
+    # arrange
+    app.dependency_overrides[authenticator.try_get_current_account_data] = mockAccount
+    # act
+    response = client.get("api/saved_stocks")
 
 #     # assert
 #     assert response.status_code == 200
@@ -38,20 +36,11 @@
 
 # def test_create_or_update_saved_stock():
 
-#     # arrange
-#     app.dependency_overrides[SavedStockQueries] = SavedStockQueriesMock
-#     # act
-#     client.get("api/saved_stocks")
-#     # assert
-#     # get a 200 for posting
-#     assert response.status_code == 200
+    # arrange
+    app.dependency_overrides[authenticator.try_get_current_account_data] = mockAccount
 
-
-# def test_delete_saved_stock():
-
-#     # arrange
-#     app.dependency_overrides[SavedStockQueries] = SavedStockQueriesMock
-#     # act
-#     client.get("api/saved_stocks/{saved_stock_id}")
-#     # assert
-#     response.status_code == 200
+    # act
+    response = client.get("api/saved_stocks")
+    # assert
+    # get a 200 for posting
+    assert response.status_code == 200
