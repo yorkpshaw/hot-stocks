@@ -1,3 +1,15 @@
+## 12/07/2022
+
+Today, I worked on:
+
+* Writing tests
+* Implementing info feature
+
+I debugged tests in test_token_routes and test_company_routes, and all are working well now.
+
+I coded the Info feature using similar code to that pertaining to PortfolioDialog.
+
+
 ## 12/06/2022
 
 Today, I worked on:

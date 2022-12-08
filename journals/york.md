@@ -1,9 +1,15 @@
+# Wednesday, December 7
+
+Today, I worked on:
+
+    - Creating the CI/CD code
+
 # Tuesday, December 6
 
 Today, I worked on:
 
     - Wrote unit tests for test_news_items_routes
-    - Studied CD/CI
+    - Studied CI/CD
 
 # Monday, December 5
 Today, I worked on:

@@ -21,4 +21,4 @@ export const companiesApi = createApi({
   }),
 });
 
-export const { useGetCompanyQuery } = companiesApi;
+export const { useGetCompanyQuery, useLazyGetCompanyQuery } = companiesApi;

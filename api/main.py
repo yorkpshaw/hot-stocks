@@ -5,10 +5,13 @@ from routers import accounts, portfolio_stocks, saved_news_items, saved_stocks
 from routers.authenticator import authenticator
 from routers.external import external
 
+import os
+
 app = FastAPI()
 
 origins = [
     "http://localhost:3000",
+    os.environ.get("CORS_HOST", None),
 ]
 
 app.add_middleware(
