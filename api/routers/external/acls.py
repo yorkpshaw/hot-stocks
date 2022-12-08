@@ -5,7 +5,7 @@ import os
 
 
 ALPHAVANTAGE_API_KEY = os.environ["ALPHAVANTAGE_API_KEY"]
-FMP_API_KEY = "d9d102aa66e8530a6ae66e89468b5aa1"
+FMP_API_KEY = os.environ["FMP_API_KEY"]
 
 
 class ACLs:

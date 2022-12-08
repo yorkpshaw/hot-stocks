@@ -1,3 +1,13 @@
+## December 7, 2022
+
+Today, I worked on:
+*Writing a unit test for the get_stock endpoint and getting it to pass
+
+## December 6, 2022
+
+Today, I worked on:
+*Resolving issues with the use of the IntradayChart functional component and passing in props to render it in the CardContent.js. Now it works...yay!
+
 ## December 5, 2022
 
 Today, I worked on:
@@ -42,7 +52,6 @@ Today, I worked on:
 *Study Auth and rtk materials
 *Code review on auth and upcoming rtk changes
 
-
 ## November 22, 2022
 
 Today, I worked on:
@@ -50,11 +59,9 @@ Today, I worked on:
 * Develop Get_stock ACL
 * Develop the Redux mutations for PortfolioStockApi.js
 
-
 ## November 21, 2022
 
 Today, I was sick with the flu :(
-
 
 ## November 18, 2022
 
@@ -62,7 +69,6 @@ Today, I worked on:
 
 * Working through merge conflicts this morning.
 * Got Docker running.
-
 
 ## November 17, 2022
 
@@ -72,7 +78,6 @@ Today, I worked on:
 * Docker
 * Minor edits to routers and queries for Portfolio
 * Added POST method for Portfolio
-
 
 ## November 16, 2022
 
