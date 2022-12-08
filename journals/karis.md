@@ -3,8 +3,14 @@
 Today, I worked on:
 
 * Oragnizing GHI
+* Implementing CI/CD with team
+* Adjusting About interface
 
 I organized our GHI components into appropriate directories.
+
+I worked on CI/CD with team, including removing all hard-coded URLs.
+
+I adjusted the interface for the About component to include filler text.
 
 
 ## 12/07/2022

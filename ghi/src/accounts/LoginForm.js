@@ -62,7 +62,7 @@ export function LoginForm() {
                   <Typography component="h1" variant="h5">
                     Log in
                   </Typography>
-                  <ErrorNotification error={error} />
+                  {/* <ErrorNotification error={error} /> */}
                   <Box
                     component="form"
                     method="post"

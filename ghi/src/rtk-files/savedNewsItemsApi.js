@@ -4,7 +4,7 @@ import { authApi } from './authApi';
 export const savedNewsItemsApi = createApi({
     reducerPath: 'savedNewsItems',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:8000/', //process.env.API_SERVICE,
+        baseUrl: process.env.REACT_APP_API_HOST,
         prepareHeaders: (headers, { getState }) => {
             const selector = authApi.endpoints.getToken.select();
             const { data: tokenData } = selector(getState());
