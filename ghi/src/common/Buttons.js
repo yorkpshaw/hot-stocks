@@ -1,4 +1,5 @@
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import IconButton from '@mui/material/IconButton';
@@ -59,6 +60,16 @@ export function PrefFalseSavedNewsItemButton(props) {
 
     return (
         <IconButton onClick={preventDefault(createOrUpdateSavedNewsItem, () => ({ title: card.title, news_url: card.news_url, time_published: card.time_published, banner_image: card.banner_image, summary: card.summary, preference: false }))} value={card} size="small"><ClearOutlinedIcon /></IconButton>
+    )
+
+}
+
+export function IntradayChartButton(props) {
+
+    const card = props.card;
+
+    return (
+        <IconButton value={card} size="small"><ShowChartOutlinedIcon /></IconButton>
     )
 
 }
