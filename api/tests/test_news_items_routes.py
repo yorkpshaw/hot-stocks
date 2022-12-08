@@ -1,23 +1,24 @@
-# from fastapi.testclient import TestClient
-# from main import app
-# import json
-# from routers.external.external import get_all_news_items
+from fastapi.testclient import TestClient
+from main import app
+import json
+from routers.external.external import get_all_news_items
 
-# client = TestClient(app)
-
-# class GetAllNewsItemsMock:
-#     def get_all_news_items(self):
-#         return []
-
-# def test_get_all_news_items():
-
-#     # arrange
+client = TestClient(app)
 
 
-#     # act
-#     response = client.get('/api/news_items')
+class GetAllNewsItemsMock:
+    def get_all_news_items(self):
+        return []
 
-#     # assert
-#     assert response.status_code == 200
-#     data = response.json()
-#     assert data["news_items"][0]["title"] is not None
+
+def test_get_all_news_items():
+
+    # arrange
+
+    # act
+    response = client.get("/api/news_items")
+
+    # assert
+    assert response.status_code == 200
+    data = response.json()
+    assert data["news_items"][0]["title"] is not None

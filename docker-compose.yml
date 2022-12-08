@@ -1,8 +1,6 @@
 volumes:
   hot-stocks:
     external: true
-  # pg-admin:
-  #   external: true
   jwtdown-db-data:
     external: true
 
@@ -54,13 +52,3 @@ services:
       POSTGRES_DB: hot-stocks
     ports:
       - "15432:5432"
-  # pg-admin:
-  #   image: dpage/pgadmin4
-  #   volumes:
-  #     - pg-admin:/var/lib/pgadmin
-  #   ports:
-  #     - 8082:80
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: admin@admin.com
-  #     PGADMIN_DEFAULT_PASSWORD: admin
-  #     PGADMIN_DISABLE_POSTFIX: 1

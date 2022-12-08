@@ -32,25 +32,6 @@ export function Saved() {
       <Container maxWidth="sm">
         <ThemeProvider theme={theme}>
           <CssBaseline />
-            <Box
-              sx={{
-                bgcolor: 'background.paper',
-                pt: 8,
-                pb: 6}}>
-              <Container maxWidth="sm">
-                <Typography
-                  component="h1"
-                  variant="h2"
-                  align="center"
-                  color="text.primary"
-                  gutterBottom>
-                  Saved
-                </Typography>
-                <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                  Here lies a whole bunch of text that will be replaced.
-                </Typography>
-              </Container>
-            </Box>
             {
               savedStocksLoading ?
                 <Container sx={{ py: 8 }} maxWidth="md">
