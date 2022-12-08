@@ -6,11 +6,11 @@ import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { CardList } from '../common/CardList';
-import { Copyright } from '../common/Copyright';
-import { ErrorNotification } from '../common/ErrorNotification';
-import { PortfolioDialog } from '../common/PortfolioDialog';
-import { useGetPortfolioStocksQuery } from '../rtk-files/portfolioStocksApi';
+import { CardList } from '../../common/CardList';
+import { Copyright } from '../../common/Copyright';
+import { ErrorNotification } from '../../common/ErrorNotification';
+import { PortfolioDialog } from '../../common/PortfolioDialog';
+import { useGetPortfolioStocksQuery } from '../../rtk-files/portfolioStocksApi';
 
 const theme = createTheme();
 export function Portfolio() {

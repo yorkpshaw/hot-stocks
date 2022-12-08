@@ -1,6 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import { useGetStockQuery } from '../rtk-files/stocksApi';
+import { useGetStockQuery } from '../../rtk-files/stocksApi';
 
 export function IntradayChart(props) {
     const symbol = props.symbol;

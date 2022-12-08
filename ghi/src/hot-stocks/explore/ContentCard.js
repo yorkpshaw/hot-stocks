@@ -14,11 +14,11 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { IntradayChart } from '../portfolio/IntradayChart';
-import { useLazyGetCompanyQuery } from '../rtk-files/companiesApi';
-import { toggleInfoDialog } from '../rtk-files/infoDialogSlice';
-import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
-import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
-import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';
+import { useLazyGetCompanyQuery } from '../../rtk-files/companiesApi';
+import { toggleInfoDialog } from '../../rtk-files/infoDialogSlice';
+import { togglePortfolioDialog } from '../../rtk-files/portfolioDialogSlice';
+import { useCreateOrUpdateSavedNewsItemMutation } from '../../rtk-files/savedNewsItemsApi';
+import { useCreateOrUpdateSavedStockMutation } from '../../rtk-files/savedStocksApi';
 
 
 // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript

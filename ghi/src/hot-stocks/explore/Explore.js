@@ -4,11 +4,11 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { ContentCard } from '../common/ContentCard';
-import { Copyright } from '../common/Copyright';
-import { InfoDialog } from '../common/InfoDialog';
-import { PortfolioDialog } from '../common/PortfolioDialog';
-import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
+import { ContentCard } from './ContentCard';
+import { Copyright } from '../../common/Copyright';
+import { InfoDialog } from '../../common/InfoDialog';
+import { PortfolioDialog } from '../../common/PortfolioDialog';
+import { useGetNewsItemsQuery } from '../../rtk-files/newsItemsApi';
 
 
 export function Explore() {

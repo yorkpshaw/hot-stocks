@@ -1,3 +1,12 @@
+## 12/08/2022
+
+Today, I worked on:
+
+* Oragnizing GHI
+
+I organized our GHI components into appropriate directories.
+
+
 ## 12/07/2022
 
 Today, I worked on:

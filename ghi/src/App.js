@@ -1,9 +1,9 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { About } from './hot-stocks/About';
-import { Explore } from './hot-stocks/Explore';
-import { Portfolio } from './hot-stocks/Portfolio';
+import { Explore } from './hot-stocks/explore/Explore';
+import { Portfolio } from './hot-stocks/portfolio/Portfolio';
 import { Saved } from './hot-stocks/Saved';
-import { SearchList } from './hot-stocks/SearchList';
+import { Search } from './hot-stocks/Search';
 import HotStocksNav from './Nav';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="search">
-              <Route path="" element={<SearchList />}></Route>
+              <Route path="" element={<Search />}></Route>
             </Route>
             <Route path="saved">
               <Route path="" element={<Saved />}></Route>

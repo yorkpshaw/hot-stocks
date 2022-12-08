@@ -19,7 +19,7 @@ import { useLazyGetStocksQuery } from '../rtk-files/stocksApi';
 
 const theme = createTheme();
 
-export function SearchList() {
+export function Search() {
 
   const [search, setSearch] = useState('');
   const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
