@@ -1,6 +1,6 @@
+from fastapi.testclient import TestClient
 from main import app
 from queries.saved_stocks import SavedStockQueries
-from fastapi.testclient import TestClient
 from routers.authenticator import authenticator
 
 client = TestClient(app)
@@ -12,7 +12,7 @@ class SavedStockQueriesMock:
 
 
 def mockAccount():
-    return {"id": "1", "username": "username", "password": "pasword"}
+    return {"id": "1", "username": "username", "password": "password"}
 
 
 def override_account():

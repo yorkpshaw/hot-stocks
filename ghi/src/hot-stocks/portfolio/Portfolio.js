@@ -11,12 +11,21 @@ import { Copyright } from '../../common/Copyright';
 import { ErrorNotification } from '../../common/ErrorNotification';
 import { PortfolioDialog } from '../../common/PortfolioDialog';
 import { useGetPortfolioStocksQuery } from '../../rtk-files/portfolioStocksApi';
+import { getTotalPortfolioValue } from './GetTotalPortfolioValue';
 
 const theme = createTheme();
 export function Portfolio() {
 
   const { data: portfolioStocks, error, isLoading: portfolioLoading } = useGetPortfolioStocksQuery();
   const { portfolioDialog } = useSelector(state => state.portfolioDialog);
+
+  const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
+
+  useEffect (() => {
+    setTotalPortfolioValue(getTotalPortfolioValue(portfolioStocks.portfolio_stocks.get_stock));
+
+  }, [portfolioStocks.portfolio_stocks])
+
 
   return (
     <>
@@ -49,6 +58,16 @@ export function Portfolio() {
                   <></>
             }
           </Box>
+
+          {/* <div>
+            {portfolioStocks.portfolio_stocks.map(() => (
+              <StockPortfolio
+                portfolioValue={totalPortfolioValue}
+              ))}
+              {totalPortfolioValue}
+              />)
+          </div> */}
+
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
       </ThemeProvider>
