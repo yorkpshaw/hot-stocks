@@ -12,6 +12,7 @@ import { ErrorNotification } from '../../common/ErrorNotification';
 import { PortfolioDialog } from '../../common/PortfolioDialog';
 import { useGetPortfolioStocksQuery } from '../../rtk-files/portfolioStocksApi';
 import { getTotalPortfolioValue } from './GetTotalPortfolioValue';
+import { useState, useEffect } from 'react';
 
 const theme = createTheme();
 export function Portfolio() {
