@@ -1,5 +1,4 @@
 from main import app
-from queries.saved_stocks import SavedStockQueries
 from fastapi.testclient import TestClient
 from routers.authenticator import authenticator
 
@@ -22,7 +21,9 @@ def override_account():
 def test_get_all_saved_stocks():
 
     # arrange
-    app.dependency_overrides[authenticator.try_get_current_account_data] = mockAccount
+    app.dependency_overrides[
+        authenticator.try_get_current_account_data
+    ] = mockAccount
     # act
     response = client.get("api/saved_stocks")
 
@@ -33,7 +34,9 @@ def test_get_all_saved_stocks():
 def test_create_or_update_saved_stock():
 
     # arrange
-    app.dependency_overrides[authenticator.try_get_current_account_data] = mockAccount
+    app.dependency_overrides[
+        authenticator.try_get_current_account_data
+    ] = mockAccount
 
     # act
     response = client.get("api/saved_stocks")
