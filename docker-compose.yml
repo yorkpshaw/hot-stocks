@@ -24,7 +24,7 @@ services:
   api:
     build:
       context: ./api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     environment:
       REACT_APP_SERVICE: ${REACT_APP_SERVICE}
       ALPHAVANTAGE_SERVICE: ${ALPHAVANTAGE_SERVICE}
