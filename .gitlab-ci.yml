@@ -19,7 +19,7 @@ lint-test-job:
     - flake8 api  # Run flake8 on Python project to check
                   # for code quality
 
-build-front-end-job: # name it react-build-job?
+build-front-end-job:
   rules:
     # Only run if pushing to the main branch
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -34,7 +34,7 @@ build-front-end-job: # name it react-build-job?
     - cd ghi
     - npm install
     - npm run build  # Build the React application
-    # - cp build/index.html build/404.html  # Make this a SPA
+    - cp build/index.html build/404.html  # Make this a SPA
   artifacts:
     paths:
       - ghi/build/  # Save all of the files in the build path
