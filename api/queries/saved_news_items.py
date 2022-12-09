@@ -32,7 +32,9 @@ class SavedNewsItemQueries:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT id, account_id, title, news_url, time_published, banner_image, summary, preference
+                    SELECT id, account_id, title
+                        , news_url, time_published, banner_image
+                        , summary, preference
                     FROM saved_news_items
                     WHERE account_id = %s
                     """,
@@ -62,11 +64,15 @@ class SavedNewsItemQueries:
                 ]
                 cur.execute(
                     """
-                    INSERT INTO saved_news_items (account_id, title, news_url, time_published, banner_image, summary, preference)
+                    INSERT INTO saved_news_items (account_id, title
+                        , news_url, time_published, banner_image
+                        , summary, preference)
                     VALUES (%s, %s, %s, %s, %s, %s, %s)
                     ON CONFLICT (account_id, news_url) DO UPDATE
                       SET preference=(EXCLUDED.preference)
-                    RETURNING id, account_id, title, news_url, time_published, banner_image, summary, preference
+                    RETURNING id, account_id, title, news_url
+                        , time_published, banner_image
+                        , summary, preference
                     """,
                     params,
                 )
@@ -79,7 +85,9 @@ class SavedNewsItemQueries:
                         record[column.name] = row[i]
                 return record
 
-    def delete_saved_news_item(self, news_item_id: int, account_id: str) -> bool:
+    def delete_saved_news_item(
+        self, news_item_id: int, account_id: str
+    ) -> bool:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [

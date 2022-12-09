@@ -31,7 +31,7 @@ services:
       FMP_SERVICE: ${FMP_SERVICE}
       ALPHAVANTAGE_API_KEY: ${ALPHAVANTAGE_API_KEY}
       FMP_API_KEY: ${FMP_API_KEY}
-      DATABASE_URL: postgresql://hot-stocks:hot-stocks@db/hot-stocks
+      DATABASE_URL: ${DATABASE_URL}
       WAIT_HOSTS: db:5432
       PORT: 8000
       SIGNING_KEY: ${SIGNING_KEY}

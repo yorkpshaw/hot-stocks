@@ -1,7 +1,5 @@
 from fastapi.testclient import TestClient
 from main import app
-import json
-from routers.external.external import get_all_news_items
 
 client = TestClient(app)
 

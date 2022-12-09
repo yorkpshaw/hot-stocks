@@ -1,7 +1,5 @@
-from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from main import app
-from routers.external.external import get_stock
 
 client = TestClient(app)
 

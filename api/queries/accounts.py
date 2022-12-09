@@ -42,7 +42,9 @@ class AccountQueries:
                         record[column.name] = row[i]
                 return record
 
-    def create(self, info: AccountIn, hashed_password: str) -> AccountOutWithPassword:
+    def create(
+        self, info: AccountIn, hashed_password: str
+    ) -> AccountOutWithPassword:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [info.username, info.email, hashed_password]
