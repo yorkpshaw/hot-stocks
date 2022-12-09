@@ -31,7 +31,6 @@ CREATE TABLE saved_news_items (
     summary TEXT,
     preference BOOLEAN, -- 0 = hate, 1 = heart
     CONSTRAINT check_account_url UNIQUE (account_id, news_url)
-
 );
 
 CREATE TABLE saved_stocks (
@@ -40,5 +39,4 @@ CREATE TABLE saved_stocks (
     symbol VARCHAR(10),
     preference BOOLEAN, -- 0 = hate, 1 = heart
     CONSTRAINT check_account_saved UNIQUE (account_id, symbol)
-
 );

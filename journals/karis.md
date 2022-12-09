@@ -5,12 +5,15 @@ Today, I worked on:
 * Oragnizing GHI
 * Implementing CI/CD with team
 * Adjusting About interface
+* Troublshooting CI/CD
 
 I organized our GHI components into appropriate directories.
 
 I worked on CI/CD with team, including removing all hard-coded URLs.
 
 I adjusted the interface for the About component to include filler text.
+
+I worked on troubleshooting pipeline failures in CI and failures in CD. I got CD working with the scope of our API, though the database didn't contain any tables. I added migrations to the api service, accordingly.
 
 
 ## 12/07/2022
