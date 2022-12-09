@@ -10,7 +10,7 @@ import os
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",
+    os.environ.get("REACT_APP_SERVICE", None),
     os.environ.get("CORS_HOST", None),
 ]
 

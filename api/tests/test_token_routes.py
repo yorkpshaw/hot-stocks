@@ -26,7 +26,9 @@ def test_get_token_with_token():
     ] = get_token_with_token
 
     # act
-    response = client.get("/token", cookies={authenticator.cookie_name: "example"})
+    response = client.get(
+        "/token", cookies={authenticator.cookie_name: "example"}
+    )
     data = response.json()
 
     # assert
@@ -51,7 +53,7 @@ def test_get_token_without_token():
 
     # assert
     assert response.status_code == 200
-    assert response.json() == None
+    assert response.json() is None
 
     # clean up
     app.dependency_overrides = {}
@@ -63,7 +65,8 @@ class AccountQueriesMock:
             "id": "500",
             "username": "user",
             "email": "user@example.com",
-            "hashed_password": "$2a$12$3NDZqR8ukkp9sHVK8H5.WOWeh70b7rpGwJgUpmRI3r0s8CXAtbk3G",
+            "hashed_password":
+                "$2a$12$3NDZqR8ukkp9sHVK8H5.WOWeh70b7rpGwJgUpmRI3r0s8CXAtbk3G",
         }
 
     def get(self, username):
@@ -71,7 +74,8 @@ class AccountQueriesMock:
             "id": "500",
             "username": "user",
             "email": "user@example.com",
-            "hashed_password": "$2a$12$3NDZqR8ukkp9sHVK8H5.WOWeh70b7rpGwJgUpmRI3r0s8CXAtbk3G",
+            "hashed_password":
+                "$2a$12$3NDZqR8ukkp9sHVK8H5.WOWeh70b7rpGwJgUpmRI3r0s8CXAtbk3G",
         }
 
 

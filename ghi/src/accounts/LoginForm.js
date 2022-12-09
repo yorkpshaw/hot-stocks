@@ -1,6 +1,3 @@
-import * as React from 'react';
-import { Copyright } from '../common/Copyright';
-import { ErrorNotification } from '../common/ErrorNotification';
 import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
 import { CssBaseline } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
@@ -13,8 +10,10 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import * as React from 'react';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Copyright } from '../common/Copyright';
 import { eventTargetSelector as target, preventDefault } from '../common/utils';
 import { updateField } from '../rtk-files/accountSlice';
 import { useGetTokenQuery, useLogInMutation } from '../rtk-files/authApi';
@@ -29,7 +28,7 @@ export function LoginForm() {
   const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
   const dispatch = useDispatch();
   const { username, password } = useSelector(state => state.account);
-  const [logIn, { error }] = useLogInMutation();
+  const [logIn] = useLogInMutation();
   const field = useCallback(
     e => dispatch(updateField({ field: e.target.name, value: e.target.value })),
     [dispatch],
@@ -62,7 +61,6 @@ export function LoginForm() {
                   <Typography component="h1" variant="h5">
                     Log in
                   </Typography>
-                  <ErrorNotification error={error} />
                   <Box
                     component="form"
                     method="post"

@@ -4,7 +4,6 @@ import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { CardList } from '../common/CardList';
@@ -32,28 +31,28 @@ export function Saved() {
       <Container maxWidth="sm">
         <ThemeProvider theme={theme}>
           <CssBaseline />
-            {
-              savedStocksLoading ?
-                <Container sx={{ py: 8 }} maxWidth="md">
-                  <Grid container sx={{ mx: 40 }}>
-                    <CircularProgress />
-                  </Grid>
-                </Container> :
-                savedStocksData ?
-                  <CardList cards={savedStocksData.saved_stocks} type='SAVED' /> :
-                  <></>
-            }
-            {
-              savedNewsItemsLoading ?
-                <Container sx={{ py: 8 }} maxWidth="md">
-                  <Grid container sx={{ mx: 40 }}>
-                    <CircularProgress />
-                  </Grid>
-                </Container> :
-                savedNewsItemsData ?
-                  <CardList cards={savedNewsItemsData.news_items} type='SAVED' /> :
-                  <></>
-            }
+          {
+            savedStocksLoading ?
+              <Container sx={{ py: 8 }} maxWidth="md">
+                <Grid container sx={{ mx: 40 }}>
+                  <CircularProgress />
+                </Grid>
+              </Container> :
+              savedStocksData ?
+                <CardList cards={savedStocksData.saved_stocks} type='SAVED' /> :
+                <></>
+          }
+          {
+            savedNewsItemsLoading ?
+              <Container sx={{ py: 8 }} maxWidth="md">
+                <Grid container sx={{ mx: 40 }}>
+                  <CircularProgress />
+                </Grid>
+              </Container> :
+              savedNewsItemsData ?
+                <CardList cards={savedNewsItemsData.news_items} type='SAVED' /> :
+                <></>
+          }
           <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
             <Copyright />
           </Box>

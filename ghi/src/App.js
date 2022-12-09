@@ -7,7 +7,7 @@ import { Search } from './hot-stocks/Search';
 import HotStocksNav from './Nav';
 
 const domain = /https:\/\/[^/]+/;
-const basename = process.env.PUBLIC_URL.replace(domain, '/hot-stocks');
+const basename = process.env.PUBLIC_URL.replace(domain, '');
 
 function App() {
   return (

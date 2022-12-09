@@ -1,6 +1,5 @@
 from fastapi.testclient import TestClient
 from main import app
-from routers.external.external import get_all_stocks
 
 client = TestClient(app)
 
@@ -17,6 +16,5 @@ def test_get_all_stocks():
     response = client.get("api/stocks")
 
     # assert
-    ## Good response
-    ## list of stocks
+    # Good response
     assert response.status_code == 200

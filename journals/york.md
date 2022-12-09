@@ -1,3 +1,13 @@
+# Friday, December 9:
+
+    -
+
+# Thursday, December 8:
+
+Today, I worked on:
+
+    - Polishing the CI/CD code, working through errors with the team
+
 # Wednesday, December 7
 
 Today, I worked on:

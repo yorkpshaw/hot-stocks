@@ -1,10 +1,31 @@
+## 12/09/2022
+
+Today, I worked on:
+
+* Troubleshooting stage in CI
+* Troubleshooting build in CI
+
+I added IF EXISTS to create tables, updated acls to break multi-string lines at variables to prevent 20%20%20% issue, updated test_saved_stocks_routes to override database dependencies. Doing all of the above allowed our stage tests to pass!
+
+I removed all unused variables and constants from our ghi.
+
+
 ## 12/08/2022
 
 Today, I worked on:
 
 * Oragnizing GHI
+* Implementing CI/CD with team
+* Adjusting About interface
+* Troubleshooting CI/CD
 
 I organized our GHI components into appropriate directories.
+
+I worked on CI/CD with team, including removing all hard-coded URLs.
+
+I adjusted the interface for the About component to include filler text.
+
+I worked on troubleshooting pipeline failures in CI and failures in CD. I got CD working with the scope of our API, though the database didn't contain any tables. I added migrations to the api service, accordingly.
 
 
 ## 12/07/2022
