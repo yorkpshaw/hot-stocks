@@ -13,9 +13,8 @@ FMP_SERVICE = os.environ["FMP_SERVICE"]
 class ACLs:
     def get_company(symbol):
 
-        url = f"""{ALPHAVANTAGE_SERVICE}
-            /query?function=OVERVIEW&symbol={symbol}
-            &apikey={ALPHAVANTAGE_API_KEY}"""
+        url = f"""{ALPHAVANTAGE_SERVICE}/query?function=OVERVIEW&symbol={
+            symbol}&apikey={ALPHAVANTAGE_API_KEY}"""
         response = requests.get(url)
         content = json.loads(response.content)
 
@@ -30,9 +29,9 @@ class ACLs:
 
     def get_stock(symbol):
 
-        url = f"""{ALPHAVANTAGE_SERVICE}
-            /query?function=TIME_SERIES_INTRADAY&symbol={symbol}
-            &interval=15min&apikey={ALPHAVANTAGE_API_KEY}"""
+        url = f"""{
+            ALPHAVANTAGE_SERVICE}/query?function=TIME_SERIES_INTRADAY&symbol={
+            symbol}&interval=15min&apikey={ALPHAVANTAGE_API_KEY}"""
         response = requests.get(url)
         content = json.loads(response.content)
         stock = {}
@@ -49,9 +48,8 @@ class ACLs:
 
     def search_all_stocks(value):
 
-        url = f"""{FMP_SERVICE}
-            /api/v3/search?query={value}&limit=10&apikey=
-            {FMP_API_KEY}"""
+        url = f"""{FMP_SERVICE}/api/v3/search?query={
+            value}&limit=10&apikey={FMP_API_KEY}"""
         response = requests.get(url)
         content = json.loads(response.content)
         stocks = []
@@ -98,9 +96,9 @@ class ACLs:
 
     def get_all_news_items():
 
-        url = f"""{ALPHAVANTAGE_SERVICE}/
-            query?function=NEWS_SENTIMENT&topics=technology&apikey=
-            {ALPHAVANTAGE_API_KEY}"""
+        url = f"""{
+            ALPHAVANTAGE_SERVICE}/query?function=NEWS_SENTIMENT&topics=technology&apikey={
+            ALPHAVANTAGE_API_KEY}"""
         response = requests.get(url)
         content = json.loads(response.content)
         news_items = []

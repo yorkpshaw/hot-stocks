@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS saved_news_items;
 DROP TABLE IF EXISTS saved_stocks;
 
 
-CREATE TABLE accounts (
+CREATE TABLE IF NOT EXISTS accounts (
     id SERIAL NOT NULL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(200) NOT NULL UNIQUE,
@@ -12,7 +12,7 @@ CREATE TABLE accounts (
 );
 
 
-CREATE TABLE portfolio_stocks (
+CREATE TABLE IF NOT EXISTS portfolio_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
     account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
     symbol VARCHAR(10),
@@ -21,7 +21,7 @@ CREATE TABLE portfolio_stocks (
     CONSTRAINT check_account_portfolio UNIQUE (account_id, symbol)
 );
 
-CREATE TABLE saved_news_items (
+CREATE TABLE IF NOT EXISTS saved_news_items (
     id SERIAL NOT NULL PRIMARY KEY,
     account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
     title VARCHAR(5000),
@@ -33,7 +33,7 @@ CREATE TABLE saved_news_items (
     CONSTRAINT check_account_url UNIQUE (account_id, news_url)
 );
 
-CREATE TABLE saved_stocks (
+CREATE TABLE IF NOT EXISTS saved_stocks (
     id SERIAL NOT NULL PRIMARY KEY,
     account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
     symbol VARCHAR(10),

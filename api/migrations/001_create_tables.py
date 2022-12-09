@@ -2,7 +2,7 @@ steps = [
     [
         ## Create table
         """
-        CREATE TABLE accounts (
+        CREATE TABLE IF NOT EXISTS accounts (
             id SERIAL NOT NULL PRIMARY KEY,
             username VARCHAR(50) NOT NULL UNIQUE,
             email VARCHAR(200) NOT NULL UNIQUE,
@@ -17,7 +17,7 @@ steps = [
     [
         ## Create table
         """
-        CREATE TABLE portfolio_stocks (
+        CREATE TABLE IF NOT EXISTS portfolio_stocks (
             id SERIAL NOT NULL PRIMARY KEY,
             account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
             symbol VARCHAR(10),
@@ -34,7 +34,7 @@ steps = [
     [
         ## Create table
         """
-        CREATE TABLE saved_news_items (
+        CREATE TABLE IF NOT EXISTS saved_news_items (
             id SERIAL NOT NULL PRIMARY KEY,
             account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
             title VARCHAR(5000),
@@ -54,7 +54,7 @@ steps = [
     [
         ## Create table
         """
-        CREATE TABLE saved_stocks (
+        CREATE TABLE IF NOT EXISTS saved_stocks (
             id SERIAL NOT NULL PRIMARY KEY,
             account_id INT NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
             symbol VARCHAR(10),
