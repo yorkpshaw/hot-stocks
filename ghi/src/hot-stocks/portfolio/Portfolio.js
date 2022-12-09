@@ -5,13 +5,14 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
+// import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { CardList } from '../../common/CardList';
 import { Copyright } from '../../common/Copyright';
 import { ErrorNotification } from '../../common/ErrorNotification';
 import { PortfolioDialog } from '../../common/PortfolioDialog';
 import { useGetPortfolioStocksQuery } from '../../rtk-files/portfolioStocksApi';
-import { getTotalPortfolioValue } from './GetTotalPortfolioValue';
+// import { getTotalPortfolioValue } from './GetTotalPortfolioValue';
 
 const theme = createTheme();
 export function Portfolio() {
@@ -19,12 +20,12 @@ export function Portfolio() {
   const { data: portfolioStocks, error, isLoading: portfolioLoading } = useGetPortfolioStocksQuery();
   const { portfolioDialog } = useSelector(state => state.portfolioDialog);
 
-  const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
+  // const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
 
-  useEffect (() => {
-    setTotalPortfolioValue(getTotalPortfolioValue(portfolioStocks.portfolio_stocks.get_stock));
+  // useEffect(() => {
+  //   setTotalPortfolioValue(getTotalPortfolioValue(portfolioStocks.portfolio_stocks.get_stock));
 
-  }, [portfolioStocks.portfolio_stocks])
+  // }, [portfolioStocks.portfolio_stocks])
 
 
   return (
@@ -34,6 +35,11 @@ export function Portfolio() {
           <PortfolioDialog /> :
           <></>
       }
+      {/* {
+        totalPortfolioValue ?
+        <></> :
+        <></>
+      } */}
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="sm">
           <CssBaseline />
