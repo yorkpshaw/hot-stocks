@@ -44,7 +44,7 @@ services:
   db:
     build:
       context: relational-data
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     volumes:
       - hot-stocks:/var/lib/postgresql/data
     environment:
