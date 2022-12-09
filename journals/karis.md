@@ -1,3 +1,15 @@
+## 12/09/2022
+
+Today, I worked on:
+
+* Troubleshooting stage in CI
+* Troubleshooting build in CI
+
+I added IF EXISTS to create tables, updated acls to break multi-string lines at variables to prevent 20%20%20% issue, updated test_saved_stocks_routes to override database dependencies. Doing all of the above allowed our stage tests to pass!
+
+I removed all unused variables and constants from our ghi.
+
+
 ## 12/08/2022
 
 Today, I worked on:
@@ -5,7 +17,7 @@ Today, I worked on:
 * Oragnizing GHI
 * Implementing CI/CD with team
 * Adjusting About interface
-* Troublshooting CI/CD
+* Troubleshooting CI/CD
 
 I organized our GHI components into appropriate directories.
 
