@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Depends, Response
-from typing import List
+from fastapi import APIRouter, Depends
 from .authenticator import authenticator
 from queries.portfolio_stocks import (
     PortfolioStockIn,
@@ -32,10 +31,13 @@ def create_or_update_portfolio_stock(
 ):
     account_id = account_data["id"]
 
-    return queries.create_or_update_portfolio_stock(portfolio_stock_in, account_id)
+    return queries.create_or_update_portfolio_stock(
+        portfolio_stock_in, account_id)
 
 
-@router.delete("/api/portfolio_stocks/{portfolio_stock_id}", response_model=bool)
+@router.delete(
+    "/api/portfolio_stocks/{portfolio_stock_id}", response_model=bool
+)
 def delete_portfolio_stock(
     portfolio_stock_id: int,
     account_data: dict = Depends(authenticator.get_current_account_data),

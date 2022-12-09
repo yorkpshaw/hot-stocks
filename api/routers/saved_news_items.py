@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Depends, Response
-from pydantic import BaseModel
+from fastapi import APIRouter, Depends
 from .authenticator import authenticator
 from queries.saved_news_items import (
     SavedNewsItemIn,
