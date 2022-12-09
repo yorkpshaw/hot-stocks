@@ -77,16 +77,6 @@ export function Portfolio() {
                   <></>
             }
           </Box>
-
-          {/* <div>
-            {portfolioStocks.portfolio_stocks.map(() => (
-              <StockPortfolio
-                portfolioValue={totalPortfolioValue}
-              ))}
-              {totalPortfolioValue}
-              />)
-          </div> */}
-
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
       </ThemeProvider>
