@@ -24,7 +24,7 @@ services:
   api:
     build:
       context: ./api
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     environment:
       REACT_APP_SERVICE: ${REACT_APP_SERVICE}
       ALPHAVANTAGE_SERVICE: ${ALPHAVANTAGE_SERVICE}
@@ -44,7 +44,7 @@ services:
   db:
     build:
       context: relational-data
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     volumes:
       - hot-stocks:/var/lib/postgresql/data
     environment:
