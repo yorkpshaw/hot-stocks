@@ -6,7 +6,7 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { IntradayChartButton, PortfolioStockButton, PrefFalseSavedNewsItemButton, PrefFalseSavedStockButton, PrefTrueSavedNewsItemButton, PrefTrueSavedStockButton } from './Buttons';
+import { IntradayChartButton, PortfolioStockButton, PrefFalseSavedNewsItemButton, PrefFalseSavedStockButton, PrefTrueSavedNewsItemButton, PrefTrueSavedStockButton } from './SimpleButtons';
 
 
 export function SimpleCard(props) {

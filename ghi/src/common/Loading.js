@@ -6,9 +6,20 @@ import { deepOrange } from '@mui/material/colors';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { ProgressBar } from './ProgressBar';
+import LinearProgress from '@mui/material/LinearProgress';
+
 
 const theme = createTheme();
+
+
+function ProgressBar() {
+  return (
+    <Box sx={{ marginTop: 1, width: '100%', color: deepOrange[500] }}>
+      <LinearProgress color='inherit' />
+    </Box>
+  );
+}
+
 
 export function LargeLoading() {
 
@@ -50,9 +61,6 @@ export function SmallLoading() {
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}>
-                    <Typography variant="subtitle1" gutterBottom>
-                        Initiating molecular vibration...
-                    </Typography>
                     <ProgressBar />
                 </Box>
             </Container>

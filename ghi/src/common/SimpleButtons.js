@@ -4,7 +4,7 @@ import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import IconButton from '@mui/material/IconButton';
 import { useDispatch } from 'react-redux';
-import { preventDefault } from '../common/utils';
+import { preventDefault } from './utils';
 import { togglePortfolioDialog } from '../rtk-files/portfolioDialogSlice';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../rtk-files/savedNewsItemsApi';
 import { useCreateOrUpdateSavedStockMutation } from '../rtk-files/savedStocksApi';

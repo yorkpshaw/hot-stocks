@@ -50,8 +50,8 @@ function LogoutListItem() {
 export default function HotStocksNav({ children }) {
 
   const { data: token, isLoading: tokenLoading, isError: tokenError } = useGetTokenQuery();
-  const { data: stocksData, isLoading: stocksLoading } = useGetStocksQuery();
-  const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
+  const { data: stocksData, isLoading: stocksLoading, isError: stocksError } = useGetStocksQuery();
+  const { data: newsItemsData, isLoading: newsItemsLoading, isError: newsItemsError } = useGetNewsItemsQuery();
 
   const getList = (data) => (
     <div style={{ width: 250 }}>
@@ -80,11 +80,25 @@ export default function HotStocksNav({ children }) {
           <ErrorNotification error={tokenError}/>
         </Box>
         :
+        stocksError ?
+        <Box
+          component="main"
+          sx={{ flexGrow: 1, p: 3 }}>
+          <ErrorNotification error={'Stocks are too hot right now! Give us time to cool down.'}/>
+        </Box>
+        :
+        newsItemsError ?
+        <Box
+          component="main"
+          sx={{ flexGrow: 1, p: 3 }}>
+          <ErrorNotification error={'News items are too hot right now! Give us time to cool down.'}/>
+        </Box>
+        :
         stocksData.stocks === null || newsItemsData.news_items === null ?
         <Box
           component="main"
           sx={{ flexGrow: 1, p: 3 }}>
-          <ErrorNotification error={'Too hot right now! Give us some time to cool down.'}/>
+          <ErrorNotification error={'Too hot right now! Give us time to cool down.'}/>
         </Box>
         :
         token ?

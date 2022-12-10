@@ -1,20 +1,17 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { Copyright } from '../common/Copyright';
-import CircularProgress from '@mui/material/CircularProgress';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { CssBaseline } from '@mui/material';
 import Box from '@mui/material/Box';
 import { deepOrange } from '@mui/material/colors';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { CardList } from '../common/CardList';
+import { Copyright } from '../common/Copyright';
+import { SmallLoading } from '../common/Loading';
 import { PortfolioDialog } from '../common/PortfolioDialog';
-import { useGetNewsItemsQuery } from '../rtk-files/newsItemsApi';
 import { useLazyGetStocksQuery } from '../rtk-files/stocksApi';
 
 const theme = createTheme();
@@ -22,17 +19,18 @@ const theme = createTheme();
 export function Search() {
 
   const [search, setSearch] = useState('');
-  const { data: newsItemsData, isLoading: newsItemsLoading } = useGetNewsItemsQuery();
+  const { queries: newsItemsQueries } = useSelector(state => state.newsItems);
   const [triggerStocks, { data: stocksData, isLoading: stocksLoading }] = useLazyGetStocksQuery();
   const [filteredNewsItemsData, setFilteredNewsItemsData] = useState([]);
   const { portfolioDialog } = useSelector(state => state.portfolioDialog);
+
 
   async function handleSubmit(e) {
     e.preventDefault();
     if (search) {
       triggerStocks({ value: search });
       setFilteredNewsItemsData(
-        newsItemsData.news_items.filter(
+        newsItemsQueries[`getNewsItems(undefined)`]?.data?.news_items?.filter(
           newsItem => newsItem.title.toLowerCase().includes(search.toLowerCase())
         ));
     }
@@ -76,29 +74,20 @@ export function Search() {
                 sx={{ mt: 2.5, mb: 2, ml: 2.5, bgcolor: deepOrange[500] }}>
                 <SearchOutlinedIcon />
               </IconButton>
-              {
-                stocksLoading ?
-                  <Container sx={{ py: 8 }} maxWidth="md">
-                    <Grid container sx={{ mx: 40 }}>
-                      <CircularProgress />
-                    </Grid>
-                  </Container> :
-                  stocksData ?
-                    <CardList cards={stocksData.stocks} /> :
-                    <></>
-              }
-              {
-                newsItemsLoading ?
-                  <Container sx={{ py: 8 }} maxWidth="md">
-                    <Grid container sx={{ mx: 40 }}>
-                      <CircularProgress />
-                    </Grid>
-                  </Container> :
-                  newsItemsData ?
-                    <CardList cards={filteredNewsItemsData} /> :
-                    <></>
-              }
             </Box>
+            {
+              stocksLoading ?
+                <Box
+                  component="main"
+                  sx={{ flexGrow: 2, p: 3 }}>
+                  <SmallLoading />
+                </Box> :
+                stocksData?.stocks && newsItemsQueries[`getNewsItems(undefined)`]?.data?.news_items ?
+                  newsItemsQueries[`getNewsItems(undefined)`]?.data?.news_items ?
+                    <CardList cards={stocksData?.stocks?.concat(filteredNewsItemsData)} /> :
+                    <></> :
+                  <></>
+            }
           </Box>
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
