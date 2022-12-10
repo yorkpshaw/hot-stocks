@@ -10,6 +10,8 @@ I added IF EXISTS to create tables, updated acls to break multi-string lines at 
 
 I removed all unused variables and constants from our ghi.
 
+The team worked on finishing up troubleshooting CI errors together.
+
 I added front-end error handling, particularly when our external API keys have exhausted their hits in a given time period.
 
 
