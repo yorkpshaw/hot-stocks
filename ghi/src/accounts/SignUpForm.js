@@ -52,9 +52,6 @@ export function SignUpForm(props) {
               <Avatar sx={{ m: 1, bgcolor: deepOrange[500] }}>
                 <LocalFireDepartmentOutlinedIcon />
               </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign up
-              </Typography>
               <ErrorNotification error={error} />
               <Box
                 component="form"

@@ -58,9 +58,6 @@ export function LoginForm() {
                   <Avatar sx={{ m: 1, bgcolor: deepOrange[500] }}>
                     <LocalFireDepartmentOutlinedIcon />
                   </Avatar>
-                  <Typography component="h1" variant="h5">
-                    Log in
-                  </Typography>
                   <Box
                     component="form"
                     method="post"
