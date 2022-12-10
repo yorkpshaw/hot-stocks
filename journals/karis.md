@@ -1,3 +1,15 @@
+## 12/10/2022
+
+Today, I worked on:
+
+* Adding front-end error handling
+* Debugging map key error in CardList
+
+I added more error handling on the front-end, including showing NoItems ("Nothing to see here!") if no items are present in Saved and Portfolio.
+
+I debugged the map key error in CardList by only ever inputting cards that meet criteria for Saved (preference == true) and Portfolio (num_shares > 0).
+
+
 ## 12/09/2022
 
 Today, I worked on:

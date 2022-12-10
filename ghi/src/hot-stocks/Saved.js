@@ -19,9 +19,6 @@ export function Saved() {
   const { data: savedStocksData, isLoading: savedStocksLoading } = useGetSavedStocksQuery();
   const { portfolioDialog } = useSelector(state => state.portfolioDialog);
 
-  // console.log(savedStocksData?.saved_stocks.filter(stock => stock.preference) == false);
-  // console.log(savedStocksData?.saved_stocks);
-
   return (
     <>
       {
@@ -39,7 +36,7 @@ export function Saved() {
                 sx={{ flexGrow: 2, p: 3 }}>
                 <SmallLoading />
               </Box> :
-              savedStocksData?.saved_stocks?.filter(stock => stock.preference) || savedNewsItemsData?.news_items?.filter(newsItem => newsItem.preference) ?
+              savedStocksData?.saved_stocks?.filter(stock => stock.preference).length !== 0 || savedNewsItemsData?.news_items?.filter(newsItem => newsItem.preference).length !== 0 ?
                 <CardList cards={savedStocksData?.saved_stocks?.filter(stock => stock.preference).concat(savedNewsItemsData?.news_items.filter(newsItem => newsItem.preference))} type='SAVED' /> :
                 <Box
                   component="main"
