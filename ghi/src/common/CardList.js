@@ -1,6 +1,5 @@
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import * as React from 'react';
 import { SimpleCard } from './SimpleCard';
 
 

@@ -1,5 +1,4 @@
 import Alert from '@mui/material/Alert';
-import * as React from 'react';
 
 
 export function ErrorNotification(props) {
