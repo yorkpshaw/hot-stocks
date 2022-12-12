@@ -1,5 +1,3 @@
-import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
-import { deepOrange } from '@mui/material/colors';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
