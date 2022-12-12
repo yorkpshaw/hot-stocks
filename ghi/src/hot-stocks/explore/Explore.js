@@ -8,6 +8,7 @@ import { InfoDialog } from '../../common/InfoDialog';
 import { PortfolioDialog } from '../../common/PortfolioDialog';
 import { ShareDialog } from '../../common/ShareDialog';
 import { useGetNewsItemsQuery } from '../../rtk-files/newsItemsApi';
+import { ContentCard } from './ContentCard';
 
 
 export function Explore() {
