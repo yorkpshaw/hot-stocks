@@ -12,12 +12,7 @@ import { Copyright } from '../../common/Copyright';
 import { ErrorNotification } from '../../common/ErrorNotification';
 import { PortfolioDialog } from '../../common/PortfolioDialog';
 import { useGetPortfolioStocksQuery } from '../../rtk-files/portfolioStocksApi';
-<<<<<<< HEAD
-import { getTotalPortfolioValue } from './GetTotalPortfolioValue';
-import { useState, useEffect } from 'react';
-=======
 // import { getTotalPortfolioValue } from './GetTotalPortfolioValue';
->>>>>>> main
 
 const theme = createTheme();
 export function Portfolio() {
@@ -25,12 +20,23 @@ export function Portfolio() {
   const { data: portfolioStocks, error, isLoading: portfolioLoading } = useGetPortfolioStocksQuery();
   const { portfolioDialog } = useSelector(state => state.portfolioDialog);
 
-  // const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
 
-  // useEffect(() => {
-  //   setTotalPortfolioValue(getTotalPortfolioValue(portfolioStocks.portfolio_stocks.get_stock));
 
-  // }, [portfolioStocks.portfolio_stocks])
+  const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
+
+  useEffect(() => {
+    setTotalPortfolioValue(getTotalPortfolioValue());
+
+  }, [portfolioStocks.portfolio_stocks])
+
+  {
+    card.cost_current ?
+      'C $' + card.cost_current :
+      queries[`getStocks(undefined)`]?.data?.stocks.find(element => element.symbol === card.symbol)?.cost_current ?
+        'C $' + queries[`getStocks(undefined)`].data.stocks.find(element => element.symbol === card.symbol).cost_current :
+        'Loading...'
+  }
+
 
 
   return (
@@ -71,7 +77,7 @@ export function Portfolio() {
           </Box>
 
           {/* <div>
-            {portfolioStocks.portfolio_stocks.map(() => (
+            {portfolioStocks.portfolio_stocks.reduce(() => (
               <StockPortfolio
                 portfolioValue={totalPortfolioValue}
               ))}
