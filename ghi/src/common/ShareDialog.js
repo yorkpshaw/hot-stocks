@@ -1,7 +1,6 @@
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
-import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleShareDialog } from '../rtk-files/shareDialogSlice';
 import IconButton from '@mui/material/IconButton';
