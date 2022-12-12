@@ -13,6 +13,9 @@ class SavedStockQueriesMock:
     def create_or_update_saved_stock(self, data, account_id):
         return {}
 
+    def delete_saved_stock(self, saved_stock_id, account_id):
+        return {}
+
 
 def mockAccount():
     return {"id": "1", "username": "username", "password": "password"}
@@ -28,9 +31,7 @@ def test_get_all_saved_stocks():
     app.dependency_overrides[
         authenticator.try_get_current_account_data
     ] = mockAccount
-    app.dependency_overrides[
-        SavedStockQueries.get_all_saved_stocks
-    ] = SavedStockQueriesMock.get_all_saved_stocks
+    app.dependency_overrides[SavedStockQueries] = SavedStockQueriesMock
     # act
     response = client.get("api/saved_stocks")
 
@@ -44,9 +45,7 @@ def test_create_or_update_saved_stock():
     app.dependency_overrides[
         authenticator.try_get_current_account_data
     ] = mockAccount
-    app.dependency_overrides[
-        SavedStockQueries.create_or_update_saved_stock
-    ] = SavedStockQueriesMock.create_or_update_saved_stock
+    app.dependency_overrides[SavedStockQueries] = SavedStockQueriesMock
     # act
     response = client.get("api/saved_stocks")
     # assert
