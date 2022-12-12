@@ -16,7 +16,7 @@ Hot Stocks - revolutionizing stocks to make them, like, totally cool.
 
 ## Intended market
 
-We are targeting men and women that are in the age range of 18 - 42. Our target audience are those that are interested in investing in stocks and growing their portfolio.
+We are targeting people that are in the age range of 18 - 42. Our target audience are those that are interested in investing in stocks and growing their portfolio.
 
 
 ## Functionality
@@ -40,3 +40,11 @@ To fully enjoy this application on your local machine, please make sure to follo
 4. Run `docker compose build`
 5. Run `docker compose up`
 6. Enjoy Hot Stocks to its fullest!
+
+
+## Testing
+
+To verify this application is working on your local machine, please make sure to follow these steps after following those under Project Initialization:
+
+1. Open hot-stocks-api container
+2. Run `python -m pytest`
