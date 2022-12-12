@@ -7,7 +7,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
-import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleInfoDialog } from '../rtk-files/infoDialogSlice';
 

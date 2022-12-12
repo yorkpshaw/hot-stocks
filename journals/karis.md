@@ -1,13 +1,39 @@
+## 12/11/2022
+
+Today, I worked on:
+
+* Removing test_stocks_routes per team
+
+The team and I decided to remove test_stocks_routes, as it hits the FMP API, which has a max of 5 hits/endpoint per day.
+
+
+## 12/10/2022
+
+Today, I worked on:
+
+* Adding front-end error handling
+* Debugging map key error in CardList
+
+I added more error handling on the front-end, including showing NoItems ("Nothing to see here!") if no items are present in Saved and Portfolio.
+
+I debugged the map key error in CardList by only ever inputting cards that meet criteria for Saved (preference == true) and Portfolio (num_shares > 0).
+
+
 ## 12/09/2022
 
 Today, I worked on:
 
 * Troubleshooting stage in CI
 * Troubleshooting build in CI
+* Adding front-end error handling
 
 I added IF EXISTS to create tables, updated acls to break multi-string lines at variables to prevent 20%20%20% issue, updated test_saved_stocks_routes to override database dependencies. Doing all of the above allowed our stage tests to pass!
 
 I removed all unused variables and constants from our ghi.
+
+The team worked on finishing up troubleshooting CI errors together.
+
+I added front-end error handling, particularly when our external API keys have exhausted their hits in a given time period.
 
 
 ## 12/08/2022

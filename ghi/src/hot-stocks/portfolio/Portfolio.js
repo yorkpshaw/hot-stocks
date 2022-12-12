@@ -4,13 +4,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { CardList } from '../../common/CardList';
 import { Copyright } from '../../common/Copyright';
 import { ErrorNotification } from '../../common/ErrorNotification';
 import { PortfolioDialog } from '../../common/PortfolioDialog';
 import { useGetPortfolioStocksQuery } from '../../rtk-files/portfolioStocksApi';
+import { NoItems } from '../../common/NoItems';
 import { PortfolioValue } from './PortfolioValue';
 
 const theme = createTheme();
@@ -55,15 +55,15 @@ export function Portfolio() {
               flexDirection: 'column',
               alignItems: 'center',
             }}>
-              {
-                portfolioStocks?.portfolio_stocks ?
+            {
+              portfolioStocks?.portfolio_stocks ?
                 portfolioStocksSymbols ?
-                portfolioCostBasis && portfolioCostCurrent ?
-                <PortfolioValue portfolioCostBasis={portfolioCostBasis} portfolioCostCurrent={portfolioCostCurrent} /> :
-                <></> :
-                <></> :
+                  portfolioCostBasis && portfolioCostCurrent ?
+                    <PortfolioValue portfolioCostBasis={portfolioCostBasis} portfolioCostCurrent={portfolioCostCurrent} /> :
+                    <></> :
+                  <></> :
                 <></>
-              }
+            }
             <ErrorNotification error={error} />
             {
               portfolioLoading ?
@@ -72,9 +72,13 @@ export function Portfolio() {
                     <CircularProgress />
                   </Grid>
                 </Container> :
-                portfolioStocks ?
-                  <CardList cards={portfolioStocks.portfolio_stocks} type={'PORTFOLIO'} /> :
-                  <></>
+                portfolioStocks?.portfolio_stocks.filter(stock => stock.num_shares).length !== 0 ?
+                  <CardList cards={portfolioStocks.portfolio_stocks.filter(stock => stock.num_shares)} type={'PORTFOLIO'} /> :
+                  <Box
+                    component="main"
+                    sx={{ flexGrow: 2, p: 3 }}>
+                    <NoItems />
+                  </Box>
             }
           </Box>
           <Copyright sx={{ mt: 8, mb: 4 }} />

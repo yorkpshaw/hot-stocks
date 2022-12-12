@@ -1,3 +1,9 @@
+## December 8, 2022
+
+Today, I worked on:
+*Writing code to compute the Total Portfolio Value
+*Reviewing CI/CD documentation
+
 ## December 7, 2022
 
 Today, I worked on:

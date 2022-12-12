@@ -11,7 +11,6 @@ import { deepOrange } from '@mui/material/colors';
 import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { IntradayChart } from '../portfolio/IntradayChart';
