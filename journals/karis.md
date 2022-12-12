@@ -1,3 +1,15 @@
+## 12/12/2022
+
+Today, I worked on:
+
+* Debugging Share button
+* Debugging Search CardList render
+
+Micheline and I debugged the Share button she developed over the weekend.
+
+I debugged the CardList rendering in the Search component. I realize my debugging of the map key error on 12/09 only resulted in the component working when a type prop was passed in (as is the case when the component is rendered with Saved and Portfolio). I adjusted the code to display for Search, as well.
+
+
 ## 12/11/2022
 
 Today, I worked on:
