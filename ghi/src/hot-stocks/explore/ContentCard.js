@@ -2,6 +2,7 @@ import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -20,10 +21,11 @@ import { togglePortfolioDialog } from '../../rtk-files/portfolioDialogSlice';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../../rtk-files/savedNewsItemsApi';
 import { useCreateOrUpdateSavedStockMutation } from '../../rtk-files/savedStocksApi';
 
+import { toggleShareDialog } from '../../rtk-files/shareDialogSlice';
 
 // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
 function randomIntFromInterval(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 
@@ -75,6 +77,10 @@ export function ContentCard(props) {
     dispatch(toggleInfoDialog(card), card.symbol ? triggerCompany(card.symbol) : null);
   }
 
+  async function handleShareClick(e) {
+    dispatch(toggleShareDialog(card), card.symbol ? triggerCompany(card.symbol) : null);
+  }
+
 
   return (
     <>
@@ -102,6 +108,7 @@ export function ContentCard(props) {
                 <IconButton onClick={handlePrefTrueSavedNewsItemClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
                 <IconButton onClick={handlePrefFalseSavedNewsItemClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
                 <IconButton onClick={handleInfoClick} value={card} size="small"><InfoOutlinedIcon /></IconButton>
+                <IconButton onClick={handleShareClick} value={card} size="small"><ShareOutlinedIcon /></IconButton>
               </CardActions>
             </Card>
           </> :
@@ -129,6 +136,7 @@ export function ContentCard(props) {
                 <IconButton onClick={handlePrefFalseSavedStockClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
                 <IconButton onClick={handlePortfolioStockClick} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton>
                 <IconButton onClick={handleInfoClick} value={card} size="small"><InfoOutlinedIcon /></IconButton>
+                <IconButton onClick={handleShareClick} value={card} size="small"><ShareOutlinedIcon /></IconButton>
               </CardActions>
             </Card> :
             <></>
