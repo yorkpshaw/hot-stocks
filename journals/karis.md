@@ -1,3 +1,12 @@
+## 12/11/2022
+
+Today, I worked on:
+
+* Removing test_stocks_routes per team
+
+The team and I decided to remove test_stocks_routes, as it hits the FMP API, which has a max of 5 hits/endpoint per day.
+
+
 ## 12/10/2022
 
 Today, I worked on:
