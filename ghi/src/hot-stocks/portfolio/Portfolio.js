@@ -23,9 +23,16 @@ export function Portfolio() {
   const portfolioStocksSymbols = portfolioStocks?.portfolio_stocks?.map((stock) => (stock.symbol));
 
   const portfolioStocksWithCostCurrentArray = queries[`getStocks(undefined)`]?.data?.stocks?.filter(element => portfolioStocksSymbols?.includes(element.symbol));
-  const portfolioStocksCombinedData = portfolioStocksWithCostCurrentArray.map((item, i) => Object.assign({}, item, portfolioStocks?.portfolio_stocks[i]));
+  const portfolioStocksCombinedData = [];
+  for (let i=0; i<portfolioStocksWithCostCurrentArray.length; i++) {
+    portfolioStocksCombinedData.push({
+      ...portfolioStocks?.portfolio_stocks[i],
+      ...(portfolioStocksWithCostCurrentArray.find((itmInner) => itmInner.symbol === portfolioStocks?.portfolio_stocks[i].symbol))
+    })
+  };
   const portfolioStocksCostCurrent = portfolioStocksCombinedData.map((stock) => stock.num_shares * stock.cost_current);
   const portfolioStocksCostBasis = portfolioStocksCombinedData.map((stock) => stock.num_shares * stock.cost_basis);
+
 
   const portfolioCostCurrent = portfolioStocksCostCurrent?.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
