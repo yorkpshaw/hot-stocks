@@ -7,6 +7,7 @@
 
 Hot Stocks - revolutionizing stocks to make them, like, totally cool.
 
+Modern, social-media-app-inspired stock portfolio solution designed for evaluating live stock and related news data, managing a portfolio, and saving data of interest. Features FastAPI, React Redux, PostgreSQL, and data interactions with RESTful APIs. 
 
 ## Design
 
