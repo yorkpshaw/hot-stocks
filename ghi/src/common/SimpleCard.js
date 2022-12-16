@@ -32,7 +32,7 @@ export function SimpleCard(props) {
                   'C $' + card.cost_current :
                   queries[`getStocks(undefined)`]?.data?.stocks.find(element => element.symbol === card.symbol)?.cost_current ?
                     'C $' + queries[`getStocks(undefined)`].data.stocks.find(element => element.symbol === card.symbol).cost_current :
-                    'Loading...'
+                    null
               }
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary">

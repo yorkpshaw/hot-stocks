@@ -11,6 +11,9 @@ import { savedNewsItemsApi } from './savedNewsItemsApi';
 import { savedStocksApi } from './savedStocksApi';
 import { signUpSlice } from './signUpSlice';
 import { stocksApi } from './stocksApi';
+import { shareDialogSlice } from './shareDialogSlice';
+
+
 
 
 export const store = configureStore({
@@ -26,6 +29,8 @@ export const store = configureStore({
     [savedStocksApi.reducerPath]: savedStocksApi.reducer,
     [stocksApi.reducerPath]: stocksApi.reducer,
     [newsItemsApi.reducerPath]: newsItemsApi.reducer,
+    [shareDialogSlice.name]: shareDialogSlice.reducer,
+
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()

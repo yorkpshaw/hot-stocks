@@ -11,8 +11,10 @@ import { useSelector } from 'react-redux';
 import { CardList } from '../common/CardList';
 import { Copyright } from '../common/Copyright';
 import { SmallLoading } from '../common/Loading';
+import { NoItems } from '../common/NoItems';
 import { PortfolioDialog } from '../common/PortfolioDialog';
 import { useLazyGetStocksQuery } from '../rtk-files/stocksApi';
+
 
 const theme = createTheme();
 
@@ -35,6 +37,7 @@ export function Search() {
         ));
     }
   }
+
 
   return (
     <>
@@ -82,11 +85,13 @@ export function Search() {
                   sx={{ flexGrow: 2, p: 3 }}>
                   <SmallLoading />
                 </Box> :
-                stocksData?.stocks && newsItemsQueries[`getNewsItems(undefined)`]?.data?.news_items ?
-                  newsItemsQueries[`getNewsItems(undefined)`]?.data?.news_items ?
-                    <CardList cards={stocksData?.stocks?.concat(filteredNewsItemsData)} /> :
-                    <></> :
-                  <></>
+                stocksData?.stocks && filteredNewsItemsData ?
+                  <CardList cards={stocksData?.stocks?.concat(filteredNewsItemsData)} /> :
+                  <Box
+                    component="main"
+                    sx={{ flexGrow: 2, p: 3 }}>
+                    <NoItems />
+                  </Box>
             }
           </Box>
           <Copyright sx={{ mt: 8, mb: 4 }} />

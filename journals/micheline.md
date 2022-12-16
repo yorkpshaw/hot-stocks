@@ -1,14 +1,21 @@
+December 12
+Completed a stretch goal of adding icon buttons for sharing to social media.  Buttons do not work  Completed about page.
+
+
+December 8
+CI/CD with team
+
 December 7
-Working on unit test
+Working on unit test and was able to make the unit test pass for saved stocks that requires authentication.
 
 December 6
-Working on unit test.  Was able to create and get stocks test to pass.  Doing research and to configure test for tokens.
+Working on unit test.  Was able to create and get stocks test to pass.  Doing research and to configure test that reaquires authentication.
 
 December 5
 Working on the read me and Test
 
 December 2
-Peer coded with Karis as I am having has to be a docker issue where the code is not being shown in react.
+Peer coded with Karis as I am having has to be a docker issue where the code is not being shown in react.  What I noticed is that I made basically did all the work in the Content Card and was inherting it into the Explore whereas the Content Card should have just been that and Explore should have tied it all together.  It made sense to actually have what made up the explore as different component so we seperated what I had and finished building it out
 
 December 1
 

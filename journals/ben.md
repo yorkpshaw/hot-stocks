@@ -1,3 +1,8 @@
+## December 9, 2022
+
+Today, I worked on:
+*Code review to build the PortfolioCostCurrent (current value) and PortfolioCostBasis (purchase price value) display on the Portfolio page.
+
 ## December 8, 2022
 
 Today, I worked on:

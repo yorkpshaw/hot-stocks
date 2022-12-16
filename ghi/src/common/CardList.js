@@ -13,14 +13,16 @@ export function CardList(props) {
       <Grid container spacing={4}>
         {cards.map((card, index) => (
           type === 'SAVED' ?
-            <Grid item key={type + index} xs={12} sm={6} md={4}>
+            <Grid item key={index} xs={12} sm={6} md={4}>
               <SimpleCard card={card} type={type} />
             </Grid> :
             type === 'PORTFOLIO' ?
-              <Grid item key={type + index} xs={12} sm={6} md={4}>
+              <Grid item key={index} xs={12} sm={6} md={4}>
                 <SimpleCard card={card} type={type} />
               </Grid> :
-              <></>
+              <Grid item key={index} xs={12} sm={6} md={4}>
+                <SimpleCard card={card}/>
+              </Grid>
         ))}
       </Grid>
     </Container>

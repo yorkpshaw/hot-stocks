@@ -2,6 +2,7 @@ import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -19,10 +20,11 @@ import { togglePortfolioDialog } from '../../rtk-files/portfolioDialogSlice';
 import { useCreateOrUpdateSavedNewsItemMutation } from '../../rtk-files/savedNewsItemsApi';
 import { useCreateOrUpdateSavedStockMutation } from '../../rtk-files/savedStocksApi';
 
+import { toggleShareDialog } from '../../rtk-files/shareDialogSlice';
 
 // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
 function randomIntFromInterval(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 
@@ -74,62 +76,68 @@ export function ContentCard(props) {
     dispatch(toggleInfoDialog(card), card.symbol ? triggerCompany(card.symbol) : null);
   }
 
+  async function handleShareClick(e) {
+    dispatch(toggleShareDialog(card), card.symbol ? triggerCompany(card.symbol) : null);
+  }
+
 
   return (
     <>
       {
-        card?.symbol ?
-          <Card sx={{ maxWidth: 345 }}>
-            <CardMedia>
-              <IntradayChart symbol={card.symbol} />
-            </CardMedia>
-            <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                {card.name}
-              </Typography>
-              <Typography gutterBottom variant="h5" component="div">
-                {card.symbol}
-              </Typography>
-              <Typography sx={{ color: deepOrange[500] }}>
-                {card.cost_current ?
-                  'C $' + card.cost_current :
-                  <></>
-                }
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <IconButton onClick={handlePrefTrueSavedStockClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
-              <IconButton onClick={handlePrefFalseSavedStockClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
-              <IconButton onClick={handlePortfolioStockClick} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton>
-              <IconButton onClick={handleInfoClick} value={card} size="small"><InfoOutlinedIcon /></IconButton>
-            </CardActions>
-          </Card> :
-          card?.title ?
-            <>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={card.banner_image}
-                />
-                <CardContent>
-                  <Link href={card.news_url} color="text.primary" underline="none" variant="h7">
-                    {card.title?.slice(0, 40)}...
-                  </Link>
-                  <Typography variant="body1" color="text.secondary">
-                    {card.time_published}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {card.summary.slice(0, 100)}...
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <IconButton onClick={handlePrefTrueSavedNewsItemClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
-                  <IconButton onClick={handlePrefFalseSavedNewsItemClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
-                  <IconButton onClick={handleInfoClick} value={card} size="small"><InfoOutlinedIcon /></IconButton>
-                </CardActions>
-              </Card>
-            </> :
+        card?.title ?
+          <>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia
+                component="img"
+                height="140"
+                image={card.banner_image}
+              />
+              <CardContent>
+                <Link href={card.news_url} color="text.primary" underline="none" variant="h7">
+                  {card.title?.slice(0, 40)}...
+                </Link>
+                <Typography variant="body1" color="text.secondary">
+                  {card.time_published}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {card.summary.slice(0, 100)}...
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <IconButton onClick={handlePrefTrueSavedNewsItemClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+                <IconButton onClick={handlePrefFalseSavedNewsItemClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
+                <IconButton onClick={handleInfoClick} value={card} size="small"><InfoOutlinedIcon /></IconButton>
+                <IconButton onClick={handleShareClick} value={card} size="small"><ShareOutlinedIcon /></IconButton>
+              </CardActions>
+            </Card>
+          </> :
+          card?.symbol ?
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia>
+                <IntradayChart symbol={card.symbol} />
+              </CardMedia>
+              <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                  {card.name}
+                </Typography>
+                <Typography gutterBottom variant="h5" component="div">
+                  {card.symbol}
+                </Typography>
+                <Typography sx={{ color: deepOrange[500] }}>
+                  {card.cost_current ?
+                    'C $' + card.cost_current :
+                    <></>
+                  }
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <IconButton onClick={handlePrefTrueSavedStockClick} value={card} size="small"><TurnedInNotOutlinedIcon /></IconButton>
+                <IconButton onClick={handlePrefFalseSavedStockClick} value={card} size="small"><ClearOutlinedIcon /></IconButton>
+                <IconButton onClick={handlePortfolioStockClick} value={card} size="small"><WorkOutlineOutlinedIcon /></IconButton>
+                <IconButton onClick={handleInfoClick} value={card} size="small"><InfoOutlinedIcon /></IconButton>
+                <IconButton onClick={handleShareClick} value={card} size="small"><ShareOutlinedIcon /></IconButton>
+              </CardActions>
+            </Card> :
             <></>
       }
     </>
