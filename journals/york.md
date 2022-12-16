@@ -1,6 +1,12 @@
+# Monday, December 10:
+
+    - Successfully deployed the application with the team
+    - Gave an informal presentation to our instructor Candice
+    - Talked about what stretch goals we could achieve next
+
 # Friday, December 9:
 
-    -
+    - Cleaned up code with group, eliminating unnecessary lines of code, and made sure application was able to run with no errors
 
 # Thursday, December 8:
 
