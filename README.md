@@ -7,6 +7,10 @@
 
 Hot Stocks - revolutionizing stocks to make them, like, totally cool.
 
+Modern, social-media-app-inspired stock portfolio solution designed for evaluating live stock and related news data, managing a portfolio, and saving data of interest. Features FastAPI, React Redux, PostgreSQL, and data interactions with RESTful APIs.
+
+[Front-end](https://igneous-rocks.gitlab.io/hot-stocks/) deployed via GitLab pages. <br/>
+[Back-end](https://hot-stocks.onrender.com/docs) deployed via Render.
 
 ## Design
 
