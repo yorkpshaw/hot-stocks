@@ -80,7 +80,7 @@ Today, I worked on:
 Today, I worked on:
 
     - Developing reducer endpoints for createOrUpdateSavedStock, deleteSavedStock
-    - Developing reducer endpoints for createOrUpdateSavedNewsItem, deleteSavedNewsItemsgit
+    - Developing reducer endpoints for createOrUpdateSavedNewsItem, deleteSavedNewsItems
 
 ## Monday, November 21
 Today, I worked on:
