@@ -42,7 +42,7 @@ To fully enjoy this application on your local machine, please make sure to follo
 
 1. Clone the repository down to your local machine
 2. CD into the new project directory
-3. Run `docker volume hot-stocks`
+3. Run `docker volume create hot-stocks`
 4. Run `docker compose build`
 5. Run `docker compose up`
 6. Enjoy Hot Stocks to its fullest!
