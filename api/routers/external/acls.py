@@ -92,6 +92,9 @@ class ACLs:
 
         url = f"{ALPHAVANTAGE_SERVICE}/query?function=NEWS_SENTIMENT&topics=technology&apikey={ALPHAVANTAGE_API_KEY}"  # noqa: E501
         response = requests.get(url)
+        print("AlphaVantage NEWS_SENTIMENT url:", url)
+        print("AlphaVantage NEWS_SENTIMENT status:", response.status_code)
+        print("AlphaVantage NEWS_SENTIMENT text:", response.text)
         content = json.loads(response.content)
         news_items = []
         try:
@@ -106,4 +109,5 @@ class ACLs:
                 news_items.append(news_item)
             return news_items
         except (KeyError, IndexError):
+            print("AlphaVantage NEWS_SENTIMENT: No feed found in response")
             return None

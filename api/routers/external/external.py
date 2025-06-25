@@ -32,6 +32,8 @@ def get_all_stocks(value=None):
 
 @router.get("/api/news_items")
 def get_all_news_items():
+    response = ACLs.get_all_news_items()
+    print("AlphaVantage NEWS_SENTIMENT response:", response)
     return {
-        "news_items": ACLs.get_all_news_items(),
+        "news_items": ACLs.get_all_news_items() or [],
     }
